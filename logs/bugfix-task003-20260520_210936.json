@@ -1,0 +1,50 @@
+{
+  "agent": "bug-fixer",
+  "started_at": "2026-05-20T19:10:13Z",
+  "finished_at": "2026-05-20T19:25:43Z",
+  "status": "fail",
+  "summary": "Two distinct bug categories found. Category A (engine setup) PC-side-fixed via junctions. Category B (addon.gproj syntax) requires Mac-side fix — bug-fixer is forbidden to modify mission files per PC_AGENT_BRIEF.",
+  "details": {
+    "category_A_pc_fixed": {
+      "name": "Vanilla addon dependencies not in Workbench addon scan path",
+      "evidence": [
+        "Engine scans only 3 dirs: active-mission-folder + cwd/addons (Tools\\Workbench\\addons → only 'core' from there) + %USERPROFILE%\\Documents\\my games\\ArmaReforgerWorkbench\\addons",
+        "Vanilla ArmaReforger.gproj lives in %ProgramFiles(x86)%\\Steam\\steamapps\\common\\Arma Reforger\\addons\\data\\ — NOT scanned",
+        "Vanilla core.gproj (Enfusion core data, GUID 5614BBCCBB55ED1C) lives in same Steam-Game-addons — NOT scanned"
+      ],
+      "fix_applied_by_pc": [
+        "mklink /J '%USERPROFILE%\\Documents\\my games\\ArmaReforgerWorkbench\\addons\\_vanilla_data' '%ProgramFiles(x86)%\\Steam\\steamapps\\common\\Arma Reforger\\addons\\data'",
+        "mklink /J '%USERPROFILE%\\Documents\\my games\\ArmaReforgerWorkbench\\addons\\_vanilla_core' '%ProgramFiles(x86)%\\Steam\\steamapps\\common\\Arma Reforger\\addons\\core'",
+        "PRE-EXISTING junction also still present: %USERPROFILE%\\Documents\\my games\\ArmaReforger\\addons\\_vanilla_data (Strategy A — wirkungslos, parent-level wird nicht gescannt; kann entfernt werden)"
+      ],
+      "verified": "Workbench engine now lists all 3 addons in 'Available addons' section of console.log. Dependency resolution succeeds."
+    },
+    "category_B_mac_required": {
+      "name": "Unknown keyword 'Author' in addon.gproj GameProject block",
+      "evidence": [
+        "INIT (E): Unknown keyword/data 'Author' at offset 104(0x68) — night-recon",
+        "INIT (E): Unknown keyword/data 'Author' at offset 104(0x68) — day-assault",
+        "INIT (E): Unknown keyword/data 'Author' at offset 98(0x62) — fog-ambush"
+      ],
+      "root_cause": "All 3 missions/<id>/output/addon.gproj contain the line: Author \"AI-Native Mission Authoring System\". Vanilla ArmaReforger.gproj reference does NOT have an Author field. The Enfusion engine GameProject schema does not include 'Author' as a recognized keyword.",
+      "vanilla_reference_keys": ["ID", "GUID", "TITLE", "Dependencies", "EngineSettingsPath", "GameSettingsPath", "InputSettingsPath", "BrushLibraryPath", "WelcomeScreenConfig", "WBDocumentationConfig", "Configurations"],
+      "our_gproj_keys": ["ID", "GUID", "TITLE", "Author", "Dependencies"],
+      "fix_proposal_for_mac": "Remove the 'Author' line from each of the 3 addon.gproj files. If author attribution is desired, place it in a separate addon.gproj-adjacent comment block or in DISCLOSURE.md (where it already lives).",
+      "files_affected": [
+        "missions/night-recon-everon/output/addon.gproj (line 5)",
+        "missions/day-assault-arland/output/addon.gproj (line 5)",
+        "missions/fog-ambush-eden/output/addon.gproj (line 5)"
+      ],
+      "blocker_status": "Bug-fixer would not modify these files per Auto-Iteration rule in PC_AGENT_BRIEF: mission files are Mac-designer territory. Escalate."
+    }
+  },
+  "next_actions": [
+    "Mac-side: edit 3 addon.gproj files in missions/<id>/output/ — remove Author line",
+    "Mac-side: also fix the same in any backend/exporters/gproj.py template so re-generation does not reintroduce",
+    "PC-side (after Mac push): re-copy missions to addons/, re-run -validate (junctions are persistent setup, no rework)"
+  ],
+  "human_attention_required": true,
+  "retries_attempted": 3,
+  "retries_max": 3,
+  "abort_reason": "max retries reached AND remaining fix is mac-side-only (out of pc-side scope)"
+}

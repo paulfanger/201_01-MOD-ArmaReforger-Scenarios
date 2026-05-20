@@ -1,0 +1,25 @@
+---------------------------------------------
+Log C:\Users\pfofa\Desktop\000_Projekte\201_01-MOD-ArmaReforger-Scenarios\logs\validate-fog-ambush-eden\console.log started at 2026-05-20 21:11:30 (2026-05-20 19:11:30 UTC)
+
+21:11:30.201   ENGINE       : FileSystem: Adding relative directory 'C:\Users\pfofa\Desktop\000_Projekte\201_01-MOD-ArmaReforger-Scenarios\logs\validate-fog-ambush-eden' to filesystem under name logs
+21:11:30.201   ENGINE       : FileSystem: Adding relative directory 'C:\Users\pfofa\Documents\My Games\ArmaReforgerWorkbench\profile' to filesystem under name profile
+21:11:30.202  PROFILING    : Workbench Create Engine took: 8.031000 ms
+21:11:31.214  INIT         : INIT         : Workbench Init Engine
+21:11:31.215   ENGINE       : Initializing engine, version 187974
+21:11:31.215   ENGINE       : CLI Params: -gproj C:\Users\pfofa\Documents\my games\ArmaReforger\addons\ai_fog-ambush-eden\addon.gproj -validate -logsDir C:\Users\pfofa\Desktop\000_Projekte\201_01-MOD-ArmaReforger-Scenarios\logs\validate-fog-ambush-eden 
+21:11:31.215   ENGINE       : Addon dirs:
+21:11:31.215    ENGINE       : dir: 'C:/Users/pfofa/Documents/my games/ArmaReforger/addons/ai_fog-ambush-eden/'
+21:11:31.215    ENGINE       : dir: './addons'
+21:11:31.215    ENGINE       : dir: 'C:/Users/pfofa/Documents/My Games/ArmaReforgerWorkbench/addons'
+21:11:31.215   ENGINE       : Available addons:
+21:11:31.215    ENGINE       : gproj: 'C:/Users/pfofa/Documents/my games/ArmaReforger/addons/ai_fog-ambush-eden/addon.gproj' guid: '{14FF7CF83AEBC1FF}'
+21:11:31.215 INIT         : Workbench startup
+21:11:31.215  INIT         : Workbench Init Engine
+21:11:31.215   ENGINE    (E): Addon 'fogambusheden' dependency '58D0FB3206B6F859' can't be added
+21:11:31.215   ENGINE       : Addon dirs:
+21:11:31.215    ENGINE       : dir: 'C:/Users/pfofa/Documents/my games/ArmaReforger/addons/ai_fog-ambush-eden/'
+21:11:31.215    ENGINE       : dir: './addons'
+21:11:31.215    ENGINE       : dir: 'C:/Users/pfofa/Documents/My Games/ArmaReforgerWorkbench/addons'
+21:11:31.215   ENGINE       : Available addons:
+21:11:31.215    ENGINE       : gproj: 'C:/Users/pfofa/Documents/my games/ArmaReforger/addons/ai_fog-ambush-eden/addon.gproj' guid: '{14FF7CF83AEBC1FF}'
+21:11:31.215   ENGINE    (E): Game addon '58D0FB3206B6F859' not found

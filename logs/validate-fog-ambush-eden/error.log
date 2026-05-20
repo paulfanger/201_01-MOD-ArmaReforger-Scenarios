@@ -1,0 +1,7 @@
+---------------------------------------------
+Log C:\Users\pfofa\Desktop\000_Projekte\201_01-MOD-ArmaReforger-Scenarios\logs\validate-fog-ambush-eden\error.log started at 2026-05-20 21:11:31 (2026-05-20 19:11:31 UTC)
+
+21:11:31.215 INIT         : Workbench startup
+21:11:31.215  INIT         : Workbench Init Engine
+21:11:31.215   ENGINE    (E): Addon 'fogambusheden' dependency '58D0FB3206B6F859' can't be added
+21:11:31.215   ENGINE    (E): Game addon '58D0FB3206B6F859' not found

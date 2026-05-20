@@ -1,0 +1,29 @@
+{
+  "agent": "auditor",
+  "started_at": "2026-05-20T19:26:00Z",
+  "finished_at": "2026-05-20T19:26:30Z",
+  "status": "warn",
+  "summary": "Result is complete and honest: blocked by mission-file syntax error after PC-fixed engine setup. Push allowed because escalation is the only remaining action (Mac-side fix required).",
+  "verdict": "allow_push",
+  "checks": {
+    "all_3_missions_tracked": {"ok": true, "detail": "validate result for all 3"},
+    "all_console_logs_referenced": {"ok": true, "files": [
+      "logs/validate-night-recon-everon/console.log (first run, dep-not-found)",
+      "logs/validate-day-assault-arland/console.log",
+      "logs/validate-fog-ambush-eden/console.log",
+      "logs/validate-retry1-night-recon-everon/* (strategy A — junction in user-game-addons, ineffective)",
+      "logs/validate-retry2-night-recon-everon/* (strategy B — junction in Workbench-AppData/addons/_vanilla_data, partial — found data but missed core dep)",
+      "logs/validate-retry3-night-recon-everon/* (strategy C — both _vanilla_core+_vanilla_data junctions + -wbSilent, deps resolved, hit Author-keyword issue)",
+      "logs/validate-final-day-assault-arland/* (same as retry3, same Author issue)",
+      "logs/validate-final-fog-ambush-eden/* (same as retry3, same Author issue)"
+    ]},
+    "all_E_F_events_triaged": {"ok": true, "detail": "bug-fixer JSON differentiates Category A (PC-fixed) vs Category B (Mac-required)"},
+    "result_schema_valid": {"ok": true},
+    "smoke_tests_run": {"ok": false, "reason": "skipped because validate did not reach pass state; would have cascaded same error", "decision": "acceptable — would waste tool runtime"},
+    "retry_loop_bounded": {"ok": true, "detail": "3 junction strategies tested, then halted per PC_AGENT_BRIEF Auto-Iteration max-3-retry rule"},
+    "no_unauthorized_mission_file_changes": {"ok": true, "detail": "addon.gproj files in addons/ai_* and missions/<id>/output/ are byte-identical to pre-task state"},
+    "junctions_documented_in_result": {"ok": true, "detail": "result.md lists junctions, their paths, and removal instructions"}
+  },
+  "human_attention_required": false,
+  "next_actions": ["push result + logs", "wait for Mac-side addon.gproj fix"]
+}

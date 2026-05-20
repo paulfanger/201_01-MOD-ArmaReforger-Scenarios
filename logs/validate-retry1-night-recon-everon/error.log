@@ -1,0 +1,8 @@
+---------------------------------------------
+Log C:\Users\pfofa\Desktop\000_Projekte\201_01-MOD-ArmaReforger-Scenarios\logs\validate-retry1-night-recon-everon\error.log started at 2026-05-20 21:16:42 (2026-05-20 19:16:42 UTC)
+
+21:16:42.182 INIT         : Workbench startup
+21:16:42.182  INIT         : Workbench Init Engine
+21:16:42.182   ENGINE    (E): Addon 'nightreconeveron' dependency '58D0FB3206B6F859' can't be added
+21:16:42.182   ENGINE    (E): Game addon '58D0FB3206B6F859' not found
+21:18:30.433   ENGINE    (E): Cannot initialize game project settings!

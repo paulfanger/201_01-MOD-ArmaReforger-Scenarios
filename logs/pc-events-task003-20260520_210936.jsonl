@@ -1,0 +1,12 @@
+﻿{"agent":"main","t":"2026-05-20T19:09:36Z","msg":"logger spawned for task003","kind":"status"}
+{"cmd":"preflight","agent":"main","t":"2026-05-20T19:09:36Z","ok":true,"kind":"result","details":{"diag":true,"addonsRoot":true,"gproj_night-recon-everon":true,"gproj_day-assault-arland":true,"gproj_fog-ambush-eden":true}}
+{"agent":"main","t":"2026-05-20T19:10:12Z","cmd":"validate-night-recon-everon","msg":"starting","kind":"exec"}
+{"passed":false,"agent":"main","exit":-1,"log_dir":"C:\\Users\\pfofa\\Desktop\\000_Projekte\\201_01-MOD-ArmaReforger-Scenarios\\logs\\validate-night-recon-everon","kind":"result","duration_ms":60832,"t":"2026-05-20T19:11:13Z","cmd":"validate-night-recon-everon"}
+{"agent":"main","t":"2026-05-20T19:11:13Z","cmd":"validate-day-assault-arland","msg":"starting","kind":"exec"}
+{"passed":false,"agent":"main","exit":-1,"log_dir":"C:\\Users\\pfofa\\Desktop\\000_Projekte\\201_01-MOD-ArmaReforger-Scenarios\\logs\\validate-day-assault-arland","kind":"result","duration_ms":15219,"t":"2026-05-20T19:11:28Z","cmd":"validate-day-assault-arland"}
+{"agent":"main","t":"2026-05-20T19:11:28Z","cmd":"validate-fog-ambush-eden","msg":"starting","kind":"exec"}
+{"agent":"main","t":"2026-05-20T19:16:40Z","cmd":"retry1-validate-night-recon-everon","msg":"after junction _vanilla_data","kind":"exec"}
+{"agent":"main","t":"2026-05-20T19:22:50Z","cmd":"retry2-validate-night-recon-everon","msg":"after junction in Workbench-AppData/addons","kind":"exec"}
+{"agent":"main","t":"2026-05-20T19:24:26Z","cmd":"retry3-validate-night-recon-everon","msg":"added core junction + -wbSilent","kind":"exec"}
+{"cmd":"validate-final-day-assault-arland","agent":"main","t":"2026-05-20T19:25:38Z","kind":"result","exit":null,"dur_s":6.2}
+{"cmd":"validate-final-fog-ambush-eden","agent":"main","t":"2026-05-20T19:25:44Z","kind":"result","exit":null,"dur_s":6.2}

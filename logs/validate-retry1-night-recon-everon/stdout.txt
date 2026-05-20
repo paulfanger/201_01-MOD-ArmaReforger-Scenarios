@@ -1,0 +1,8 @@
+﻿ArmaReforgerWorkbenchSteamDiag.exe : Setting breakpad minidump AppID = 1874910
+In Zeile:1 Zeichen:827
++ ... = Get-Date; & $diag -gproj $gproj -validate -logsDir $mLogDir *>&1 |  ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Setting breakpa...AppID = 1874910:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+SteamInternal_SetMinidumpSteamID:  Caching Steam ID:  76561198041204253 [API loaded no]

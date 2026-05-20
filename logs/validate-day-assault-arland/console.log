@@ -1,0 +1,30 @@
+---------------------------------------------
+Log C:\Users\pfofa\Desktop\000_Projekte\201_01-MOD-ArmaReforger-Scenarios\logs\validate-day-assault-arland\console.log started at 2026-05-20 21:11:14 (2026-05-20 19:11:14 UTC)
+
+21:11:14.937   ENGINE       : FileSystem: Adding relative directory 'C:\Users\pfofa\Desktop\000_Projekte\201_01-MOD-ArmaReforger-Scenarios\logs\validate-day-assault-arland' to filesystem under name logs
+21:11:14.938   ENGINE       : FileSystem: Adding relative directory 'C:\Users\pfofa\Documents\My Games\ArmaReforgerWorkbench\profile' to filesystem under name profile
+21:11:14.938  PROFILING    : Workbench Create Engine took: 8.410800 ms
+21:11:15.957  INIT         : INIT         : Workbench Init Engine
+21:11:15.958   ENGINE       : Initializing engine, version 187974
+21:11:15.958   ENGINE       : CLI Params: -gproj C:\Users\pfofa\Documents\my games\ArmaReforger\addons\ai_day-assault-arland\addon.gproj -validate -logsDir C:\Users\pfofa\Desktop\000_Projekte\201_01-MOD-ArmaReforger-Scenarios\logs\validate-day-assault-arland 
+21:11:15.958   ENGINE       : Addon dirs:
+21:11:15.958    ENGINE       : dir: 'C:/Users/pfofa/Documents/my games/ArmaReforger/addons/ai_day-assault-arland/'
+21:11:15.958    ENGINE       : dir: './addons'
+21:11:15.958    ENGINE       : dir: 'C:/Users/pfofa/Documents/My Games/ArmaReforgerWorkbench/addons'
+21:11:15.958   ENGINE       : Available addons:
+21:11:15.958    ENGINE       : gproj: 'C:/Users/pfofa/Documents/my games/ArmaReforger/addons/ai_day-assault-arland/addon.gproj' guid: '{85231016051D2564}'
+21:11:15.959 INIT         : Workbench startup
+21:11:15.959  INIT         : Workbench Init Engine
+21:11:15.959   ENGINE    (E): Addon 'dayassaultarland' dependency '58D0FB3206B6F859' can't be added
+21:11:15.959   ENGINE       : Addon dirs:
+21:11:15.959    ENGINE       : dir: 'C:/Users/pfofa/Documents/my games/ArmaReforger/addons/ai_day-assault-arland/'
+21:11:15.959    ENGINE       : dir: './addons'
+21:11:15.959    ENGINE       : dir: 'C:/Users/pfofa/Documents/My Games/ArmaReforgerWorkbench/addons'
+21:11:15.959   ENGINE       : Available addons:
+21:11:15.959    ENGINE       : gproj: 'C:/Users/pfofa/Documents/my games/ArmaReforger/addons/ai_day-assault-arland/addon.gproj' guid: '{85231016051D2564}'
+21:11:15.959   ENGINE    (E): Game addon '58D0FB3206B6F859' not found
+21:11:27.638   ENGINE    (E): Cannot initialize game project settings!
+21:11:27.638  PROFILING    : Workbench Init Engine took: 11680.222400 ms
+21:11:28.934 PROFILING    : Workbench startup took: 14042.990800 ms
+21:11:28.934 ENGINE       : Game destroyed.
+21:11:28.934 ENGINE       : Game destroyed.

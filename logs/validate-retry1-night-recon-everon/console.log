@@ -1,0 +1,27 @@
+---------------------------------------------
+Log C:\Users\pfofa\Desktop\000_Projekte\201_01-MOD-ArmaReforger-Scenarios\logs\validate-retry1-night-recon-everon\console.log started at 2026-05-20 21:16:41 (2026-05-20 19:16:41 UTC)
+
+21:16:41.159   ENGINE       : FileSystem: Adding relative directory 'C:\Users\pfofa\Desktop\000_Projekte\201_01-MOD-ArmaReforger-Scenarios\logs\validate-retry1-night-recon-everon' to filesystem under name logs
+21:16:41.159   ENGINE       : FileSystem: Adding relative directory 'C:\Users\pfofa\Documents\My Games\ArmaReforgerWorkbench\profile' to filesystem under name profile
+21:16:41.160  PROFILING    : Workbench Create Engine took: 9.944000 ms
+21:16:42.181  INIT         : INIT         : Workbench Init Engine
+21:16:42.182   ENGINE       : Initializing engine, version 187974
+21:16:42.182   ENGINE       : CLI Params: -gproj C:\Users\pfofa\Documents\my games\ArmaReforger\addons\ai_night-recon-everon\addon.gproj -validate -logsDir C:\Users\pfofa\Desktop\000_Projekte\201_01-MOD-ArmaReforger-Scenarios\logs\validate-retry1-night-recon-everon 
+21:16:42.182   ENGINE       : Addon dirs:
+21:16:42.182    ENGINE       : dir: 'C:/Users/pfofa/Documents/my games/ArmaReforger/addons/ai_night-recon-everon/'
+21:16:42.182    ENGINE       : dir: './addons'
+21:16:42.182    ENGINE       : dir: 'C:/Users/pfofa/Documents/My Games/ArmaReforgerWorkbench/addons'
+21:16:42.182   ENGINE       : Available addons:
+21:16:42.182    ENGINE       : gproj: 'C:/Users/pfofa/Documents/my games/ArmaReforger/addons/ai_night-recon-everon/addon.gproj' guid: '{8B56608D5A651540}'
+21:16:42.182 INIT         : Workbench startup
+21:16:42.182  INIT         : Workbench Init Engine
+21:16:42.182   ENGINE    (E): Addon 'nightreconeveron' dependency '58D0FB3206B6F859' can't be added
+21:16:42.182   ENGINE       : Addon dirs:
+21:16:42.182    ENGINE       : dir: 'C:/Users/pfofa/Documents/my games/ArmaReforger/addons/ai_night-recon-everon/'
+21:16:42.182    ENGINE       : dir: './addons'
+21:16:42.182    ENGINE       : dir: 'C:/Users/pfofa/Documents/My Games/ArmaReforgerWorkbench/addons'
+21:16:42.182   ENGINE       : Available addons:
+21:16:42.182    ENGINE       : gproj: 'C:/Users/pfofa/Documents/my games/ArmaReforger/addons/ai_night-recon-everon/addon.gproj' guid: '{8B56608D5A651540}'
+21:16:42.182   ENGINE    (E): Game addon '58D0FB3206B6F859' not found
+21:18:30.433   ENGINE    (E): Cannot initialize game project settings!
+21:18:30.433  PROFILING    : Workbench Init Engine took: 108249.296800 ms
