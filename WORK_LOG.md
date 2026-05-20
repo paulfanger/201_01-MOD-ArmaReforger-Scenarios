@@ -295,3 +295,43 @@ Phase 1 ist 100% wasserdicht. Alle Features funktionieren, alle Kombinationen ge
 - Windows-Workbench-Zugang (Paul bringt PC online)
 - `workbench-plugin/AI_GeneratePlugin.c` aktivieren (Skeleton existiert bereits)
 - Plugin konsumiert JSON-Spec → Workbench generiert fertige Mission intern
+
+---
+
+## 2026-05-20 (later) — Phase 2 Start: Mac↔PC Git Bridge
+
+**Was:** Vollautonomer Remote-Workflow Mac → PC etabliert.
+
+**Bridge-Setup:**
+- GitHub-Repo: `paulfanger/201_01-MOD-ArmaReforger-Scenarios` (public)
+- Initial commit: 1483 Files, 34,972 insertions (alle Phase-1-Arbeiten)
+- PC klont Repo nach `C:\Users\pfofa\Desktop\000_Projekte\201_01-MOD-ArmaReforger-Scenarios\`
+- Kommunikationsprotokoll: `tasks/PC_TASK.md` (Mac→PC) + `tasks/PC_RESULT.md` (PC→Mac)
+- PC-Agent-Brief: `PC_AGENT_BRIEF.md` mit Rolle, Pflicht-Workflow, Polling-Loop (30min, 60s-Intervall)
+
+**Task 001 (Handshake):**
+- Status: PARTIAL (PC pushed Result)
+- Git: 2.53.0.windows.3 ✓
+- Steam laufend ✓
+- Arma Reforger Game installiert: `C:\Program Files (x86)\Steam\steamapps\common\Arma Reforger`
+- ❌ Arma Reforger Tools (Workbench) FEHLT
+- ❌ AppData-Ordner fehlt (Game nie gestartet)
+
+**Task 002 (active):**
+- Steam-CLI install: `steam://install/1874881` (Arma Reforger Tools, App-ID 1874881)
+- Game first-start: `steam://run/1874880` (für AppData-Erstellung)
+- Addon-Ordner anlegen + 3 Missionen kopieren
+- File-Integrity-Check + Workbench-CLI-Check
+- Workbench-Launch-Test mit `ai_night-recon-everon`
+
+**Parallel Research:**
+- Workbench CLI capabilities verified (Research-Agent, 30 tool uses, 200KB output)
+- `research/06-workbench-cli-flags.md` mit verified Flags:
+  - Headless: `-wbSilent -exitAfterInit`
+  - Validate-Gate: `-validate` (exit 0=ok, -1=fail) ← documented
+  - World-Load: `-gproj X -load Y.ent -wbSilent -exitAfterInit`
+  - Log-Path: `%USERPROFILE%\Documents\My Games\ArmaReforgerWorkbench\logs\logs_<TS>\`
+  - Success-Heuristik: ≥1 `Entities load`, ≥1 `Entity layer load`, 0 `(F):` lines, exit 0
+
+**Status:** PC arbeitet an Task 002. Mac wartet auf PC_RESULT push.
+
