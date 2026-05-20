@@ -1,29 +1,27 @@
-# PC Task — Task 007-CS: Empirical Cheatsheet + Sanity-Check (kurz, CS-kompatibel)
+# PC Task — Task 007b-CS: CHEATSHEET Section 5 + Task 008 Draft Review (kurz, CS-kompatibel)
 
 STATUS: PENDING
-TASK_ID: 007-CS
-TURN_ID: 6
+TASK_ID: 007b-CS
+TURN_ID: 7
 PHASE: 2
-TYPE: documentation_capture + headless_sanity
-NOTE: User spielt weiter CS. KEINE GUI-Launches, KEINE Screenshots.
-      GUI Smoke wartet auf Task 008 (post-CS, "ready für GUI smoke").
+TYPE: cheatsheet_extension + draft_review + headless_sanity
+NOTE: User spielt CS weiter. KEINE GUI-Launches. Task 008 ist als DRAFT pre-staged
+      (tasks/PC_TASK_008_DRAFT.md) — wartet auf "ready für GUI smoke" Signal post-CS.
 
 ## Kontext
 
-Task 006-CS lieferte:
-- ✅ pc-setup.ps1 fix verifiziert (kein Parse-Error mehr)
-- ✅ DRY pattern erfolgreich demonstriert (hash 1AB7CCED395B508F, 3× cleanup+recopy)
-- ✅ Re-validate 3/3 PASS (DRY hat nichts kaputt gemacht)
-- ✅ Sonnet 4.6 keine Qualitäts-Differenz für structured headless
-- ✅ Turn-Budget: 1.25 min von 15 min (sehr effizient)
+Task 007-CS done (commit f5f60c9). PC schlug 2 Verbesserungen vor:
 
-Mac hat 3 PC-Qs beantwortet:
-1. **Reflection naming formalisiert**: `logs/reflection-turn-<N>-<side>.md` (siehe RELAY_PROTOCOL)
-2. **PowerShell-Quoting-Rule dokumentiert**: PC_AGENT_BRIEF neue Sektion "PowerShell-Quoting Pitfalls"
-3. **Task 008 GUI smoke**: wartet auf User-Signal post-CS
+1. **CHEATSHEET-PC.md Section 5** ergänzen ("GPU + Steam-Library Quickref" mit
+   PC-specific Info wie RX 5700 XT, 8GB VRAM, E: drive not mounted)
+2. **Task 008 Step 0 = CS-Kill** vor GUI-Launch (GPU-Konflikt-Prevention)
 
-Diese Task ist sehr klein (~2 min): pull updates, validiere Empirie-Wissen, schreib
-einen PC-Cheatsheet, push.
+Mac hat beide Vorschläge akzeptiert:
+- (1) Du selbst (PC) ergänzt Section 5 in CHEATSHEET-PC.md (du kennst dein HW besser)
+- (2) Mac hat Task 008 als DRAFT mit CS-Kill als Phase B + Step 0 Safety-Net pre-staged
+  in `tasks/PC_TASK_008_DRAFT.md`. Du reviewst das, ich aktivier's wenn User ready.
+
+Diese Task ist sehr klein (~3 min): Cheatsheet-Ergänzung + Draft-Review + sanity-validate + push.
 
 ## Phase A (Two-Phase Reception)
 
@@ -31,226 +29,125 @@ einen PC-Cheatsheet, push.
 
 ## Phase C — Steps (alle headless)
 
-### Step 1 — Sync + STATE + Reflection lesen
+### Step 1 — Sync + STATE + Mac-Reflection lesen
 
 ```powershell
 $repo = "C:\Users\pfofa\Desktop\000_Projekte\201_01-MOD-ArmaReforger-Scenarios"
 cd $repo
 git pull --rebase
 
-# Read Mac reflection-turn-5-mac.md if exists (new naming convention)
-if (Test-Path "logs\reflection-turn-5-mac.md") {
-    Get-Content "logs\reflection-turn-5-mac.md"
-} elseif (Test-Path "logs\reflection-turn-5.md") {
-    Get-Content "logs\reflection-turn-5.md"  # old naming, still valid
+if (Test-Path "logs\reflection-turn-7-mac.md") {
+    Get-Content "logs\reflection-turn-7-mac.md"
 }
 
-# Update STATE
 $state = @{
-    turn_id = 6
+    turn_id = 7
     owner = "pc"
     phase = "PHASE_C_EXEC"
     started_at = (Get-Date -Format "yyyy-MM-ddTHH:mm:ssZ")
     pending_do = @()
     pending_exec = @(
-        @{ id="exec-1"; desc="Read Mac doc updates (RELAY + PC_AGENT_BRIEF)"; status="queued" }
-        @{ id="exec-2"; desc="Write playbook/CHEATSHEET-PC.md with empirical learnings"; status="queued" }
-        @{ id="exec-3"; desc="Quick sanity re-validate (just night-recon, fast check)"; status="queued" }
-        @{ id="exec-4"; desc="Audit + reflection-turn-6-pc.md + push"; status="queued" }
+        @{ id="exec-1"; desc="Read Task 008 DRAFT for review"; status="queued" }
+        @{ id="exec-2"; desc="Extend CHEATSHEET-PC.md with Section 5 (GPU + Steam-Library)"; status="queued" }
+        @{ id="exec-3"; desc="Sanity re-validate (night-recon, 6th in row)"; status="queued" }
+        @{ id="exec-4"; desc="Audit + reflection-turn-7-pc.md + push"; status="queued" }
     )
     loop_signals = @()
-    notes = "CS still running. Headless-only. Cheatsheet capture from PC empirical knowledge."
+    notes = "CS still running. Final headless prep before post-CS GUI smoke task 008."
 } | ConvertTo-Json -Depth 5
 $state | Set-Content "tasks\STATE.json" -Encoding UTF8
 
 $ts = Get-Date -Format "yyyyMMdd_HHmmss"
-"{`"t`":`"$((Get-Date -Format 's')+'Z')`",`"kind`":`"start`",`"turn_id`":6,`"task_id`":`"007-CS`"}" | Add-Content "logs\pc-events-task007cs-$ts.jsonl"
+"{`"t`":`"$((Get-Date -Format 's')+'Z')`",`"kind`":`"start`",`"turn_id`":7,`"task_id`":`"007b-CS`"}" | Add-Content "logs\pc-events-task007bcs-$ts.jsonl"
 ```
 
-### Step 2 — Read Mac doc updates
+### Step 2 — Read Task 008 DRAFT für Review
 
-Lies (2 Sätze Summary je File):
-1. `playbook/RELAY_PROTOCOL.md` — neue Sektion "Reflection per turn" mit Naming-Convention
-2. `PC_AGENT_BRIEF.md` — neue Sektion "PowerShell-Quoting Pitfalls"
+```powershell
+Get-Content "$repo\tasks\PC_TASK_008_DRAFT.md"
+```
 
-Bestätige im Result dass beide gefunden + verstanden.
+In Result-Template berichten:
+- Stimmt der CS-Kill Step 0 mit deiner Empfehlung überein?
+- Sind die GUI-Steps (3-7) reasonable?
+- Fehlt etwas Critical (z.B. fehlende Pre-flight-Check, Edge-Case)?
+- Würdest du etwas anders machen?
 
-### Step 3 — Write playbook/CHEATSHEET-PC.md (deine Empirie)
+Diese Review hilft Mac den DRAFT vor Aktivierung zu verbessern.
 
-Du hast jetzt empirisches Wissen aus 6 Turns. Schreib einen Cheatsheet aus PC-Perspektive
-mit dem was funktioniert (validated) vs. was nicht funktioniert (disconfirmed). Format:
+### Step 3 — CHEATSHEET-PC.md Section 5 ergänzen
+
+Lies aktuelles `playbook/CHEATSHEET-PC.md`, ergänze am Ende eine neue Sektion:
 
 ```markdown
-# PC Cheatsheet — Arma Reforger Workbench on Windows
+## GPU + Steam-Library Quickref (PC-specific)
 
-> Stand: 2026-05-20
-> Source: empirical learnings from Tasks 001-007 (PC-side)
+### Hardware
+- GPU: <model + VRAM>
+- CPU: <model>
+- RAM: <amount>
+- OS: Windows 11 Home (build 26200)
 
-## Verified Working ✅
+### Steam-Libraries
+- Primary: `C:\Program Files (x86)\Steam` (Arma Reforger Game + Tools hier installiert)
+- Secondary: <z.B. `E:\SteamLibrary` falls vorhanden — Status: not currently mounted>
 
-### Steam install via CLI
-- `Start-Process "steam://install/<AppID>"` — Steam-Dialog opens, user clicks Install
-- App-IDs: Game=1874880, Tools=1874910 (NOT 1874881 as old docs claim)
+### Concurrency
+- ⚠️ GPU shared between Workbench + actively-played games → GUI Workbench-Tests
+  brauchen exclusive GPU-Access (kill CS/AR/anderes Spiel vor Task 008 GUI-Launch)
+- Headless `-wbSilent` Tasks (validate/compile) sind GPU-tolerant: laufen parallel zu Games ok
+- Screenshot-Capture greift Primary-Monitor: bei multi-monitor adjust target
 
-### Workbench-Diag executable
-- Pfad: `C:\Program Files (x86)\Steam\steamapps\common\Arma Reforger Tools\Workbench\ArmaReforgerWorkbenchSteamDiag.exe`
-- Version 1.6.0.119 (Stand 2026-01-23)
-- NICHT direkt im Tools-Ordner — im Sub-Folder `Workbench\`
-- Diag-Variante: mehr crash-info als plain Workbench, sonst funktional identisch
-
-### Vanilla addon junctions (one-time setup)
-- Workbench-Diag braucht `core` + `data` als findable addons
-- Setup: `scripts/pc-setup.ps1` (PowerShell-native New-Item -Junction)
-- Lokationen:
-  - `%USERPROFILE%\Documents\my games\ArmaReforgerWorkbench\addons\_vanilla_core`
-  - `%USERPROFILE%\Documents\my games\ArmaReforgerWorkbench\addons\_vanilla_data`
-
-### Validate compile-gate (headless, no GUI)
-- CLI: `WorkbenchDiag.exe -gproj "X.gproj" -validate -wbSilent -exitAfterInit -logsDir "Y"`
-- Pass: 0 Fatal + 0 Error im console.log
-- Dauer: ~6s pro Mission
-- Exit-Code: UNRELIABLE — use log-pattern matching
-
-### File paths (Windows post-2024)
-- Addons: `%USERPROFILE%\Documents\my games\ArmaReforger\addons\` (NOT %LOCALAPPDATA%)
-- Workbench Logs: `%USERPROFILE%\Documents\my games\ArmaReforgerWorkbench\logs\logs_<TS>\`
-- Game AppData: `%USERPROFILE%\Documents\my games\ArmaReforger\`
-
-### Screenshot (native PowerShell, no install)
-```powershell
-Add-Type -AssemblyName System.Windows.Forms,System.Drawing
-$bmp = New-Object Drawing.Bitmap [width],[height]
-# ... see PC_AGENT_BRIEF
+### Workbench-Specific
+- Erste Workbench-Start nach Game-Update: kann länger dauern (asset reimport)
+- Workbench-Diag verbraucht ~117 MB RAM idle, ~500 MB beim World-Load
 ```
 
-## Disconfirmed Empirically ❌
-
-### World-load smoke test via CLI
-- `-load "$Addon:Worlds/X.ent" -wbSilent -exitAfterInit` — does NOT trigger world load
-- Workbench-Diag 1.6.0.119 exited clean nach Engine-Init in ~5s ohne Entities-Load
-- Alternatives: (a) Workbench-Plugin (pseudocode skeleton only), (b) GUI+Screenshot,
-  (c) Linux dedi -listScenarios
-- Status: research/06 Section B labelled DISCONFIRMED 2026-05-20
-
-### `Author` keyword in addon.gproj
-- Enfusion Schema kennt das nicht — `-validate` fails mit "Unknown keyword 'Author'"
-- Fix: removed from gproj.py template + alle 3 mission outputs (commit 011f068)
-- Attribution lebt in DISCLOSURE.md
-
-### Exit codes from Workbench-Diag
-- Empty exit-code bei success UND failure
-- Switch zu log-pattern matching (siehe research/06 success heuristic)
-
-## PowerShell Pitfalls (siehe PC_AGENT_BRIEF)
-
-### Variable vor Colon
-- `"$mission:path"` → "<mission-drive>:path" attempt
-- `"${mission}:path"` ✓ or `"$($mission):path"` ✓
-
-### Embedded quotes für cmd.exe
-- Vermeiden, PowerShell-native nehmen (z.B. New-Item -Junction statt mklink)
-
-### Backtick-n in double-quoted strings
-- ⚠️ kann parse-error werfen
-- ✅ separate `Write-Output ""` + `Write-Output "..."`
-
-## Anti-Patterns (heilig)
-
-- ❌ Mission-Files eigenmächtig ändern (Mac-Designer territory)
-- ❌ User klicken lassen wenn ui-tester + loop-detector verfügbar sind
-- ❌ Exit-Code als Pass/Fail-Signal nehmen (UNRELIABLE)
-- ❌ `-Author`-keyword wieder in gproj einfügen
-- ❌ `-load $A:X.ent -wbSilent` als smoke (disconfirmed)
-
-## Recovery / Cleanup
-
-### Junctions weg
-```powershell
-cmd /c rmdir "$env:USERPROFILE\Documents\my games\ArmaReforgerWorkbench\addons\_vanilla_core"
-cmd /c rmdir "$env:USERPROFILE\Documents\my games\ArmaReforgerWorkbench\addons\_vanilla_data"
-```
-
-### Workbench/Game-Prozesse killen
-```powershell
-Get-Process | Where-Object { $_.ProcessName -like "*Workbench*" -or $_.ProcessName -like "*ArmaReforger*" } | Stop-Process -Force
-```
-
-### Mission-Addons löschen (vor DRY-Recopy)
-- Self-approve OK weil reversibel (Source liegt im Repo: missions/<id>/output)
-- Verwende `Remove-Item -Recurse -Force` (oder DRY-Pattern mit Hash für Audit-Trail)
-```
-
-Speicher als `playbook/CHEATSHEET-PC.md`.
-
-### Step 4 — Quick Sanity Re-Validate (nur night-recon, fast)
+Fülle Hardware-Werte aus deinem System ein (Get-WmiObject Win32_VideoController, Get-CimInstance Win32_Processor, etc.):
 
 ```powershell
-$diag = "C:\Program Files (x86)\Steam\steamapps\common\Arma Reforger Tools\Workbench\ArmaReforgerWorkbenchSteamDiag.exe"
-$gproj = "$env:USERPROFILE\Documents\my games\ArmaReforger\addons\ai_night-recon-everon\addon.gproj"
-$logDir = "$repo\logs\sanity-validate-task007cs"
-New-Item -ItemType Directory -Path $logDir -Force | Out-Null
-
-$proc = Start-Process -FilePath $diag -ArgumentList @(
-    "-gproj", "`"$gproj`"",
-    "-validate",
-    "-wbSilent",
-    "-exitAfterInit",
-    "-logsDir", "`"$logDir`""
-) -PassThru -NoNewWindow
-
-$waitSec = 0
-while (-not $proc.HasExited -and $waitSec -lt 20) {
-    Start-Sleep -Seconds 2
-    $waitSec += 2
-}
-
-$console = Get-ChildItem "$logDir\logs_*\console.log" -Recurse | Sort-Object LastWriteTime -Desc | Select-Object -First 1
-$content = if ($console) { Get-Content $console.FullName -Raw } else { "" }
-$fatals = ([regex]::Matches($content, "(?m)^(WORLD|ENGINE|SCRIPT)\s+\(F\):")).Count
-$errors = ([regex]::Matches($content, "(?m)^(WORLD|ENGINE|SCRIPT)\s+\(E\):")).Count
-$verdict = if (($fatals -eq 0) -and ($errors -eq 0)) {"PASS"} else {"FAIL"}
-
-Write-Output "Sanity re-validate (night-recon): $verdict · Fatal=$fatals · Error=$errors"
+Write-Output "=== GPU ==="
+Get-WmiObject Win32_VideoController | Select-Object Name, AdapterRAM, DriverVersion | Format-List
+Write-Output "=== CPU ==="
+Get-CimInstance Win32_Processor | Select-Object Name, NumberOfCores, MaxClockSpeed | Format-List
+Write-Output "=== RAM ==="
+$ram = (Get-CimInstance Win32_ComputerSystem).TotalPhysicalMemory / 1GB
+Write-Output "Total: $([math]::Round($ram,1)) GB"
+Write-Output "=== Steam Libraries ==="
+Get-Content "C:\Program Files (x86)\Steam\steamapps\libraryfolders.vdf" -ErrorAction SilentlyContinue | Select-String "path"
 ```
 
-Erwartung: PASS (CI-gate ist stabil, 4× in Folge jetzt).
+Dann schreib die Section 5 mit den echten Werten.
+
+### Step 4 — Sanity Re-Validate (night-recon-everon, 6th in Folge)
+
+Standard pattern. ~15s. Erwartung: PASS (CI-Gate-stability streak weiterführen).
 
 ### Step 5 — Audit + Reflection + Push
 
-```powershell
-# Auditor: CHEATSHEET-PC.md exists + sanity PASS + reflection-turn-6-pc.md exists
-# Reflection (NEUE Naming-Convention)
-$reflectionPath = "$repo\logs\reflection-turn-6-pc.md"
-# ... schreib Turn-6 reflection mit Standard-Struktur
-
-cd $repo
-$state = Get-Content "tasks\STATE.json" -Raw | ConvertFrom-Json
-$state.phase = "PHASE_D_RETURN"
-$state | ConvertTo-Json -Depth 5 | Set-Content "tasks\STATE.json" -Encoding UTF8
-
-git pull --rebase
-git add playbook/CHEATSHEET-PC.md tasks/PC_RESULT.md tasks/STATE.json logs/
-git commit -m "PC: Task 007-CS -- empirical cheatsheet + sanity (CS-compat)"
-git push
-```
+- Auditor: CHEATSHEET-PC.md hat jetzt Section 5 + sanity PASS + reflection-turn-7-pc.md
+- Reflection (Naming: `logs/reflection-turn-7-pc.md`)
+- STATE → PHASE_D_RETURN
+- Push
 
 ---
 
 ## Pause-Conditions
 
-- Sanity re-validate FAIL → bug-fixer + STOP (würde bedeuten der Validate-Gate ist plötzlich brüchig — wäre Big Deal)
-- turn_time_budget (10 min — task ist kurz) → STOP
+- Sanity-validate FAIL (6th in row would be FAIL) → STOP, bug-fixer (würde grosses
+  Stability-Regression sein)
+- turn_time_budget (10 min) → STOP
 
 ---
 
 ## Erwartete Dauer
 
 - Steps 1-2: 30s
-- Step 3 (Cheatsheet schreiben): 1-2 min (länger weil substantielle Doc)
+- Step 3 (Section 5 schreiben mit HW-Discovery): 1-2 min
 - Step 4 (Sanity Validate): 15s
 - Step 5 (Audit + reflection + push): 30s
 
-**Total: ~3 min, headless durchgängig, CS bleibt ungestört.**
+**Total: ~3 min, headless durchgängig.**
 
 PAUSE FLAG: nein.
 
@@ -258,6 +155,10 @@ PAUSE FLAG: nein.
 
 ## NEXT
 
-Wenn User CS beendet → tippt im Mac-Chat "GUI smoke go" → Mac compiles Task 008 mit
-GUI-Workbench-Launch + Screenshots + multimodal ui-tester classify (ursprünglich
-geplant für Task 006, deferred zu post-CS).
+Wenn User CS beendet + tippt **"ready für GUI smoke"** oder **"Task 008 go"** im Mac-Chat:
+- Mac liest dein Review von Task 008 DRAFT
+- Mac integriert deine Anmerkungen (falls vorhanden)
+- Mac promotet DRAFT → `tasks/PC_TASK.md` (Task 008 aktiviert)
+- Phase A asks dich "ist CS zu?" → Phase B verify → Phase C GUI Smoke
+
+Bis dahin: kein weiterer Task-Push erwartet von Mac, außer User ändert Plan.
