@@ -1,0 +1,36 @@
+﻿{
+    "details":  {
+                    "git":  {
+                                "found":  true,
+                                "path":  "C:\\Program Files\\Git\\cmd\\git.exe",
+                                "version":  "git version 2.53.0.windows.3"
+                            },
+                    "python":  {
+                                   "found":  true,
+                                   "path":  "C:\\Users\\pfofa\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe",
+                                   "version":  "python : Python wurde nicht gefunden; ohne Argumente ausf�hren, um aus dem Microsoft Store zu installieren, oder \r\ndeaktivieren Sie diese Verkn�pfung unter \"Einstellungen \u003e Apps \u003e Erweiterte App-Einstellungen \u003e App-Ausf�hrungsaliase\".\r\nIn Zeile:1 Zeichen:680\r\n+ ... und=$true; path=$pyCmd.Source; version=(python --version 2\u003e\u00261 | Out-S ...\r\n+                                             ~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : NotSpecified: (Python wurde ni...�hrungsaliase\".:String) [], RemoteException\r\n    + FullyQualifiedErrorId : NativeCommandError"
+                               },
+                    "pillow":  {
+                                   "note":  "pip not available",
+                                   "found":  false
+                               },
+                    "workbench_diag":  {
+                                           "found":  true,
+                                           "path":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Arma Reforger Tools\\Workbench\\ArmaReforgerWorkbenchSteamDiag.exe",
+                                           "size_mb":  61.9,
+                                           "version":  "1.6.0.119"
+                                       },
+                    "native_screenshot":  {
+                                              "method":  "System.Drawing.Graphics::CopyFromScreen (PS-native, no extra deps)",
+                                              "found":  true
+                                          }
+                },
+    "next_actions":  [
+
+                     ],
+    "agent":  "dep-installer",
+    "human_attention_required":  false,
+    "summary":  "git/python/workbench-diag/native-screenshot present; Pillow optional for advanced screenshots",
+    "status":  "warn",
+    "started_at":  "2026-05-20T20:15:36Z"
+}

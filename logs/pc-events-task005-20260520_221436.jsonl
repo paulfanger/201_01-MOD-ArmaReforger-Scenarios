@@ -1,0 +1,14 @@
+﻿{"t":"2026-05-20T20:14:36Z","kind":"start","turn_id":4,"task_id":"005","agent":"main"}
+{"t":"2026-05-20T20:14:54Z","kind":"exec","agent":"main","cmd":"pc-setup.ps1"}
+{"t":"2026-05-20T20:14:54Z","kind":"result","agent":"main","cmd":"pc-setup.ps1","exit":1}
+{"t":"2026-05-20T20:15:11Z","kind":"result","agent":"main","cmd":"pc-setup.ps1","exit":1,"note":"script parse error on line 49 (backtick-n in double-quoted string); junctions already exist from Task 003, effective state OK"}
+{"t":"2026-05-20T20:15:36Z","kind":"spawn","agent":"main","child":"dep-installer"}
+{"t":"2026-05-20T20:16:02Z","kind":"result","agent":"main","cmd":"recopy-night-recon-everon","file_count":13,"author_present":false}
+{"t":"2026-05-20T20:16:02Z","kind":"result","agent":"main","cmd":"recopy-day-assault-arland","file_count":13,"author_present":false}
+{"t":"2026-05-20T20:16:02Z","kind":"result","agent":"main","cmd":"recopy-fog-ambush-eden","file_count":13,"author_present":false}
+{"t":"2026-05-20T20:16:47Z","kind":"result","agent":"main","cmd":"validate-night-recon-everon-iter1","status":"PASS","fatal":0,"error":0,"dur_s":6.2}
+{"t":"2026-05-20T20:16:51Z","kind":"result","agent":"main","cmd":"validate-day-assault-arland-iter1","status":"PASS","fatal":0,"error":0,"dur_s":4.2}
+{"t":"2026-05-20T20:16:55Z","kind":"result","agent":"main","cmd":"validate-fog-ambush-eden-iter1","status":"PASS","fatal":0,"error":0,"dur_s":4.2}
+{"t":"2026-05-20T20:17:39Z","kind":"result","agent":"main","cmd":"smoke-night-recon-everon","status":"FAIL","fatal":0,"error":0,"entities_load":false,"layer_load":false,"dur_s":5.2}
+{"t":"2026-05-20T20:17:45Z","kind":"result","agent":"main","cmd":"smoke-day-assault-arland","status":"FAIL","fatal":0,"error":0,"entities_load":false,"layer_load":false,"dur_s":6}
+{"t":"2026-05-20T20:17:51Z","kind":"result","agent":"main","cmd":"smoke-fog-ambush-eden","status":"FAIL","fatal":0,"error":0,"entities_load":false,"layer_load":false,"dur_s":5.2}

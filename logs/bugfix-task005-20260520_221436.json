@@ -1,0 +1,69 @@
+{
+  "agent": "bug-fixer",
+  "started_at": "2026-05-20T20:18:00Z",
+  "finished_at": "2026-05-20T20:21:30Z",
+  "status": "warn",
+  "summary": "Validate compile-gate 3/3 PASS. Smoke-test world-load 0/3 PASS — kein Crash, aber `-load` Argument triggert mit `-wbSilent` keinen World-Load. Empirisches Disconfirmation von research/06 Sektion B. Bug-fixer schlägt 3 Alternativen vor.",
+  "details": {
+    "validate_outcome": {
+      "all_pass": true,
+      "missions": {
+        "night-recon-everon": {"status": "PASS", "iter": 1, "dur_s": 6.2, "fatal": 0, "error": 0},
+        "day-assault-arland": {"status": "PASS", "iter": 1, "dur_s": 4.2, "fatal": 0, "error": 0},
+        "fog-ambush-eden":    {"status": "PASS", "iter": 1, "dur_s": 4.2, "fatal": 0, "error": 0}
+      },
+      "note": "Author-fix worked. Junctions persist. Loop-detector did NOT fire — single iteration pass."
+    },
+    "smoke_outcome": {
+      "all_pass": false,
+      "missions": {
+        "night-recon-everon": {"status": "FAIL", "dur_s": 5.2, "entities_load": false, "layer_load": false, "fatal": 0, "error": 0},
+        "day-assault-arland": {"status": "FAIL", "dur_s": 6.0, "entities_load": false, "layer_load": false, "fatal": 0, "error": 0},
+        "fog-ambush-eden":    {"status": "FAIL", "dur_s": 5.2, "entities_load": false, "layer_load": false, "fatal": 0, "error": 0}
+      },
+      "diagnosis": "Workbench-Diag mit `-wbSilent -exitAfterInit -load $ai_X:Worlds/Y.ent` exited cleanly nach Engine-Init (Resource-Scan ✓, Script-Compile ✓, Game-Create ✓) — aber KEINE `Entities load` oder `Entity layer load` Log-Pattern. Test ohne `-exitAfterInit` ergab gleiches Verhalten: 5s exit, kein World-Load. Vermutung: `-wbSilent` blockiert UI-side world-open-action; `-load` ist ein Editor-UI-Hint (Open dialog), kein headless world-load trigger."
+    },
+    "research_06_section_B_status": "EMPIRISCH NICHT REPRODUZIERBAR auf Workbench-Diag 1.6.0.119. Die dokumentierte Command-Form aus research/06 (`-gproj X -load $A:Worlds/B.ent -wbSilent -exitAfterInit -logsDir Y`) triggert keinen World-Load.",
+    "alternative_smoke_approaches": [
+      {
+        "name": "Custom Workbench-Plugin (Enforce-Script)",
+        "from": "research/06 Section A/Plugin Batch + CRF_MissionCreationPlugin pattern",
+        "summary": "Plugin (.c file im addon) das `Workbench.OpenResource(world)` + `WorldEditor.Save()` in `OnInit()` aufruft. Workbench-Plugin im Repo unter `workbench-plugin/AI_GeneratePlugin.c` existiert bereits — möglich, dass das schon halbwegs vorbereitet ist? Müsste gecheckt werden.",
+        "effort": "medium — Enforce-Script-Code-Änderung erforderlich"
+      },
+      {
+        "name": "Workbench mit GUI + Auto-Screenshot",
+        "summary": "Workbench OHNE -wbSilent starten, mit -load .ent, Workbench GUI öffnet im Editor mit World geladen. Auto-Screenshot der Karte nach 60s, dann Process-Kill. World-Load erfolgt sicht- und logbar.",
+        "effort": "low — Test-Skript-Anpassung, ABER: braucht physischen Desktop / VM mit GPU"
+      },
+      {
+        "name": "Linux dedicated server -listScenarios",
+        "from": "research/06 Section C (NOT YET VERIFIED)",
+        "summary": "Mac-Side könnte `-listScenarios -addonsDir <copied>` auf ArmaReforgerServer (Linux dedi binary) ausprobieren um Mission-Discovery zu testen ohne GUI. Unverifiziert aber Mac-friendly path.",
+        "effort": "high — Mac-Side-research, ggf. Linux-Binary needed"
+      }
+    ],
+    "secondary_findings": {
+      "resource_db_warnings": "23+ `RESOURCES (W): duplicate GUID found!` Zeilen aus Vanilla-ArmaReforger-Pak — das sind ZUM BEISPIEL `Sounds/Music/...MU_KS_Respawn_02.snd` Duplikate. Sind in Vanilla-Content, NICHT in unseren Missionen. Harmlose Warnings, keine Fatals.",
+      "resource_leaks_on_exit": "Workbench schreibt 30+ `RESOURCES (E): Resource leaks` Zeilen beim Engine-Shutdown — aktuelle Default-Behavior, kein Crash. Mac-Side could file BI bug-report wenn relevant.",
+      "engine_init_clean": "Game-Create + Game successfully created (Game version 1.6.0.119, built 2026-01-23). Engine-Subsystem-Init ist sauber."
+    },
+    "pc_setup_ps1_bug": {
+      "file": "scripts/pc-setup.ps1",
+      "line": 49,
+      "error": "Die Zeichenfolge hat kein Abschlusszeichen — `\"`nDone. ...`\"` (backtick-n im double-quoted string ist Windows-PS5 parse-problematic, vor allem mit BOM-encoded files)",
+      "fix_proposal": "Letzte Zeile ersetzen mit: Write-Output ''; Write-Output 'Done. Workbench-Diag kann jetzt Vanilla-Deps resolven.' — d.h. einfache statt eingebettete Newline",
+      "current_impact": "Auf diesem PC sind Junctions bereits da, daher kein effektiver Block — aber bei frischem PC würde das Script halt failen"
+    }
+  },
+  "next_actions": [
+    "Mac-side: research/06 Section B als 'unverified, empirisch failed' markieren; eine der 3 Alternativen wählen für Phase 3 Game-Test",
+    "Mac-side: pc-setup.ps1 Line 49 quoting fixen",
+    "Mac-side: ggf. workbench-plugin/AI_GeneratePlugin.c inspecten — schon halb-implementiert?",
+    "PC-side (jetzt): Auditor + reflection + push"
+  ],
+  "human_attention_required": true,
+  "retries_attempted": 1,
+  "retries_max": 3,
+  "abort_reason": "validate is satisfying (3/3 PASS); smoke needs Mac-side CLI-flag research (out of PC-side scope)"
+}

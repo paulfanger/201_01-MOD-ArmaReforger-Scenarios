@@ -1,0 +1,71 @@
+﻿{
+    "day-assault-arland":  {
+                               "layer_load":  false,
+                               "dur_s":  4.2,
+                               "error_lines":  [
+                                                   "22:16:51.358 RESOURCES (E): ==== Resource leaks ====",
+                                                   "22:16:51.358 RESOURCES (E): UI/Fonts/RobotoCondensed/RobotoCondensed_Regular.edds   1",
+                                                   "22:16:51.358 RESOURCES (E): UI/Textures/Cursor/arrow_place_geometry_uiuc.edds   1",
+                                                   "22:16:51.358 RESOURCES (E): UI/Textures/Cursor/arrow_transform_geometry_uiuc.edds   1",
+                                                   "22:16:51.358 RESOURCES (E): UI/Textures/Cursor/cursors_atlas.edds   1",
+                                                   "22:16:51.358 RESOURCES (E): UI/Textures/Cursor/arrow_objective_uiuc.edds   1",
+                                                   "22:16:51.358 RESOURCES (E): UI/Textures/Cursor/arrow_waypoint_uiuc.edds   1",
+                                                   "22:16:51.358 RESOURCES (E): UI/Textures/Cursor/arrow_rotate_uiuc.edds   1",
+                                                   "22:16:51.358 RESOURCES (E): UI/Textures/Cursor/arrow_transform_snap_disabled_uiuc.edds   1",
+                                                   "22:16:51.358 RESOURCES (E): UI/Textures/Cursor/arrow_transform_snap_uiuc.edds   1"
+                                               ],
+                               "error_count":  0,
+                               "mission":  "day-assault-arland",
+                               "entities_load":  false,
+                               "console_log":  "C:\\Users\\pfofa\\Desktop\\000_Projekte\\201_01-MOD-ArmaReforger-Scenarios\\logs\\validate-day-assault-arland-task005\\console.log",
+                               "fatal_count":  0,
+                               "status":  "PASS",
+                               "iter":  1
+                           },
+    "fog-ambush-eden":  {
+                            "layer_load":  false,
+                            "dur_s":  4.2,
+                            "error_lines":  [
+                                                "22:16:55.595 RESOURCES (E): ==== Resource leaks ====",
+                                                "22:16:55.595 RESOURCES (E): UI/Fonts/RobotoCondensed/RobotoCondensed_Regular.edds   1",
+                                                "22:16:55.595 RESOURCES (E): UI/Textures/Cursor/arrow_place_geometry_uiuc.edds   1",
+                                                "22:16:55.595 RESOURCES (E): UI/Textures/Cursor/arrow_transform_geometry_uiuc.edds   1",
+                                                "22:16:55.595 RESOURCES (E): UI/Textures/Cursor/cursors_atlas.edds   1",
+                                                "22:16:55.595 RESOURCES (E): UI/Textures/Cursor/arrow_objective_uiuc.edds   1",
+                                                "22:16:55.595 RESOURCES (E): UI/Textures/Cursor/arrow_waypoint_uiuc.edds   1",
+                                                "22:16:55.595 RESOURCES (E): UI/Textures/Cursor/arrow_rotate_uiuc.edds   1",
+                                                "22:16:55.595 RESOURCES (E): UI/Textures/Cursor/arrow_transform_snap_disabled_uiuc.edds   1",
+                                                "22:16:55.595 RESOURCES (E): UI/Textures/Cursor/arrow_transform_snap_uiuc.edds   1"
+                                            ],
+                            "error_count":  0,
+                            "mission":  "fog-ambush-eden",
+                            "entities_load":  false,
+                            "console_log":  "C:\\Users\\pfofa\\Desktop\\000_Projekte\\201_01-MOD-ArmaReforger-Scenarios\\logs\\validate-fog-ambush-eden-task005\\console.log",
+                            "fatal_count":  0,
+                            "status":  "PASS",
+                            "iter":  1
+                        },
+    "night-recon-everon":  {
+                               "layer_load":  false,
+                               "dur_s":  6.2,
+                               "error_lines":  [
+                                                   "22:16:45.900 RESOURCES (E): ==== Resource leaks ====",
+                                                   "22:16:45.900 RESOURCES (E): UI/Fonts/RobotoCondensed/RobotoCondensed_Regular.edds   1",
+                                                   "22:16:45.900 RESOURCES (E): UI/Textures/Cursor/arrow_place_geometry_uiuc.edds   1",
+                                                   "22:16:45.900 RESOURCES (E): UI/Textures/Cursor/arrow_transform_geometry_uiuc.edds   1",
+                                                   "22:16:45.900 RESOURCES (E): UI/Textures/Cursor/cursors_atlas.edds   1",
+                                                   "22:16:45.900 RESOURCES (E): UI/Textures/Cursor/arrow_objective_uiuc.edds   1",
+                                                   "22:16:45.900 RESOURCES (E): UI/Textures/Cursor/arrow_waypoint_uiuc.edds   1",
+                                                   "22:16:45.900 RESOURCES (E): UI/Textures/Cursor/arrow_rotate_uiuc.edds   1",
+                                                   "22:16:45.900 RESOURCES (E): UI/Textures/Cursor/arrow_transform_snap_disabled_uiuc.edds   1",
+                                                   "22:16:45.900 RESOURCES (E): UI/Textures/Cursor/arrow_transform_snap_uiuc.edds   1"
+                                               ],
+                               "error_count":  0,
+                               "mission":  "night-recon-everon",
+                               "entities_load":  false,
+                               "console_log":  "C:\\Users\\pfofa\\Desktop\\000_Projekte\\201_01-MOD-ArmaReforger-Scenarios\\logs\\validate-night-recon-everon-task005\\console.log",
+                               "fatal_count":  0,
+                               "status":  "PASS",
+                               "iter":  1
+                           }
+}
