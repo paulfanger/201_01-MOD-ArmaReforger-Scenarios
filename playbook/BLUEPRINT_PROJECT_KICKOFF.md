@@ -24,6 +24,9 @@
 - Opus 4.7: **$5 in / $25 out per Mtok** · Sonnet 4.6: **$3 in / $15 out per Mtok** → **5× output cost ratio** ([Anthropic pricing](https://platform.claude.com/docs/en/about-claude/pricing))
 - Hybrid (Opus plan + Sonnet exec): **60-80% API cost savings**, no quality loss ([MindStudio benchmark](https://www.mindstudio.ai/blog/claude-code-opus-plan-mode-token-savings))
 - Sonnet liefert **4-5× mehr Output** im gleichen Session-Budget bei strukturierten Plänen
+- **Prompt Caching stack on top**: zusätzlich ~90% Input-Cost-Reduktion auf cached prefixes ([Anthropic Prompt Caching Docs](https://platform.claude.com/docs/en/build-with-claude/prompt-caching))
+- **RouteLLM-style sub-agent routing**: Haiku für Logger/dep-installer/auditor, Sonnet/Opus nur wo nötig → weitere 75-85% Reduktion auf Sub-Agent-Calls ([RouteLLM](https://zilliz.com/learn/routellm-open-source-framework-for-navigate-cost-quality-trade-offs-in-llm-deployment))
+- **Kombiniert**: bis zu **95% Cost-Reduktion vs all-Opus**, Quality stabil bei strukturierten Tasks
 
 ---
 
@@ -154,15 +157,57 @@ Jeder Turn spawnt 7 Sub-Agents **parallel**. Insgesamt max 5 Turns (Hard-Cap).
 
 ### Sub-Agent Fleet (Phase 1)
 
-| Marker | Sub-Agent | Aufgabe | Zeit | Output |
-|---|---|---|---|---|
-| 🔬 | **project-researcher** | External Research: similar projects, prior art, best practices in Domain | 10 min | `logs/kickoff/research-turn-N.md` |
-| 💡 | **idea-expander** | Brainstorm 5-10 Ideen die das Projekt besser machen | 5 min | `logs/kickoff/ideas-turn-N.md` |
-| 🔍 | **auditor** | Score collected items: Impact × Feasibility × Strategic Fit | 3 min | `logs/kickoff/audit-turn-N.json` |
-| 🔧 | **tooling-inventory** | Precise list aller Tools/Integrations/MCPs/programs/APIs/libs | 5 min | `logs/kickoff/tooling-turn-N.json` |
-| 🧠 | **synthesizer** | Compile zu evolving concept-Doc (incrementell) | 3 min | `logs/kickoff/concept-v<N>.md` |
-| ❓ | **clarification-questioner** | 2-5 sharp gap-questions für User | 1 min | `logs/kickoff/questions-turn-N.md` |
-| 🤖 | **automation-prepositioner** | Identifiziere was JETZT schon auto-installierbar/konfigurierbar ist | 3 min | `logs/kickoff/automation-turn-N.md` |
+| Marker | Sub-Agent | Aufgabe | Zeit | Output | Model |
+|---|---|---|---|---|---|
+| 🔬 | **project-researcher** | External Research: similar projects, prior art, best practices in Domain | 10 min | `logs/kickoff/research-turn-N.md` | Sonnet (Opus if novel domain) |
+| 💡 | **idea-expander** | Brainstorm 5-10 Ideen die das Projekt besser machen | 5 min | `logs/kickoff/ideas-turn-N.md` | Sonnet |
+| 🔍 | **auditor** | Score collected items: Impact × Feasibility × Strategic Fit | 3 min | `logs/kickoff/audit-turn-N.json` | Sonnet |
+| 🔧 | **tooling-inventory** | Precise list aller Tools/Integrations/MCPs/programs/APIs/libs | 5 min | `logs/kickoff/tooling-turn-N.json` | Haiku |
+| 🧠 | **synthesizer** | Compile zu evolving concept-Doc (incrementell) | 3 min | `logs/kickoff/concept-v<N>.md` | Sonnet |
+| ❓ | **clarification-questioner** | Batch 2-5 Q's als AskUserQuestion-schema (siehe unten) | 1 min | `logs/kickoff/questions-turn-N.md` | Sonnet |
+| 🤖 | **automation-prepositioner** | Identifiziere was JETZT schon auto-installierbar/konfigurierbar ist | 3 min | `logs/kickoff/automation-turn-N.md` | Haiku |
+| 🐛 | **bug-fixer** (on-demand) | Bei Tester-Fail: Diagnose + **immer 2-3 labeled Fix-Options proposen** | 5 min | `logs/kickoff/bugfix-turn-N.json` | Sonnet |
+
+### clarification-questioner — AskUserQuestion Batch-Schema (per research/09)
+
+Niemals sequential. Immer Batch. Pro Question:
+
+```json
+{
+  "question": "What deployment target?",
+  "header": "Deployment",            // ≤12 chars chip-label
+  "options": [
+    {"label": "Cloud (recommended)", "description": "Auto-scale, $50/mo"},
+    {"label": "Self-host", "description": "Docker, requires VPS"},
+    {"label": "Local only", "description": "Dev-mode, no production"}
+  ],
+  "multiSelect": false
+}
+```
+
+- 2-4 mutually exclusive options per question
+- Always include auto-"Other" fallback (Claude Code tool does this)
+- Max 5 questions per turn (überlastet User)
+
+### bug-fixer — Always-Propose-Options Rule (hardcoded, per research/09)
+
+bug-fixer NEVER outputs "what should we do?". Output schema MANDATORY:
+
+```json
+{
+  "diagnosis": "what failed + suspected cause (1-2 sentences)",
+  "evidence": ["log/line refs", "screenshot paths"],
+  "proposed_fixes": [
+    {"label": "Fix A", "description": "what + why", "risk": "low",  "effort": "5min"},
+    {"label": "Fix B", "description": "what + why", "risk": "med",  "effort": "30min"},
+    {"label": "Fix C", "description": "what + why", "risk": "high", "effort": "2hr"}
+  ],
+  "recommended": "Fix A",
+  "rationale": "why recommended (1 sentence)"
+}
+```
+
+Diagnose-then-PROPOSE, never diagnose-then-ASK. User picks labeled option or "Other".
 
 ### Saturation Criteria — Loop endet wenn ALLE wahr
 
@@ -511,12 +556,161 @@ Opus:
 
 ---
 
+## Cost Optimization (per research/09) — stack all four
+
+Maximum token efficiency requires stacking:
+
+### 1. Anthropic Prompt Caching (90% input-cost reduction)
+
+Cache stable prefixes per turn. Stable prefix MUST come first:
+
+```python
+messages = [
+  {"role": "system", "content": [
+    {"type": "text", "text": project_constants,  "cache_control": {"type": "ephemeral"}},
+    {"type": "text", "text": architecture_doc,    "cache_control": {"type": "ephemeral"}},
+    {"type": "text", "text": catalog_or_schema,   "cache_control": {"type": "ephemeral"}}
+  ]},
+  {"role": "user", "content": current_turn_input}  # not cached
+]
+```
+
+- Cache read = 10% of standard input cost
+- Cache write = 125% (one-time per session)
+- Typical hit-rate 80-95% with structural ordering
+- [Anthropic Prompt Caching Docs](https://platform.claude.com/docs/en/build-with-claude/prompt-caching)
+
+### 2. Model Routing per Sub-Agent (RouteLLM-style, 75-85% off)
+
+| Sub-Agent role | Recommended Model | Why |
+|---|---|---|
+| logger, dep-installer, auditor, tooling-inventory | **Haiku** | Mechanical, schema-validated |
+| tester, synthesizer, idea-expander, clarification-questioner | **Sonnet** (default) | Balanced |
+| bug-fixer, project-researcher (novel domain) | **Sonnet → Opus** if confidence <0.7 | Conditional escalation |
+| Main orchestrator, Phase 5 final-audit | **Opus** | Deep reasoning |
+
+[RouteLLM ICLR'25](https://zilliz.com/learn/routellm-open-source-framework-for-navigate-cost-quality-trade-offs-in-llm-deployment)
+
+### 3. Hybrid Phase Split (this Blueprint's core)
+
+Opus 4.7: Phases 0-3 + Phase 5 audit. Sonnet 4.6: Phase 4 execution.
+60-80% savings + 4-5× output per Sonnet session budget.
+
+### 4. Batch API (when applicable)
+
+For 100+ similar generations (e.g. mass-asset-processing) use
+[Anthropic Batch API](https://platform.claude.com/docs/build-with-claude/batch-processing) — additional 50% off.
+
+**Stacked stack-saving estimate: ~95% cost reduction vs all-Opus at scale.**
+
+---
+
+## Memory & Learning (per research/09)
+
+### episodic.jsonl per project (Letta-style)
+
+After each turn, append one event:
+
+```
+memory/episodic.jsonl  (append-only)
+{"turn":3,"intent":"validate addon.gproj","outcome":"PASS","lesson":"Author keyword removed"}
+{"turn":8,"intent":"smoke test world load","outcome":"FAIL","lesson":"-wbSilent does not trigger world-load"}
+```
+
+Index via SQLite FTS5 for retrieval at planning time. Cross-session learnings compound.
+
+```python
+# memory/episodic.py (~50 LOC)
+import sqlite3, json
+def append_episode(turn, intent, outcome, lesson):
+    with open("memory/episodic.jsonl", "a") as f:
+        f.write(json.dumps({"turn":turn, "intent":intent, "outcome":outcome, "lesson":lesson}) + "\n")
+    # FTS5 sync
+def query_lessons(intent_keywords):
+    conn = sqlite3.connect("memory/episodic.db")
+    return conn.execute("SELECT * FROM episodes WHERE episodes MATCH ?", (intent_keywords,)).fetchall()
+```
+
+### tests/golden/ Trajectory Regression
+
+```
+tests/golden/
+  ├── canonical-flow-1.json   (input fixture + expected output snapshot)
+  ├── canonical-flow-2.json
+  └── ...
+```
+
+- After every protocol change: replay canonical flows + diff outputs
+- Gate `/export` / `/release` on regression PASS
+- [Maxim Golden Dataset Guide](https://www.getmaxim.ai/articles/building-a-golden-dataset-for-ai-evaluation-a-step-by-step-guide/)
+
+### (Optional, Phase 5+) Voyager-style Skill Library
+
+```
+skills/
+  ├── <intent-slug>/skill.md   (NL description + args schema)
+  └── <intent-slug>/skill.sh   (executable)
+```
+
+- Successful EXEC blocks harvested into skill.md by `optimizer` sub-agent
+- Retrieved at planning time via embedding sim
+- Start with 5 hand-curated; agent proposes new ones gated by `/approve`
+- [Voyager arXiv:2305.16291](https://arxiv.org/abs/2305.16291)
+
+### (Optional, Phase 5+) Goal-Drift-Index Audit
+
+Track agent drift over time. Weekly `optimizer-pass`:
+
+1. Read last 7 days of reflections
+2. Cluster failure modes via embedding
+3. Propose ≤3 prompt diffs as PR (never auto-merge)
+4. Compute GDI (Goal Drift Index) — semantic distance from original goal
+
+- [SAHOO drift detection](https://arxiv.org/pdf/2603.06333)
+
+---
+
+## Confidence-Driven Clarification (per research/09 + Devin 2.1)
+
+Three-tier system. Sub-agents emit a `confidence` field, orchestrator decides interaction:
+
+| Confidence | Action | UX |
+|---|---|---|
+| **> 0.85** | Proceed silent | Log decision + rationale, no user-interrupt |
+| **0.70 - 0.85** | Propose-with-override | "Going with X (rationale Y). Reply `change` to adjust, otherwise proceed in N seconds." |
+| **< 0.70** | Batch-ask via AskUserQuestion | 2-4 labeled options + auto-"Other" |
+
+- Target HITL rate: **10-15%** of decisions
+- Question batching MANDATORY when asking — never sequential
+- [Devin 2.1 three-tier](https://cognition.ai/blog/devin-2-1), [Mavik HITL 2026](https://www.maviklabs.com/blog/human-in-the-loop-review-queue-2026/)
+
+---
+
+## Observability (Phase 4+, per research/09)
+
+For continuous-eval at scale: **LangFuse self-hosted** (Docker, framework-agnostic, OpenTelemetry-compatible).
+
+```bash
+docker run -d -p 3000:3000 langfuse/langfuse:latest
+```
+
+- Trace every sub-agent invocation: tokens, latency, quality scores
+- Find performance regressions
+- [LangFuse](https://langfuse.com)
+
+**Avoid: Helicone** (in maintenance mode since March 2026 per research/09).
+
+Alternative: **Phoenix (Arize)** with Span Replay for counterfactual debugging.
+
+---
+
 ## Logging & Tracking (always on)
 
 Per Turn:
 - `logs/kickoff-events-<TS>.jsonl` — alle Events
 - `logs/kickoff/reflection-turn-<N>.md` — Reflexion-Pattern
 - `tasks/STATE.json` — single source of truth
+- `memory/episodic.jsonl` — one line per turn (intent, outcome, lesson)
 
 Per Sub-Agent:
 - `{agent, started_at, finished_at, status, summary, details, next_actions, human_attention_required}`
@@ -591,12 +785,23 @@ logs/kickoff/
   concept-v1.md ... concept-vN.md
   questions-turn-1.md ... questions-turn-N.md
   automation-turn-1.md ... automation-turn-N.md
-  reflection-turn-1.md ... reflection-turn-N.md
+  reflection-turn-1-mac.md ... reflection-turn-N-side.md  # naming per RELAY_PROTOCOL
 
 logs/
   kickoff-events-<TS>.jsonl
   sonnet-exec-<TS>.jsonl
   audit-final-<TS>.json
+
+memory/                                # Phase 4+ cross-session learning
+  episodic.jsonl
+  episodic.db (SQLite FTS5)
+
+tests/golden/                          # Phase 4+ regression
+  canonical-flow-<N>.json
+
+skills/                                # Phase 5+ Voyager-style
+  <intent-slug>/skill.md
+  <intent-slug>/skill.sh
 
 tasks/
   STATE.json (last state)
@@ -610,9 +815,26 @@ Alle inspizierbar, re-runnable, reusable.
 
 1. **Paste:** dieser Blueprint + dein Idee+Kontext (siehe "How to invoke")
 2. **Phase 0:** approve oder spezifiziere Tooling-Auto-Install
-3. **Phase 1:** beantworte ggf. 2-5 Clarification-Q pro Turn (oder weniger), bis Plan saturated
+3. **Phase 1:** beantworte ggf. 2-5 Clarification-Q (batch via AskUserQuestion) bis saturated
 4. **Phase 2:** sag "approve" / "refine X" / "pause"
 5. **Phase 3:** Opus compiles `sonnet-plan-<TS>.md` — kopieren bereit
 6. **Phase 4:** frische Sonnet 4.6 Session öffnen, Plan reinpasten, "go" sagen
 7. **Phase 5:** Opus auto-fires audit, schreibt final paper
-8. **Done.** Token-Cost ~60-80% niedriger als pure-Opus, Quality stabil.
+8. **Done.** Stack-Saving ~95% vs pure-Opus mit Prompt-Caching + Routing + Hybrid + Batch.
+
+---
+
+## Research Foundations
+
+This Blueprint is source-cited from:
+- `research/07-agentic-patterns-2026.md` — LangGraph, Reflexion, OpenHands StuckDetector, 🧪 DRY marker
+- `research/08-master-kickoff-patterns.md` — Anthropic +90.2%, MetaGPT structured-doc, Sonnet best practices
+- `research/09-perfect-tool-roadmap.md` — Prompt caching, RouteLLM routing, Two-Threshold HITL, AskUserQuestion batching, bug-fixer-always-options, Letta episodic memory, Voyager skills (Phase 5+), Goal-Drift-Index (Phase 5+)
+
+Updated 2026-05-21 with research/09 integrations:
+- Cost Optimization (4-layer stack: prompt caching + routing + hybrid + batch)
+- Memory & Learning (episodic.jsonl + golden tests + optional skill library)
+- Confidence-Driven Clarification (Devin 2.1 three-tier)
+- bug-fixer always-propose-options (never diagnose-then-ask)
+- Observability (LangFuse > Helicone which is in maintenance)
+- AskUserQuestion batch schema (2-4 options + auto-Other)
