@@ -220,6 +220,9 @@ get a clear task + output target, run, and return.
 | 🔍 **auditor** | Coverage + quality gate before any push; catches missed errors, validates result schema | Both | Pre-push hook in every iteration |
 | 📝 **logger** | Capture every command + output to `logs/<side>-events-<TS>.jsonl`, push incrementally | Both | Always-on during a turn |
 | 🎯 **optimizer** | Read logs after N iterations, propose workflow speed-ups | Mac | After each successful iteration cycle |
+| 📸 **ui-tester** | Screenshot GUI state, parse via multimodal vision, classify as ok / error / popup / progress | PC primarily | After any GUI app launch, on any popup detection |
+| 🔧 **dep-installer** | Pre-flight check + install missing CLI tools, modules, integrations | Both | Pre-flight before each task; opportunistically when gap detected |
+| 🛑 **loop-detector** | Hash error/dialog/output, detect repetition, emit STOP signal | Both | Whenever an action retries |
 
 ### Sub-agent invocation pattern
 
@@ -312,7 +315,173 @@ continue iterating until human or other side responds.
 
 ---
 
-## Opus 4.7 → Sonnet 4.6 Handoff
+## Anti-Loop Guards (HARD — non-negotiable, all sides)
+
+User must NEVER be forced to dismiss the same error popup twice in a row. This is a
+**protocol-level guarantee**, not a best-effort.
+
+### Mandatory guards per action
+
+| Guard | Limit | Action on breach |
+|---|---|---|
+| `max_retries_per_step` | **3** | STOP step, escalate to bug-fixer |
+| `same_error_dedup` | **2 identical errors** (hash match on stderr/stdout/dialog title+content) | STOP step, mark as deterministic failure, escalate |
+| `step_time_budget` | **5 min default, configurable per step** | Kill process via process-tracker, write timeout-event |
+| `turn_time_budget` | **30 min default** | Emit pause turn with current progress, escalate to user |
+| `no_progress_window` | **3 consecutive actions with identical visible state** (screenshot hash + window title hash) | STOP, emit `❌ LOOP_DETECTED` blocker with evidence |
+| `popup_count` | **2 identical popups** | Auto-kill parent process, do NOT dismiss again |
+
+### Error hash schema
+
+When any error / popup / stderr is observed:
+
+```json
+{
+  "step_id": "validate-night-recon",
+  "iteration": 2,
+  "error_hash": "sha256(<error_title>:<error_text>:<exit_code>)",
+  "first_seen": "<ISO8601>",
+  "count": 2,
+  "evidence": ["logs/screenshot-<TS>.png", "logs/stderr-<TS>.txt"]
+}
+```
+
+Logger appends this to `logs/error-history-<TS>.jsonl`. Loop-detector reads it at every
+retry attempt.
+
+### Loop-detector pattern
+
+```
+ON every retry of a step:
+  1. Compute current_state_hash = sha256(visible_window_titles + screenshot_phash + last_50_log_lines)
+  2. Compare to last 3 retry state_hashes
+  3. If ≥2 of last 3 match current → emit ❌ LOOP_DETECTED:
+      - kill responsible process
+      - dump evidence (screenshots, logs)
+      - escalate via bug-fixer
+      - if bug-fixer can't break loop in <3 min → emit pause turn to user
+      - never ask user to "click OK" or "dismiss popup" — that's the protocol's job
+```
+
+### User-facing rule (NEVER violate)
+
+If user is being asked the same question / shown the same prompt twice → that is a
+**protocol bug**, NOT a user problem. Loop-detector must catch this before user sees it.
+Escalate with evidence (screenshots + log dumps), do not retry blindly.
+
+---
+
+## Screenshot Evidence (mandatory for GUI claims)
+
+Whenever main agent or sub-agent makes a claim about GUI state (e.g. "Workbench loaded",
+"dialog dismissed", "mission visible on map"), screenshot evidence MUST be attached.
+
+### Capture (Windows PowerShell — native, no install)
+
+```powershell
+function Take-Screenshot {
+    param([string]$OutPath, [int]$DelaySec = 0)
+    if ($DelaySec -gt 0) { Start-Sleep -Seconds $DelaySec }
+    Add-Type -AssemblyName System.Windows.Forms,System.Drawing
+    $bounds = [Windows.Forms.Screen]::PrimaryScreen.Bounds
+    $bmp = New-Object Drawing.Bitmap $bounds.Width, $bounds.Height
+    $gfx = [Drawing.Graphics]::FromImage($bmp)
+    $gfx.CopyFromScreen($bounds.Location, [Drawing.Point]::Empty, $bounds.Size)
+    $bmp.Save($OutPath, [Drawing.Imaging.ImageFormat]::Png)
+    $gfx.Dispose(); $bmp.Dispose()
+    Write-Output "SCREENSHOT: $OutPath"
+}
+# Multi-monitor: use [Windows.Forms.Screen]::AllScreens
+```
+
+### Capture (macOS)
+
+```bash
+screencapture -x logs/screenshot-$(date +%s).png   # silent, no shutter sound
+```
+
+### Window enumeration (Windows — detect popups)
+
+```powershell
+function Get-VisibleWindows {
+    Get-Process | Where-Object {
+        $_.MainWindowHandle -ne 0 -and $_.MainWindowTitle -ne ""
+    } | Select-Object Id, ProcessName, MainWindowTitle, Responding
+}
+```
+
+### Schema
+
+Every screenshot event is logged:
+
+```json
+{
+  "t": "<ISO8601>",
+  "kind": "screenshot",
+  "path": "logs/screenshot-<TS>.png",
+  "windows": [{"pid":1234, "name":"...", "title":"...", "responding":true}],
+  "phash": "<perceptual hash>",
+  "context": "post-validate-night-recon"
+}
+```
+
+### Interpretation (ui-tester sub-agent)
+
+ui-tester reads the PNG (Claude is multimodal), classifies:
+
+```json
+{
+  "agent": "ui-tester",
+  "screenshot": "logs/screenshot-<TS>.png",
+  "classification": "ok | error_popup | progress | crashed | unknown",
+  "extracted_text": "<OCR'd text from any dialog>",
+  "suggested_action": "wait | dismiss | kill_process | escalate",
+  "confidence": 0.0-1.0
+}
+```
+
+If classification = `error_popup` and confidence ≥ 0.7:
+- If error_hash matches previous → loop-detector fires
+- If new → bug-fixer analyzes, proposes action
+- Never auto-click "OK" on an error popup — that just hides the problem
+
+---
+
+## Dependency Pre-flight (dep-installer pattern)
+
+Before any task that needs tools, verify ALL deps are present. Missing → install (with user
+authorization only if cost/license/security gate applies).
+
+### Pre-flight schema
+
+```json
+{
+  "task_id": "004",
+  "required_deps": [
+    {"name":"git", "check":"git --version", "min_version":"2.40", "install":"winget install Git.Git"},
+    {"name":"python", "check":"python --version", "min_version":"3.11", "install":"winget install Python.Python.3.12"},
+    {"name":"powershell-screenshot", "check":"native", "min_version":null, "install":null},
+    {"name":"workbench-diag", "check":"Test-Path '<path>'", "min_version":null, "install":"steam://install/1874910"}
+  ]
+}
+```
+
+dep-installer runs each `check`, captures result. If missing AND `install` ≠ null AND
+not blocked by gate → executes install. Reports all outcomes to main agent.
+
+### User-gate for installs
+
+Auto-install when:
+- Free, open-source CLI tool (winget / homebrew / pip)
+- Already-licensed tool (Steam re-download)
+- PowerShell native module
+
+User confirmation required for:
+- Paid software (Adobe, JetBrains, etc.)
+- Anything that requires a login flow
+- Modifications to system-wide PATH or registry
+
+---
 
 The loop typically lives in Opus 4.7 territory: novel problem-solving, sub-agent orchestration,
 multi-step planning. But certain phases of a project are **execution-bound** — bulk processing,

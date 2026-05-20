@@ -42,16 +42,21 @@ LOOP:
 
     2. SPAWN LOGGER (always-on for this turn)
 
-    3. DEEP PLAN
+    3. PRE-FLIGHT (dep-installer)
+       - Verify all deps installed; auto-install if possible; escalate gates
+
+    4. DEEP PLAN
        - 3-5 sentences: what's the problem shape, what's the next concrete step,
          what could go wrong, which sub-agents are needed
        - This is the reasoning step that justifies using Opus
 
-    4. SPAWN SUB-AGENTS (parallel if independent)
+    5. SPAWN SUB-AGENTS (parallel if independent)
        - tester       : on new artifact
        - bug-fixer    : on tester fail
        - researcher   : ALWAYS for non-trivial domain questions
        - process-tracker : on long process
+       - ui-tester    : on GUI launch / popup detection
+       - loop-detector: ON EVERY RETRY (mandatory)
        - auditor      : ALWAYS pre-push
        - optimizer    : post-success
 
@@ -99,9 +104,32 @@ Same fleet as Opus+Sonnet blueprint:
 | 🔍 auditor | `logs/audit-<TS>.json` | 5 min (more thorough than hybrid) |
 | 📝 logger | `logs/<side>-events-<TS>.jsonl` | turn duration |
 | 🎯 optimizer | `logs/optimize-<TS>.md` | 10 min |
+| 📸 ui-tester | `logs/ui-<TS>.json` + PNG evidence | 2 min per shot |
+| 🔧 dep-installer | `logs/deps-<TS>.json` | 10 min |
+| 🛑 loop-detector | `logs/loop-<TS>.json` | 30 sec |
 
 Researcher gets MORE time here because in Opus-only mode, deep research is the alternative
 to handing off — it's where the volume goes.
+
+### Hard guards (same as Opus+Sonnet — non-negotiable)
+
+- `max_retries_per_step = 3`
+- `same_error_dedup = 2 → STOP`
+- `step_time_budget = 5 min default`
+- `turn_time_budget = 30 min default`
+- `popup_count = 2 identical popups → auto-kill, do NOT dismiss`
+- **User never sees the same error popup twice.** Protocol bug if they do.
+
+### Screenshot evidence rule
+
+ANY GUI claim requires PNG screenshot in `logs/`, referenced in result.
+Auditor blocks push without evidence.
+
+### Dependency pre-flight rule
+
+Before ANY task: dep-installer runs check list. Missing auto-installable deps → installed.
+User-gated deps (paid, login flow, system PATH) → escalated via ⚙️ DO.
+No task runs with missing deps. Period.
 
 ---
 

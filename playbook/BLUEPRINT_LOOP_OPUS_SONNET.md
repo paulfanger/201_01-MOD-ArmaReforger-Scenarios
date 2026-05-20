@@ -47,15 +47,22 @@ LOOP:
 
     3. SPAWN LOGGER (always-on for this turn)
 
-    4. PLAN
+    4. PRE-FLIGHT (dep-installer)
+       - Verify all deps for this task are installed
+       - If missing AND auto-installable → install
+       - If user-gate → emit ⚙️ DO in next turn
+
+    5. PLAN
        - 1-3 sentences: what's the next concrete step?
        - Identify which sub-agents to spawn
 
-    5. SPAWN SUB-AGENTS (parallel if independent)
+    6. SPAWN SUB-AGENTS (parallel if independent)
        - tester    : if new artifact to validate
        - bug-fixer : if test failed
        - researcher: if stuck OR scheduled optimization scan
        - process-tracker : if long process kicked off
+       - ui-tester : if GUI launched (screenshot + classify)
+       - loop-detector : ON EVERY RETRY (mandatory)
        - auditor   : ALWAYS before push
 
     6. EXECUTE MAIN WORK
@@ -98,8 +105,26 @@ LOOP:
 | 🔍 auditor | `logs/audit-<TS>.json` | 3 min | Main, pre-push |
 | 📝 logger | `logs/<side>-events-<TS>.jsonl` | turn duration | Main, turn start |
 | 🎯 optimizer | `logs/optimize-<TS>.md` | 5 min | Main, post-success |
+| 📸 ui-tester | `logs/ui-<TS>.json` + PNG evidence | 2 min per shot | Main, after GUI app launch / popup |
+| 🔧 dep-installer | `logs/deps-<TS>.json` | 10 min | Main, pre-flight + on gap |
+| 🛑 loop-detector | `logs/loop-<TS>.json` | 30 sec | Main, on every retry |
 
 All sub-agents write JSON with mandatory schema (see RELAY_PROTOCOL.md).
+
+### Hard guards (non-negotiable — enforced by loop-detector + protocol)
+
+- `max_retries_per_step = 3`
+- `same_error_dedup = 2 identical errors → STOP`
+- `step_time_budget = 5 min default`
+- `turn_time_budget = 30 min default`
+- `popup_count = 2 identical popups → auto-kill parent process, do NOT dismiss`
+- **User never sees the same error popup twice.** If they do, that's a protocol bug.
+  Loop-detector + ui-tester must catch it first.
+
+### Screenshot evidence rule
+
+ANY claim about GUI state (loaded, crashed, dialog dismissed, UI visible) requires a
+screenshot in `logs/`, referenced by the result. Without evidence, auditor blocks push.
 
 ---
 

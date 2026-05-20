@@ -159,7 +159,7 @@ $diag = "C:\Program Files (x86)\Steam\steamapps\common\Arma Reforger Tools\Workb
 
 ## Sub-Agent Fleet (autonomes Testing & Bug-Fix)
 
-Du darfst SubAgents spawnen für:
+Du darfst (und MUSST in den richtigen Triggern) SubAgents spawnen für:
 
 | Marker | Sub-Agent | Wann |
 |---|---|---|
@@ -168,10 +168,74 @@ Du darfst SubAgents spawnen für:
 | 📊 **process-tracker** | Long-Running-Job-Monitor | Bei Steam-Install, Workbench-Headless-Loads → polled bis fertig, schreibt Status-JSON |
 | 🔍 **auditor** | Coverage + Quality-Check | Vor jedem Push: verifiziert Result-Vollständigkeit, prüft Logs auf übersehene Errors |
 | 📝 **logger** | Event-Capture + Aggregator | Während ALLEM: schreibt `logs/pc-events-<TS>.jsonl`, pusht periodisch |
+| 📸 **ui-tester** | Screenshot + Vision-Klassifikation | Nach jedem GUI-Launch, bei jedem Popup-Verdacht |
+| 🔧 **dep-installer** | Pre-Flight Check + Auto-Install | Vor JEDER Task → erst Dep-Check, dann erst Hauptarbeit |
+| 🛑 **loop-detector** | Error-Hash + Repetition-Stop | BEI JEDEM RETRY → Hash vergleichen, Loop killen |
 
-Spawn-Muster: SubAgent bekommt einen klaren Auftrag + Output-File-Pfad. Es returns kurz, Mac liest den Output über git.
+Spawn-Muster: SubAgent bekommt klaren Auftrag + Output-File-Pfad (`logs/<role>-<TS>.json`). Es returns kurz, Mac liest den Output via git.
 
-Vollständige Definitionen + Patterns: `playbook/RELAY_PROTOCOL.md` Sektion "Sub-Agent Fleet".
+Vollständige Definitionen + Patterns: `playbook/RELAY_PROTOCOL.md` Sektion "Sub-Agent Fleet" + "Anti-Loop Guards" + "Screenshot Evidence".
+
+---
+
+## Anti-Loop Guards (HARD — User darf NIE 2× denselben Popup wegklicken)
+
+| Guard | Limit | Bei Breach |
+|---|---|---|
+| max_retries_per_step | 3 | STOP, bug-fixer |
+| same_error_dedup | 2 identische Errors (hash) | STOP, als deterministic-fail markieren |
+| step_time_budget | 5 min default | process-tracker killt → timeout event |
+| turn_time_budget | 30 min | Pause-Turn mit aktuellem Stand |
+| no_progress_window | 3× identical visible state | STOP, ❌ LOOP_DETECTED |
+| popup_count | 2 identische Popups | Auto-Kill parent process, NICHT wegklicken |
+
+**Regel:** User sieht NIE denselben Error-Popup zweimal. Wenn doch → Protokoll-Bug, nicht Hilflosigkeit. Loop-detector + ui-tester fängt das vorher.
+
+---
+
+## Screenshot-Tooling (Windows, native, kein Install)
+
+```powershell
+function Take-Screenshot {
+    param([string]$OutPath, [int]$DelaySec = 0)
+    if ($DelaySec -gt 0) { Start-Sleep -Seconds $DelaySec }
+    Add-Type -AssemblyName System.Windows.Forms,System.Drawing
+    $bounds = [Windows.Forms.Screen]::PrimaryScreen.Bounds
+    $bmp = New-Object Drawing.Bitmap $bounds.Width, $bounds.Height
+    $gfx = [Drawing.Graphics]::FromImage($bmp)
+    $gfx.CopyFromScreen($bounds.Location, [Drawing.Point]::Empty, $bounds.Size)
+    $bmp.Save($OutPath, [Drawing.Imaging.ImageFormat]::Png)
+    $gfx.Dispose(); $bmp.Dispose()
+    Write-Output "SCREENSHOT: $OutPath"
+}
+
+function Get-VisibleWindows {
+    Get-Process | Where-Object {
+        $_.MainWindowHandle -ne 0 -and $_.MainWindowTitle -ne ""
+    } | Select-Object Id, ProcessName, MainWindowTitle, Responding
+}
+```
+
+Speicherort: `logs/screenshot-<TS>.png` ins Repo committen.
+Interpretation: ui-tester Sub-Agent liest PNG (multimodal), klassifiziert: `ok | error_popup | progress | crashed | unknown`. Wenn `error_popup` und Hash matched mit vorherigem → loop-detector feuert.
+
+---
+
+## Dependency Pre-Flight (Pflicht bei jeder Task)
+
+Vor jeder Task, spawn dep-installer mit Check-Liste:
+
+```powershell
+$deps = @(
+    @{name="git";              check={git --version};                     install={winget install Git.Git}}
+    @{name="python";           check={python --version};                  install={winget install Python.Python.3.12}}
+    @{name="powershell-screenshot"; check={Add-Type -AssemblyName System.Drawing; $true}; install=$null}  # native
+    @{name="workbench-diag";   check={Test-Path "C:\Program Files (x86)\Steam\steamapps\common\Arma Reforger Tools\Workbench\ArmaReforgerWorkbenchSteamDiag.exe"}; install={Start-Process "steam://install/1874910"}}
+)
+```
+
+Auto-install ohne User-Konfirmation OK für: freie CLI-Tools (winget/pip), Steam re-download, native PowerShell-Module.
+User-Gate erforderlich für: paid software, Login-Flow, System-PATH/Registry-Änderungen.
 
 ---
 
