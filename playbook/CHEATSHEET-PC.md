@@ -260,6 +260,51 @@ git -c user.name="pfofa-pc-agent" -c user.email="duemm.fanger@gmail.com" rebase 
 | ArmaReforger vanilla base (mandatory dep) | `58D0FB3206B6F859` |
 | Enfusion core data | `5614BBCCBB55ED1C` |
 
+## 🖥️ Hardware + Steam-Library Quickref (verifiziert 2026-05-21)
+
+### Hardware
+
+| Component | Value | Notes |
+|---|---|---|
+| GPU | AMD Radeon RX 5700 XT | RDNA, 40 CUs, ~1815 MHz core |
+| GPU VRAM | **8151 MB** (8 GB) | WMI liefert falsch 4GB — echter Wert aus Workbench-Console-Log |
+| GPU Driver | 25.10.43.05-260303a Adrenalin | 2026-03-03 |
+| CPU | Intel i9-9900K @ 3.60 GHz | 8 Cores / 16 Logical (Hyper-Threading) |
+| RAM | **64 GB** | DDR4 |
+| OS | Windows 11 Home Build 26200 | |
+| Display | 1920×1080 @59Hz (Generic PnP Monitor) | Primary screen |
+
+### Steam Libraries
+
+| Library | Path | Status |
+|---|---|---|
+| Primary | `C:\Program Files (x86)\Steam\steamapps` | ✅ Aktiv, Arma Reforger + Tools hier |
+| Secondary | `E:\SteamLibrary` | ⚠️ In `libraryfolders.vdf` eingetragen, aber **E: nicht immer gemountet** (externe/Netzwerk-Drive?) |
+
+> Falls E: Library plötzlich fehlt: Arma Reforger Tools bleibt auf C: (installiert dort), kein Problem.
+> `pc-setup.ps1` prüft beide Pfade und fallback auf E: wenn C: fehlt — aber C: ist der echte Installationspfad.
+
+### Concurrency-Hinweise
+
+| Szenario | GPU-Verhalten | Sicher? |
+|---|---|---|
+| Workbench-Diag `-validate -wbSilent` | Headless, kein GPU-Rendering | ✅ CS parallel OK |
+| Workbench-Diag ohne `-wbSilent` (GUI) | DX12 Device erstellt, Full-Rendering | ⛔ CS parallel = GPU-Konflikt / Focus-Steal |
+| Game (`ArmaReforgerSteam.exe`) | Vollständiges Rendering, Exclusive GPU | ⛔ CS parallel = GPU-Konflikt |
+| Game-Background (kein Fenster) | Kein Rendering wenn minimiert | ⚠️ Riskant — Ressource-Contention |
+
+### Workbench Resource-Usage (empirisch, aus Logs)
+
+| Phase | RAM | GPU | Dauer |
+|---|---|---|---|
+| Engine-Init (validate) | ~113-117 MB | minimal | 2-4s |
+| Script-Compile + Game-Create | ~500 MB (geschätzt) | keine Renderpipeline | 2-3s zusätzlich |
+| Full GUI mit World-Load | Unbekannt (nicht getestet) | DX12 aktiv | >30s |
+| Workbench-Startup komplett (headless) | ~117 MB final | none | ~4-6s gesamt |
+
+> ResourceDB-Scan scannt alle .pak-Files im Vanilla-Data-Junction (~14 paks). Dauert ~150-220ms.
+> Duplicate-GUID-Warnings (~30 Stück aus Vanilla-Content) sind normal und harmlos.
+
 ## 📊 Validate-Erwartungen
 
 | Situation | Erwartetes Ergebnis |

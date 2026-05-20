@@ -1,12 +1,40 @@
-{
-  "turn_id": 7,
-  "owner": "mac",
-  "phase": "PHASE_D_RETURN",
-  "started_at": "2026-05-21T00:10:00Z",
-  "pending_do": [],
-  "pending_exec": [],
-  "last_reflection": "logs/reflection-turn-7-mac.md",
-  "rollback_snapshot": null,
-  "loop_signals": [],
-  "notes": "Mac Loop Turn #7 prepared. 2 PC suggestions accepted: CHEATSHEET Section 5 (PC writes self) + Task 008 CS-Kill (Phase B + Step 0). Task 008 DRAFT pre-staged in tasks/PC_TASK_008_DRAFT.md, awaits user signal 'ready für GUI smoke' for promotion. Task 007b-CS spec'd: ~3 min headless cheatsheet extension + draft review + sanity. Owner flips to pc on next read."
+﻿{
+    "turn_id":  7,
+    "owner":  "pc",
+    "phase":  "PHASE_D_RETURN",
+    "started_at":  "2026-05-21T00:17:31Z",
+    "pending_do":  [
+
+                   ],
+    "pending_exec":  [
+                         {
+                             "status":  "queued",
+                             "id":  "exec-1",
+                             "desc":  "Read reflection-turn-7-mac"
+                         },
+                         {
+                             "status":  "queued",
+                             "id":  "exec-2",
+                             "desc":  "Task 008 DRAFT review"
+                         },
+                         {
+                             "status":  "queued",
+                             "id":  "exec-3",
+                             "desc":  "CHEATSHEET Section 5 HW-discovery + append"
+                         },
+                         {
+                             "status":  "queued",
+                             "id":  "exec-4",
+                             "desc":  "Sanity re-validate night-recon (6th)"
+                         },
+                         {
+                             "status":  "queued",
+                             "id":  "exec-5",
+                             "desc":  "Audit + reflection + push"
+                         }
+                     ],
+    "loop_signals":  [
+
+                     ],
+    "notes":  "CS parallel. NO GUI. Last CS-Edition before Phase 3."
 }

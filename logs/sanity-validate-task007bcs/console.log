@@ -1,0 +1,231 @@
+---------------------------------------------
+Log C:\Users\pfofa\Desktop\000_Projekte\201_01-MOD-ArmaReforger-Scenarios\logs\sanity-validate-task007bcs\console.log started at 2026-05-21 00:19:30 (2026-05-20 22:19:30 UTC)
+
+00:19:30.531   ENGINE       : FileSystem: Adding relative directory 'C:\Users\pfofa\Desktop\000_Projekte\201_01-MOD-ArmaReforger-Scenarios\logs\sanity-validate-task007bcs' to filesystem under name logs
+00:19:30.531   ENGINE       : FileSystem: Adding relative directory 'C:\Users\pfofa\Documents\My Games\ArmaReforgerWorkbench\profile' to filesystem under name profile
+00:19:30.534  PROFILING    : Workbench Create Engine took: 11.465900 ms
+00:19:30.534  INIT         : INIT         : Workbench Init Engine
+00:19:30.534   ENGINE       : Initializing engine, version 187974
+00:19:30.534   ENGINE       : CLI Params: -gproj C:\Users\pfofa\Documents\my games\ArmaReforger\addons\ai_night-recon-everon\addon.gproj -validate -wbSilent -exitAfterInit -logsDir C:\Users\pfofa\Desktop\000_Projekte\201_01-MOD-ArmaReforger-Scenarios\logs\sanity-validate-task007bcs 
+00:19:30.564   ENGINE       : Addon dirs:
+00:19:30.564    ENGINE       : dir: 'C:/Users/pfofa/Documents/my games/ArmaReforger/addons/ai_night-recon-everon/'
+00:19:30.564    ENGINE       : dir: './addons'
+00:19:30.564    ENGINE       : dir: 'C:/Users/pfofa/Documents/My Games/ArmaReforgerWorkbench/addons'
+00:19:30.564   ENGINE       : Available addons:
+00:19:30.564    ENGINE       : gproj: 'C:/Users/pfofa/Documents/my games/ArmaReforger/addons/ai_night-recon-everon/addon.gproj' guid: '{8B56608D5A651540}'
+00:19:30.564    ENGINE       : gproj: 'C:/Users/pfofa/Documents/My Games/ArmaReforgerWorkbench/addons/_vanilla_core/core.gproj' guid: '5614BBCCBB55ED1C' (packed)
+00:19:30.564    ENGINE       : gproj: 'C:/Users/pfofa/Documents/My Games/ArmaReforgerWorkbench/addons/_vanilla_data/ArmaReforger.gproj' guid: '58D0FB3206B6F859' (packed)
+00:19:30.564   ENGINE       : FileSystem: Adding relative directory 'C:\Users\pfofa\Documents\my games\ArmaReforger\addons\ai_night-recon-everon' to filesystem under name nightreconeveron
+00:19:30.790   ENGINE       : FileSystem: Adding package 'C:/Users/pfofa/Documents/My Games/ArmaReforgerWorkbench/addons/_vanilla_data/' (pak count: 14) to filesystem under name ArmaReforger
+00:19:30.811   ENGINE       : FileSystem: Adding package 'C:/Users/pfofa/Documents/My Games/ArmaReforgerWorkbench/addons/_vanilla_core/' (pak count: 2) to filesystem under name core
+00:19:30.811   ENGINE       : CPU vendor         : GenuineIntel
+00:19:30.811   ENGINE       : CPU type           : 1
+00:19:30.811   ENGINE       : CPU name           : Intel(R) Core(TM) i9-9900K CPU @ 3.60GHz
+00:19:30.811   ENGINE       : CPU cache info     : L1 [Inst 32KB, Data 32KB], L2 [Unif 256KB], L3 [Unif 16384KB]
+00:19:30.811   ENGINE       : CPU count logical  : 16
+00:19:30.811   ENGINE       : CPU count physical : 8
+00:19:30.811   ENGINE       : CPU features       : mmx sse sse2 sse3 ssse3 sse4_1 sse4_2 aesni pclmulqdq osxsave avx avx2
+00:19:30.811   RESOURCES    : ResourceDB: loading cache (id=0 name=nightreconeveron path=C:\Users\pfofa\Documents\my games\ArmaReforger\addons\ai_night-recon-everon/resourceDatabase.rdb)
+00:19:30.818   RESOURCES    : ResourceDB: loading cache (id=1 name=ArmaReforger path=C:/Users/pfofa/Documents/My Games/ArmaReforgerWorkbench/addons/_vanilla_data/resourceDatabase.rdb)
+00:19:31.032   RESOURCES    : ResourceDB: loading cache (id=2 name=core path=C:/Users/pfofa/Documents/My Games/ArmaReforgerWorkbench/addons/_vanilla_core/resourceDatabase.rdb)
+00:19:31.046   RESOURCES    : ResourceDB: loading cache (id=3 name=profile path=C:\Users\pfofa\Documents\My Games\ArmaReforgerWorkbench\profile/resourceDatabase.rdb)
+00:19:31.055   RESOURCES    : ResourceDB: loading cache (id=4 name=logs path=C:\Users\pfofa\Desktop\000_Projekte\201_01-MOD-ArmaReforger-Scenarios\logs\sanity-validate-task007bcs/resourceDatabase.rdb)
+00:19:31.365   RESOURCES    : RESOURCES    : ResourceDB: full scan
+00:19:31.368    RESOURCES    : RESOURCES    : scanning...
+00:19:31.368     RESOURCES    : RESOURCES    : scanning @"nightreconeveron"
+00:19:31.370     RESOURCES    : RESOURCES    : scanning @"ArmaReforger"
+00:19:31.514     RESOURCES    : RESOURCES    : scanning @"core"
+00:19:31.517     RESOURCES    : RESOURCES    : scanning @"profile"
+00:19:31.517     RESOURCES    : RESOURCES    : scanning @"logs"
+00:19:31.517    RESOURCES    : RESOURCES    : processing meta-files...
+00:19:31.582    RESOURCES    : RESOURCES    : processing files...
+00:19:31.583    RESOURCES    : RESOURCES    : processing folders...
+00:19:31.590    RESOURCES    : RESOURCES    : creating GUID-item mapping...
+00:19:31.591 INIT         : Workbench startup
+00:19:31.591  INIT         : Workbench Init Engine
+00:19:31.591   RESOURCES    : ResourceDB: full scan
+00:19:31.591    RESOURCES    : creating GUID-item mapping...
+00:19:31.591     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Sounds/Music/KS/Samples/MU_Respawn_02.snd" and @"$ArmaReforger:Sounds/Music/KS/Samples/MU_KS_Respawn_02.snd"
+00:19:31.599     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Sounds/Music/KS/Samples/MU_KS_Death_02.snd" and @"$ArmaReforger:Sounds/Music/KS/Samples/MU_Death_02.snd"
+00:19:31.600     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Tasks/EvacuateTask.et" and @"$ArmaReforger:Prefabs/Systems/Tasks/EvacuateTask.et"
+00:19:31.600     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Tasks/NeutralizeTask.et" and @"$ArmaReforger:Prefabs/Systems/Tasks/NeutralizeTask.et"
+00:19:31.601     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Sounds/Music/Samples/MU_Respawn_01.snd" and @"$ArmaReforger:Sounds/Music/Samples/MU_KS_Respawn_01.snd"
+00:19:31.601     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Sounds/Music/Samples/MU_KS_Coast_01.snd" and @"$ArmaReforger:Sounds/Music/Samples/MU_Coast_01.snd"
+00:19:31.601     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Systems/Tasks/SupportEntities/BaseTaskSupportEntity.et" and @"$ArmaReforger:Prefabs/Tasks/SupportEntities/BaseTaskSupportEntity.et"
+00:19:31.602     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Tasks/SupportEntities/TriggerTaskSupportEntity.et" and @"$ArmaReforger:Prefabs/Systems/Tasks/SupportEntities/TriggerTaskSupportEntity.et"
+00:19:31.602     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Systems/Tasks/RequestedTask.et" and @"$ArmaReforger:Prefabs/Tasks/RequestedTask.et"
+00:19:31.604     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Tasks/MoveTask.et" and @"$ArmaReforger:Prefabs/Systems/Tasks/MoveTask.et"
+00:19:31.605     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Tasks/SupportEntities/CampaignTaskSupportEntity.et" and @"$ArmaReforger:Prefabs/Systems/Tasks/SupportEntities/CampaignTaskSupportEntity.et"
+00:19:31.605     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Systems/Tasks/BaseTriggerTask.et" and @"$ArmaReforger:Prefabs/Tasks/BaseTriggerTask.et"
+00:19:31.606     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Systems/Tasks/DefendTask.et" and @"$ArmaReforger:Prefabs/Tasks/DefendTask.et"
+00:19:31.607     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Tasks/CampaignDefendTask.et" and @"$ArmaReforger:Prefabs/Systems/Tasks/CampaignDefendTask.et"
+00:19:31.607     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:UI/Imagesets/Tasks/Task_Icons.imageset" and @"$ArmaReforger:UI/Imagesets/Tasks/Task-Icons.imageset"
+00:19:31.607     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Sounds/Music/KS/Samples/MU_Map_Theme.snd" and @"$ArmaReforger:Sounds/Music/KS/Samples/MU_KS_Map_Theme.snd"
+00:19:31.608     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Systems/Tasks/SeizeTask.et" and @"$ArmaReforger:Prefabs/Tasks/SeizeTask.et"
+00:19:31.609     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Systems/ScenarioFramework/Triggers/ScenarioFrameworkCharacterTrigger.et" and @"$ArmaReforger:Prefabs/Systems/ScenarioFramework/Triggers/TriggerCharacterSlow.et"
+00:19:31.609     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Systems/Tasks/CampaignBuildingTask.et" and @"$ArmaReforger:Prefabs/Tasks/CampaignBuildingTask.et"
+00:19:31.609     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:anims/anm/player/locomotion/machineguns/IdleTurns/p_lmg_pne_idle_ras_breath.anm" and @"$ArmaReforger:anims/anm/player/locomotion/machineguns/p_lmg_pne_idle_ras_breath.anm"
+00:19:31.610     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Tasks/RefuelTask.et" and @"$ArmaReforger:Prefabs/Systems/Tasks/RefuelTask.et"
+00:19:31.610     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Tasks/SupportEntities/EditorTaskSupportEntity.et" and @"$ArmaReforger:Prefabs/Systems/Tasks/SupportEntities/EditorTaskSupportEntity.et"
+00:19:31.611     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Sounds/Music/KS/Samples/Layers/MU_Coast_01.snd" and @"$ArmaReforger:Sounds/Music/KS/Samples/Layers/MU_KS_Coast_01.snd"
+00:19:31.611     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Sounds/Music/KS/Samples/MU_Death.snd" and @"$ArmaReforger:Sounds/Music/KS/Samples/MU_KS_Death.snd"
+00:19:31.612     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Tasks/CustomTask.et" and @"$ArmaReforger:Prefabs/Systems/Tasks/CustomTask.et"
+00:19:31.613     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:anims/anm/player/locomotion/machineguns/p_lmg_pne_aimspace_body_ras.anm" and @"$ArmaReforger:anims/anm/player/locomotion/machineguns/IdleTurns/p_lmg_pne_aimspace_body_ras.anm"
+00:19:31.613     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Tasks/SupportEntities/CampaignBuildingTaskSupportEntity.et" and @"$ArmaReforger:Prefabs/Systems/Tasks/SupportEntities/CampaignBuildingTaskSupportEntity.et"
+00:19:31.615     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Sounds/Music/KS/Samples/MU_KS_Respawn_01.snd" and @"$ArmaReforger:Sounds/Music/KS/Samples/MU_Respawn_01.snd"
+00:19:31.615     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Systems/Tasks/CampaignTask.et" and @"$ArmaReforger:Prefabs/Tasks/CampaignTask.et"
+00:19:31.615     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Tasks/TransportTask.et" and @"$ArmaReforger:Prefabs/Systems/Tasks/TransportTask.et"
+00:19:31.617    RESOURCES    : RESOURCES    : building tree...
+00:19:31.680   PROFILING    : ResourceDB: full scan took: 315.108900 ms
+00:19:31.681   RESOURCES    : ResourceDB: saving cache (id=0 name=nightreconeveron path=C:\Users\pfofa\Documents\my games\ArmaReforger\addons\ai_night-recon-everon/resourceDatabase.rdb)
+00:19:31.683   RESOURCES    : ResourceDB: written 849/849 bytes
+00:19:31.683   RESOURCES    : ResourceDB: cache successfully saved
+00:19:31.683   RESOURCES    : ResourceDB: saving cache (id=3 name=profile path=C:\Users\pfofa\Documents\My Games\ArmaReforgerWorkbench\profile/resourceDatabase.rdb)
+00:19:31.685   RESOURCES    : ResourceDB: written 147/147 bytes
+00:19:31.685   RESOURCES    : ResourceDB: cache successfully saved
+00:19:31.685   RESOURCES    : ResourceDB: saving cache (id=4 name=logs path=C:\Users\pfofa\Desktop\000_Projekte\201_01-MOD-ArmaReforger-Scenarios\logs\sanity-validate-task007bcs/resourceDatabase.rdb)
+00:19:31.687   RESOURCES    : ResourceDB: written 171/171 bytes
+00:19:31.687   RESOURCES    : ResourceDB: cache successfully saved
+00:19:31.687   ENGINE       : GameProject load
+00:19:31.687    ENGINE       : Loaded addons:
+00:19:31.687     ENGINE       : gproj: 'C:/Users/pfofa/Documents/My Games/ArmaReforgerWorkbench/addons/_vanilla_core/core.gproj' guid: '5614BBCCBB55ED1C'
+00:19:31.687     ENGINE       : gproj: 'C:/Users/pfofa/Documents/My Games/ArmaReforgerWorkbench/addons/_vanilla_data/ArmaReforger.gproj' guid: '58D0FB3206B6F859'
+00:19:31.687     ENGINE       : gproj: 'C:/Users/pfofa/Documents/my games/ArmaReforger/addons/ai_night-recon-everon/addon.gproj' guid: '{8B56608D5A651540}'
+00:19:31.689   ENGINE       : Loading custom engine user config '$profile:.save/app1874910_user76561198041204253/settings/ReforgerEngineSettings.conf'
+00:19:31.689   ENGINE       : No Enfusion settings file loaded. Continuing with defaults
+00:19:31.740   RENDER       : (OK) Adapter 'AMD Radeon RX 5700 XT' supports feature level 12_0
+00:19:31.742   RENDER       : Basic screen setup:
+00:19:31.742   RENDER       :   Back buffer format	       : TEXFMT_R8G8B8A8_SRGB (29)
+00:19:31.742   RENDER       :   MSAA                      : none
+00:19:32.241   RENDER       : AMD AGS library initialized, version 6.1.0 x DLL 6.1.0
+00:19:32.241   RENDER       :   Extendeded AMD info for AMD Radeon RX 5700 XT (primary device)
+00:19:32.241   RENDER       :   * architecture RDNA, 40 CUs, 20 WGPs (for RDNA), 64 ROPs
+00:19:32.241   RENDER       :   * core clocks 1815 MHz, memory 1750 MHz
+00:19:32.241   RENDER       :   * TFlops 9.3, memory bandwidth (437.5 GB/s)
+00:19:32.241   RENDER       : AMD AGS correctly initialized
+00:19:32.241   RENDER       : Driver for AMD Radeon RX 5700 XT is from 3.3.2026 (2 months, 21 days old)
+00:19:32.241   RENDER       : GPU_ATI (0x1002) (AMD Radeon RX 5700 XT) with 1 GPU detected, VRAM 8151MB (fast 0MB), shared 32736MB, driver version 25.10.43.05-260303a-198974C-AMD-Software-Adrenalin-Edition
+00:19:32.241   RENDER       : Detected output devices:
+00:19:32.241   RENDER       :  * 1 device/s connected to AMD Radeon RX 5700 XT:
+00:19:32.241   RENDER       :    Generic PnP Monitor (\\.\DISPLAY1), 1920x1080 (offset 0x0), 59Hz
+00:19:32.241   RENDER       :   Concurrent frames limit 2
+00:19:32.415   RENDER       : DX12 device successfully created by AMD AGS library
+00:19:32.415   RENDER       :  * user markers supported
+00:19:32.415   RENDER       : Graphics device features
+00:19:32.415   RENDER       :  Needed:
+00:19:32.415   RENDER       :  * Highest supported shader model: 6.8 (6.0 needed)
+00:19:32.415   RENDER       :  Optional:
+00:19:32.415   RENDER       :  * Allow tearing (VSYNC) : 1
+00:19:32.415   RENDER       :  * 16 bits : 1
+00:19:32.415   RENDER       :  * Resource heap tier : 3
+00:19:32.415   RENDER       :  * Persistent heaps (DRED) : 1
+00:19:32.415   RENDER       :  * DRED 1.2 is supported by compiler
+00:19:32.438   RENDER       : Main RT format setup.
+00:19:32.438   RENDER       :   Main RT format for quality 0	: TEXFMT_R11G11B10_FLOAT (26)
+00:19:32.438   RENDER       :   Main RT format for quality 1	: TEXFMT_R16G16B16A16_FLOAT (10)
+00:19:32.449   ENGINE       : Job system settings: coreCount=16, shortJobContextCount=16, shortJobThreadCount=15, longJobThreadCount=16
+00:19:32.517   PROFILING    : Settings changed took: 0.033600 ms
+00:19:32.552   AUDIO        : Lautsprecher (Realtek(R) Audio)
+00:19:32.557   RENDER       : RENDER       : Reload shaders
+00:19:32.557    RENDER       : Enfusion shader version 119
+00:19:32.557    INIT         : INIT         : ShaderListReload
+00:19:32.557    PROFILING    : ShaderListReload took: 0.002800 ms
+00:19:32.746    RENDER       : Loaded 3868 newer shader binaries
+00:19:32.747   PROFILING    : Reload shaders took: 189.285700 ms
+00:19:32.747   ENGINE       : Initializing inputs.
+00:19:32.754   NETWORK      : Initializing networking.
+00:19:32.754   NETWORK      : Using new GameRplScheduler.
+00:19:32.754   SCRIPT       : SCRIPT       : Initializing scripts
+00:19:32.754    SCRIPT       : SCRIPT       : ScriptProjectManager init
+00:19:32.755    PROFILING    : ScriptProjectManager init took: 0.626700 ms
+00:19:32.780   PROFILING    : Initializing scripts took: 25.967800 ms
+00:19:32.795   ENGINE       : Enfusion engine successfully created.
+00:19:32.795  PROFILING    : Workbench Init Engine took: 2261.201700 ms
+00:19:32.795  INIT         : INIT         : Workbench Create Game
+00:19:32.817   GUI          : Using default language (en_us)
+00:19:32.817   GUI          : Loading 'en_us' localization file.
+00:19:32.817   INIT         : INIT         : Loading StringTable
+00:19:32.841   PROFILING    : Loading StringTable took: 24.623100 ms
+00:19:32.842   SCRIPT       : SCRIPT       : Compiling GameLib scripts
+00:19:32.891    SCRIPT       : Module: Workbench; loaded 19x files; 37x classes; used 130/10485 kB (1%) of static memory; defines: "ENF_WB,WORKBENCH,PLATFORM_WINDOWS,ENABLE_DIAG,ENF_ENABLE_VHC_OVERRIDE,ENF_ENABLE_RPLCOMPONENT_IN_GAMECODE"; CRC32: 7d50b840
+00:19:32.891    SCRIPT       : Module: GameLib; loaded 382x files; 556x classes; used 692/2097 kB (32%) of static memory; defines: "ENF_WB,WORKBENCH,PLATFORM_WINDOWS,ENABLE_DIAG,ENF_ENABLE_VHC_OVERRIDE,ENF_ENABLE_RPLCOMPONENT_IN_GAMECODE"; CRC32: d0e6be82
+00:19:32.892   PROFILING    : Compiling GameLib scripts took: 50.781500 ms
+00:19:32.892   SCRIPT       : SCRIPT       : Compiling Game scripts
+00:19:33.499  INIT         : Workbench Create Game
+00:19:33.499   SCRIPT       : Compiling Game scripts
+00:19:33.499    SCRIPT    (W): @"scripts/Game/Network/ServerCommands/UploadSaveCommand.c,15": 'OnError' is obsolete: Use BackendCallback.SetOnError() instead.
+00:19:33.499    SCRIPT    (W): @"scripts/Game/Network/ServerCommands/UploadSaveCommand.c,22": 'OnSuccess' is obsolete: Use BackendCallback.SetOnSuccess() instead.
+00:19:33.499    SCRIPT    (W): @"scripts/Game/Network/ServerCommands/UploadSaveCommand.c,28": 'OnTimeout' is obsolete: Use BackendCallback.SetOnError() instead.
+00:19:33.833    SCRIPT    (W): @"scripts/Game/Campaign/SCR_PlayerProfileManagerComponent.c,114": 'PlayerRequest' is obsolete
+00:19:33.833    SCRIPT    (W): @"scripts/Game/Campaign/SCR_PlayerProfileManagerComponent.c,133": 'PlayerData' is obsolete
+00:19:33.837    SCRIPT    (W): @"scripts/Game/Character/Cameras/FirstPerson/CharacterCamera1stPersonUnconscious.c,56": 'GetBoneMatrix' is obsolete: Use GetAnimation().GetBoneMatrix() instead
+00:19:33.910    SCRIPT    (W): @"scripts/Game/DataCollection/PlayerData/SCR_PlayerData.c,210": 'PlayerData' is obsolete
+00:19:33.910    SCRIPT    (W): @"scripts/Game/DataCollection/PlayerData/SCR_PlayerData.c,222": 'IsAuthenticated' is obsolete: Use BackendAuthenticatorApi.IsAuthenticated() instead.
+00:19:33.910    SCRIPT    (W): @"scripts/Game/DataCollection/PlayerData/SCR_PlayerData.c,227": 'PlayerRequest' is obsolete
+00:19:33.910    SCRIPT    (W): @"scripts/Game/DataCollection/PlayerData/SCR_PlayerData.c,307": 'PlayerRequest' is obsolete
+00:19:33.926    SCRIPT    (W): @"scripts/Game/Editor/Components/EditableEntity/SCR_EditableEntityComponent.c,774": 'GetPlayerPlatformKind' is obsolete
+00:19:33.926    SCRIPT    (W): @"scripts/Game/Editor/Components/EditableEntity/SCR_EditableEntityComponent.c,775": 'GetPlayerPlatformId' is obsolete
+00:19:33.935    SCRIPT    (W): @"scripts/Game/Editor/Components/Editor/SCR_CameraEditorComponent.c,226": Possible variable name conflict 'editorManagerEntity'
+00:19:33.935    SCRIPT    (W): @"scripts/Game/Editor/Components/Editor/SCR_CameraEditorComponent.c,243": Possible variable name conflict 'editorManagerEntity'
+00:19:33.935    SCRIPT    (W): @"scripts/Game/Editor/Components/Editor/SCR_CameraEditorComponent.c,265": Possible variable name conflict 'editorManagerEntity'
+00:19:33.935    SCRIPT    (W): @"scripts/Game/Editor/Components/Editor/SCR_CameraEditorComponent.c,274": Possible variable name conflict 'editorManagerEntity'
+00:19:33.935    SCRIPT    (W): @"scripts/Game/Editor/Components/Editor/SCR_CameraEditorComponent.c,303": Possible variable name conflict 'editorManagerEntity'
+00:19:33.994    SCRIPT    (W): @"scripts/Game/Editor/UI/Components/Save/SCR_SaveEditorUIComponent.c,207": 'GetKeyByValue' is obsolete: Use SCR_MapHelper.GetKeyByValue
+00:19:33.995    SCRIPT    (W): @"scripts/Game/Editor/UI/Components/Save/SCR_SaveEditorUIComponent.c,214": 'GetKeyByValue' is obsolete: Use SCR_MapHelper.GetKeyByValue
+00:19:33.995    SCRIPT    (W): @"scripts/Game/Editor/UI/Components/Save/SCR_SaveEditorUIComponent.c,221": 'GetKeyByValue' is obsolete: Use SCR_MapHelper.GetKeyByValue
+00:19:34.019    SCRIPT    (W): @"scripts/Game/FactionCommander/Components/SCR_CampaignFactionCommanderPlayerComponent.c,253": 'GetKeyByValue' is obsolete: Use SCR_MapHelper.GetKeyByValue
+00:19:34.021    SCRIPT    (W): @"scripts/Game/FactionCommander/Components/SCR_FactionCommanderPlayerComponent.c,821": 'GetKeyByValue' is obsolete: Use SCR_MapHelper.GetKeyByValue
+00:19:34.100    SCRIPT    (W): @"scripts/Game/Helpers/SCR_ServicesStatusHelper.c,76": 'IsAuthenticated' is obsolete: Use BackendAuthenticatorApi.IsAuthenticated() instead.
+00:19:34.137    SCRIPT    (W): @"scripts/Game/Network/ServerCommands/UploadSaveCommand.c,17": 'OnError' is obsolete: Use BackendCallback.SetOnError() instead.
+00:19:34.137    SCRIPT    (W): @"scripts/Game/Network/ServerCommands/UploadSaveCommand.c,24": 'OnSuccess' is obsolete: Use BackendCallback.SetOnSuccess() instead.
+00:19:34.137    SCRIPT    (W): @"scripts/Game/Network/ServerCommands/UploadSaveCommand.c,30": 'OnTimeout' is obsolete: Use BackendCallback.SetOnError() instead.
+00:19:34.221    SCRIPT    (W): @"scripts/Game/UI/Components/MainMenu/SCR_AccountWidgetComponent.c,187": 'IsAuthenticated' is obsolete: Use BackendAuthenticatorApi.IsAuthenticated() instead.
+00:19:34.259    SCRIPT    (W): @"scripts/Game/UI/HUD/SCR_NearbyContextDisplay.c,455": 'GetKeyByValue' is obsolete: Use SCR_MapHelper.GetKeyByValue
+00:19:34.293    SCRIPT    (W): @"scripts/Game/UI/Menu/CareerMenuUI.c,133": 'IsAuthenticated' is obsolete: Use BackendAuthenticatorApi.IsAuthenticated() instead.
+00:19:34.293    SCRIPT    (W): @"scripts/Game/UI/Menu/CareerMenuUI.c,140": 'PlayerRequest' is obsolete
+00:19:34.350    SCRIPT    (W): @"scripts/Game/UI/Menu/SettingsMenu/SCR_SettingsManagerKeybindModule.c,433": Variable 'path' is not used
+00:19:34.384    SCRIPT    (W): @"scripts/Game/Utilities/SCR_PlayerIdentityUtils.c,20": 'GetPlayerIdentityId' is obsolete
+00:19:35.688    SCRIPT       : Module: WorkbenchGame; loaded 148x files; 554x classes; used 2199/10485 kB (20%) of static memory; defines: "ENF_WB,WORKBENCH,PLATFORM_WINDOWS,ENABLE_DIAG,ENF_ENABLE_VHC_OVERRIDE,ENF_ENABLE_RPLCOMPONENT_IN_GAMECODE"; CRC32: 46eea57a
+00:19:35.695    SCRIPT       : Module: Game; loaded 5518x files; 10826x classes; used 31624/62914 kB (50%) of static memory; defines: "ENF_WB,WORKBENCH,PLATFORM_WINDOWS,ENABLE_DIAG,ENF_ENABLE_VHC_OVERRIDE,ENF_ENABLE_RPLCOMPONENT_IN_GAMECODE,ENABLE_BASE_DESTRUCTION,BUDGET_OPTIMIZATION_CHECKS,SHOW_DISCLAIMER,DEBUG,RESPAWN_TIMER_COMPONENT_DEBUG,GAME_MODE_DEBUG,DEBUG_CONFIGURABLE_DIALOGS,DISABLE_WEAPON_SWITCHING,SCRIPTED_AIM_MODIFIER_DEBUG"; CRC32: 4a7d1298
+00:19:35.738   PROFILING    : Compiling Game scripts took: 2845.148000 ms
+00:19:35.745   INIT         : Creating game instance(ArmaReforgerScripted), version 1.6.0.119 built 2026-01-23 18:14:39 UTC.
+00:19:35.780   ENGINE       : Game successfully created.
+00:19:35.781  PROFILING    : Workbench Create Game took: 2986.168600 ms
+00:19:35.784 PROFILING    : Workbench startup took: 5320.793900 ms
+00:19:35.785 RESOURCES    : ResourceDB: saving cache (id=0 name=nightreconeveron path=C:\Users\pfofa\Documents\my games\ArmaReforger\addons\ai_night-recon-everon/resourceDatabase.rdb)
+00:19:35.787 RESOURCES    : ResourceDB: written 849/849 bytes
+00:19:35.787 RESOURCES    : ResourceDB: cache successfully saved
+00:19:35.787 RESOURCES    : ResourceDB: saving cache (id=3 name=profile path=C:\Users\pfofa\Documents\My Games\ArmaReforgerWorkbench\profile/resourceDatabase.rdb)
+00:19:35.789 RESOURCES    : ResourceDB: written 147/147 bytes
+00:19:35.789 RESOURCES    : ResourceDB: cache successfully saved
+00:19:35.789 RESOURCES    : ResourceDB: saving cache (id=4 name=logs path=C:\Users\pfofa\Desktop\000_Projekte\201_01-MOD-ArmaReforger-Scenarios\logs\sanity-validate-task007bcs/resourceDatabase.rdb)
+00:19:35.790 RESOURCES    : ResourceDB: written 171/171 bytes
+00:19:35.790 RESOURCES    : ResourceDB: cache successfully saved
+00:19:35.824 ENGINE       : Game destroyed.
+00:19:35.824 ENGINE       : Game destroyed.
+00:19:35.853 RPL          : Pip::Destroy
+00:19:35.870 RESOURCES (E): ==== Resource leaks ====
+00:19:35.870 RESOURCES (E): UI/Fonts/RobotoCondensed/RobotoCondensed_Regular.edds   1
+00:19:35.870 RESOURCES (E): UI/Textures/Cursor/arrow_place_geometry_uiuc.edds   1
+00:19:35.870 RESOURCES (E): UI/Textures/Cursor/arrow_transform_geometry_uiuc.edds   1
+00:19:35.870 RESOURCES (E): UI/Textures/Cursor/cursors_atlas.edds   1
+00:19:35.870 RESOURCES (E): UI/Textures/Cursor/arrow_objective_uiuc.edds   1
+00:19:35.870 RESOURCES (E): UI/Textures/Cursor/arrow_waypoint_uiuc.edds   1
+00:19:35.870 RESOURCES (E): UI/Textures/Cursor/arrow_rotate_uiuc.edds   1
+00:19:35.870 RESOURCES (E): UI/Textures/Cursor/arrow_transform_snap_disabled_uiuc.edds   1
+00:19:35.870 RESOURCES (E): UI/Textures/Cursor/arrow_transform_snap_uiuc.edds   1
+00:19:35.870 RESOURCES (E): UI/Textures/Cursor/arrow_move_camera_uiuc.edds   1
+00:19:35.870 RESOURCES (E): UI/Textures/Cursor/arrow_wait_uiuc.edds   1
+00:19:35.870 RESOURCES (E): UI/Textures/Cursor/arrow_transform_disabled_uiuc.edds   1
+00:19:35.870 RESOURCES (E): UI/Textures/Cursor/arrow_transform_uiuc.edds   1
+00:19:35.870 RESOURCES (E): UI/Textures/Cursor/arrow_place_uiuc.edds   1
+00:19:35.870 RESOURCES (E): UI/Textures/Cursor/arrow_select_uiuc.edds   1
+00:19:35.870 RESOURCES (E): UI/Textures/Cursor/arrow_raw_uiuc.edds   1
+00:19:35.870 RESOURCES (E): UI/Imagesets/Panels/Shadow/panels_fadedBackground-16-100_atlas.edds   1
+00:19:35.870 RESOURCES (E): UI/Imagesets/Panels/Outline/panels_roundedOutline_atlas.edds   1
+00:19:35.870 RESOURCES (E): UI/Imagesets/Panels/panels_roundedCorners_atlas.edds   1
+00:19:35.870 RESOURCES (E): UI/Imagesets/WeaponInfo/panel_style_magazines.edds   1
+00:19:35.870 RESOURCES (E): UI/Imagesets/debugUI.edds   1
+00:19:35.870 RESOURCES (E): UI/Textures/WidgetLibrary/ScrollBarRectangles.edds   1
+00:19:35.870 RESOURCES (E): UI/Imagesets/default.edds   1
+00:19:35.870 RESOURCES (E): ui/fonts/robotomono_msdf_28.edds   1
