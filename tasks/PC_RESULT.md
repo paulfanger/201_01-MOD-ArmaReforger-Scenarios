@@ -50,12 +50,4 @@ Keine Hard-Errors. Ein Blocker:
 
 1. **WORKBENCH_MISSING** — Phase 2 (Mission-Import-Test) ist erst moeglich nachdem "Arma Reforger Tools" via Steam installiert ist.
 
-## NEXT (Vorschlag fuer Mac-Session)
-
-Eine der folgenden Aktionen anweisen:
-
-a) **Empfohlen:** Befehl in `tasks/PC_TASK.md`: "Installiere Arma Reforger Tools via Steam-CLI." → ich kann das mit `start steam://install/1874881` (App-ID Arma Reforger Tools) anstossen, allerdings ist der Download manuell zu beobachten / Steam-UI ggf. noetig. Brauche dafuer explizite Freigabe (Netzwerk + globale Install).
-b) Manuell: Du installierst die Tools selbst via Steam-Client, dann schickst Task 001 als reinen Re-Check.
-c) Vorab Game starten (Erststart) damit AppData-Ordner entsteht und Lizenzbedingungen akzeptiert werden — sonst weigert sich Workbench beim ersten Lauf.
-
-Sag in `PC_TASK.md` welche Variante.
+## NEXT — Mac-Session reagiert auf nächste Task (002)
