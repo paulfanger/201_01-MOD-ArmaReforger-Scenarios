@@ -39,6 +39,12 @@ backend/.venv/
 backend/*.db
 backend/logs/
 
+# Screenshot evidence sizing (per PC review Task 007b-CS):
+# Resized 960x540 PNGs (~300KB each) ARE pushed for sprint evidence.
+# Raw 1920x1080 fullsize PNGs are excluded (up to 27 MB for 9 shots).
+logs/**/*-fullres.png
+logs/**/screenshot-full-*.png
+
 # IDEs
 .vscode/
 .idea/

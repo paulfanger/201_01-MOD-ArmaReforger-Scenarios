@@ -87,15 +87,36 @@
 
     1. Start Workbench-Diag in GUI mode (NO -wbSilent):
        ```powershell
-       Start-Process -FilePath $diag -ArgumentList @(
+       $proc = Start-Process -FilePath $diag -ArgumentList @(
          "-gproj", "&quot;$addon\addon.gproj&quot;",
          "-load", "&quot;`$ai_$mission:Worlds/$mission.ent&quot;",
          "-logsDir", "&quot;$logDir&quot;"
        ) -PassThru
+       Start-Sleep -Seconds 5  # Window-Focus-Stabilisierung (per PC review Task 007b-CS)
        ```
-    2. Wait 60s, screenshot (logs/gui-smoke-$mission/60s.png)
-    3. Wait 30s more (90s total), screenshot
-    4. Wait 30s more (120s total), screenshot
+    2. Wait 55s additional (60s total since launch), screenshot RESIZED to 960×540 (per PC review):
+       ```powershell
+       function Take-ScreenshotResized {
+         param([string]$OutPath, [int]$Width = 960, [int]$Height = 540)
+         Add-Type -AssemblyName System.Windows.Forms,System.Drawing
+         $bounds = [Windows.Forms.Screen]::PrimaryScreen.Bounds
+         $full = New-Object Drawing.Bitmap $bounds.Width, $bounds.Height
+         $gfx = [Drawing.Graphics]::FromImage($full)
+         $gfx.CopyFromScreen($bounds.Location, [Drawing.Point]::Empty, $bounds.Size)
+
+         # Resize for git-friendly storage (per PC review: 27MB → ~3MB for 9 screenshots)
+         $resized = New-Object Drawing.Bitmap $Width, $Height
+         $rgfx = [Drawing.Graphics]::FromImage($resized)
+         $rgfx.InterpolationMode = [Drawing.Drawing2D.InterpolationMode]::HighQualityBicubic
+         $rgfx.DrawImage($full, 0, 0, $Width, $Height)
+         $resized.Save($OutPath, [Drawing.Imaging.ImageFormat]::Png)
+
+         $gfx.Dispose(); $full.Dispose(); $rgfx.Dispose(); $resized.Dispose()
+       }
+       Take-ScreenshotResized -OutPath "$logDir/60s.png"
+       ```
+    3. Wait 30s more (90s total), screenshot resized
+    4. Wait 30s more (120s total), screenshot resized
     5. Enumerate visible windows (Get-VisibleWindows)
     6. Spawn ui-tester sub-agent per screenshot:
        - Multimodal classify: mission_loaded | project_selector | error_popup | loading | crashed | unknown
@@ -133,14 +154,25 @@
   <action>
     1. Pick the BEST mission from Stage 2 (highest confidence mission_loaded)
     2. Confirm Game-EXE path exists
-    3. ⚙️ USER ACTION request in PC chat:
+    3. ⚙️ USER ACTION request in PC chat (mit klaren Erfolgsmessern):
        ```
        Stage 3 ready. Bitte:
        1. Öffne Arma Reforger Game (NICHT Workbench) via Steam
        2. Game Menü → Scenarios → finde "&lt;mission_name&gt;" in der Liste
+          ✅ ERFOLGSMESSER A: Mission ist in der Liste sichtbar
        3. Klick Play, warte bis Mission lädt
-       4. Spiel mindestens 60 Sekunden — bewege dich, schau dich um
-       5. Tipp hier: "spielt" / "issue: &lt;beschreibung&gt;" / "abort"
+          ✅ ERFOLGSMESSER B: Mission lädt ohne Crash innerhalb 30s
+       4. Im Spiel checken:
+          ✅ ERFOLGSMESSER C: Spawn-Point sichtbar (du spawnst irgendwo)
+          ✅ ERFOLGSMESSER D: Bewegung funktioniert (WASD reagiert)
+          ✅ ERFOLGSMESSER E: Time-of-Day / Wetter wie konfiguriert
+             (night-recon: dunkel mit fog · day-assault: hellichter Tag · fog-ambush: 06:00 nebelig)
+          ✅ ERFOLGSMESSER F: AI-Gegner sind irgendwo da (falls Phase 2 active —
+             Phase 1 MVP hat noch keine encounters, ist OK wenn leer)
+       5. Spiel mindestens 60 Sekunden — bewege dich, schau dich um
+       6. Tipp hier zurück eine Liste: "A:✓ B:✓ C:✓ D:✓ E:✓ F:- (kein AI im MVP)"
+          ODER: "issue: &lt;was schiefging&gt;"
+          ODER: "abort"
        ```
     4. Wait for user response (chat-prompt, no timeout — user-paced)
     5. While waiting: every 30s take screenshot (ambient evidence), classify
