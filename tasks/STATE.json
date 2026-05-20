@@ -1,0 +1,12 @@
+{
+  "turn_id": 4,
+  "owner": "mac",
+  "phase": "PHASE_D_RETURN",
+  "started_at": "2026-05-20T21:45:00Z",
+  "pending_do": [],
+  "pending_exec": [],
+  "last_reflection": null,
+  "rollback_snapshot": null,
+  "loop_signals": [],
+  "notes": "Initial state. Mac-side prepared Loop Turn #4 with Author bug fix + Two-Phase Reception + research findings (07-agentic-patterns-2026.md). Ready for paste-to-PC. After PC executes Task 005, owner flips to pc, phase becomes PHASE_C_EXEC."
+}

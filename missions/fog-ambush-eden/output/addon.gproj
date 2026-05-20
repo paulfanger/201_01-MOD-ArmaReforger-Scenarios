@@ -2,7 +2,6 @@ GameProject {
  ID "fogambusheden"
  GUID "{14FF7CF83AEBC1FF}"
  TITLE "Fog Ambush Eden"
- Author "AI-Native Mission Authoring System"
  Dependencies {
   "58D0FB3206B6F859"
  }

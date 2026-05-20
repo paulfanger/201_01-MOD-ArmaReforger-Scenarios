@@ -70,13 +70,14 @@ the return template, sends back.
 
 ## Markers inside the PC-bound block
 
-Every directive has one of three markers:
+Every directive has one of four markers:
 
 | Marker | Meaning | Who acts |
 |---|---|---|
 | **🤖 EXEC** | Paste into Claude Code on PC. Claude executes autonomously (Bash / PowerShell / Read / Write). | PC's Claude |
 | **🧠 ANSWER** | Question for Paul himself, in his own words (decisions, preferences). | Paul (human) |
 | **⚙️ DO** | Manual action on the PC by hand (UI click, EULA accept, Steam install dialog, settings.json edit). | Paul (human, at PC) |
+| **🧪 DRY** | Emit the PLAN of an EXEC block + content hash, without running. Other side computes same hash from RESPONSE, then approves real run on next turn. Use for destructive / irreversible operations. (Per research/07 §8) | Both — emitter plans, receiver verifies |
 
 ---
 
@@ -203,6 +204,105 @@ This relay protocol handles the human-in-the-loop coordination layer **on top of
 
 ---
 
+## Two-Phase Reception (when a side RECEIVES a Loop Turn)
+
+When you (any-side Claude) receive a Loop Turn copy-paste from the user, you MUST process
+it in exactly these phases. Never mix "things the user must do" with "things you are doing
+right now" — they are sequenced.
+
+### Phase A — Manual-Action Review (~30 seconds)
+
+1. Scan the incoming block for ALL `⚙️ DO` items.
+2. List them as a clean numbered checklist at the TOP of your reply:
+
+```
+## 📋 Bevor ich loslege — diese Dinge musst DU machen:
+
+1. [BLOCKING] <action> — <why it blocks>
+2. [BLOCKING] <action> — <why it blocks>
+3. [PARALLEL] <action> — kannst du auch während meiner Execution tun
+
+Fragen dazu? Sonst sag "ready" / "go" / "alles erledigt — check" → ich verifizier + leg los.
+```
+
+3. Mark each item as **BLOCKING** (must be done before EXEC starts — installs, account
+   creation, EULA, file edits the EXECs depend on) or **PARALLEL** (visual checks the user
+   can do during execution).
+4. STOP. Do not run any 🤖 EXEC yet. Wait for user signal.
+
+### Phase B — Verification (~10 seconds)
+
+When user signals "ready" / "go" / "alles erledigt":
+
+1. For each BLOCKING ⚙️ DO item, verify if possible:
+   - File expected? `Test-Path <path>` — must return True
+   - App expected? Check binary path / version
+   - Setting changed? Read setting back
+   - Permission granted? Try a test command
+2. If any verification fails:
+   - List what's still missing (concrete + actionable)
+   - Ask user to redo or override
+   - Stay in Phase B until clear
+3. If all verified:
+   - One-sentence confirmation: "✅ Alle Blocking-Items verified. Starte Execution jetzt."
+   - Move to Phase C immediately, no further user-input needed
+
+### Phase C — Autonomous Execution (the long part)
+
+1. Spawn `logger` (always-on for this turn).
+2. Spawn `dep-installer` for pre-flight.
+3. Run all 🤖 EXEC blocks in order.
+4. Spawn other sub-agents as needed (tester, ui-tester, process-tracker, etc.).
+5. Apply all hard guards (anti-loop, screenshot, time budgets).
+6. Spawn `auditor` pre-push.
+7. Build the return template incrementally — fill placeholders as data arrives.
+8. Push to Git (`tasks/<RESULT>.md` + logs/).
+
+If a sub-agent or guard fires a STOP (loop-detector, 3× retry, popup-dedup): jump to Phase D
+with status `blocked` + evidence. Do not continue blindly.
+
+### Phase D — Single Return Output
+
+At the very end of your turn, emit EXACTLY one block — the filled return template — formatted
+for copy-paste:
+
+```
+═══ <SIDE> → <OTHER-SIDE> · Loop Turn #N RESPONSE ═══
+
+Status: [done / partial / blocked / loop_detected / in-progress]
+
+🤖 EXEC results:
+  ...
+
+🧠 ANSWERS:
+  ...
+
+⚙️ DO outcomes:
+  ...
+
+Blockers (if any):
+  ...
+
+New questions for <other-side> Claude:
+  ...
+
+Notes:
+  ...
+
+═══ END RESPONSE ═══
+```
+
+Tell user: "Fertig. Kopier den Block oben → in den anderen Device-Chat → nächster Turn fires."
+
+### Why this exists
+
+Without two-phase reception, users get confused: is Claude running? Did I forget a manual
+step? Am I supposed to do something now or wait? The cognitive load kills the loop's
+benefit. Two-phase reception makes the contract crystal clear: **first you, then me, then
+one output back to you.**
+
+---
+
 ## Sub-Agent Fleet (both sides)
 
 Each side spawns sub-agents to handle parts of the iteration autonomously. The MAIN agent
@@ -256,6 +356,65 @@ Every sub-agent writes JSON to its output file:
 
 If `human_attention_required: true` → orchestrator must surface in the next loop turn's
 🧠 ANSWER or ⚙️ DO block.
+
+---
+
+## tasks/STATE.json — single-source-of-truth for the current turn
+
+Per research/07 §5, this is novel cross-device coordination territory. Add a persistent
+state file so either side can recover from crashes without re-reading chat:
+
+```json
+{
+  "turn_id": 4,
+  "owner": "pc",
+  "phase": "PHASE_A_REVIEW | PHASE_B_VERIFY | PHASE_C_EXEC | PHASE_D_RETURN | IDLE",
+  "started_at": "<ISO8601>",
+  "pending_do": [
+    {"id":"do-1","desc":"...","blocking":true,"verified":false}
+  ],
+  "pending_exec": [
+    {"id":"exec-1","desc":"...","status":"queued|running|done|failed|skipped"}
+  ],
+  "last_reflection": "logs/reflection-turn-3.md",
+  "rollback_snapshot": "logs/snap-turn-4.tar.gz",
+  "loop_signals": []
+}
+```
+
+Updated at every phase transition + every sub-agent return. Pushed alongside RESULT file.
+On crash recovery: read STATE.json, resume from `phase`.
+
+---
+
+## Reflection per turn (Reflexion pattern, per research/07 §2)
+
+At the end of every turn (just before Phase D return), the orchestrator MUST write:
+
+`logs/reflection-turn-<N>.md` with structure:
+
+```markdown
+# Turn <N> Reflection
+
+## What went well
+- ...
+
+## What failed (and why)
+- ...
+
+## What I'd do differently next turn
+- ...
+
+## Signals for optimizer
+- duration_ms: <X>
+- sub-agents spawned: <N>
+- guards fired: <list>
+- loop signals: <list>
+```
+
+At start of next turn (Phase A), orchestrator reads `logs/reflection-turn-<N-1>.md` before
+planning. This is the cheapest self-improvement loop with measurable upside (Reflexion paper:
+80% → 91% on HumanEval).
 
 ---
 
@@ -349,18 +508,35 @@ When any error / popup / stderr is observed:
 Logger appends this to `logs/error-history-<TS>.jsonl`. Loop-detector reads it at every
 retry attempt.
 
-### Loop-detector pattern
+### Loop-detector pattern (refined per research/07 §3 — OpenHands StuckDetector)
+
+Detect THREE distinct loop types:
 
 ```
 ON every retry of a step:
-  1. Compute current_state_hash = sha256(visible_window_titles + screenshot_phash + last_50_log_lines)
-  2. Compare to last 3 retry state_hashes
-  3. If ≥2 of last 3 match current → emit ❌ LOOP_DETECTED:
-      - kill responsible process
-      - dump evidence (screenshots, logs)
-      - escalate via bug-fixer
-      - if bug-fixer can't break loop in <3 min → emit pause turn to user
-      - never ask user to "click OK" or "dismiss popup" — that's the protocol's job
+  1. Compute:
+     - action_class    = high-level category of attempted action (e.g. "validate-mission", "install-tool")
+     - error_class     = high-level category of failure (e.g. "popup-license", "timeout", "exit-nonzero")
+     - state_hash      = sha256(visible_window_titles + screenshot_phash + last_50_log_lines)
+  2. TYPE A — Identical-Repeat Loop:
+     - If ≥4 retries in a row produce same (action_class, error_class, state_hash) → ❌ LOOP_DETECTED
+     - (Threshold 4, not 2 — Cursor false-positive lesson)
+  3. TYPE B — Repeated-Error Loop:
+     - If ≥4 retries produce same error_class with DIFFERENT action_classes → ❌ REPEATED_ERROR_LOOP
+     - Means underlying issue isn't action-shaped; bug-fixer must change problem framing
+  4. TYPE C — Monologue Loop (model reasons without acting):
+     - If ≥3 consecutive plan-only events with no tool-call → ❌ MONOLOGUE_LOOP
+     - Means model is stuck thinking; escalate immediately
+  5. TYPE D — No-Progress Loop (separate detector, not retry-bound):
+     - If ≥3 turns close with workspace-diff = ∅ → ❌ NO_PROGRESS
+     - Means even though things "ran", nothing changed
+
+ON loop detected (any type):
+  - kill responsible process if any
+  - dump evidence (screenshots, logs, action history)
+  - escalate via bug-fixer with loop type tag
+  - if bug-fixer can't break loop in <3 min → emit pause turn to user
+  - never ask user to "click OK" or "dismiss popup" — that's the protocol's job
 ```
 
 ### User-facing rule (NEVER violate)

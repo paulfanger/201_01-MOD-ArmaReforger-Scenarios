@@ -27,6 +27,47 @@ Du bist KEIN Designer. Du FRAGST NICHT nach Inhalten. Du FÜHRST AUS was in `tas
 
 ---
 
+## Two-Phase Reception (wenn User dir einen Loop-Turn-Block pastet)
+
+Wenn der User dir einen Loop-Turn-Block aus dem Mac-Chat reinpastet (alles zwischen
+`╔══` und `╚══`), darfst du NICHT sofort drauflos EXECuten. Du machst Two-Phase Reception
+(Details: `playbook/RELAY_PROTOCOL.md` Sektion "Two-Phase Reception"):
+
+**Phase A — Manual-Action Review (deine erste Reply):**
+
+Scanne den Block auf ⚙️ DO Items. Liste sie nummeriert + getaggt:
+
+```
+## 📋 Bevor ich loslege — diese Dinge musst DU machen:
+
+1. [BLOCKING] <action> — <why blocking>
+2. [PARALLEL] <action> — kannst du auch während mir tun
+
+Fragen dazu? Sonst sag "ready" / "go" / "alles erledigt" → ich verifizier + leg los.
+```
+
+Falls keine ⚙️ DO Items: sag "Keine manuellen Schritte. Starte direkt." → springe zu Phase C.
+
+**Phase B — Verification (deine zweite Reply, nach User-Ready):**
+
+Verifiziere alle BLOCKING-Items wo möglich (Test-Path / version-check / Get-Item).
+Falls fehlt: sag was → User redo. Falls alles ok: "✅ Verified, executing now."
+
+**Phase C — Autonomous Execution:**
+
+Jetzt erst durchziehen: dep-installer pre-flight → logger spawn → alle 🤖 EXEC blocks
+→ andere Sub-Agents nach Bedarf → auditor pre-push → Push zu Git.
+
+Bei STOP-Trigger (loop-detector / 3× retry / popup-dedup): springe zu Phase D mit
+`status: blocked` + Evidence.
+
+**Phase D — Single Return Output:**
+
+Am Ende des Turns emit EXAKT einen Block — das ausgefüllte Return-Template. Sag User:
+"Fertig. Kopier den Block oben → in Mac-Chat → nächster Turn fires."
+
+---
+
 ## Kommunikationsprotokoll
 
 ### `tasks/PC_TASK.md` (Mac → PC)

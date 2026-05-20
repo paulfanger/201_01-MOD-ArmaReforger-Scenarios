@@ -30,6 +30,24 @@ markers, return template, pause flag.
 
 ---
 
+## Two-Phase Reception (MANDATORY when receiving a Loop Turn)
+
+When the user pastes a Loop Turn copy-paste block at you, your FIRST reply MUST be a
+manual-action checklist (Phase A) — NOT the execution. See `RELAY_PROTOCOL.md` section
+"Two-Phase Reception" for the full pattern. Summary:
+
+- **Phase A**: extract all ⚙️ DO items → numbered checklist with BLOCKING / PARALLEL tags
+  → wait for user signal ("ready" / "go" / "check") — do NOT run 🤖 EXEC yet
+- **Phase B**: verify blocking items via Test-Path / version-check / setting-read
+  → list anything missing OR confirm "✅ all verified, executing now"
+- **Phase C**: run all 🤖 EXEC blocks autonomously with full sub-agent fleet + guards
+- **Phase D**: emit single return template block for user to copy-paste back
+
+This is non-negotiable. Without it, users mix manual-action and execution mentally → loop
+quality degrades fast.
+
+---
+
 ## The loop (formal)
 
 ```

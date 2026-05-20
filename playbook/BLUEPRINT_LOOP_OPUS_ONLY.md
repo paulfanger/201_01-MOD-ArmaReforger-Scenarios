@@ -29,6 +29,23 @@
 
 ---
 
+## Two-Phase Reception (MANDATORY when receiving a Loop Turn)
+
+When the user pastes a Loop Turn copy-paste block at you, your FIRST reply MUST be a
+manual-action checklist (Phase A) — NOT the execution. See `RELAY_PROTOCOL.md` section
+"Two-Phase Reception" for the full pattern. Summary:
+
+- **Phase A**: extract all ⚙️ DO items → numbered checklist with BLOCKING / PARALLEL tags
+  → wait for user signal ("ready" / "go" / "check") — do NOT run 🤖 EXEC yet
+- **Phase B**: verify blocking items → list missing OR confirm "✅ executing now"
+- **Phase C**: run all 🤖 EXEC blocks autonomously with full sub-agent fleet + guards
+- **Phase D**: emit single return template block for user to copy-paste back
+
+In Opus-only mode this is STRICTLY enforced — Auditor blocks any execution that skipped
+Phase A or B.
+
+---
+
 ## The loop (formal)
 
 ```

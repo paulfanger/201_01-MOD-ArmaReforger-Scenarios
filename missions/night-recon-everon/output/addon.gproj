@@ -2,7 +2,6 @@ GameProject {
  ID "nightreconeveron"
  GUID "{8B56608D5A651540}"
  TITLE "Night Recon Everon"
- Author "AI-Native Mission Authoring System"
  Dependencies {
   "58D0FB3206B6F859"
  }
