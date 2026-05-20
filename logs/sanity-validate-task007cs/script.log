@@ -1,0 +1,44 @@
+---------------------------------------------
+Log C:\Users\pfofa\Desktop\000_Projekte\201_01-MOD-ArmaReforger-Scenarios\logs\sanity-validate-task007cs\script.log started at 2026-05-20 23:35:08 (2026-05-20 21:35:08 UTC)
+
+23:35:08.086   SCRIPT       : SCRIPT       : Initializing scripts
+23:35:08.086    SCRIPT       : SCRIPT       : ScriptProjectManager init
+23:35:08.175   SCRIPT       : SCRIPT       : Compiling GameLib scripts
+23:35:08.220    SCRIPT       : Module: Workbench; loaded 19x files; 37x classes; used 130/10485 kB (1%) of static memory; defines: "ENF_WB,WORKBENCH,PLATFORM_WINDOWS,ENABLE_DIAG,ENF_ENABLE_VHC_OVERRIDE,ENF_ENABLE_RPLCOMPONENT_IN_GAMECODE"; CRC32: 7d50b840
+23:35:08.220    SCRIPT       : Module: GameLib; loaded 382x files; 556x classes; used 692/2097 kB (32%) of static memory; defines: "ENF_WB,WORKBENCH,PLATFORM_WINDOWS,ENABLE_DIAG,ENF_ENABLE_VHC_OVERRIDE,ENF_ENABLE_RPLCOMPONENT_IN_GAMECODE"; CRC32: d0e6be82
+23:35:08.221   SCRIPT       : SCRIPT       : Compiling Game scripts
+23:35:08.843   SCRIPT       : Compiling Game scripts
+23:35:08.843    SCRIPT    (W): @"scripts/Game/Network/ServerCommands/UploadSaveCommand.c,15": 'OnError' is obsolete: Use BackendCallback.SetOnError() instead.
+23:35:08.843    SCRIPT    (W): @"scripts/Game/Network/ServerCommands/UploadSaveCommand.c,22": 'OnSuccess' is obsolete: Use BackendCallback.SetOnSuccess() instead.
+23:35:08.843    SCRIPT    (W): @"scripts/Game/Network/ServerCommands/UploadSaveCommand.c,28": 'OnTimeout' is obsolete: Use BackendCallback.SetOnError() instead.
+23:35:09.177    SCRIPT    (W): @"scripts/Game/Campaign/SCR_PlayerProfileManagerComponent.c,114": 'PlayerRequest' is obsolete
+23:35:09.177    SCRIPT    (W): @"scripts/Game/Campaign/SCR_PlayerProfileManagerComponent.c,133": 'PlayerData' is obsolete
+23:35:09.181    SCRIPT    (W): @"scripts/Game/Character/Cameras/FirstPerson/CharacterCamera1stPersonUnconscious.c,56": 'GetBoneMatrix' is obsolete: Use GetAnimation().GetBoneMatrix() instead
+23:35:09.257    SCRIPT    (W): @"scripts/Game/DataCollection/PlayerData/SCR_PlayerData.c,210": 'PlayerData' is obsolete
+23:35:09.257    SCRIPT    (W): @"scripts/Game/DataCollection/PlayerData/SCR_PlayerData.c,222": 'IsAuthenticated' is obsolete: Use BackendAuthenticatorApi.IsAuthenticated() instead.
+23:35:09.257    SCRIPT    (W): @"scripts/Game/DataCollection/PlayerData/SCR_PlayerData.c,227": 'PlayerRequest' is obsolete
+23:35:09.257    SCRIPT    (W): @"scripts/Game/DataCollection/PlayerData/SCR_PlayerData.c,307": 'PlayerRequest' is obsolete
+23:35:09.273    SCRIPT    (W): @"scripts/Game/Editor/Components/EditableEntity/SCR_EditableEntityComponent.c,774": 'GetPlayerPlatformKind' is obsolete
+23:35:09.273    SCRIPT    (W): @"scripts/Game/Editor/Components/EditableEntity/SCR_EditableEntityComponent.c,775": 'GetPlayerPlatformId' is obsolete
+23:35:09.282    SCRIPT    (W): @"scripts/Game/Editor/Components/Editor/SCR_CameraEditorComponent.c,226": Possible variable name conflict 'editorManagerEntity'
+23:35:09.282    SCRIPT    (W): @"scripts/Game/Editor/Components/Editor/SCR_CameraEditorComponent.c,243": Possible variable name conflict 'editorManagerEntity'
+23:35:09.282    SCRIPT    (W): @"scripts/Game/Editor/Components/Editor/SCR_CameraEditorComponent.c,265": Possible variable name conflict 'editorManagerEntity'
+23:35:09.282    SCRIPT    (W): @"scripts/Game/Editor/Components/Editor/SCR_CameraEditorComponent.c,274": Possible variable name conflict 'editorManagerEntity'
+23:35:09.282    SCRIPT    (W): @"scripts/Game/Editor/Components/Editor/SCR_CameraEditorComponent.c,303": Possible variable name conflict 'editorManagerEntity'
+23:35:09.341    SCRIPT    (W): @"scripts/Game/Editor/UI/Components/Save/SCR_SaveEditorUIComponent.c,207": 'GetKeyByValue' is obsolete: Use SCR_MapHelper.GetKeyByValue
+23:35:09.341    SCRIPT    (W): @"scripts/Game/Editor/UI/Components/Save/SCR_SaveEditorUIComponent.c,214": 'GetKeyByValue' is obsolete: Use SCR_MapHelper.GetKeyByValue
+23:35:09.341    SCRIPT    (W): @"scripts/Game/Editor/UI/Components/Save/SCR_SaveEditorUIComponent.c,221": 'GetKeyByValue' is obsolete: Use SCR_MapHelper.GetKeyByValue
+23:35:09.367    SCRIPT    (W): @"scripts/Game/FactionCommander/Components/SCR_CampaignFactionCommanderPlayerComponent.c,253": 'GetKeyByValue' is obsolete: Use SCR_MapHelper.GetKeyByValue
+23:35:09.370    SCRIPT    (W): @"scripts/Game/FactionCommander/Components/SCR_FactionCommanderPlayerComponent.c,821": 'GetKeyByValue' is obsolete: Use SCR_MapHelper.GetKeyByValue
+23:35:09.451    SCRIPT    (W): @"scripts/Game/Helpers/SCR_ServicesStatusHelper.c,76": 'IsAuthenticated' is obsolete: Use BackendAuthenticatorApi.IsAuthenticated() instead.
+23:35:09.490    SCRIPT    (W): @"scripts/Game/Network/ServerCommands/UploadSaveCommand.c,17": 'OnError' is obsolete: Use BackendCallback.SetOnError() instead.
+23:35:09.490    SCRIPT    (W): @"scripts/Game/Network/ServerCommands/UploadSaveCommand.c,24": 'OnSuccess' is obsolete: Use BackendCallback.SetOnSuccess() instead.
+23:35:09.490    SCRIPT    (W): @"scripts/Game/Network/ServerCommands/UploadSaveCommand.c,30": 'OnTimeout' is obsolete: Use BackendCallback.SetOnError() instead.
+23:35:09.574    SCRIPT    (W): @"scripts/Game/UI/Components/MainMenu/SCR_AccountWidgetComponent.c,187": 'IsAuthenticated' is obsolete: Use BackendAuthenticatorApi.IsAuthenticated() instead.
+23:35:09.615    SCRIPT    (W): @"scripts/Game/UI/HUD/SCR_NearbyContextDisplay.c,455": 'GetKeyByValue' is obsolete: Use SCR_MapHelper.GetKeyByValue
+23:35:09.648    SCRIPT    (W): @"scripts/Game/UI/Menu/CareerMenuUI.c,133": 'IsAuthenticated' is obsolete: Use BackendAuthenticatorApi.IsAuthenticated() instead.
+23:35:09.648    SCRIPT    (W): @"scripts/Game/UI/Menu/CareerMenuUI.c,140": 'PlayerRequest' is obsolete
+23:35:09.706    SCRIPT    (W): @"scripts/Game/UI/Menu/SettingsMenu/SCR_SettingsManagerKeybindModule.c,433": Variable 'path' is not used
+23:35:09.740    SCRIPT    (W): @"scripts/Game/Utilities/SCR_PlayerIdentityUtils.c,20": 'GetPlayerIdentityId' is obsolete
+23:35:11.018    SCRIPT       : Module: WorkbenchGame; loaded 148x files; 554x classes; used 2199/10485 kB (20%) of static memory; defines: "ENF_WB,WORKBENCH,PLATFORM_WINDOWS,ENABLE_DIAG,ENF_ENABLE_VHC_OVERRIDE,ENF_ENABLE_RPLCOMPONENT_IN_GAMECODE"; CRC32: 46eea57a
+23:35:11.025    SCRIPT       : Module: Game; loaded 5518x files; 10826x classes; used 31624/62914 kB (50%) of static memory; defines: "ENF_WB,WORKBENCH,PLATFORM_WINDOWS,ENABLE_DIAG,ENF_ENABLE_VHC_OVERRIDE,ENF_ENABLE_RPLCOMPONENT_IN_GAMECODE,ENABLE_BASE_DESTRUCTION,BUDGET_OPTIMIZATION_CHECKS,SHOW_DISCLAIMER,DEBUG,RESPAWN_TIMER_COMPONENT_DEBUG,GAME_MODE_DEBUG,DEBUG_CONFIGURABLE_DIALOGS,DISABLE_WEAPON_SWITCHING,SCRIPTED_AIM_MODIFIER_DEBUG"; CRC32: 4a7d1298

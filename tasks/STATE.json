@@ -1,12 +1,35 @@
-{
-  "turn_id": 6,
-  "owner": "mac",
-  "phase": "PHASE_D_RETURN",
-  "started_at": "2026-05-20T22:55:00Z",
-  "pending_do": [],
-  "pending_exec": [],
-  "last_reflection": "logs/reflection-turn-6-mac.md",
-  "rollback_snapshot": null,
-  "loop_signals": [],
-  "notes": "Mac Loop Turn #6 prepared: 3 PC questions answered (reflection naming formalized, PowerShell quoting documented, Task 008 GUI smoke deferred post-CS). Task 007-CS spec'd: headless cheatsheet capture (~3 min). Owner flips to pc on next read."
+﻿{
+    "turn_id":  6,
+    "owner":  "pc",
+    "phase":  "PHASE_D_RETURN",
+    "started_at":  "2026-05-20T23:32:38Z",
+    "pending_do":  [
+
+                   ],
+    "pending_exec":  [
+                         {
+                             "status":  "queued",
+                             "id":  "exec-1",
+                             "desc":  "Read reflection-turn-6-mac + docs"
+                         },
+                         {
+                             "status":  "queued",
+                             "id":  "exec-2",
+                             "desc":  "Write CHEATSHEET-PC.md"
+                         },
+                         {
+                             "status":  "queued",
+                             "id":  "exec-3",
+                             "desc":  "Quick sanity re-validate night-recon"
+                         },
+                         {
+                             "status":  "queued",
+                             "id":  "exec-4",
+                             "desc":  "Audit + reflection-turn-6-pc + push"
+                         }
+                     ],
+    "loop_signals":  [
+
+                     ],
+    "notes":  "CS parallel. NO GUI launches."
 }
