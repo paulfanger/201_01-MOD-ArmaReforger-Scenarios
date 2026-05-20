@@ -104,3 +104,39 @@ cat tasks/PC_TASK.md
 ```
 
 Dann handle entsprechend.
+
+---
+
+## Polling-Loop (autonom — keine User-Nudges nötig)
+
+Nach jedem `git push` deines Results: **Polle 30 Minuten lang im 60s-Takt**, ob neue Task da ist.
+
+```powershell
+$lastTaskId = "<die ID die du grad abgearbeitet hast>"
+$maxMin = 30
+$start = Get-Date
+
+while (((Get-Date) - $start).TotalMinutes -lt $maxMin) {
+    Start-Sleep -Seconds 60
+    cd C:\Users\pfofa\Desktop\000_Projekte\201_01-MOD-ArmaReforger-Scenarios
+    git pull --quiet
+    $current = (Get-Content tasks\PC_TASK.md | Select-String "TASK_ID:" | Select-Object -First 1) -replace ".*TASK_ID:\s*", ""
+    if ($current -ne $lastTaskId) {
+        Write-Output "Neue Task: $current — starte Ausführung"
+        break  # raus aus poll loop, weiter mit task ausführen
+    }
+}
+```
+
+Wenn 30min vorbei sind ohne neue Task: melden im Chat und ruhen, User kann manuell wecken.
+
+---
+
+## Test-CLI (siehe research/06-workbench-cli-flags.md)
+
+Für autonome Mission-Validierung:
+- `-validate` → Exit code 0=ok, -1=compile fail
+- `-wbSilent -exitAfterInit -gproj X -load Y` → world-load smoke test
+- Logs: `%USERPROFILE%\Documents\My Games\ArmaReforgerWorkbench\logs\logs_<TS>\console.log`
+- Fatal-Pattern: `^(WORLD|ENGINE|SCRIPT)\s+\((E|F)\):`
+- Success-Heuristic: ≥1 `Entities load`, ≥1 `Entity layer load`, 0 `(F):` Zeilen, Exit-Code 0
