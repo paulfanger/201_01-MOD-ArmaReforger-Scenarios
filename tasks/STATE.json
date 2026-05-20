@@ -1,19 +1,12 @@
-﻿{
-    "turn_id":  4,
-    "owner":  "pc",
-    "phase":  "PHASE_D_RETURN",
-    "started_at":  "2026-05-20T22:14:36Z",
-    "finished_at":  "2026-05-20T22:23:08Z",
-    "pending_do":  [
-
-                   ],
-    "pending_exec":  [
-
-                     ],
-    "loop_signals":  [
-
-                     ],
-    "last_reflection":  "logs/reflection-turn-4.md",
-    "rollback_snapshot":  null,
-    "notes":  "PC Task 005 done. Validate 3/3 PASS, Smoke 0/3 FAIL (CLI-semantic, not crash). Awaiting Mac decision on smoke-alternative."
+{
+  "turn_id": 5,
+  "owner": "mac",
+  "phase": "PHASE_D_RETURN",
+  "started_at": "2026-05-20T22:35:00Z",
+  "pending_do": [],
+  "pending_exec": [],
+  "last_reflection": "logs/reflection-turn-5.md",
+  "rollback_snapshot": null,
+  "loop_signals": [],
+  "notes": "Mac-side Loop Turn #5 prepared: pc-setup quoting fix (New-Item -Junction), research/06 Section B disconfirmed, PC_AGENT_BRIEF Sonnet-compatibility note, Task 006 spec (GUI smoke + DRY pattern + multimodal ui-tester). Ready for paste-to-PC. Owner flips to pc on next read."
 }

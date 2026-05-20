@@ -1,14 +1,14 @@
 # PC Setup — reproduzierbar per Junction-Anlage für Vanilla-Addon-Deps
-# Per Loop Turn #4 / PC question 2 — codify what PC discovered manually in Task 003.
+# Per Loop Turn #5 / fixes Line 49 quoting bug reported in Task 005.
 #
 # Run once per PC. Creates symlinks (junctions) so Workbench-Diag can resolve vanilla
 # deps (`core` + `data`) when validating user-Addons.
 #
-# Idempotent: re-running is safe (mklink errors if exists, we ignore).
+# Idempotent: re-running is safe.
 
 $ErrorActionPreference = "Continue"
 
-$wbAddons = "$env:USERPROFILE\Documents\my games\ArmaReforgerWorkbench\addons"
+$wbAddons = Join-Path $env:USERPROFILE "Documents\my games\ArmaReforgerWorkbench\addons"
 $steamReforger = "C:\Program Files (x86)\Steam\steamapps\common\Arma Reforger\addons"
 $altSteam = "E:\SteamLibrary\steamapps\common\Arma Reforger\addons"
 
@@ -24,26 +24,28 @@ if (-not (Test-Path $steamReforger)) {
 New-Item -ItemType Directory -Path $wbAddons -Force | Out-Null
 
 $junctions = @(
-    @{ name = "_vanilla_core"; target = "$steamReforger\core" }
-    @{ name = "_vanilla_data"; target = "$steamReforger\data" }
+    @{ name = "_vanilla_core"; target = (Join-Path $steamReforger "core") }
+    @{ name = "_vanilla_data"; target = (Join-Path $steamReforger "data") }
 )
 
 foreach ($j in $junctions) {
     $linkPath = Join-Path $wbAddons $j.name
     if (Test-Path $linkPath) {
-        Write-Output "[skip] Junction $($j.name) existiert bereits"
+        Write-Output ("[skip] Junction {0} existiert bereits" -f $j.name)
         continue
     }
     if (-not (Test-Path $j.target)) {
-        Write-Warning "Target nicht gefunden: $($j.target) — skip"
+        Write-Warning ("Target nicht gefunden: {0} -- skip" -f $j.target)
         continue
     }
-    cmd /c mklink /J "`"$linkPath`"" "`"$($j.target)`""
-    if ($LASTEXITCODE -eq 0) {
-        Write-Output "[ok] Junction $($j.name) -> $($j.target)"
-    } else {
-        Write-Warning "mklink failed for $($j.name)"
+    # Use New-Item with SymbolicLink (PowerShell-native, no cmd.exe quoting issues)
+    try {
+        New-Item -ItemType Junction -Path $linkPath -Target $j.target -Force | Out-Null
+        Write-Output ("[ok] Junction {0} -> {1}" -f $j.name, $j.target)
+    } catch {
+        Write-Warning ("Junction creation failed for {0}: {1}" -f $j.name, $_.Exception.Message)
     }
 }
 
-Write-Output "`nDone. Workbench-Diag kann jetzt Vanilla-Deps resolven."
+Write-Output ""
+Write-Output "Done. Workbench-Diag kann jetzt Vanilla-Deps resolven."

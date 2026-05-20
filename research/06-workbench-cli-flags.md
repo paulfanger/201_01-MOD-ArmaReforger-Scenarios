@@ -75,11 +75,29 @@ ArmaReforgerWorkbenchSteamDiag.exe -gproj "C:\elos\addon.gproj" -validate -logsD
 ```
 Exit code 0 = scripts compile. Does NOT verify world load.
 
-### B) World-load smoke test (~30-60s)
+### B) World-load smoke test (~30-60s) ⚠️ DISCONFIRMED
+
+> **[DISCONFIRMED 2026-05-20 — Task 005 commit 6cf9b9a]**
+> Workbench-Diag 1.6.0.119 mit `-wbSilent -exitAfterInit -load $Addon:Worlds/X.ent`
+> exited sauber nach Engine-Init in ~5s **OHNE** `Entities load` Trigger.
+> Test ohne `-exitAfterInit`: gleiches Verhalten. Engine läuft komplett durch, lädt
+> aber die `.ent` nicht.
+> Details: `tasks/archive/PC_RESULT_task003.md` + Task 005 bug-fixer output
+> `logs/bugfix-task005-*.json`.
+>
+> **Alternativen für Smoke-Test (per Task 006):**
+> - (a) Custom Workbench-Plugin (Enforce Script) — skeleton in `workbench-plugin/AI_GeneratePlugin.c`, aber noch pseudocode (Phase 2 deliverable)
+> - **(b) GUI + Auto-Screenshot + multimodal ui-tester classify** — gewählt für Task 006
+> - (c) Linux dedi `-listScenarios` — needs Docker/Linux machine, ungetestet
+
+~~Original (kept for historical reference, do not use as-is):~~
+
 ```
 ArmaReforgerWorkbenchSteamDiag.exe -gproj "C:\elos\addon.gproj" -load "$Addon:Worlds/Name/Name.ent" -wbSilent -exitAfterInit -logsDir "C:\elos\logs"
 ```
-Parse the new `logs_<TS>\console.log` for success patterns.
+
+Parse the new `logs_<TS>\console.log` for success patterns — confirmed only for
+`-validate`, NOT for world-load.
 
 ### C) Mac-friendly fallback (NOT YET VERIFIED)
 Linux dedicated server `-listScenarios` flag — prints discovered scenarios from `-addonsDir`. Confirms addon tree parses without GUI. Reference: `OPEN_QUESTION_1_DEFERRED.md`.

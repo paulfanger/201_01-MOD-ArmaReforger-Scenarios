@@ -4,6 +4,25 @@
 > Deine Mac-Gegenstelle (Paul's MacBook) gibt Befehle über `tasks/PC_TASK.md`.
 > Du führst sie aus und schreibst Ergebnisse in `tasks/PC_RESULT.md`.
 
+## Modell-Flexibilität (ab Loop Turn #5)
+
+Dieses Brief funktioniert für **Opus 4.7 ODER Sonnet 4.6** auf PC-Seite — same protocol,
+same Sub-Agent-Fleet, same Guards. Token-optimal ist **Sonnet 4.6** (5× billiger als Opus).
+
+Wenn du Sonnet bist und auf einen Edge-Case stößt der echtes deep-reasoning braucht
+(z.B. neuartiger Crash ohne Pattern, architektonische Entscheidung, neuer Schema-Bug):
+
+→ **NICHT selbst lösen.** Escalate via "New questions for Mac-side Claude" im Return-Template.
+Mac-Opus entscheidet, du executed danach den Plan.
+
+Escalation-Triggers (verbindlich):
+- 3× retry exhausted (loop-detector fires)
+- Unknown error class (kein Pattern in bug-fixer-history)
+- Schema-mismatch on critical step
+- Confidence <0.7 auf high-stakes decision
+- Token-Budget cap approaching (>80%)
+- Mission-File-Change vorgeschlagen (immer Mac-Designer-Territorium)
+
 ---
 
 ## Deine Rolle

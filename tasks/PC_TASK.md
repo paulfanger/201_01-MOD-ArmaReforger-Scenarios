@@ -1,377 +1,320 @@
-# PC Task — Task 005: Author-Fix Re-Validation (autonom, headless, log-pattern based)
+# PC Task — Task 006: GUI Smoke-Test mit Auto-Screenshot + Multimodal Verify
 
 STATUS: PENDING
-TASK_ID: 005
-PHASE: 2
-TYPE: hardened_validation + log_pattern_pass_fail
+TASK_ID: 006
+TURN_ID: 5
+PHASE: 2-3 (Smoke-Bridge)
+TYPE: gui_smoke_test + multimodal_ui_verify + dry_pattern_intro
 
 ## Kontext
 
-Du hattest in Task 003 (Result commit 655c2f4) den Mac-Side-Bug aufgedeckt:
-`Author "..."` in `addon.gproj` ist nicht im Enfusion-Schema, kein gültiges Keyword.
+Task 005 lieferte den grossen Win: **3/3 Validate PASS** (commit 6cf9b9a). Smoke-Test
+mit `-wbSilent -exitAfterInit -load X.ent` schlug fehl — research/06 Section B ist
+empirisch disconfirmed.
 
-Mac hat behoben (commit incoming):
-- `backend/exporters/gproj.py` Author-Zeile entfernt
-- Alle 3 `missions/<id>/output/addon.gproj` Author-Zeile entfernt
-- 111/111 Tests passen unverändert
+Mac hat entschieden (Loop Turn #5):
+- ✅ Smoke-Alternative **Option (b) GUI + Auto-Screenshot** (Plugin ist nur Skeleton, Linux-Dedi braucht extra Setup)
+- ✅ research/06 Section B mit DISCONFIRMED-Label gepatcht
+- ✅ pc-setup.ps1 Line 49 quoting bug gefixt (Mac commit incoming)
+- ✅ 🧪 DRY marker als Safety-Pattern für destructive Ops ab dieser Task aktiv
+- ✅ Du darfst (sollst) auf Sonnet 4.6 switchen — Protocol funktioniert identisch
 
-**Du hattest 4 Fragen — Antworten:**
+## Phase A (Two-Phase Reception)
 
-| Q | Antwort |
-|---|---|
-| Author-Attribution Place | DISCLOSURE.md ist die Heimat (bereits dort). Kein Kommentar im gproj — Enfusion akzeptiert es nicht. Fix ist komplett. |
-| pc-setup.ps1 für Junctions | Ja — angelegt in `scripts/pc-setup.ps1`. Du kannst es re-runnen, idempotent. |
-| Exit-Code vs Log-Pattern | Switch zu Log-Pattern. Success-Heuristik aus `research/06`: ≥1 `Entities load`, ≥1 `Entity layer load`, 0 `(F):` Zeilen. Exit-Code ignoriert ab Task 005. |
-| Task 004 oder warten | Task 005 ersetzt 004. Direkt mit dieser Spec starten. |
+⚙️ DO Items: **EINS** — du selbst (PC-Side) entscheidest beim Modell-Switch:
+- Im Claude-Code-App-Modell-Selector auf Sonnet 4.6 wechseln (optional, kostenoptimiert)
+- ODER auf Opus 4.7 bleiben (sicherer aber teurer)
 
-Plus: Mac-Side hat Research-Findings integriert (`research/07-agentic-patterns-2026.md`):
-- **🧪 DRY marker** für destructive operations (4th marker)
-- Loop-Detector refined: 4 Loop-Typen (identical / repeated-error / monologue / no-progress)
-- `tasks/STATE.json` für Crash-Recovery
-- `logs/reflection-turn-<N>.md` Pflicht am Turn-Ende (Reflexion-Pattern)
+Wenn du diesen Block bekommst, sag User: "Möchtest du jetzt auf Sonnet 4.6 switchen
+(empfohlen, 70% billiger), oder Opus 4.7 weiter?"
 
----
+Egal welche Wahl: Phase C kann beides ausführen.
 
-## Schritt 0 — Two-Phase Reception verifizieren
+## Phase C — Steps
 
-Wenn du diesen Block bekommst, BEVOR du EXECutest:
-
-**Phase A:** Da sind keine ⚙️ DO-Items in diesem Turn (Author-Fix war Mac-Side, kein User-Klick).
-Sag User: "Keine manuellen Schritte. Starte Phase C direkt."
-
-**Phase B:** Skip — keine Items zu verifizieren.
-
-**Phase C (jetzt):** Run Steps 1-9 unten.
-
-**Phase D:** Single Return Output am Ende.
-
----
-
-## Schritt 1 — Update STATE.json + Logger + Reflection lesen
+### Step 1 — STATE.json + Logger + Reflection
 
 ```powershell
 $repo = "C:\Users\pfofa\Desktop\000_Projekte\201_01-MOD-ArmaReforger-Scenarios"
 cd $repo
 git pull --rebase
 
-# Read predecessor reflection (Reflexion pattern)
-if (Test-Path "logs\reflection-turn-3.md") {
-    Write-Output "=== Reading turn-3 reflection (Mac-side) ==="
-    Get-Content "logs\reflection-turn-3.md"
+if (Test-Path "logs\reflection-turn-4.md") {
+    Write-Output "=== Reading turn-4 reflection (PC own) ==="
+    Get-Content "logs\reflection-turn-4.md"
 }
 
-# Update STATE.json: phase → PHASE_C_EXEC, owner → pc, turn_id 4 (this is your response to Mac's turn 4)
+# STATE.json update
 $state = @{
-    turn_id = 4
+    turn_id = 5
     owner = "pc"
     phase = "PHASE_C_EXEC"
     started_at = (Get-Date -Format "yyyy-MM-ddTHH:mm:ssZ")
     pending_do = @()
     pending_exec = @(
-        @{ id="exec-1"; desc="pc-setup.ps1 (junctions)"; status="queued" }
-        @{ id="exec-2"; desc="dep-installer pre-flight"; status="queued" }
-        @{ id="exec-3"; desc="Re-copy 3 missions to addons"; status="queued" }
-        @{ id="exec-4"; desc="Validate via log-pattern (3 missions)"; status="queued" }
-        @{ id="exec-5"; desc="Smoke via log-pattern (3 missions)"; status="queued" }
-        @{ id="exec-6"; desc="Auditor + reflection + push"; status="queued" }
+        @{ id="exec-1"; desc="Verify pc-setup.ps1 fix (re-run idempotent)"; status="queued" }
+        @{ id="exec-2"; desc="🧪 DRY plan for addon re-copy (cleanup + recopy)"; status="queued" }
+        @{ id="exec-3"; desc="Approve DRY → execute cleanup + recopy"; status="queued" }
+        @{ id="exec-4"; desc="GUI Workbench launch (no -wbSilent) for night-recon-everon"; status="queued" }
+        @{ id="exec-5"; desc="Screenshot at +60s, +90s, +120s"; status="queued" }
+        @{ id="exec-6"; desc="ui-tester sub-agent classify screenshots"; status="queued" }
+        @{ id="exec-7"; desc="Repeat 4-6 für day-assault, fog-ambush"; status="queued" }
+        @{ id="exec-8"; desc="Auditor + reflection + push"; status="queued" }
     )
     loop_signals = @()
 } | ConvertTo-Json -Depth 5
 $state | Set-Content "tasks\STATE.json" -Encoding UTF8
 
-# Start logger
 $ts = Get-Date -Format "yyyyMMdd_HHmmss"
-$logFile = "logs\pc-events-task005-$ts.jsonl"
-"{`"t`":`"$((Get-Date -Format 's')+'Z')`",`"kind`":`"start`",`"turn_id`":4,`"task_id`":`"005`"}" | Add-Content $logFile
+$logFile = "logs\pc-events-task006-$ts.jsonl"
+"{`"t`":`"$((Get-Date -Format 's')+'Z')`",`"kind`":`"start`",`"turn_id`":5,`"task_id`":`"006`"}" | Add-Content $logFile
 ```
 
-## Schritt 2 — Junctions per scripts/pc-setup.ps1
+### Step 2 — Verify pc-setup.ps1 fix
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File "$repo\scripts\pc-setup.ps1"
 ```
 
-Capture Output. Falls schon vorhanden: `[skip]` ist ok.
+Sollte `[skip]` für beide Junctions melden + "Done." am Ende — **ohne Parse-Error diesmal**.
 
-## Schritt 3 — Dep-installer pre-flight
+Capture full output in Result.
 
-Wie Task 004 (spawned als sub-agent):
-- git, powershell-screenshot, workbench-diag, python, pillow
+### Step 3 — 🧪 DRY Marker: Plan addon-cleanup + recopy
 
-Bei Auto-Install: process-tracker dafür. Output: `logs/deps-task005-<ts>.json`.
-
-## Schritt 4 — Mission-Files frisch kopieren (Author-Fix anwenden)
+**NEU in Task 006**: vor destructive Ops emittierst du erst einen DRY-Plan mit Hash.
 
 ```powershell
+# 1. Compute DRY plan
 $addonsRoot = "$env:USERPROFILE\Documents\my games\ArmaReforger\addons"
-foreach ($mission in @("night-recon-everon","day-assault-arland","fog-ambush-eden")) {
+$missions = @("night-recon-everon","day-assault-arland","fog-ambush-eden")
+
+$dryPlan = @()
+foreach ($mission in $missions) {
+    $target = "$addonsRoot\ai_$mission"
     $src = "$repo\missions\$mission\output"
-    $dst = "$addonsRoot\ai_$mission"
-    Remove-Item -Path $dst -Recurse -Force -ErrorAction SilentlyContinue
-    Copy-Item -Path $src -Destination $dst -Recurse -Force
-    Write-Output "RECOPIED: $mission"
-
-    # Verify: addon.gproj should NOT contain "Author"
-    $gproj = Get-Content "$dst\addon.gproj" -Raw
-    if ($gproj -match "^\s*Author\s") {
-        Write-Output "FAIL: $mission still has Author line!"
-    } else {
-        Write-Output "OK: $mission addon.gproj clean"
+    $action = if (Test-Path $target) { "REMOVE then COPY" } else { "COPY" }
+    $dryPlan += [PSCustomObject]@{
+        mission = $mission
+        target = $target
+        src = $src
+        action = $action
+        files_to_delete = (Get-ChildItem -Path $target -Recurse -ErrorAction SilentlyContinue | Measure-Object | Select-Object -ExpandProperty Count)
+        files_to_copy = (Get-ChildItem -Path $src -Recurse | Measure-Object).Count
     }
+}
+
+# 2. Hash the plan
+$planJson = $dryPlan | ConvertTo-Json -Depth 3
+$planHash = (Get-FileHash -InputStream ([IO.MemoryStream]::new([Text.Encoding]::UTF8.GetBytes($planJson))) -Algorithm SHA256).Hash.Substring(0,16)
+
+Write-Output "🧪 DRY PLAN (hash: $planHash):"
+$dryPlan | Format-Table
+
+# 3. Save plan + hash for evidence
+$planJson | Set-Content "$repo\logs\dry-plan-task006-$ts.json"
+"hash: $planHash" | Add-Content "$repo\logs\dry-plan-task006-$ts.json"
+```
+
+### Step 4 — DRY Approve + Execute cleanup + recopy
+
+```powershell
+# Self-approve (no Mission-File-Changes, only addon-folder-cleanup which IS reversible
+# via re-copy from missions/<id>/output)
+Write-Output "DRY plan hash $planHash — self-approved (cleanup is reversible)"
+
+foreach ($plan in $dryPlan) {
+    if ($plan.action -eq "REMOVE then COPY") {
+        Remove-Item -Path $plan.target -Recurse -Force
+    }
+    Copy-Item -Path $plan.src -Destination $plan.target -Recurse -Force
+    Write-Output "[$($plan.mission)] $($plan.action): done"
 }
 ```
 
-## Schritt 5 — Validate via LOG-PATTERN (jede Mission, max 3 retries, mit guards)
+Schreib in PC_RESULT.md unter `### DRY Pattern Demo` die Erfahrung damit. Wenn das Pattern
+funktioniert, übernehmen wir es für künftige destructive Ops.
 
-Pro Mission:
-
-```powershell
-$diag = "C:\Program Files (x86)\Steam\steamapps\common\Arma Reforger Tools\Workbench\ArmaReforgerWorkbenchSteamDiag.exe"
-
-function Test-MissionValidate {
-    param([string]$Mission, [string]$Repo, [string]$AddonsRoot)
-
-    $addon = "$AddonsRoot\ai_$Mission"
-    $gproj = "$addon\addon.gproj"
-    $logDir = "$Repo\logs\validate-$Mission-task005"
-    New-Item -ItemType Directory -Path $logDir -Force | Out-Null
-
-    $proc = Start-Process -FilePath $diag -ArgumentList @(
-        "-gproj", "`"$gproj`"",
-        "-validate",
-        "-wbSilent",           # mandatory — sonst öffnet sich GUI-Dialog
-        "-exitAfterInit",
-        "-logsDir", "`"$logDir`""
-    ) -PassThru -NoNewWindow
-
-    # 60s budget per validate
-    $waitSec = 0
-    while (-not $proc.HasExited -and $waitSec -lt 60) {
-        Start-Sleep -Seconds 2
-        $waitSec += 2
-    }
-
-    if (-not $proc.HasExited) {
-        Stop-Process -Id $proc.Id -Force
-        return @{ status="TIMEOUT"; mission=$Mission; logs=$null }
-    }
-
-    # Parse console.log — log-pattern based pass/fail (NOT exit code)
-    $console = Get-ChildItem "$logDir\logs_*\console.log" -Recurse | Sort-Object LastWriteTime -Desc | Select-Object -First 1
-    if (-not $console) {
-        return @{ status="NO_LOG"; mission=$Mission; exit_code=$proc.ExitCode }
-    }
-
-    $content = Get-Content $console.FullName -Raw
-    $hasEntitiesLoad = $content -match "WORLD\s+:\s+Entities load"
-    $hasLayerLoad    = $content -match "WORLD\s+:\s+Entity layer load"
-    $fatals          = ([regex]::Matches($content, "(?m)^(WORLD|ENGINE|SCRIPT)\s+\(F\):")).Count
-    $errors          = ([regex]::Matches($content, "(?m)^(WORLD|ENGINE|SCRIPT)\s+\(E\):")).Count
-
-    # -validate only compiles, doesn't necessarily emit Entities load
-    # Success = NO fatals + NO non-author errors
-    $passed = ($fatals -eq 0) -and ($errors -eq 0)
-
-    return @{
-        status = if ($passed) {"PASS"} else {"FAIL"}
-        mission = $Mission
-        exit_code = $proc.ExitCode  # informational only
-        entities_load = $hasEntitiesLoad
-        layer_load = $hasLayerLoad
-        fatal_count = $fatals
-        error_count = $errors
-        console_log = $console.FullName
-        error_lines = ([regex]::Matches($content, "(?m)^(WORLD|ENGINE|SCRIPT)\s+\((E|F)\):.*$") | ForEach-Object { $_.Value } | Select-Object -First 10)
-    }
-}
-
-$validateResults = @{}
-foreach ($mission in @("night-recon-everon","day-assault-arland","fog-ambush-eden")) {
-    $iter = 0
-    $errorHashes = @()  # for action-class + error-class loop-detector
-    while ($iter -lt 3) {
-        $iter++
-        $r = Test-MissionValidate -Mission $mission -Repo $repo -AddonsRoot $addonsRoot
-        $r.iter = $iter
-
-        # Loop-detector (action-class + error-class)
-        $errorClass = if ($r.status -eq "PASS") { "ok" } else { "$($r.status):$($r.fatal_count)F-$($r.error_count)E" }
-        $errorHashes += $errorClass
-
-        if ($r.status -eq "PASS") {
-            $validateResults[$mission] = $r
-            break
-        }
-
-        # Same error-class 4× → LOOP_DETECTED (StuckDetector threshold)
-        $dupes = $errorHashes | Group-Object | Where-Object { $_.Count -ge 4 }
-        if ($dupes) {
-            Write-Output "LOOP_DETECTED on $mission — same error-class $iter× — escalating"
-            $r.status = "LOOP_DETECTED"
-            $validateResults[$mission] = $r
-            break
-        }
-
-        Start-Sleep -Seconds 3
-    }
-
-    if (-not $validateResults.ContainsKey($mission)) {
-        $validateResults[$mission] = @{ status="FAIL_MAX_RETRIES"; mission=$mission; iter=$iter }
-    }
-}
-
-$validateResults | ConvertTo-Json -Depth 5 | Out-File "$repo\logs\validate-results-task005.json"
-```
-
-## Schritt 6 — Smoke-Test (conditional auf Validate PASS)
-
-Für jede Mission die Validate PASSED:
+### Step 5 — GUI Workbench Launch (one mission at a time)
 
 ```powershell
-function Test-MissionSmoke {
+function Test-MissionGUI {
     param([string]$Mission, [string]$Repo, [string]$AddonsRoot)
 
     $diag = "C:\Program Files (x86)\Steam\steamapps\common\Arma Reforger Tools\Workbench\ArmaReforgerWorkbenchSteamDiag.exe"
     $addon = "$AddonsRoot\ai_$Mission"
     $gproj = "$addon\addon.gproj"
     $worldRef = "`$ai_${Mission}:Worlds/${Mission}.ent"
-    $logDir = "$Repo\logs\smoke-$Mission-task005"
-    New-Item -ItemType Directory -Path $logDir -Force | Out-Null
+    $missionLogDir = "$Repo\logs\gui-smoke-$Mission"
+    New-Item -ItemType Directory -Path $missionLogDir -Force | Out-Null
 
+    # Launch WITHOUT -wbSilent (GUI mode) + WITH -load (try auto-load)
     $proc = Start-Process -FilePath $diag -ArgumentList @(
         "-gproj", "`"$gproj`"",
         "-load", "`"$worldRef`"",
-        "-wbSilent",
-        "-exitAfterInit",
-        "-logsDir", "`"$logDir`""
-    ) -PassThru -NoNewWindow
+        "-logsDir", "`"$missionLogDir`""
+    ) -PassThru
 
-    # 180s budget
-    $waitSec = 0
-    while (-not $proc.HasExited -and $waitSec -lt 180) {
-        Start-Sleep -Seconds 5
-        $waitSec += 5
+    # Take screenshots at 60s, 90s, 120s
+    $screenshots = @()
+    foreach ($wait in @(60, 90, 120)) {
+        Start-Sleep -Seconds 30  # 30s each (60, 90, 120 cumulative)
+        $shotPath = "$missionLogDir\screenshot-$wait-sec.png"
+        Take-Screenshot -OutPath $shotPath
+        $screenshots += $shotPath
+
+        # Check if process still alive
+        $alive = -not $proc.HasExited
+        Write-Output "[$Mission @ ${wait}s] Process alive: $alive · Screenshot: $shotPath"
     }
 
+    # Get window info
+    $windows = Get-VisibleWindows | Where-Object { $_.ProcessName -like "*Workbench*" -or $_.ProcessName -like "*ArmaReforger*" }
+
+    # Try to close Workbench gracefully
     if (-not $proc.HasExited) {
-        Stop-Process -Id $proc.Id -Force
-        return @{ status="TIMEOUT"; mission=$Mission }
+        $proc | Stop-Process -Force
+        Start-Sleep -Seconds 2
     }
-
-    # SUCCESS HEURISTIC (log-pattern, per research/06 + 07):
-    # ≥1 Entities load + ≥1 Entity layer load + 0 fatal lines
-    $console = Get-ChildItem "$logDir\logs_*\console.log" -Recurse | Sort-Object LastWriteTime -Desc | Select-Object -First 1
-    if (-not $console) {
-        return @{ status="NO_LOG"; mission=$Mission }
-    }
-
-    $content = Get-Content $console.FullName -Raw
-    $hasEntitiesLoad = $content -match "WORLD\s+:\s+Entities load"
-    $hasLayerLoad    = $content -match "WORLD\s+:\s+Entity layer load"
-    $fatals          = ([regex]::Matches($content, "(?m)^(WORLD|ENGINE|SCRIPT)\s+\(F\):")).Count
-    $errors          = ([regex]::Matches($content, "(?m)^(WORLD|ENGINE|SCRIPT)\s+\(E\):")).Count
-
-    $passed = $hasEntitiesLoad -and $hasLayerLoad -and ($fatals -eq 0)
 
     return @{
-        status = if ($passed) {"PASS"} else {"FAIL"}
         mission = $Mission
-        entities_load = $hasEntitiesLoad
-        layer_load = $hasLayerLoad
-        fatal_count = $fatals
-        error_count = $errors
-        console_log = $console.FullName
-        error_lines = ([regex]::Matches($content, "(?m)^(WORLD|ENGINE|SCRIPT)\s+\((E|F)\):.*$") | ForEach-Object { $_.Value } | Select-Object -First 15)
+        screenshots = $screenshots
+        windows = $windows
+        process_alive_at_120s = ($alive)
+        log_dir = $missionLogDir
     }
 }
 
-$smokeResults = @{}
+# Screenshot helper (already in PC_AGENT_BRIEF)
+function Take-Screenshot {
+    param([string]$OutPath)
+    Add-Type -AssemblyName System.Windows.Forms,System.Drawing
+    $bounds = [Windows.Forms.Screen]::PrimaryScreen.Bounds
+    $bmp = New-Object Drawing.Bitmap $bounds.Width, $bounds.Height
+    $gfx = [Drawing.Graphics]::FromImage($bmp)
+    $gfx.CopyFromScreen($bounds.Location, [Drawing.Point]::Empty, $bounds.Size)
+    $bmp.Save($OutPath, [Drawing.Imaging.ImageFormat]::Png)
+    $gfx.Dispose(); $bmp.Dispose()
+}
+
+function Get-VisibleWindows {
+    Get-Process | Where-Object {
+        $_.MainWindowHandle -ne 0 -and $_.MainWindowTitle -ne ""
+    } | Select-Object Id, ProcessName, MainWindowTitle, Responding
+}
+
+$guiResults = @{}
 foreach ($mission in @("night-recon-everon","day-assault-arland","fog-ambush-eden")) {
-    if ($validateResults[$mission].status -ne "PASS") {
-        $smokeResults[$mission] = @{ status="SKIP"; reason="validate failed/loop"; mission=$mission }
-        continue
-    }
-    $smokeResults[$mission] = Test-MissionSmoke -Mission $mission -Repo $repo -AddonsRoot $addonsRoot
+    $guiResults[$mission] = Test-MissionGUI -Mission $mission -Repo $repo -AddonsRoot $addonsRoot
+    Start-Sleep -Seconds 5  # spacing between missions
 }
-$smokeResults | ConvertTo-Json -Depth 5 | Out-File "$repo\logs\smoke-results-task005.json"
 ```
 
-## Schritt 7 — Bug-fixer (falls FAILs)
+### Step 6 — Spawn ui-tester Sub-Agent für jeden Screenshot
 
-Falls Validate oder Smoke FAILs hat: spawn bug-fixer mit den error_lines aus den
-console.logs. Output: `logs/bugfix-task005-<ts>.json`.
+Für jedes Screenshot-Set (3 Screenshots × 3 Missions = 9 PNGs):
 
-bug-fixer schlägt VOR, ändert KEINE Mission-Files.
+Spawn `ui-tester` Sub-Agent mit:
+- Input: screenshot PNG path
+- Aufgabe: multimodal-vision-classify
+  - `mission_loaded`: Karte mit Entitäten sichtbar, Mission-Name im Title
+  - `project_selector`: Workbench zeigt Project-Selection-Dialog
+  - `error_popup`: Error-Dialog im Vordergrund (extract OCR-text)
+  - `loading`: Splash/Loading-Screen
+  - `crashed`: Window weg, Process exited
+  - `unknown`: nichts davon
 
-## Schritt 8 — Auditor pre-push
+Output pro Screenshot: `logs/ui-task006-<mission>-<ts>-<seconds>s.json` mit
+`{classification, confidence, extracted_text, suggested_next_action}`.
 
-Auditor verifiziert:
-- alle 3 Missions tracked (validate + smoke)
-- alle console.logs in result referenced
-- alle (E)/(F) triaged (bug-fixer angesprungen wenn nötig)
-- STATE.json korrekt (phase=PHASE_D_RETURN at end)
-- reflection-turn-4.md geschrieben
+### Step 7 — Wenn `mission_loaded` ≥1 Screenshot pro Mission: PASS
 
-Output: `logs/audit-task005-<ts>.json`.
+Aggregation:
 
-Falls Audit BLOCKED → STOP, melde im Result.
+```powershell
+$smokeVerdict = @{}
+foreach ($mission in @("night-recon-everon","day-assault-arland","fog-ambush-eden")) {
+    $shotResults = Get-ChildItem "$repo\logs" -Filter "ui-task006-$mission-*.json" | ForEach-Object {
+        Get-Content $_.FullName | ConvertFrom-Json
+    }
 
-## Schritt 9 — Reflection schreiben (Reflexion pattern)
+    $hasLoaded = $shotResults | Where-Object { $_.classification -eq "mission_loaded" }
+    $hasError = $shotResults | Where-Object { $_.classification -eq "error_popup" }
+    $hasCrash = $shotResults | Where-Object { $_.classification -eq "crashed" }
 
-Schreib `logs/reflection-turn-4.md` (PC-side) mit Struktur:
-
-```markdown
-# Turn 4 Reflection (PC-side)
-
-## What went well
-- ...
-
-## What failed (and why)
-- ...
-
-## What I'd do differently next turn
-- ...
-
-## Signals for optimizer
-- duration_ms: <X>
-- sub-agents spawned: <N>
-- guards fired: <list>
-- loop signals: <list>
+    if ($hasLoaded) {
+        $smokeVerdict[$mission] = "PASS"
+    } elseif ($hasCrash -or $hasError) {
+        $smokeVerdict[$mission] = "FAIL"
+    } else {
+        $smokeVerdict[$mission] = "UNKNOWN"  # still loading or project selector visible
+    }
+}
+$smokeVerdict | ConvertTo-Json | Out-File "$repo\logs\gui-smoke-verdict-task006.json"
 ```
 
-## Schritt 10 — Commit + Push
+### Step 8 — Bug-fixer wenn FAIL oder UNKNOWN
+
+Falls Status nicht PASS für ≥1 Mission:
+
+Spawn bug-fixer mit:
+- Input: alle ui-task006 JSONs für betroffene Mission + screenshots
+- Aufgabe: was zeigt der Screenshot? Liegt Mission an Project-Selector? Crash? Specific Error?
+- Output: `logs/bugfix-task006-<ts>.json` mit Vorschlag
+
+bug-fixer ändert KEINE Mission-Files. Vorschläge gehen an Mac.
+
+### Step 9 — Auditor + Reflection
+
+Auditor verifies:
+- DRY plan recorded + hash matches
+- Alle 9 Screenshots in logs/
+- Alle 9 ui-tester JSONs vorhanden
+- ≥1 von 3 Missions mit mission_loaded ODER explicit bug-fixer-Vorschlag
+
+Reflection-turn-5.md schreiben (PC-side).
+
+### Step 10 — Push
 
 ```powershell
 cd $repo
-# Update STATE.json: phase → PHASE_D_RETURN
 $state = Get-Content "tasks\STATE.json" -Raw | ConvertFrom-Json
 $state.phase = "PHASE_D_RETURN"
 $state | ConvertTo-Json -Depth 5 | Set-Content "tasks\STATE.json" -Encoding UTF8
 
 git pull --rebase
 git add tasks/PC_RESULT.md tasks/STATE.json logs/
-git commit -m "PC: Task 005 — Author-fix validate + smoke (log-pattern)"
+git commit -m "PC: Task 006 -- GUI smoke + DRY marker demo"
 git push
 ```
 
 ---
 
-## Pause-Conditions (HARD STOP)
+## Pause-Conditions
 
-- LOOP_DETECTED (4 retries same error-class) → STOP, blocker mit evidence
-- Steam-Tools fehlt nach dep-install → STOP, ⚙️ DO
-- Workbench-Diag crash <5s mit (F) → STOP, bug-fixer im Result
-- Junction creation fails → STOP, Workbench kann nicht resolven
-- turn_time_budget (30 min) → STOP, was-bisher-erreicht
+- DRY plan hash invalid / verändert sich zwischen plan und exec → STOP (race condition)
+- Workbench-Diag crasht in 5s mit (F) → STOP, bug-fixer
+- ui-tester verweigert Klassifikation (confidence <0.5 für alle Screenshots) → bug-fixer
+- 3+ Missions mit error_popup → STOP, ⚙️ DO an User
+- turn_time_budget (30 min) → STOP
 
 ---
 
 ## Erwartete Dauer
 
-- Steps 0-3: ~30s
-- Step 4 (Re-Copy): ~10s
-- Step 5 (Validate × 3): ~30s (10s/Mission, ohne retries)
-- Step 6 (Smoke × 3): 3-9 min (1-3 min/Mission)
-- Steps 7-10: ~60s
+- Steps 0-4: ~30s
+- Step 5 (3 missions × ~135s GUI launch + 5s spacing): ~7 min
+- Step 6 (ui-tester × 9): ~3 min
+- Steps 7-10: ~1 min
 
-Total: 5-12 min, ohne User-Klicks. PAUSE FLAG: nein.
+Total: ~12-15 min. PAUSE FLAG: nein.
+
+---
+
+## Ergänzende Notes (Sonnet-fähig)
+
+Wenn du auf Sonnet 4.6 switched bist (nach Phase A): nichts ändert sich an Steps oder Sub-Agents.
+Dein Reasoning für bug-fixer Vorschläge in Step 8 könnte etwas weniger kreativ sein als bei Opus —
+das ist OK. Escaliere die "welche Smoke-Alternative langfristig" Mac-Side-Entscheidungen wie immer
+via "New questions for Mac-side Claude".
