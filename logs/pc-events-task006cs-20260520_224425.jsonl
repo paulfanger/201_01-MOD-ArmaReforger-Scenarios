@@ -1,0 +1,8 @@
+﻿{"t":"2026-05-20T20:44:25Z","kind":"start","turn_id":5,"task_id":"006-CS","model":"claude-sonnet-4-6"}
+{"t":"2026-05-20T20:44:57Z","kind":"dry_plan","hash":"1AB7CCED395B508F","missions":3}
+{"t":"2026-05-20T20:45:14Z","kind":"exec","cmd":"dry-execute-night-recon-everon","files":13,"author_present":false}
+{"t":"2026-05-20T20:45:14Z","kind":"exec","cmd":"dry-execute-day-assault-arland","files":13,"author_present":false}
+{"t":"2026-05-20T20:45:14Z","kind":"exec","cmd":"dry-execute-fog-ambush-eden","files":13,"author_present":false}
+{"t":"2026-05-20T20:46:03Z","kind":"result","cmd":"revalidate-night-recon-everon","status":"PASS"}
+{"t":"2026-05-20T20:46:09Z","kind":"result","cmd":"revalidate-day-assault-arland","status":"PASS"}
+{"t":"2026-05-20T20:46:15Z","kind":"result","cmd":"revalidate-fog-ambush-eden","status":"PASS"}

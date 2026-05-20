@@ -1,0 +1,29 @@
+﻿[
+    {
+        "mission":  "night-recon-everon",
+        "target":  "C:\\Users\\pfofa\\Documents\\my games\\ArmaReforger\\addons\\ai_night-recon-everon",
+        "src":  "C:\\Users\\pfofa\\Desktop\\000_Projekte\\201_01-MOD-ArmaReforger-Scenarios\\missions\\night-recon-everon\\output",
+        "action":  "REMOVE_THEN_COPY",
+        "files_to_delete":  16,
+        "files_to_copy":  15
+    },
+    {
+        "mission":  "day-assault-arland",
+        "target":  "C:\\Users\\pfofa\\Documents\\my games\\ArmaReforger\\addons\\ai_day-assault-arland",
+        "src":  "C:\\Users\\pfofa\\Desktop\\000_Projekte\\201_01-MOD-ArmaReforger-Scenarios\\missions\\day-assault-arland\\output",
+        "action":  "REMOVE_THEN_COPY",
+        "files_to_delete":  16,
+        "files_to_copy":  15
+    },
+    {
+        "mission":  "fog-ambush-eden",
+        "target":  "C:\\Users\\pfofa\\Documents\\my games\\ArmaReforger\\addons\\ai_fog-ambush-eden",
+        "src":  "C:\\Users\\pfofa\\Desktop\\000_Projekte\\201_01-MOD-ArmaReforger-Scenarios\\missions\\fog-ambush-eden\\output",
+        "action":  "REMOVE_THEN_COPY",
+        "files_to_delete":  16,
+        "files_to_copy":  15
+    }
+]
+
+--- hash ---
+1AB7CCED395B508F

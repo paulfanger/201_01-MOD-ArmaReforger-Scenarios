@@ -1,0 +1,20 @@
+﻿{
+    "day-assault-arland":  {
+                               "status":  "PASS",
+                               "dur_s":  6.2,
+                               "fatal_count":  0,
+                               "error_count":  0
+                           },
+    "fog-ambush-eden":  {
+                            "status":  "PASS",
+                            "dur_s":  6.2,
+                            "fatal_count":  0,
+                            "error_count":  0
+                        },
+    "night-recon-everon":  {
+                               "status":  "PASS",
+                               "dur_s":  6.2,
+                               "fatal_count":  0,
+                               "error_count":  0
+                           }
+}
