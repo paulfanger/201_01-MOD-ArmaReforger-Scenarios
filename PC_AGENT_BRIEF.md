@@ -49,13 +49,22 @@ ERRORS: ...
 
 ---
 
-## Workbench-Pfade (Windows)
+## Windows-Pfade (verified empirically — siehe PC_RESULT 8d311fa)
 
 ```
-Addon-Ziel:    C:\Users\pfofa\AppData\Local\Bohemia Interactive\ArmaReforger\addons\
-Workbench-Exe: C:\Program Files (x86)\Steam\steamapps\common\Arma Reforger Tools\ArmaReforgerWorkbench.exe
-Projekt-Repo:  C:\Users\pfofa\Desktop\000_Projekte\201_01-MOD-ArmaReforger-Scenarios\
+Addon-Ziel:        %USERPROFILE%\Documents\my games\ArmaReforger\addons\
+Game-AppData:      %USERPROFILE%\Documents\my games\ArmaReforger\
+Workbench-AppData: %USERPROFILE%\Documents\my games\ArmaReforgerWorkbench\
+Workbench-Logs:    %USERPROFILE%\Documents\my games\ArmaReforgerWorkbench\logs\logs_<TS>\
+Workbench-EXE:     C:\Program Files (x86)\Steam\steamapps\common\Arma Reforger Tools\Workbench\ArmaReforgerWorkbenchSteamDiag.exe
+Steam-AppID:       Tools=1874910 · Game=1874880
+Projekt-Repo:      C:\Users\pfofa\Desktop\000_Projekte\201_01-MOD-ArmaReforger-Scenarios\
 ```
+
+**Hinweise:**
+- Addons-Folder wird automatisch von Game/Workbench beim ersten Start angelegt — er ist NICHT in `%LOCALAPPDATA%\Bohemia Interactive\` (alter Pfad, falsch in Pre-2024-Dokus).
+- "Diag"-EXE statt regulärer Workbench: bessere Crash-Logs, sonst funktional identisch. Forces engine debug output.
+- 241 vorhandene Workshop-Mods im Addon-Ordner sind unangetastet — wir packen nur `ai_*`-Prefix-Addons rein.
 
 ---
 
@@ -81,11 +90,11 @@ Projekt-Repo:  C:\Users\pfofa\Desktop\000_Projekte\201_01-MOD-ArmaReforger-Scena
 Wenn `tasks/PC_TASK.md` → `PHASE: 2`:
 
 1. `git pull` → mission output files sind in `missions/{id}/output/`
-2. Kopiere `missions/{id}/output/` → Workbench Addon-Ordner
-3. Starte Workbench
-4. Warte auf Workbench-Logs in `%LOCALAPPDATA%\Bohemia Interactive\ArmaReforger\logs\`
-5. Extrahiere Errors/Warnings aus Log
-6. Schreibe Report in `tasks/PC_RESULT.md`
+2. Kopiere `missions/{id}/output/` → `%USERPROFILE%\Documents\my games\ArmaReforger\addons\ai_<mission>\`
+3. Starte Workbench-Diag (siehe Test-CLI unten — bevorzugt headless `-wbSilent -exitAfterInit`)
+4. Warte auf Workbench-Logs in `%USERPROFILE%\Documents\my games\ArmaReforgerWorkbench\logs\logs_<TS>\console.log`
+5. Extrahiere Errors/Warnings via Regex (`(WORLD|ENGINE|SCRIPT)\s+\((E|F)\):`)
+6. Schreibe strukturierten Report in `tasks/PC_RESULT.md` (RELAY-Template)
 7. Push
 
 ## Phase 3 — Deine Aufgaben
@@ -134,9 +143,51 @@ Wenn 30min vorbei sind ohne neue Task: melden im Chat und ruhen, User kann manue
 
 ## Test-CLI (siehe research/06-workbench-cli-flags.md)
 
-Für autonome Mission-Validierung:
-- `-validate` → Exit code 0=ok, -1=compile fail
-- `-wbSilent -exitAfterInit -gproj X -load Y` → world-load smoke test
-- Logs: `%USERPROFILE%\Documents\My Games\ArmaReforgerWorkbench\logs\logs_<TS>\console.log`
+Für autonome Mission-Validierung (USE THE DIAG EXE):
+
+```powershell
+$diag = "C:\Program Files (x86)\Steam\steamapps\common\Arma Reforger Tools\Workbench\ArmaReforgerWorkbenchSteamDiag.exe"
+```
+
+- `$diag -gproj X -validate -logsDir Y` → Compile-Gate, Exit 0=ok, -1=fail
+- `$diag -gproj X -load "$ai_<id>:Worlds/<id>.ent" -wbSilent -exitAfterInit -logsDir Y` → World-Load Smoke-Test
+- Logs: `%USERPROFILE%\Documents\My Games\ArmaReforgerWorkbench\logs\logs_<TS>\console.log` (oder dein `-logsDir`-Override)
 - Fatal-Pattern: `^(WORLD|ENGINE|SCRIPT)\s+\((E|F)\):`
 - Success-Heuristic: ≥1 `Entities load`, ≥1 `Entity layer load`, 0 `(F):` Zeilen, Exit-Code 0
+
+---
+
+## Sub-Agent Fleet (autonomes Testing & Bug-Fix)
+
+Du darfst SubAgents spawnen für:
+
+| Marker | Sub-Agent | Wann |
+|---|---|---|
+| 🧪 **tester** | Test-Erzeuger + Runner | Bei neuer Mission: erzeugt Validierungstests, läuft sie |
+| 🐛 **bug-fixer** | Error-Analyzer + Patch-Proposer | Bei `(E)` oder `(F)` in console.log: parst, schlägt Fix vor |
+| 📊 **process-tracker** | Long-Running-Job-Monitor | Bei Steam-Install, Workbench-Headless-Loads → polled bis fertig, schreibt Status-JSON |
+| 🔍 **auditor** | Coverage + Quality-Check | Vor jedem Push: verifiziert Result-Vollständigkeit, prüft Logs auf übersehene Errors |
+| 📝 **logger** | Event-Capture + Aggregator | Während ALLEM: schreibt `logs/pc-events-<TS>.jsonl`, pusht periodisch |
+
+Spawn-Muster: SubAgent bekommt einen klaren Auftrag + Output-File-Pfad. Es returns kurz, Mac liest den Output über git.
+
+Vollständige Definitionen + Patterns: `playbook/RELAY_PROTOCOL.md` Sektion "Sub-Agent Fleet".
+
+---
+
+## Auto-Iteration (PC-side Loop)
+
+Innerhalb eines Tasks darfst du autonom iterieren:
+
+1. Führe EXEC-Block aus
+2. Spawn `logger` Sub-Agent → captured Output
+3. Wenn Error: spawn `bug-fixer` → bekommt Fix-Vorschlag
+   - Wenn Fix nur auf PC-Side (z.B. retry, andere CLI-Args): wende an, retry max 3×
+   - Wenn Fix Mission-Files ändern müsste (Mac-Side-Code): NICHT eigenmächtig fixen, sondern in Result-Template "New questions for Mac-side Claude" anhängen mit Vorschlag
+4. Spawn `auditor` vor Push → prüft Vollständigkeit
+5. Push wenn auditor durchgewunken
+
+Iteration stoppt sofort wenn:
+- 🧠 ANSWER von User nötig
+- ⚙️ DO von User nötig
+- Mission-Files müssen geändert werden (Mac-Designer-Territorium)

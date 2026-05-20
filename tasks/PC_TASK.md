@@ -1,249 +1,264 @@
-# PC Task — Task 002: Workbench Install + Game First-Start
+# PC Task — Task 003: Headless Validation Loop (autonom)
 
 STATUS: PENDING
-TASK_ID: 002
-PHASE: 2-prep
-TYPE: install_tools + game_first_start + addon_setup
-APPROVAL: granted (Mac-Session autorisiert Steam-Install via CLI + Game-First-Start)
+TASK_ID: 003
+PHASE: 2
+TYPE: headless_validation + sub_agent_iteration + logging
+
+## Kontext
+
+Task 002 PARTIAL ok — Workbench-Diag installiert, 3 Missionen kopiert, Workbench-Launch
+mit GUI hängt am Project-Selector. Wir wechseln auf **vollständig headless** mit `-validate`
+und `-wbSilent -exitAfterInit`, parsen `console.log`, aggregieren Pass/Fail.
+
+Diese Task ist die erste, die das volle Sub-Agent-Fleet + Logging nutzt (siehe
+`playbook/RELAY_PROTOCOL.md` Sektion "Sub-Agent Fleet" und "Logging & Process Tracking").
 
 ---
 
-## Übersicht
-
-PC hat in Task 001 gemeldet: Arma Reforger Tools fehlen, AppData fehlt.
-Diese Task löst beide Blocker. **Du darfst Steam-CLI nutzen und das Game einmalig starten.**
-
-Alle Schritte ausführen, dann **einmal** pushen mit kompletten Ergebnissen.
-
----
-
-## Schritt 1 — Arma Reforger Tools via Steam installieren
+## Pre-flight
 
 ```powershell
-# App-ID für Arma Reforger Tools: 1874881
-Start-Process "steam://install/1874881"
-Write-Output "STEAM_INSTALL_TRIGGERED"
-```
-
-Steam-UI öffnet sich. Klicke "Install" wenn Steam-Dialog erscheint — das ist die einzige manuelle Interaktion die nötig ist. Falls Steam autonom installiert: noch besser.
-
-**Warte auf Install** (poll bis Ordner existiert, max 20 Minuten):
-
-```powershell
-$toolsPath = "C:\Program Files (x86)\Steam\steamapps\common\Arma Reforger Tools\ArmaReforgerWorkbench.exe"
-$alt = "E:\SteamLibrary\steamapps\common\Arma Reforger Tools\ArmaReforgerWorkbench.exe"
-$maxWaitMin = 20
-$start = Get-Date
-
-while (-not (Test-Path $toolsPath) -and -not (Test-Path $alt)) {
-    Start-Sleep -Seconds 30
-    $elapsed = (Get-Date) - $start
-    Write-Output "Warte auf Install... $($elapsed.TotalMinutes.ToString('0.0')) min"
-    if ($elapsed.TotalMinutes -gt $maxWaitMin) {
-        Write-Output "TIMEOUT — Install dauert zu lange. Abbruch."
-        break
-    }
+# Vorhandenen Workbench-Process schließen (PID aus Task 002)
+$wb = Get-Process -Name "ArmaReforgerWorkbench*" -ErrorAction SilentlyContinue
+if ($wb) {
+    Write-Output "Schließe alten Workbench PID $($wb.Id)"
+    $wb | Stop-Process -Force
+    Start-Sleep -Seconds 3
 }
 
-if (Test-Path $toolsPath) {
-    $foundPath = $toolsPath
-} elseif (Test-Path $alt) {
-    $foundPath = $alt
-} else {
-    $foundPath = $null
-}
-Write-Output "WORKBENCH_PATH: $foundPath"
+# Paths (verified)
+$diag = "C:\Program Files (x86)\Steam\steamapps\common\Arma Reforger Tools\Workbench\ArmaReforgerWorkbenchSteamDiag.exe"
+$addonsRoot = "$env:USERPROFILE\Documents\my games\ArmaReforger\addons"
+$repo = "C:\Users\pfofa\Desktop\000_Projekte\201_01-MOD-ArmaReforger-Scenarios"
+$logsBase = "$repo\logs"
+New-Item -ItemType Directory -Path $logsBase -Force | Out-Null
+
+# Sanity checks
+Test-Path $diag                           # MUST be True
+Test-Path $addonsRoot                     # MUST be True
+Test-Path "$addonsRoot\ai_night-recon-everon\addon.gproj"  # MUST be True
 ```
 
-Schreib in PC_RESULT.md unter `### Tools Install`: ob installation erfolgreich, Pfad.
+Falls einer der Paths fehlt: STOP, melde im Result als Blocker.
 
 ---
 
-## Schritt 2 — Game First-Start (für AppData-Ordner)
+## Schritt 1 — Spawn Logger (always-on für diese Task)
 
-```powershell
-# Game einmal starten, damit Bohemia AppData-Ordner entsteht
-Start-Process "steam://run/1874880"  # Arma Reforger Game
-Start-Sleep -Seconds 60  # Warte bis Game zumindest geladen hat
+Erzeuge `logs/pc-events-task003-<TS>.jsonl` (append-only). Logge alle EXEC-Aufrufe,
+Sub-Agent-Spawns, Process-Events. Format pro Zeile:
 
-# Prüfe ob AppData entstanden ist
-$appData = "$env:LOCALAPPDATA\Bohemia Interactive\ArmaReforger"
-$exists = Test-Path $appData
-Write-Output "APPDATA_CREATED: $exists"
-
-# Falls Game gestartet ist, schließen wir es wieder
-$gameProc = Get-Process -Name "ArmaReforger*" -ErrorAction SilentlyContinue
-if ($gameProc) {
-    Write-Output "Schliesse Game..."
-    $gameProc | Stop-Process -Force
-    Start-Sleep -Seconds 5
-}
+```json
+{"t":"<ISO8601>","kind":"exec|spawn|status|result","agent":"main|tester|...","cmd":"...","exit":0,"duration_ms":X,"msg":"..."}
 ```
 
-**Hinweis:** Wenn beim Game-Start ein EULA-Fenster erscheint, klicke "Accept". Das ist eine einmalige manuelle Aktion. Falls Game stumm im Hintergrund läuft → ok.
-
-Schreib in PC_RESULT.md unter `### Game First-Start`: ob AppData entstanden, welcher Pfad.
+Schreibe Start-Event sofort. Halte File-Handle für den Rest der Task offen.
 
 ---
 
-## Schritt 3 — Addon-Ordner anlegen
+## Schritt 2 — Compile-Gate für alle 3 Missionen (parallel-fähig)
+
+Für jede Mission läuft `-validate` (10s pro Mission):
 
 ```powershell
-$addonsRoot = "$env:LOCALAPPDATA\Bohemia Interactive\ArmaReforger\addons"
-New-Item -ItemType Directory -Path $addonsRoot -Force | Out-Null
-Get-Item $addonsRoot
-```
-
-Schreib in PC_RESULT.md unter `### Addon Folder`: Existenz bestätigt.
-
----
-
-## Schritt 4 — Missions kopieren
-
-Wie in Task 001 geplant, jetzt mit existenten Pfaden:
-
-```powershell
-$projectRoot = "C:\Users\pfofa\Desktop\000_Projekte\201_01-MOD-ArmaReforger-Scenarios"
-$addonsRoot = "$env:LOCALAPPDATA\Bohemia Interactive\ArmaReforger\addons"
-
 $missions = @("night-recon-everon", "day-assault-arland", "fog-ambush-eden")
+$validateResults = @{}
+
 foreach ($mission in $missions) {
-    $src = "$projectRoot\missions\$mission\output"
-    $dst = "$addonsRoot\ai_$mission"
-    if (Test-Path $src) {
-        Remove-Item -Path $dst -Recurse -Force -ErrorAction SilentlyContinue
-        Copy-Item -Path $src -Destination $dst -Recurse -Force
-        Write-Output "COPIED: $mission -> $dst"
-    } else {
-        Write-Output "MISSING_SOURCE: $src"
+    $addon = "$addonsRoot\ai_$mission"
+    $gproj = "$addon\addon.gproj"
+    $missionLogDir = "$logsBase\validate-$mission"
+    New-Item -ItemType Directory -Path $missionLogDir -Force | Out-Null
+
+    $startMs = (Get-Date).Ticks / 10000
+    & $diag -gproj $gproj -validate -logsDir $missionLogDir 2>&1 | Out-File -FilePath "$missionLogDir\stdout.txt"
+    $exitCode = $LASTEXITCODE
+    $durMs = ((Get-Date).Ticks / 10000) - $startMs
+
+    $validateResults[$mission] = @{
+        exit_code = $exitCode
+        passed = ($exitCode -eq 0)
+        duration_ms = $durMs
+        log_dir = $missionLogDir
     }
+
+    # Log event
+    Write-Output "[validate] $mission exit=$exitCode dur=${durMs}ms"
 }
 ```
 
-Schreib in PC_RESULT.md unter `### Mission Copy`: alle 3 Missionen kopiert?
+Pusht ein Status-Event ins logger nach jedem `-validate`-Call.
 
 ---
 
-## Schritt 5 — File Integrity Check
+## Schritt 3 — World-Load Smoke-Test für alle 3 Missionen
+
+Für jede Mission die ihr `-validate` bestanden hat:
 
 ```powershell
-$addonsRoot = "$env:LOCALAPPDATA\Bohemia Interactive\ArmaReforger\addons"
-$results = @()
-foreach ($mission in @("night-recon-everon", "day-assault-arland", "fog-ambush-eden")) {
-    $base = "$addonsRoot\ai_$mission"
-    $files = @(
-        "addon.gproj",
-        "Missions\$mission.conf",
-        "Worlds\$mission.ent",
-        "Worlds\${mission}_gamemode.layer",
-        "Worlds\${mission}_spawnpoints.layer",
-        "Worlds\${mission}_managers.layer",
-        "Worlds\${mission}_AI.layer",
-        "Worlds\${mission}_environment.layer",
-        "Worlds\${mission}_triggers.layer",
-        "Worlds\${mission}_tasks.layer"
-    )
-    foreach ($f in $files) {
-        $exists = Test-Path "$base\$f"
-        $results += [PSCustomObject]@{Mission=$mission; File=$f; Exists=$exists}
-    }
-}
-$results | Format-Table -AutoSize
-```
+$smokeResults = @{}
 
-Schreib in PC_RESULT.md unter `### File Integrity`: tabellarisch alle Files.
-
----
-
-## Schritt 6 — Workbench Help (CLI Capabilities)
-
-Sobald Workbench installiert ist:
-
-```powershell
-$workbench = "C:\Program Files (x86)\Steam\steamapps\common\Arma Reforger Tools\ArmaReforgerWorkbench.exe"
-if (-not (Test-Path $workbench)) {
-    $workbench = "E:\SteamLibrary\steamapps\common\Arma Reforger Tools\ArmaReforgerWorkbench.exe"
-}
-
-if (Test-Path $workbench) {
-    Write-Output "=== Workbench -help ==="
-    & $workbench -help 2>&1 | Select-Object -First 50
-
-    Write-Output "=== Workbench /? ==="
-    & $workbench /? 2>&1 | Select-Object -First 50
-
-    # Auch ohne Args starten, dann sofort killen — manchmal zeigt Usage-Dialog
-    Write-Output "=== Workbench Version Info via FileInfo ==="
-    Get-Item $workbench | Select-Object -Property Name, Length, LastWriteTime
-    (Get-Item $workbench).VersionInfo
-}
-```
-
-Schreib in PC_RESULT.md unter `### Workbench CLI`: alle Outputs.
-
----
-
-## Schritt 7 — Workbench Test-Launch mit erstem Addon
-
-```powershell
-$workbench = "C:\Program Files (x86)\Steam\steamapps\common\Arma Reforger Tools\ArmaReforgerWorkbench.exe"
-if (-not (Test-Path $workbench)) {
-    $workbench = "E:\SteamLibrary\steamapps\common\Arma Reforger Tools\ArmaReforgerWorkbench.exe"
-}
-$addon = "$env:LOCALAPPDATA\Bohemia Interactive\ArmaReforger\addons\ai_night-recon-everon\addon.gproj"
-
-if ((Test-Path $workbench) -and (Test-Path $addon)) {
-    Write-Output "Starte Workbench mit Addon..."
-    $proc = Start-Process -FilePath $workbench -ArgumentList "`"$addon`"" -PassThru
-    Start-Sleep -Seconds 30
-    if ($proc.HasExited) {
-        Write-Output "WORKBENCH_CRASHED: ExitCode $($proc.ExitCode)"
-    } else {
-        Write-Output "WORKBENCH_RUNNING: PID $($proc.Id)"
+foreach ($mission in $missions) {
+    if (-not $validateResults[$mission].passed) {
+        $smokeResults[$mission] = @{ skipped = $true; reason = "validate failed" }
+        continue
     }
 
-    # Workbench-Logs einsammeln
-    Start-Sleep -Seconds 5
-    $logDir = "$env:LOCALAPPDATA\Bohemia Interactive\ArmaReforger\logs"
-    if (Test-Path $logDir) {
-        Write-Output "=== Neueste 3 Log-Files ==="
-        Get-ChildItem $logDir -File | Sort-Object LastWriteTime -Descending | Select-Object -First 3 | Format-Table FullName, Length, LastWriteTime
-        $newest = Get-ChildItem $logDir -File | Sort-Object LastWriteTime -Descending | Select-Object -First 1
-        if ($newest) {
-            Write-Output "=== Letzte 80 Zeilen von $($newest.Name) ==="
-            Get-Content $newest.FullName -Tail 80
+    $addon = "$addonsRoot\ai_$mission"
+    $gproj = "$addon\addon.gproj"
+    $worldRef = "`$ai_${mission}:Worlds/${mission}.ent"
+    $missionLogDir = "$logsBase\smoke-$mission"
+    New-Item -ItemType Directory -Path $missionLogDir -Force | Out-Null
+
+    $startMs = (Get-Date).Ticks / 10000
+
+    # Process-tracker pattern — non-blocking start + monitor
+    $proc = Start-Process -FilePath $diag -ArgumentList @(
+        "-gproj", "`"$gproj`"",
+        "-load", "`"$worldRef`"",
+        "-wbSilent",
+        "-exitAfterInit",
+        "-logsDir", "`"$missionLogDir`""
+    ) -PassThru -NoNewWindow
+
+    # Spawn process-tracker (poll every 5s, max 3 min for smoke-test)
+    $maxSeconds = 180
+    $waitStart = Get-Date
+    while (-not $proc.HasExited -and ((Get-Date) - $waitStart).TotalSeconds -lt $maxSeconds) {
+        Start-Sleep -Seconds 5
+        Write-Output "[smoke-$mission] still running, $((Get-Date - $waitStart).TotalSeconds)s elapsed"
+    }
+
+    if (-not $proc.HasExited) {
+        Write-Output "[smoke-$mission] TIMEOUT after ${maxSeconds}s — killing"
+        Stop-Process -Id $proc.Id -Force
+        Start-Sleep -Seconds 2
+    }
+
+    $durMs = ((Get-Date).Ticks / 10000) - $startMs
+
+    # Parse log
+    $consoleLog = Get-ChildItem "$missionLogDir\logs_*\console.log" -Recurse -ErrorAction SilentlyContinue | Sort-Object LastWriteTime -Desc | Select-Object -First 1
+
+    if ($consoleLog) {
+        $content = Get-Content $consoleLog.FullName -Raw
+        $hasEntitiesLoad = $content -match "WORLD\s+:\s+Entities load"
+        $hasLayerLoad   = $content -match "WORLD\s+:\s+Entity layer load"
+        $fatals         = ([regex]::Matches($content, "(?m)^(WORLD|ENGINE|SCRIPT)\s+\(F\):"))
+        $errors         = ([regex]::Matches($content, "(?m)^(WORLD|ENGINE|SCRIPT)\s+\(E\):"))
+
+        $passed = ($proc.ExitCode -eq 0) -and $hasEntitiesLoad -and $hasLayerLoad -and ($fatals.Count -eq 0)
+
+        $smokeResults[$mission] = @{
+            passed = $passed
+            exit_code = $proc.ExitCode
+            duration_ms = $durMs
+            entities_load = $hasEntitiesLoad
+            layer_load = $hasLayerLoad
+            fatal_count = $fatals.Count
+            error_count = $errors.Count
+            console_log = $consoleLog.FullName
+            log_size = $consoleLog.Length
         }
     } else {
-        Write-Output "KEIN_LOG_DIR: $logDir"
+        $smokeResults[$mission] = @{
+            passed = $false
+            exit_code = $proc.ExitCode
+            duration_ms = $durMs
+            reason = "no console.log found"
+        }
     }
+
+    Write-Output "[smoke-$mission] passed=$($smokeResults[$mission].passed)"
 }
 ```
 
-**Workbench laufen lassen.** Nicht killen. User schaut visuell.
+---
 
-Schreib in PC_RESULT.md unter `### Workbench Launch`: PID, Crash ja/nein, Log-Output.
+## Schritt 4 — Spawn `bug-fixer` Sub-Agent (falls Errors)
+
+Wenn smokeResults oder validateResults für irgendeine Mission `(E)` oder `(F)` enthalten:
+
+Spawn ein bug-fixer Sub-Agent mit:
+- Input: die fehlgeschlagene Mission, console.log-Pfad, Error-Patterns aus Log
+- Aufgabe: Patterns aus Log extrahieren, mögliche Ursache klassifizieren (Asset missing? Layer syntax? GUID stale?)
+- Output: `logs/bugfix-task003-<TS>.json`
+
+**WICHTIG:** bug-fixer darf NICHT Mission-Files ändern. Er schlägt nur vor. Mission-Files
+werden von Mac-Designer geändert. Bug-fixer schreibt Vorschlag in `next_actions` Array.
 
 ---
 
-## Schritt 8 — Push
+## Schritt 5 — Spawn `auditor` Sub-Agent (Pre-Push, mandatory)
+
+Auditor prüft:
+- Sind alle 3 Missionen tracked? (validate + smoke result für jede)
+- Sind alle console.log-Pfade in result-File referenced?
+- Sind alle (E)/(F)-Events triaged (bug-fixer angesprungen)?
+- Result-Schema valide (alle Pflichtfelder)?
+
+Output: `logs/audit-task003-<TS>.json`.
+
+Wenn auditor `status: "fail"` → STOP, melde Audit-Failure als Blocker im Result-Template, **nicht pushen**.
+
+---
+
+## Schritt 6 — Schreibe PC_RESULT.md im Return-Template-Format
+
+Verwende EXAKT das Template aus Loop Turn #2 (siehe Chat). Schreibe strukturiert:
+
+- Pre-flight outcomes
+- Validate results pro Mission (Tabelle)
+- Smoke-test results pro Mission (Tabelle)
+- Bug-fixer summary (falls gespawnt)
+- Auditor summary
+- Log-File-Pfade (alle pushen!)
+
+STATUS am Top:
+- **OK** wenn alle 3 Missionen sowohl validate als auch smoke bestanden
+- **PARTIAL** wenn 1-2 Missionen ok, andere failed
+- **ERROR** wenn keine Mission durchgekommen oder Tooling kaputt
+- **BLOCKED** wenn auditor blocked
+
+---
+
+## Schritt 7 — Logs + Result committen + pushen
 
 ```powershell
-cd C:\Users\pfofa\Desktop\000_Projekte\201_01-MOD-ArmaReforger-Scenarios
+cd $repo
 git pull --rebase
-git add tasks/PC_RESULT.md
-git commit -m "PC: Task 002 — tools install + game start + addon setup"
+git add tasks/PC_RESULT.md logs/
+git commit -m "PC: Task 003 — headless validation + smoke tests"
 git push
 ```
 
-Setze STATUS oben in PC_RESULT.md:
-- **OK** wenn Workbench läuft mit Addon ohne Crash
-- **PARTIAL** wenn Workbench läuft aber Logs zeigen Errors
-- **ERROR** wenn Workbench nicht startet oder crasht
+---
+
+## Schritt 8 — Polling-Loop für Task 004
+
+Nach Push: polle 30 min im 60s-Takt auf TASK_ID-Änderung in tasks/PC_TASK.md
+(siehe PC_AGENT_BRIEF Polling-Pattern). Wenn neue Task: ausführen. Wenn nicht: ruhen.
 
 ---
 
-## Wichtig
+## Pause-Conditions in dieser Task
 
-- Falls Steam-Install fehlt (z.B. Steam zeigt Dialog): warte bis User klickt, dann weiter
-- Falls EULA-Popup beim Game-Start: warte 30s, falls noch da → Game schließen, ohne EULA-Accept geht nichts weiter; im Result als BLOCKER vermerken
-- Wenn Workbench läuft, lass es **offen** — User schaut visuell ob Mission erscheint
+Stoppe sofort und melde als Blocker wenn:
+- Workbench-Diag fehlt (Path-Sanity-Fail in Pre-flight)
+- Steam-Update läuft / Tools werden gerade neu installiert
+- Disk-full
+- Permission-Popup, das du nicht selbst grant'en kannst (auch nach Allow-always)
+- Auditor explicit blocked
+
+In allen anderen Fällen: bug-fixer übernimmt, iteriere autonom.
+
+---
+
+## Erwartete Dauer
+
+- Validate × 3: ~30s
+- Smoke × 3: ~3-9 min (1-3 min pro Mission)
+- Logging + Audit: ~30s
+
+Total: 4-10 min. Keine PAUSE-FLAG nötig — das geht durch ohne menschliche Klicks.
