@@ -1,0 +1,11 @@
+{
+  "guid": "A701424D70022078",
+  "path": "worlds/MP/MpTest/MpTest_Basic.ent",
+  "ext": "ent",
+  "source_file": "addons/CombatOpsEnhanced/worlds/COE/Test/Test.ent",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "unknown",
+  "display_name": "MpTest_Basic",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

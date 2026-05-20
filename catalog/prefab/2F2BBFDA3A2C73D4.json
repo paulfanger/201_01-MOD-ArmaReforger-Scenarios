@@ -1,0 +1,11 @@
+{
+  "guid": "2F2BBFDA3A2C73D4",
+  "path": "Prefabs/Props/Civilian/RadioSmall_01_black.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Worlds/MP/CTI_Campaign_Eden_base_Layers/Relay_objects.layer",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "RadioSmall_01_black",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

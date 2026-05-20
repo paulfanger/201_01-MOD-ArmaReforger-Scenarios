@@ -1,0 +1,11 @@
+{
+  "guid": "750A8D1695BD6998",
+  "path": "Prefabs/AI/Waypoints/AIWaypoint_Move.et",
+  "ext": "et",
+  "source_file": "SampleCoop/Worlds/CoopTest_AI.layer",
+  "source_repo": "Reforger-Sample-Coop",
+  "type": "waypoint",
+  "display_name": "AIWaypoint_Move",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

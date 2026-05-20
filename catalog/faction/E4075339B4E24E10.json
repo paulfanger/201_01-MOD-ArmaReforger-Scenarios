@@ -1,0 +1,12 @@
+{
+  "class_name": "SCR_FactionManager",
+  "guid": "E4075339B4E24E10",
+  "path": "Prefabs/MP/Managers/Factions/CoopFactionManager.et",
+  "source_file": "SampleCoop/Worlds/CoopTest_gamemode.layer",
+  "source_repo": "Reforger-Sample-Coop",
+  "kind": "entity_decl",
+  "type": "faction",
+  "display_name": "SCR_FactionManager",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

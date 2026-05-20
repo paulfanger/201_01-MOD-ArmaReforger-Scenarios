@@ -1,0 +1,11 @@
+{
+  "guid": "D6EF54367CECE1D9",
+  "path": "Prefabs/Weapons/Explosives/Mine_TM62M/Mine_TM62M.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Configs/EntityCatalog/SampleFactionREDFOR/SampleFactionREDFOR_InventoryItems.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "weapon",
+  "display_name": "Mine_TM62M",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

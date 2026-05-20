@@ -1,0 +1,76 @@
+{
+  "title": "Night Recon Everon",
+  "tagline": "Eine US-Recon-Einheit beschattet einen sowjetischen Vorposten in der Nacht.",
+  "premise": "Eine 4-köpfige US-Recon-Einheit infiltriert hinter feindliche Linien nahe Montignac auf Everon. Ziel: einen hochrangigen sowjetischen Kommandanten identifizieren und koordinatengenau markieren — ohne direkten Feuerkontakt wenn möglich.",
+  "factions": {
+    "player": {
+      "id": "US",
+      "asset_id_ref": "ENF_Faction_US",
+      "role": "Recon-Einheit, 1-4 Spieler, Infiltration-Loadout"
+    },
+    "ai": {
+      "id": "USSR",
+      "asset_id_ref": "ENF_Faction_USSR",
+      "role": "Sowjetische Besatzungstruppen, Vorposten-Garnison"
+    }
+  },
+  "biome": {
+    "map_id_ref": "everon",
+    "region_hint": "Montignac Umgebung, Everon Westküste"
+  },
+  "tone": {
+    "primary": "tense",
+    "secondary": ["cinematic", "tactical"],
+    "color_palette_hint": ["dark_blue", "cold_grey", "fog"]
+  },
+  "pacing": {
+    "phase_1": {
+      "name": "Infiltration",
+      "duration_min": 5,
+      "description": "Spieler landen per Boot an der Küste, bewegen sich durch Wald zum Vorposten",
+      "ai_state": "patrol_normal",
+      "player_objective": "Unentdeckt zum Vorposten navigieren"
+    },
+    "phase_2": {
+      "name": "Reconnaissance",
+      "duration_min": 10,
+      "description": "Beobachtung des Vorpostens, Identifikation des Kommandanten",
+      "ai_state": "patrol_normal",
+      "player_objective": "Kommandanten per Fernglas markieren"
+    },
+    "phase_3": {
+      "name": "Exfiltration unter Druck",
+      "duration_min": 8,
+      "description": "Nach Alarmierung: schnelle Exfil zum Abholpunkt, zunehmende Verfolger-Wellen",
+      "ai_state": "alert_search",
+      "player_objective": "Extraktion-Punkt erreichen bevor Verstärkung eintrifft"
+    }
+  },
+  "time_of_day": {
+    "hour": 2,
+    "minute": 30,
+    "description": "Tief in der Nacht — schlechteste Sicht für KI-Feinde, NVGs erforderlich"
+  },
+  "weather": {
+    "preset": "clear_cold",
+    "description": "Klarer Himmel mit Sternenlicht, kalt — gute NVG-Bedingungen"
+  },
+  "player_setup": {
+    "min_players": 1,
+    "max_players": 4,
+    "loadout_type": "Recon-Infiltration",
+    "loadout_hint": "NVG, suppressed weapons, no heavy weapons"
+  },
+  "narrative_anchors": [
+    "Boat insertion point at western coast of Everon near Montignac",
+    "Soviet outpost with patrol routes on elevated ground",
+    "HVT: Soviet Major with distinctive UAZ vehicle",
+    "Extraction point 800m east, helicopter LZ"
+  ],
+  "out_of_scope": [
+    "PVP elements",
+    "Artillery or heavy vehicles for players",
+    "Ambient civilian population (performance)",
+    "Live AI calls during gameplay"
+  ]
+}

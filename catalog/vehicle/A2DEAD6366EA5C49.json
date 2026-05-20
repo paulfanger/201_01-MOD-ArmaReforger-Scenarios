@@ -1,0 +1,11 @@
+{
+  "guid": "A2DEAD6366EA5C49",
+  "path": "Prefabs/Vehicles/Wheeled/M151A2/COE_M151A2_gun_mount_M2HB.et",
+  "ext": "et",
+  "source_file": "optionals/COE_Taliban_Compat/Prefabs/Vehicles/Toyotas/Combat/COE_Toyotaa_White_Gun.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "vehicle",
+  "display_name": "COE_M151A2_gun_mount_M2HB",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

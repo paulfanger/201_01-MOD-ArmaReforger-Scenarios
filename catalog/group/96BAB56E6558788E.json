@@ -1,0 +1,14 @@
+{
+  "guid": "96BAB56E6558788E",
+  "path": "Prefabs/Groups/OPFOR/Group_USSR_Team_AT.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Managers/COE_FactionManager.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "group",
+  "display_name": "Group_USSR_Team_AT",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap",
+  "faction_key": "USSR",
+  "enriched_by": "catalog-enrich-factions",
+  "enriched_at": "2026-05-20"
+}

@@ -1,0 +1,11 @@
+{
+  "guid": "EA806763FE4EDDDF",
+  "path": "Prefabs/Weapons/Magazines/Box_145x114_KPVT_50rnd_APIT.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Configs/EntityCatalog/SampleFactionREDFOR/SampleFactionREDFOR_InventoryItems.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "weapon",
+  "display_name": "Box_145x114_KPVT_50rnd_APIT",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

@@ -1,0 +1,11 @@
+{
+  "guid": "55DEE1D93FD8BFA3",
+  "path": "Language/localization.en_us.conf",
+  "ext": "conf",
+  "source_file": "SampleMod_NewProp/SampleMod_NewProp.gproj",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "config",
+  "display_name": "localization.en_us",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

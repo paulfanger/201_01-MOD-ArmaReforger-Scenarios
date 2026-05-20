@@ -1,0 +1,11 @@
+{
+  "guid": "7725AA92B358253E",
+  "path": "Configs/EntityCatalog/SampleFactionREDFOR/SampleFactionREDFOR_Groups.conf",
+  "ext": "conf",
+  "source_file": "SampleMod_NewFaction/Configs/Factions/SampleFactionREDFOR.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "config",
+  "display_name": "SampleFactionREDFOR_Groups",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

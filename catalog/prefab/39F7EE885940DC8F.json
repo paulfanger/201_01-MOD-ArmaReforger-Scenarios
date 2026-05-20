@@ -1,0 +1,11 @@
+{
+  "guid": "39F7EE885940DC8F",
+  "path": "Prefabs/Structures/Military/Fortifications/DirtCover_01/DirtCover_01_long_v1.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Compositions/Base/COE_MainBaseLandUS.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "DirtCover_01_long_v1",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

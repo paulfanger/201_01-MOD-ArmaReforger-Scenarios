@@ -1,0 +1,11 @@
+{
+  "guid": "7B2420C8BC72373A",
+  "path": "Prefabs/Characters/Core/Character_Base_Preview.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Prefabs/Groups/OPFOR/Group_SampleFactionREDFOR_LightFireTeam.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "Character_Base_Preview",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

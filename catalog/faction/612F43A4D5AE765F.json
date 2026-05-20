@@ -1,0 +1,14 @@
+{
+  "guid": "612F43A4D5AE765F",
+  "path": "Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_RTO.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Managers/COE_FactionManager.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "faction",
+  "display_name": "Character_USSR_RTO",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap",
+  "faction_key": "USSR",
+  "enriched_by": "catalog-enrich-factions",
+  "enriched_at": "2026-05-20"
+}

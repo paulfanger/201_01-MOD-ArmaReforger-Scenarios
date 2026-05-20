@@ -1,0 +1,11 @@
+{
+  "guid": "A9CF5E8C5D91C476",
+  "path": "Prefabs/Compositions/Misc/SubCompositions/Decorations/Barrel_Group_Crate_01.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Compositions/Base/COE_MainBaseLandUSSR.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "Barrel_Group_Crate_01",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

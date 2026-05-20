@@ -1,0 +1,11 @@
+{
+  "guid": "5E42FE68FA744D8B",
+  "path": "Prefabs/Characters/Vests/Vest_SovietHarness/Vest_SovietHarness_Rifleman.et",
+  "ext": "et",
+  "source_file": "SampleMod_CinematicTutorial/Prefabs/Character/CINEMATIC_RU_soldier_with_animation.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "Vest_SovietHarness_Rifleman",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

@@ -1,0 +1,12 @@
+SCR_BaseTriggerEntity Trigger_AmbushKillZone {
+ coords 350 10 200
+ SphereRadius 60
+}
+SCR_BaseTriggerEntity Trigger_AmbushStarted {
+ coords 350 10 200
+ SphereRadius 80
+}
+SCR_BaseTriggerEntity Trigger_ExfilPoint {
+ coords 350 8 600
+ SphereRadius 25
+}

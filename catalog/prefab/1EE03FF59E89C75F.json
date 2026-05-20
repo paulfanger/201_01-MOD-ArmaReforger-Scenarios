@@ -1,0 +1,11 @@
+{
+  "guid": "1EE03FF59E89C75F",
+  "path": "Prefabs/Props/Military/Compositions/USSR/COE_ArsenalBox_USSR.et",
+  "ext": "et",
+  "source_file": "optionals/COE_RHS_Compat/Prefabs/Props/Military/Compositions/USSR/COE_ArsenalBox_RHSRF.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "COE_ArsenalBox_USSR",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

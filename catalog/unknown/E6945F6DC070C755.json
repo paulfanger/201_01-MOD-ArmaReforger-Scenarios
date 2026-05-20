@@ -1,0 +1,11 @@
+{
+  "guid": "E6945F6DC070C755",
+  "path": "Worlds/CoopTest.ent",
+  "ext": "ent",
+  "source_file": "SampleCoop/Missions/CoopTest.conf",
+  "source_repo": "Reforger-Sample-Coop",
+  "type": "unknown",
+  "display_name": "CoopTest",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

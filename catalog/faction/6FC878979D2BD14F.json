@@ -1,0 +1,11 @@
+{
+  "guid": "6FC878979D2BD14F",
+  "path": "Prefabs/Characters/Factions/OPFOR/SampleFactionREDFOR/Character_SampleFactionREDFOR_Rifleman.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Configs/Editor/PlaceableEntities/Characters_SampleFactionREDFOR.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "faction",
+  "display_name": "Character_SampleFactionREDFOR_Rifleman",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

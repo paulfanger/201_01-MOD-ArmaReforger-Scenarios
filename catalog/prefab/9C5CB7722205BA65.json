@@ -1,0 +1,11 @@
+{
+  "guid": "9C5CB7722205BA65",
+  "path": "Prefabs/Compositions/Slotted/SlotFlatLarge/COE_LivingArea_L_USSR_01.et",
+  "ext": "et",
+  "source_file": "optionals/COE_Taliban_Compat/Prefabs/Managers/COE_FactionManager_Kunar.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "COE_LivingArea_L_USSR_01",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

@@ -1,0 +1,11 @@
+{
+  "guid": "5B66ED35DCAC99C7",
+  "path": "Prefabs/Props/Military/Compositions/USSR/PersonnelService_USSR_Large.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Compositions/Base/COE_MainBaseLandUSSR.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "PersonnelService_USSR_Large",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

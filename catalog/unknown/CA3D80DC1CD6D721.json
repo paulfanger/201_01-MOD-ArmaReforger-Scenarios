@@ -1,0 +1,11 @@
+{
+  "guid": "CA3D80DC1CD6D721",
+  "path": "UI/Textures/EditorPreviews/Characters/INDFOR/FIA/Character_FIA_PL.edds",
+  "ext": "edds",
+  "source_file": "Worlds/GRAD_GM_Eden_Layers/gamemode.layer",
+  "source_repo": "GRAD-COOP-Template-Reforger",
+  "type": "unknown",
+  "display_name": "Character_FIA_PL",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

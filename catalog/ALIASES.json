@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "generated_at": "2026-05-20",
+  "description": "Semantic alias map: narrative_designer asset_id_ref -> catalog GUID",
+  "aliases": {
+    "ENF_Faction_US": {
+      "guid": "ADFDBDA163950168",
+      "path": "Configs/Factions/US_Campaign.conf",
+      "type": "faction",
+      "faction_key": "US",
+      "display_name": "US_Campaign",
+      "description": "US Army — vanilla coop faction config (BLUFOR). Player faction for PVE coop missions on Everon/Arland.",
+      "aliases": [
+        "ENF_Faction_US"
+      ]
+    },
+    "ENF_Faction_USSR": {
+      "guid": "15B582F8FA0B0940",
+      "path": "Configs/Factions/USSR_Campaign.conf",
+      "type": "faction",
+      "faction_key": "USSR",
+      "display_name": "USSR_Campaign",
+      "description": "USSR Army — vanilla coop faction config (OPFOR). AI enemy faction for PVE coop missions.",
+      "aliases": [
+        "ENF_Faction_USSR"
+      ]
+    },
+    "ENF_Faction_FIA": {
+      "guid": "CF9447B87AB774DB",
+      "path": "Configs/Factions/FIA_Campaign.conf",
+      "type": "faction",
+      "faction_key": "FIA",
+      "display_name": "FIA_Campaign",
+      "description": "FIA (Freedom & Independence Army) — INDFOR faction. Partisan/resistance force, usable as neutral or 3rd faction.",
+      "aliases": [
+        "ENF_Faction_FIA"
+      ]
+    }
+  }
+}

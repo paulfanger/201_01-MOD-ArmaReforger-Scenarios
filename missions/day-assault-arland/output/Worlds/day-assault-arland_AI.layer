@@ -1,0 +1,31 @@
+$grp AIWaypoint_Move : "{93291E72AC23930F}Prefabs/AI/Waypoints/AIWaypoint_Defend.et" {
+ WP_Defend_Checkpoint {
+  coords 450 8 200
+ }
+ WP_Defend_MG {
+  coords 460 9 190
+ }
+}
+$grp AIWaypoint_Move : "{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et" {
+ WP_Counter_Route {
+  coords 500 7 200
+ }
+}
+SCR_AIGroup USSR_Checkpoint_Garrison : "{359353A0A5A52216}Prefabs/Groups/Campaign/Group_USSR_Defenders.et" {
+ coords 450 8 200
+ m_aWaypoints {
+  "WP_Defend_Checkpoint"
+ }
+}
+SCR_AIGroup USSR_MG_Team : "{A2F75E45C66B1C0A}Prefabs/Groups/OPFOR/Group_USSR_MachineGunTeam.et" {
+ coords 460 9 190
+ m_aWaypoints {
+  "WP_Defend_MG"
+ }
+}
+SCR_AIGroup USSR_Counterattack_Wave : "{30ED11AA4F0D41E5}Prefabs/Groups/OPFOR/Group_USSR_FireGroup.et" {
+ coords 600 7 200
+ m_aWaypoints {
+  "WP_Counter_Route"
+ }
+}

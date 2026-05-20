@@ -1,0 +1,11 @@
+{
+  "guid": "E5912E45754CD421",
+  "path": "Prefabs/Weapons/Magazines/Magazine_545x39_AK_30rnd_Tracer.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Configs/EntityCatalog/SampleFactionREDFOR/SampleFactionREDFOR_InventoryItems.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "weapon",
+  "display_name": "Magazine_545x39_AK_30rnd_Tracer",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

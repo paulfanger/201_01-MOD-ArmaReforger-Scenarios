@@ -1,0 +1,11 @@
+{
+  "guid": "522DCD528AE27052",
+  "path": "Prefabs/Systems/MilitaryBase/ConflictRelayRadio.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Worlds/MP/CTI_Campaign_Eden_base_Layers/relays.layer",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "ConflictRelayRadio",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

@@ -1,0 +1,11 @@
+{
+  "guid": "A5E8E68E46D3E064",
+  "path": "Prefabs/ScenarioFramework/Tasks/TaskClearArea.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Managers/COE_TaskManager.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "task",
+  "display_name": "TaskClearArea",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

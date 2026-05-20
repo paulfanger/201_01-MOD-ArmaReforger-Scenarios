@@ -1,0 +1,11 @@
+{
+  "guid": "16148BF23770F1D3",
+  "path": "Prefabs/Compositions/Slotted/SlotFlatSmall/MachineGunNest_S_USSR_02.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Worlds/MP/CTI_Campaign_Eden_base_Layers/supply_depots.layer",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "MachineGunNest_S_USSR_02",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

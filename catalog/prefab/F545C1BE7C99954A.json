@@ -1,0 +1,11 @@
+{
+  "guid": "F545C1BE7C99954A",
+  "path": "Prefabs/Characters/HeadGear/Hat_Patrol_US_01/Hat_Patrol_US_01.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Characters/Factions/BLUFOR/US_Army/COE_Character_US_Officer.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "Hat_Patrol_US_01",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

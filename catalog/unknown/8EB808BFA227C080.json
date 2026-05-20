@@ -1,0 +1,11 @@
+{
+  "guid": "8EB808BFA227C080",
+  "path": "UI/Textures/Icons/InventoryHints/InventoryHint_SuppliesStored.edds",
+  "ext": "edds",
+  "source_file": "optionals/COE_RHS_Compat/Prefabs/Props/Military/Compositions/US/COE_ArsenalBox_RHSUS.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "unknown",
+  "display_name": "InventoryHint_SuppliesStored",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

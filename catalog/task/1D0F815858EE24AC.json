@@ -1,0 +1,11 @@
+{
+  "guid": "1D0F815858EE24AC",
+  "path": "Prefabs/Tasks/BaseTask.et",
+  "ext": "et",
+  "source_file": "SampleCoop/Prefabs/MP/Managers/Tasks/CoopTaskManager.et",
+  "source_repo": "Reforger-Sample-Coop",
+  "type": "task",
+  "display_name": "BaseTask",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

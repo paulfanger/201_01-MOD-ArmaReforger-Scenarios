@@ -1,0 +1,11 @@
+{
+  "guid": "AE0FFC699F429214",
+  "path": "Prefabs/Props/Military/Camps/PalletAmmo_01_US.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Prefabs/MP/Campaign/Bases/Campaign_ArmoryDepot_BLUFOR.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "PalletAmmo_01_US",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

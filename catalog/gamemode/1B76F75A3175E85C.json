@@ -1,0 +1,11 @@
+{
+  "guid": "1B76F75A3175E85C",
+  "path": "Prefabs/MP/Modes/Plain/GameMode_Plain.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/MP/Modes/COE_GameMode.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "gamemode",
+  "display_name": "GameMode_Plain",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

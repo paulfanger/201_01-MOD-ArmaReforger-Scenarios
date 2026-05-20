@@ -1,0 +1,11 @@
+{
+  "guid": "5BB84B3E6A0B46C5",
+  "path": "Prefabs/MP/Triggers/CoopTrigger_Base.et",
+  "ext": "et",
+  "source_file": "SampleCoop/Prefabs/MP/Triggers/CoopTriggerSpawner.et",
+  "source_repo": "Reforger-Sample-Coop",
+  "type": "trigger",
+  "display_name": "CoopTrigger_Base",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

@@ -1,0 +1,11 @@
+{
+  "guid": "55973C5B0950D4AB",
+  "path": "Prefabs/Props/Military/Furniture/ChairMilitary_US_01.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/MP/Modes/KEX_GameMode_CombatOps.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "ChairMilitary_US_01",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

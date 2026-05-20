@@ -1,0 +1,11 @@
+{
+  "guid": "9D20C53ED84D6961",
+  "path": "Prefabs/Groups/BLUFOR/Group_SampleFactionBLUFOR_Base.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Prefabs/Groups/BLUFOR/Group_SampleFactionBLUFOR_FireGroup.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "group",
+  "display_name": "Group_SampleFactionBLUFOR_Base",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

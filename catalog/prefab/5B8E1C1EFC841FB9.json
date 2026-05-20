@@ -1,0 +1,11 @@
+{
+  "guid": "5B8E1C1EFC841FB9",
+  "path": "PrefabsEditable/Auto/Props/Garbage/Military/Ammo/E_GarbageAmmunition_US_01.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/PrefabsEditable/Auto/Systems/Arsenal/ArsenalBoxes/SampleFactionBLUFOR/E_ArsenalBox_SampleFactionBLUFOR.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "E_GarbageAmmunition_US_01",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

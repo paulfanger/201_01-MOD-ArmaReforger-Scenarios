@@ -1,0 +1,12 @@
+{
+  "class_name": "GenericEntity",
+  "guid": "9C47DECB98FDA4DA",
+  "path": "Prefabs/ScenarioFramework/Components/SlotExtraction.et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Compositions/Tasks/COE_TaskExfil.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "kind": "entity_decl",
+  "type": "prefab",
+  "display_name": "GenericEntity",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

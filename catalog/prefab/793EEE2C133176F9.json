@@ -1,0 +1,11 @@
+{
+  "guid": "793EEE2C133176F9",
+  "path": "Prefabs/Characters/HeadGear/Hat_Panama_Soviet/Hat_Panama_Soviet_01_v1.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Configs/EntityCatalog/SampleFactionREDFOR/SampleFactionREDFOR_InventoryItems.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "Hat_Panama_Soviet_01_v1",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

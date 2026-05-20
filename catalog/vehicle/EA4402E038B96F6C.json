@@ -1,0 +1,11 @@
+{
+  "guid": "EA4402E038B96F6C",
+  "path": "Prefabs/Vehicles/Wheeled/SampleCar_01/SampleCar_01_white.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewCar/Configs/Editor/PlaceableEntities/NewCar_Vehicles.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "vehicle",
+  "display_name": "SampleCar_01_white",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

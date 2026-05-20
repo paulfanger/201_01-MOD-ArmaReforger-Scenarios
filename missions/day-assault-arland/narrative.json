@@ -1,0 +1,76 @@
+{
+  "title": "Day Assault Arland",
+  "tagline": "Ein US-Sturmtrupp greift am helllichten Tag eine sowjetische Garnison auf Arland an.",
+  "premise": "Ein 2-8-köpfiger US-Angriffstrupp soll eine von sowjetischen Kräften besetzte Ortschaft auf Arland im Sturm nehmen. Die Garnison wird durch Maschinengewehr-Teams und eine schnelle Reaktionstruppe gesichert. Ziel: Ort befreien, sowjetische Verstärkung neutralisieren.",
+  "factions": {
+    "player": {
+      "id": "US",
+      "asset_id_ref": "ENF_Faction_US",
+      "role": "Angriffstrupp, 2-8 Spieler, Sturminfanterie-Loadout"
+    },
+    "ai": {
+      "id": "USSR",
+      "asset_id_ref": "ENF_Faction_USSR",
+      "role": "Sowjetische Garnison + Reaktionstruppe"
+    }
+  },
+  "biome": {
+    "map_id_ref": "arland",
+    "region_hint": "Arland Küstenort, flaches Terrain mit Gebäuden"
+  },
+  "tone": {
+    "primary": "intense",
+    "secondary": ["aggressive", "tactical"],
+    "color_palette_hint": ["warm_daylight", "dusty_brown", "green"]
+  },
+  "pacing": {
+    "phase_1": {
+      "name": "Vorstoß",
+      "duration_min": 5,
+      "description": "Sturmtrupp nähert sich dem Ort, erste Kontakte mit Vorposten",
+      "ai_state": "patrol_normal",
+      "player_objective": "Ortschaft von Norden erreichen"
+    },
+    "phase_2": {
+      "name": "Sturm",
+      "duration_min": 10,
+      "description": "Häuserkampf in der Ortschaft, Verteidiger in Deckung",
+      "ai_state": "combat_defensive",
+      "player_objective": "Sowjetische Garnison und MG-Teams ausschalten"
+    },
+    "phase_3": {
+      "name": "Verstärkungsabwehr",
+      "duration_min": 8,
+      "description": "Reaktionstruppe versucht die Ortschaft zurückzuerobern",
+      "ai_state": "counterattack",
+      "player_objective": "Reaktionstruppe abwehren und Ort halten"
+    }
+  },
+  "time_of_day": {
+    "hour": 10,
+    "minute": 0,
+    "description": "Volles Tageslicht — klare Sicht, keine NVGs, offene Gefechtsabstände"
+  },
+  "weather": {
+    "preset": "clear",
+    "description": "Klarer Himmel, gute Sichtweite — typischer Gefechtstag"
+  },
+  "player_setup": {
+    "min_players": 2,
+    "max_players": 8,
+    "loadout_type": "Sturminfanterie",
+    "loadout_hint": "Standard-Infanterie-Ausrüstung, keine Schleichspezialausrüstung"
+  },
+  "narrative_anchors": [
+    "Küstenortschaft auf Arland als Hauptziel",
+    "Sowjetische Verteidiger in Häusern und Schützengräben verschanzt",
+    "MG-Team auf Anhöhe südlich des Ortes",
+    "Reaktionstruppe kommt aus Richtung Ost nach ca. 5 Minuten Kampf"
+  ],
+  "out_of_scope": [
+    "PVP-Elemente",
+    "Luftunterstützung (Phase 2)",
+    "Fahrzeuge für Spieler (MVP)",
+    "Live-AI-Calls während des Gameplays"
+  ]
+}

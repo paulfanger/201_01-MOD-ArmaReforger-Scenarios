@@ -1,0 +1,11 @@
+{
+  "guid": "41C45ED38D93D75C",
+  "path": "PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_MachineGunNest_S_SampleFactionREDFOR_01_PKM_Campaign.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Configs/Campaign/Building_Conflict_SampleNewFaction.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "E_MachineGunNest_S_SampleFactionREDFOR_01_PKM_Campaign",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

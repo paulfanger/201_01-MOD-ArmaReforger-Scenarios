@@ -1,0 +1,11 @@
+{
+  "guid": "6DE1A5D6BFED9F41",
+  "path": "Prefabs/Props/Military/Camps/PortableDesk_01_Sand_Full.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewProp/PrefabsEditable/Auto/Props/Military/Camps/E_PortableDesk_01_Sand_Full.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "PortableDesk_01_Sand_Full",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

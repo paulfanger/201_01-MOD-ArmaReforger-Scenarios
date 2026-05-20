@@ -1,0 +1,11 @@
+{
+  "guid": "6C4E8405F068F3E3",
+  "path": "Prefabs/Compositions/Misc/SubCompositions/Tents/Tent_Barracks_US_04.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Compositions/Base/COE_MainBaseLandUS.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "Tent_Barracks_US_04",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

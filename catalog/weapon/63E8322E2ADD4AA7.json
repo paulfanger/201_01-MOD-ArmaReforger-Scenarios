@@ -1,0 +1,11 @@
+{
+  "guid": "63E8322E2ADD4AA7",
+  "path": "Prefabs/Weapons/Rifles/AK74/Rifle_AK74_GP25.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Configs/EntityCatalog/SampleFactionREDFOR/SampleFactionREDFOR_InventoryItems.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "weapon",
+  "display_name": "Rifle_AK74_GP25",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

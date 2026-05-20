@@ -1,0 +1,11 @@
+{
+  "guid": "7B47FE85B7F966F7",
+  "path": "Configs/Factions/SampleFactionBLUFOR_Campaign.conf",
+  "ext": "conf",
+  "source_file": "SampleMod_NewFaction/Worlds/MP/CTI_Campaign_Eden_SampleFaction_01_Layers/logic.layer",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "faction",
+  "display_name": "SampleFactionBLUFOR_Campaign",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

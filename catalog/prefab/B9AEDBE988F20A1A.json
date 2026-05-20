@@ -1,0 +1,11 @@
+{
+  "guid": "B9AEDBE988F20A1A",
+  "path": "Prefabs/Structures/Infrastructure/Towers/AntennaR404_01/AntennaR404_01.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Compositions/Installation/USSR/COE_R404_Antenna.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "AntennaR404_01",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

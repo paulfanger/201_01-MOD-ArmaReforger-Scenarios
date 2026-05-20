@@ -1,0 +1,11 @@
+{
+  "guid": "1DF5E9B10D464AD4",
+  "path": "Prefabs/Characters/Uniforms/Jacket_M88_item_green.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Prefabs/Characters/Uniforms/Jacket_M88_green.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "Jacket_M88_item_green",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

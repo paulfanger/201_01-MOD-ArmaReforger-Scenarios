@@ -1,0 +1,11 @@
+{
+  "guid": "F879E808E02C9442",
+  "path": "UI/Textures/Nametags/nametagPointerRankSergeant_ca.edds",
+  "ext": "edds",
+  "source_file": "SampleMod_NewFaction/Configs/Factions/SampleFactionGREENFOR_Campaign.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "unknown",
+  "display_name": "nametagPointerRankSergeant_ca",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

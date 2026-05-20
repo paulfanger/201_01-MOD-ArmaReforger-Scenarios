@@ -1,0 +1,11 @@
+{
+  "guid": "0B24DD72DAF499F4",
+  "path": "PrefabsEditable/Auto/Props/Military/AmmoBoxes/EquipmentBoxStack/E_EquipmentBoxStack_US_01_V6_covered.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/PrefabsEditable/Auto/Systems/Arsenal/ArsenalBoxes/SampleFactionBLUFOR/E_ArsenalBox_SampleFactionBLUFOR.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "E_EquipmentBoxStack_US_01_V6_covered",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

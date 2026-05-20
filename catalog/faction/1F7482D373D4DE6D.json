@@ -1,0 +1,11 @@
+{
+  "guid": "1F7482D373D4DE6D",
+  "path": "Prefabs/Characters/Factions/OPFOR/SampleFactionREDFOR/Character_SampleFactionREDFOR_Medic.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Configs/Editor/PlaceableEntities/Characters_SampleFactionREDFOR.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "faction",
+  "display_name": "Character_SampleFactionREDFOR_Medic",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

@@ -1,0 +1,12 @@
+{
+  "class_name": "SCR_MapEntity",
+  "guid": "731564B66F91B107",
+  "path": "Prefabs/World/Game/MapEntity.et",
+  "source_file": "SampleCoop/Worlds/CoopTest_managers.layer",
+  "source_repo": "Reforger-Sample-Coop",
+  "kind": "entity_decl",
+  "type": "prefab",
+  "display_name": "SCR_MapEntity",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

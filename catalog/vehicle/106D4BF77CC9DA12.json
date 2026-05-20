@@ -1,0 +1,12 @@
+{
+  "class_name": "SCR_GearboxHitZone",
+  "guid": "106D4BF77CC9DA12",
+  "path": "Prefabs/Vehicles/Core/Configs/HitZones/Gearbox_Offroad.conf",
+  "source_file": "SampleMod_NewCar/Prefabs/Vehicles/Wheeled/SampleCar_01/SampleCar_01_Base.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "kind": "entity_decl",
+  "type": "vehicle",
+  "display_name": "SCR_GearboxHitZone",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

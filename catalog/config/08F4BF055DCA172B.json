@@ -1,0 +1,11 @@
+{
+  "guid": "08F4BF055DCA172B",
+  "path": "Configs/MissionHeaders/COE_Eden.conf",
+  "ext": "conf",
+  "source_file": "optionals/COE_RHS_Compat/Missions/COE_Eden_RHSRF.conf",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "config",
+  "display_name": "COE_Eden",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

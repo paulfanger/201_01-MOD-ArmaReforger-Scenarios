@@ -1,0 +1,11 @@
+{
+  "guid": "63B101CE8FA7F8EF",
+  "path": "Prefabs/Vehicles/Wheeled/SampleCar_01/Dst/SampleCar_01_glass_RR.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewCar/Prefabs/Vehicles/Wheeled/SampleCar_01/SampleCar_01_Base.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "vehicle",
+  "display_name": "SampleCar_01_glass_RR",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

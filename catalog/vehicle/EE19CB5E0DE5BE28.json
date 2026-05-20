@@ -1,0 +1,11 @@
+{
+  "guid": "EE19CB5E0DE5BE28",
+  "path": "Prefabs/Vehicles/Wheeled/UAZ469/VehParts/Doors/Red/UAZ469_door_R01_Red.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_SampleFactionREDFOR.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "vehicle",
+  "display_name": "UAZ469_door_R01_Red",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

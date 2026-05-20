@@ -1,0 +1,12 @@
+{
+  "class_name": "SCR_LoadoutManager",
+  "guid": "0C4D399744D5B3FD",
+  "path": "Prefabs/MP/Managers/Loadouts/CoopLoadoutManager.et",
+  "source_file": "SampleCoop/Worlds/CoopTest_gamemode.layer",
+  "source_repo": "Reforger-Sample-Coop",
+  "kind": "entity_decl",
+  "type": "loadout",
+  "display_name": "SCR_LoadoutManager",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

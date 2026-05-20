@@ -1,0 +1,11 @@
+{
+  "guid": "054F83ED85A4C8E4",
+  "path": "Prefabs/Compositions/Base/COE_MainBaseCarrierUS.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/worlds/COE/Arland/Arland_Layers/areas.layer",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "COE_MainBaseCarrierUS",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

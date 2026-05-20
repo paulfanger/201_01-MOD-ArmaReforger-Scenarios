@@ -1,0 +1,6 @@
+SCR_FactionManager CoopFactionManager : "{E4075339B4E24E10}Prefabs/MP/Managers/Factions/CoopFactionManager.et" {
+}
+LoadoutManager LoadoutManager {
+}
+TimeAndWeatherManagerEntity TimeAndWeatherManagerEntity {
+}

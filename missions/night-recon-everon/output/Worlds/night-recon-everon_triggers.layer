@@ -1,0 +1,12 @@
+SCR_BaseTriggerEntity Trigger_OutpostZone {
+ coords 390 14 310
+ SphereRadius 80
+}
+SCR_BaseTriggerEntity Trigger_AlarmZone {
+ coords 395 14 315
+ SphereRadius 45
+}
+SCR_BaseTriggerEntity Trigger_ExfilZone {
+ coords 800 15 245
+ SphereRadius 30
+}

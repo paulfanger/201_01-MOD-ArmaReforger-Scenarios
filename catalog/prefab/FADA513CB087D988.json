@@ -1,0 +1,11 @@
+{
+  "guid": "FADA513CB087D988",
+  "path": "Prefabs/Characters/Uniforms/Pants_M88_green.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Configs/EntityCatalog/SampleFactionGREENFOR/SampleFactionGREENFOR_InventoryItems.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "Pants_M88_green",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

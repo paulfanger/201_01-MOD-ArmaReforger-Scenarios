@@ -1,0 +1,11 @@
+{
+  "guid": "BF6DE6C82865CE12",
+  "path": "Prefabs/Characters/Factions/BLUFOR/SampleFactionBLUFOR/Character_SampleFactionBLUFOR_MG.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Configs/Editor/PlaceableEntities/Characters_SampleFactionBLUFOR.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "faction",
+  "display_name": "Character_SampleFactionBLUFOR_MG",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

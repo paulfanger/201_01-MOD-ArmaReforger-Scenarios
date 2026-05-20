@@ -1,0 +1,49 @@
+{
+  "mission_id": "day-assault-arland",
+  "run_at": "2026-05-20T02:11:42.997644+00:00",
+  "stages": {
+    "stage_1": {
+      "status": "pass",
+      "source": "existing"
+    },
+    "stage_2": {
+      "status": "pass",
+      "resolved": 2,
+      "missing": 0
+    },
+    "stage_5_snapshot": {
+      "status": "pass",
+      "snapshot": "004_pre_generation_auto_approved.json"
+    },
+    "stage_6": {
+      "status": "pass",
+      "files": [
+        "addon.gproj",
+        "Missions/day-assault-arland.conf",
+        "Missions/day-assault-arland.conf.meta",
+        "Worlds/day-assault-arland.ent",
+        "Worlds/day-assault-arland.ent.meta",
+        "Worlds/day-assault-arland_gamemode.layer",
+        "Worlds/day-assault-arland_managers.layer",
+        "Worlds/day-assault-arland_spawnpoints.layer",
+        "Worlds/day-assault-arland_AI.layer",
+        "Worlds/day-assault-arland_tasks.layer",
+        "Worlds/day-assault-arland_triggers.layer",
+        "Worlds/day-assault-arland_environment.layer",
+        "DISCLOSURE.md"
+      ],
+      "warnings": []
+    },
+    "validation_schema": {
+      "status": "pass",
+      "warnings": 0,
+      "checked_files": 18
+    },
+    "validation_cross": {
+      "status": "pass"
+    }
+  },
+  "passed": true,
+  "errors": [],
+  "warnings": []
+}

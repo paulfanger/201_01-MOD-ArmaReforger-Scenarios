@@ -1,0 +1,7 @@
+TimeAndWeatherManagerEntity TimeAndWeatherManager {
+ TimeOfDay {
+  m_iDefaultHours 6
+  m_iDefaultMinutes 0
+ }
+ WeatherPreset "fog_light"
+}

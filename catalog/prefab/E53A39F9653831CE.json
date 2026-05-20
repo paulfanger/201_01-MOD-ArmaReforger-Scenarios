@@ -1,0 +1,11 @@
+{
+  "guid": "E53A39F9653831CE",
+  "path": "Prefabs/Props/Fabric/Flags/Flag_1_2_Red_01.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Prefabs/Compositions/Slotted/SlotFlatSmall/Headquarters_S_SampleModREDFOR_01_Campaign.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "Flag_1_2_Red_01",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

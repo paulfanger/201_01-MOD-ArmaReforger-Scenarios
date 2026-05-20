@@ -1,0 +1,11 @@
+{
+  "guid": "418D8BF6A342C0BD",
+  "path": "Configs/Navmesh/Navmesh_GM_Arland_Soldier.conf",
+  "ext": "conf",
+  "source_file": "addons/CombatOpsEnhanced/worlds/COE/Arland/Arland_Layers/managers.layer",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "config",
+  "display_name": "Navmesh_GM_Arland_Soldier",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

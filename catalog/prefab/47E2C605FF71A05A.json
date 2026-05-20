@@ -1,0 +1,11 @@
+{
+  "guid": "47E2C605FF71A05A",
+  "path": "PrefabsEditable/Auto/Structures/Military/CamoNets/US/E_CamoNet_Medium_US.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/PrefabsEditable/Auto/Structures/Military/CamoNets/US/E_CamoNet_Medium_SampleFactionBLUFOR.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "E_CamoNet_Medium_US",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

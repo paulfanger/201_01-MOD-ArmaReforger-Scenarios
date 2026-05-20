@@ -1,0 +1,11 @@
+{
+  "guid": "AA96C0FB1A65B886",
+  "path": "Prefabs/Props/Military/FieldKitchenTrailerUSSR_01.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Compositions/Base/COE_MainBaseLandUSSR.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "FieldKitchenTrailerUSSR_01",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

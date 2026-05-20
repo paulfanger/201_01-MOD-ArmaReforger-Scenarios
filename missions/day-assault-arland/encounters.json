@@ -1,0 +1,67 @@
+{
+  "spawn_points": [
+    {
+      "team": "US", "role": "player",
+      "coords": [150, 5, 200], "angle_y": 0.0,
+      "prefab_guid": "CEA2B24051A44525",
+      "prefab_path": "PrefabsEditable/SpawnPoints/E_SpawnPoint_US.et",
+      "instance_name": "SpawnPoint_US_01"
+    },
+    {
+      "team": "US", "role": "player",
+      "coords": [155, 5, 210], "angle_y": 0.0,
+      "prefab_guid": "CEA2B24051A44525",
+      "prefab_path": "PrefabsEditable/SpawnPoints/E_SpawnPoint_US.et",
+      "instance_name": "SpawnPoint_US_02"
+    }
+  ],
+  "ai_groups": [
+    {
+      "name": "USSR_Checkpoint_Garrison",
+      "prefab_guid": "359353A0A5A52216",
+      "prefab_path": "Prefabs/Groups/Campaign/Group_USSR_Defenders.et",
+      "coords": [450, 8, 200],
+      "waypoint_refs": ["WP_Defend_Checkpoint"],
+      "behavior_mode": "defend",
+      "alert_radius_m": 100,
+      "group_size": 5
+    },
+    {
+      "name": "USSR_MG_Team",
+      "prefab_guid": "A2F75E45C66B1C0A",
+      "prefab_path": "Prefabs/Groups/OPFOR/Group_USSR_MachineGunTeam.et",
+      "coords": [460, 9, 190],
+      "waypoint_refs": ["WP_Defend_MG"],
+      "behavior_mode": "defend",
+      "alert_radius_m": 120,
+      "group_size": 2
+    },
+    {
+      "name": "USSR_Counterattack_Wave",
+      "prefab_guid": "30ED11AA4F0D41E5",
+      "prefab_path": "Prefabs/Groups/OPFOR/Group_USSR_FireGroup.et",
+      "coords": [600, 7, 200],
+      "waypoint_refs": ["WP_Counter_Route"],
+      "behavior_mode": "patrol",
+      "alert_radius_m": 80,
+      "group_size": 4,
+      "spawn_on_trigger": "Trigger_CheckpointCaptured"
+    }
+  ],
+  "waypoints": [
+    {"name": "WP_Defend_Checkpoint", "type": "defend", "prefab_guid": "93291E72AC23930F", "prefab_path": "Prefabs/AI/Waypoints/AIWaypoint_Defend.et", "coords": [450, 8, 200]},
+    {"name": "WP_Defend_MG", "type": "defend", "prefab_guid": "93291E72AC23930F", "prefab_path": "Prefabs/AI/Waypoints/AIWaypoint_Defend.et", "coords": [460, 9, 190]},
+    {"name": "WP_Counter_Route", "type": "move", "prefab_guid": "750A8D1695BD6998", "prefab_path": "Prefabs/AI/Waypoints/AIWaypoint_Move.et", "coords": [500, 7, 200]}
+  ],
+  "tasks": [
+    {"name": "Task_CaptureCheckpoint", "class": "SCR_TriggerTask", "coords": [450, 8, 200], "fields": {"m_sName": "Checkpoint einnehmen", "m_sDescription": "Eliminiere alle Feinde am Checkpoint und halte die Zone"}},
+    {"name": "Task_HoldPosition", "class": "SCR_EliminateTask", "coords": [450, 8, 200], "fields": {"m_sName": "Position halten", "m_sDescription": "Halte den Checkpoint 5 Minuten gegen den sowjetischen Gegenstoß"}}
+  ],
+  "triggers": [
+    {"class": "SCR_BaseTriggerEntity", "name": "Trigger_CheckpointZone", "coords": [450, 8, 200], "radius": 60},
+    {"class": "SCR_BaseTriggerEntity", "name": "Trigger_CheckpointCaptured", "coords": [450, 8, 200], "radius": 50},
+    {"class": "SCR_BaseTriggerEntity", "name": "Trigger_HoldComplete", "coords": [450, 8, 200], "radius": 55}
+  ],
+  "managers": ["GameMode", "FactionManager", "LoadoutManager", "TimeAndWeatherManagerEntity"],
+  "environment_overrides": {"time_of_day": {"hour": 10, "minute": 0}, "weather_preset": "clear"}
+}

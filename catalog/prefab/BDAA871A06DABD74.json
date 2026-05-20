@@ -1,0 +1,11 @@
+{
+  "guid": "BDAA871A06DABD74",
+  "path": "PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_long_burlap.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_long_burlap.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "E_Sandbag_01_long_burlap",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

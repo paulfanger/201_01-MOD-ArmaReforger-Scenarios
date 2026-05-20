@@ -1,0 +1,11 @@
+{
+  "guid": "13EB5465CA676A60",
+  "path": "Prefabs/Systems/Services/ServicePointDelegate_Armory.et",
+  "ext": "et",
+  "source_file": "optionals/COE_RHS_Compat/Prefabs/Props/Military/Compositions/US/COE_ArsenalBox_RHSUS.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "ServicePointDelegate_Armory",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

@@ -1,0 +1,11 @@
+{
+  "guid": "881CE7B0098504C2",
+  "path": "PrefabsEditable/Slots/Road/E_SlotRoadLarge.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Prefabs/MP/Campaign/CampaignFactionManager_Base.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "E_SlotRoadLarge",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

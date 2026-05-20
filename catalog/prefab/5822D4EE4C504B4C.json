@@ -1,0 +1,11 @@
+{
+  "guid": "5822D4EE4C504B4C",
+  "path": "Prefabs/Characters/Footwear/CombatBoots_Soviet_01_item_red.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Prefabs/Characters/Footwear/CombatBoots_Soviet_01_red.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "CombatBoots_Soviet_01_item_red",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

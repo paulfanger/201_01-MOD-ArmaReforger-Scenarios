@@ -1,0 +1,11 @@
+{
+  "guid": "808E6A1DB939AB3C",
+  "path": "UI/Textures/EditorPreviews/Characters/BLUFOR/SampleFactionBLUFOR/Character_SampleFactionBLUFOR_Medic.edds",
+  "ext": "edds",
+  "source_file": "SampleMod_NewFaction/Prefabs/Characters/Factions/BLUFOR/SampleFactionBLUFOR/Character_SampleFactionBLUFOR_Medic.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "unknown",
+  "display_name": "Character_SampleFactionBLUFOR_Medic",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

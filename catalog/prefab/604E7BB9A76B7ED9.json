@@ -1,0 +1,11 @@
+{
+  "guid": "604E7BB9A76B7ED9",
+  "path": "Prefabs/Systems/Compositions/EntitySpawnerSlot/EntitySpawnerSlot_Vehicle_Large.et",
+  "ext": "et",
+  "source_file": "optionals/COE_Kunar_Compat/Prefabs/Compositions/Base/COE_MainBase_FobMichigan.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "EntitySpawnerSlot_Vehicle_Large",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

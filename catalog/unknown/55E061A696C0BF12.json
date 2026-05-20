@@ -1,0 +1,11 @@
+{
+  "guid": "55E061A696C0BF12",
+  "path": "Language/localization.st",
+  "ext": "st",
+  "source_file": "SampleMod_ModdedWeapon/SampleMod_ModdedWeapon.gproj",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "unknown",
+  "display_name": "localization",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

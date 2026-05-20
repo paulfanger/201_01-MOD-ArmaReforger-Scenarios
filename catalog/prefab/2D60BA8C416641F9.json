@@ -1,0 +1,12 @@
+{
+  "class_name": "GenericEntity",
+  "guid": "2D60BA8C416641F9",
+  "path": "PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_bunker_plastic.et",
+  "source_file": "SampleCoop/Worlds/CoopTest_environment.layer",
+  "source_repo": "Reforger-Sample-Coop",
+  "kind": "entity_decl",
+  "type": "prefab",
+  "display_name": "GenericEntity",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

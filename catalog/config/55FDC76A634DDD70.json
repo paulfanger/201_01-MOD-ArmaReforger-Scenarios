@@ -1,0 +1,11 @@
+{
+  "guid": "55FDC76A634DDD70",
+  "path": "Configs/Campaign/Building_Conflict_SampleNewFaction.conf",
+  "ext": "conf",
+  "source_file": "SampleMod_NewFaction/Prefabs/Editor/Modes/EditorModeBuilding.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "config",
+  "display_name": "Building_Conflict_SampleNewFaction",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

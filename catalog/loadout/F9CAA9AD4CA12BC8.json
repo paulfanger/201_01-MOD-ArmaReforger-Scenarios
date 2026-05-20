@@ -1,0 +1,11 @@
+{
+  "guid": "F9CAA9AD4CA12BC8",
+  "path": "Prefabs/MP/Managers/Loadouts/CoopLoadoutManager_Base.et",
+  "ext": "et",
+  "source_file": "SampleCoop/Prefabs/MP/Managers/Loadouts/CoopLoadoutManager.et",
+  "source_repo": "Reforger-Sample-Coop",
+  "type": "loadout",
+  "display_name": "CoopLoadoutManager_Base",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

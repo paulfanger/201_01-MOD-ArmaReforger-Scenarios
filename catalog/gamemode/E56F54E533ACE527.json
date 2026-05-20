@@ -1,0 +1,11 @@
+{
+  "guid": "E56F54E533ACE527",
+  "path": "Prefabs/Editor/Modes/EditorModeBase.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Prefabs/Editor/Modes/EditorModeBuilding.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "gamemode",
+  "display_name": "EditorModeBase",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

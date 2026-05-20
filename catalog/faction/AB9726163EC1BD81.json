@@ -1,0 +1,14 @@
+{
+  "guid": "AB9726163EC1BD81",
+  "path": "Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic.et",
+  "ext": "et",
+  "source_file": "SampleMod_Main/Worlds/Modding/Assets_Showcase_Basic_Layers/default.layer",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "faction",
+  "display_name": "Character_USSR_Medic",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap",
+  "faction_key": "USSR",
+  "enriched_by": "catalog-enrich-factions",
+  "enriched_at": "2026-05-20"
+}

@@ -1,0 +1,11 @@
+{
+  "guid": "5392C4D80E4B18F8",
+  "path": "Prefabs/MP/Spawning/SpawnPoint_FFA.et",
+  "ext": "et",
+  "source_file": "SampleMod_Main/Worlds/Modding/Assets_Showcase_Base_Layers/mission.layer",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "SpawnPoint_FFA",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

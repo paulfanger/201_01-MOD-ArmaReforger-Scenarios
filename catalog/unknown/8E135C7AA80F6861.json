@@ -1,0 +1,11 @@
+{
+  "guid": "8E135C7AA80F6861",
+  "path": "UI/Textures/MissionLoadingScreens/CO_Arland_05.edds",
+  "ext": "edds",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/MP/Modes/KEX_GameMode_CombatOps.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "unknown",
+  "display_name": "CO_Arland_05",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

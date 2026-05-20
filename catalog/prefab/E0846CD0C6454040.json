@@ -1,0 +1,11 @@
+{
+  "guid": "E0846CD0C6454040",
+  "path": "PrefabsEditable/Auto/MP/Campaign/E_RequestTable_US.et",
+  "ext": "et",
+  "source_file": "optionals/COE_Kunar_Compat/worlds/COE/Kunar/Kunar_Layers/areas.layer",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "E_RequestTable_US",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

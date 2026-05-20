@@ -1,0 +1,11 @@
+{
+  "guid": "921D7E4B53C9896A",
+  "path": "PrefabsEditable/Auto/Props/Military/Camps/E_PortableDesk_01_Black_Full.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewProp/Configs/Editor/PlaceableEntities/NewProp_Props.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "E_PortableDesk_01_Black_Full",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

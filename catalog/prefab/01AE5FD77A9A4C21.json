@@ -1,0 +1,11 @@
+{
+  "guid": "01AE5FD77A9A4C21",
+  "path": "Prefabs/Structures/Military/Camps/TentSmallUS_01/TentSmallUS_01.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/MP/Modes/KEX_GameMode_CombatOps.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "TentSmallUS_01",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

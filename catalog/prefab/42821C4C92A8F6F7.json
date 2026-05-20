@@ -1,0 +1,11 @@
+{
+  "guid": "42821C4C92A8F6F7",
+  "path": "Prefabs/Compositions/Misc/SubCompositions/Fortifications/Sandbag_Corner_Left_USSR_01.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Worlds/MP/CTI_Campaign_Eden_base_Layers/Relay_objects.layer",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "Sandbag_Corner_Left_USSR_01",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

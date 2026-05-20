@@ -1,0 +1,11 @@
+{
+  "guid": "AA1C7FBA7756E0AC",
+  "path": "Worlds/Modding/Assets_Showcase_Basic.ent",
+  "ext": "ent",
+  "source_file": "SampleMod_Main/Missions/SampleMod_ShowcaseBasic.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "unknown",
+  "display_name": "Assets_Showcase_Basic",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

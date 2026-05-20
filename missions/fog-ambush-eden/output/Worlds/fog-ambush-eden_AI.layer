@@ -1,0 +1,28 @@
+$grp AIWaypoint_Move : "{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et" {
+ WP_Convoy_Route1 {
+  coords 300 10 200
+ }
+ WP_Convoy_Route2 {
+  coords 350 10 200
+ }
+ WP_Convoy_Route3 {
+  coords 400 10 200
+ }
+ WP_React_Route {
+  coords 380 10 200
+ }
+}
+SCR_AIGroup USSR_Convoy_Escort : "{359353A0A5A52216}Prefabs/Groups/Campaign/Group_USSR_Defenders.et" {
+ coords 350 10 200
+ m_aWaypoints {
+  "WP_Convoy_Route1"
+  "WP_Convoy_Route2"
+  "WP_Convoy_Route3"
+ }
+}
+SCR_AIGroup USSR_Reaction_Force : "{30ED11AA4F0D41E5}Prefabs/Groups/OPFOR/Group_USSR_FireGroup.et" {
+ coords 450 8 190
+ m_aWaypoints {
+  "WP_React_Route"
+ }
+}

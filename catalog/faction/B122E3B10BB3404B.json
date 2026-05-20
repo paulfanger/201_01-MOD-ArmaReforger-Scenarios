@@ -1,0 +1,11 @@
+{
+  "guid": "B122E3B10BB3404B",
+  "path": "Configs/Factions/OPFOR.conf",
+  "ext": "conf",
+  "source_file": "SampleMod_NewFaction/Configs/Factions/SampleFactionREDFOR.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "faction",
+  "display_name": "OPFOR",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

@@ -1,0 +1,11 @@
+{
+  "guid": "551ECE9F42A6CFB8",
+  "path": "PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_SupplyStorage_S_SampleFactionBLUFOR_01_Campaign.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Configs/Campaign/Building_Conflict_SampleNewFaction.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "E_SupplyStorage_S_SampleFactionBLUFOR_01_Campaign",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

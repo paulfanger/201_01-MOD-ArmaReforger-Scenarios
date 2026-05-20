@@ -1,0 +1,11 @@
+{
+  "guid": "958043CE1648EC43",
+  "path": "Configs/Callsigns/Callsigns_USSR.conf",
+  "ext": "conf",
+  "source_file": "SampleMod_NewFaction/Configs/Factions/SampleFactionREDFOR.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "config",
+  "display_name": "Callsigns_USSR",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

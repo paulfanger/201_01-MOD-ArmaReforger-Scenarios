@@ -1,0 +1,11 @@
+{
+  "guid": "63C1E699345B24F9",
+  "path": "Prefabs/Weapons/Magazines/Magazine_545x39_AK_30rnd_Base.et",
+  "ext": "et",
+  "source_file": "SampleMod_ModdedWeapon/Prefabs/Weapons/Magazines/Magazine_AK74_30rnd_Modded.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "weapon",
+  "display_name": "Magazine_545x39_AK_30rnd_Base",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

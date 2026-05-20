@@ -1,0 +1,11 @@
+{
+  "guid": "3F796555FD10152A",
+  "path": "Prefabs/Vehicles/Core/Lights/Light_Brake.conf",
+  "ext": "conf",
+  "source_file": "SampleMod_NewCar/Prefabs/Vehicles/Wheeled/SampleCar_01/SampleCar_01_Base.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "vehicle",
+  "display_name": "Light_Brake",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

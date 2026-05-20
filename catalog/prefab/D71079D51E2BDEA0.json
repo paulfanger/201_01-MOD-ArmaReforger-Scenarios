@@ -1,0 +1,11 @@
+{
+  "guid": "D71079D51E2BDEA0",
+  "path": "PrefabsEditable/Auto/Compositions/Slotted/SlotRoadLarge/E_Checkpoint_L_SampleFactionREDFOR_01.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Configs/Campaign/Building_Conflict_SampleNewFaction.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "E_Checkpoint_L_SampleFactionREDFOR_01",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

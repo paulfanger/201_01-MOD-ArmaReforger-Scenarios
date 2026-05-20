@@ -1,0 +1,11 @@
+{
+  "guid": "12C8933903D18885",
+  "path": "Prefabs/Characters/Vests/Vest_SovietHarness/Variants/Vest_SovietHarness_sharpshooter.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Configs/EntityCatalog/SampleFactionREDFOR/SampleFactionREDFOR_InventoryItems.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "Vest_SovietHarness_sharpshooter",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

@@ -1,0 +1,11 @@
+{
+  "guid": "019C30B36981A31A",
+  "path": "Configs/EntityCatalog/SampleFactionREDFOR/SampleFactionREDFOR_Vehicles.conf",
+  "ext": "conf",
+  "source_file": "SampleMod_NewFaction/Configs/Factions/SampleFactionREDFOR.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "config",
+  "display_name": "SampleFactionREDFOR_Vehicles",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

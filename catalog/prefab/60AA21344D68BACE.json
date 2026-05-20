@@ -1,0 +1,11 @@
+{
+  "guid": "60AA21344D68BACE",
+  "path": "Prefabs/Structures/Military/CamoNets/Soviet/CamoNet_Medium_Top_Soviet.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Compositions/Installation/USSR/COE_R404_Antenna.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "CamoNet_Medium_Top_Soviet",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

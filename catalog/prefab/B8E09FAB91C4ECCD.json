@@ -1,0 +1,12 @@
+{
+  "class_name": "RadioManagerEntity",
+  "guid": "B8E09FAB91C4ECCD",
+  "path": "Prefabs/Radio/RadioManager.et",
+  "source_file": "SampleCoop/Worlds/CoopTest_managers.layer",
+  "source_repo": "Reforger-Sample-Coop",
+  "kind": "entity_decl",
+  "type": "prefab",
+  "display_name": "RadioManagerEntity",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

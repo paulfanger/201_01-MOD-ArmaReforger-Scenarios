@@ -1,0 +1,11 @@
+{
+  "guid": "88821DCA414AF4C7",
+  "path": "Prefabs/ScenarioFramework/Components/LayerTaskDeliver.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Compositions/Tasks/COE_TaskDeliverIntel.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "LayerTaskDeliver",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

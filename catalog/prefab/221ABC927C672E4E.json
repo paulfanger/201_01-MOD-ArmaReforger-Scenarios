@@ -1,0 +1,12 @@
+{
+  "class_name": "GenericTerrainEntity",
+  "guid": "221ABC927C672E4E",
+  "path": "Prefabs/World/DefaultWorld/GenericTerrain_Default.et",
+  "source_file": "SampleMod_Main/Worlds/Modding/Assets_Showcase_Base_Layers/default.layer",
+  "source_repo": "Arma-Reforger-Samples",
+  "kind": "entity_decl",
+  "type": "prefab",
+  "display_name": "GenericTerrainEntity",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

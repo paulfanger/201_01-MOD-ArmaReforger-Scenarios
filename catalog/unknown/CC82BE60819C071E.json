@@ -1,0 +1,11 @@
+{
+  "guid": "CC82BE60819C071E",
+  "path": "UI/Textures/Flags/flag_green_ca.edds",
+  "ext": "edds",
+  "source_file": "SampleMod_NewFaction/Configs/Core/EditableEntityCore.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "unknown",
+  "display_name": "flag_green_ca",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

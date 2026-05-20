@@ -1,0 +1,11 @@
+{
+  "guid": "74CBD673D67C58FF",
+  "path": "Prefabs/Structures/Industrial/Houses/Office_E_01/Office_E_01_base.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Structures/Industrial/Houses/Office_E_01/Office_E_01.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "Office_E_01_base",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

@@ -1,0 +1,11 @@
+{
+  "guid": "E77EA96D4FC48177",
+  "path": "Configs/Resources/Supplies/Consumers/Generic/Consumer_Self.conf",
+  "ext": "conf",
+  "source_file": "SampleMod_NewFaction/Prefabs/Characters/Campaign/Campaign_SampleFactionREDFOR_Player.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "config",
+  "display_name": "Consumer_Self",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

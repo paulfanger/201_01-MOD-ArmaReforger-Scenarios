@@ -1,0 +1,11 @@
+{
+  "guid": "D13E0BC1C8B07819",
+  "path": "Prefabs/Structures/Commercial/Pubs/PubVillage_E_2L01/PubVillage_E_2L01_V5_Mortonka.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Managers/COE_ObjectiveManager.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "PubVillage_E_2L01_V5_Mortonka",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

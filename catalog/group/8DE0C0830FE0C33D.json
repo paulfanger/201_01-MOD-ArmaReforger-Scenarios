@@ -1,0 +1,14 @@
+{
+  "guid": "8DE0C0830FE0C33D",
+  "path": "Prefabs/Groups/OPFOR/Group_USSR_Base.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Prefabs/Groups/OPFOR/Group_SampleFactionREDFOR_Base.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "group",
+  "display_name": "Group_USSR_Base",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap",
+  "faction_key": "USSR",
+  "enriched_by": "catalog-enrich-factions",
+  "enriched_at": "2026-05-20"
+}

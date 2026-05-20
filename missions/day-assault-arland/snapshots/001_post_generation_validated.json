@@ -1,0 +1,327 @@
+{
+  "index": 1,
+  "label": "post_generation_validated",
+  "stage": 6,
+  "timestamp": "2026-05-20T02:06:16.193304+00:00",
+  "content": {
+    "narrative.json": {
+      "title": "Night Recon Everon",
+      "tagline": "Eine US-Recon-Einheit beschattet einen sowjetischen Vorposten in der Nacht.",
+      "premise": "Eine 4-köpfige US-Recon-Einheit infiltriert hinter feindliche Linien nahe Montignac auf Everon. Ziel: einen hochrangigen sowjetischen Kommandanten identifizieren und koordinatengenau markieren — ohne direkten Feuerkontakt wenn möglich.",
+      "factions": {
+        "player": {
+          "id": "US",
+          "asset_id_ref": "ENF_Faction_US",
+          "role": "Recon-Einheit, 1-4 Spieler, Infiltration-Loadout"
+        },
+        "ai": {
+          "id": "USSR",
+          "asset_id_ref": "ENF_Faction_USSR",
+          "role": "Sowjetische Besatzungstruppen, Vorposten-Garnison"
+        }
+      },
+      "biome": {
+        "map_id_ref": "everon",
+        "region_hint": "Montignac Umgebung, Everon Westküste"
+      },
+      "tone": {
+        "primary": "tense",
+        "secondary": [
+          "cinematic",
+          "tactical"
+        ],
+        "color_palette_hint": [
+          "dark_blue",
+          "cold_grey",
+          "fog"
+        ]
+      },
+      "pacing": {
+        "phase_1": {
+          "name": "Infiltration",
+          "duration_min": 5,
+          "description": "Spieler landen per Boot an der Küste, bewegen sich durch Wald zum Vorposten",
+          "ai_state": "patrol_normal",
+          "player_objective": "Unentdeckt zum Vorposten navigieren"
+        },
+        "phase_2": {
+          "name": "Reconnaissance",
+          "duration_min": 10,
+          "description": "Beobachtung des Vorpostens, Identifikation des Kommandanten",
+          "ai_state": "patrol_normal",
+          "player_objective": "Kommandanten per Fernglas markieren"
+        },
+        "phase_3": {
+          "name": "Exfiltration unter Druck",
+          "duration_min": 8,
+          "description": "Nach Alarmierung: schnelle Exfil zum Abholpunkt, zunehmende Verfolger-Wellen",
+          "ai_state": "alert_search",
+          "player_objective": "Extraktion-Punkt erreichen bevor Verstärkung eintrifft"
+        }
+      },
+      "time_of_day": {
+        "hour": 2,
+        "minute": 30,
+        "description": "Tief in der Nacht — schlechteste Sicht für KI-Feinde, NVGs erforderlich"
+      },
+      "weather": {
+        "preset": "clear_cold",
+        "description": "Klarer Himmel mit Sternenlicht, kalt — gute NVG-Bedingungen"
+      },
+      "player_setup": {
+        "min_players": 1,
+        "max_players": 4,
+        "loadout_type": "Recon-Infiltration",
+        "loadout_hint": "NVG, suppressed weapons, no heavy weapons"
+      },
+      "narrative_anchors": [
+        "Boat insertion point at western coast of Everon near Montignac",
+        "Soviet outpost with patrol routes on elevated ground",
+        "HVT: Soviet Major with distinctive UAZ vehicle",
+        "Extraction point 800m east, helicopter LZ"
+      ],
+      "out_of_scope": [
+        "PVP elements",
+        "Artillery or heavy vehicles for players",
+        "Ambient civilian population (performance)",
+        "Live AI calls during gameplay"
+      ]
+    },
+    "asset-manifest.json": {
+      "mission_id": "day-assault-arland",
+      "stage": 2,
+      "resolved_assets": [
+        {
+          "narrative_ref": "ENF_Faction_US",
+          "guid": "ADFDBDA163950168",
+          "path": "Configs/Factions/US_Campaign.conf",
+          "type": "faction",
+          "role": "player"
+        },
+        {
+          "narrative_ref": "ENF_Faction_USSR",
+          "guid": "15B582F8FA0B0940",
+          "path": "Configs/Factions/USSR_Campaign.conf",
+          "type": "faction",
+          "role": "ai"
+        }
+      ],
+      "missing_assets": [],
+      "halt_required": false,
+      "halt_reason": null
+    },
+    "encounters.json": {
+      "spawn_points": [
+        {
+          "team": "US",
+          "role": "player",
+          "coords": [
+            150,
+            5,
+            200
+          ],
+          "angle_y": 0.0,
+          "prefab_guid": "CEA2B24051A44525",
+          "prefab_path": "PrefabsEditable/SpawnPoints/E_SpawnPoint_US.et",
+          "instance_name": "SpawnPoint_US_01"
+        },
+        {
+          "team": "US",
+          "role": "player",
+          "coords": [
+            155,
+            5,
+            210
+          ],
+          "angle_y": 0.0,
+          "prefab_guid": "CEA2B24051A44525",
+          "prefab_path": "PrefabsEditable/SpawnPoints/E_SpawnPoint_US.et",
+          "instance_name": "SpawnPoint_US_02"
+        }
+      ],
+      "ai_groups": [
+        {
+          "name": "USSR_Checkpoint_Garrison",
+          "prefab_guid": "359353A0A5A52216",
+          "prefab_path": "Prefabs/Groups/Campaign/Group_USSR_Defenders.et",
+          "coords": [
+            450,
+            8,
+            200
+          ],
+          "waypoint_refs": [
+            "WP_Defend_Checkpoint"
+          ],
+          "behavior_mode": "defend",
+          "alert_radius_m": 100,
+          "group_size": 5
+        },
+        {
+          "name": "USSR_MG_Team",
+          "prefab_guid": "A2F75E45C66B1C0A",
+          "prefab_path": "Prefabs/Groups/OPFOR/Group_USSR_MachineGunTeam.et",
+          "coords": [
+            460,
+            9,
+            190
+          ],
+          "waypoint_refs": [
+            "WP_Defend_MG"
+          ],
+          "behavior_mode": "defend",
+          "alert_radius_m": 120,
+          "group_size": 2
+        },
+        {
+          "name": "USSR_Counterattack_Wave",
+          "prefab_guid": "30ED11AA4F0D41E5",
+          "prefab_path": "Prefabs/Groups/OPFOR/Group_USSR_FireGroup.et",
+          "coords": [
+            600,
+            7,
+            200
+          ],
+          "waypoint_refs": [
+            "WP_Counter_Route"
+          ],
+          "behavior_mode": "patrol",
+          "alert_radius_m": 80,
+          "group_size": 4,
+          "spawn_on_trigger": "Trigger_CheckpointCaptured"
+        }
+      ],
+      "waypoints": [
+        {
+          "name": "WP_Defend_Checkpoint",
+          "type": "defend",
+          "prefab_guid": "93291E72AC23930F",
+          "prefab_path": "Prefabs/AI/Waypoints/AIWaypoint_Defend.et",
+          "coords": [
+            450,
+            8,
+            200
+          ]
+        },
+        {
+          "name": "WP_Defend_MG",
+          "type": "defend",
+          "prefab_guid": "93291E72AC23930F",
+          "prefab_path": "Prefabs/AI/Waypoints/AIWaypoint_Defend.et",
+          "coords": [
+            460,
+            9,
+            190
+          ]
+        },
+        {
+          "name": "WP_Counter_Route",
+          "type": "move",
+          "prefab_guid": "750A8D1695BD6998",
+          "prefab_path": "Prefabs/AI/Waypoints/AIWaypoint_Move.et",
+          "coords": [
+            500,
+            7,
+            200
+          ]
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Task_CaptureCheckpoint",
+          "class": "SCR_TriggerTask",
+          "coords": [
+            450,
+            8,
+            200
+          ],
+          "fields": {
+            "m_sName": "Checkpoint einnehmen",
+            "m_sDescription": "Eliminiere alle Feinde am Checkpoint und halte die Zone"
+          }
+        },
+        {
+          "name": "Task_HoldPosition",
+          "class": "SCR_EliminateTask",
+          "coords": [
+            450,
+            8,
+            200
+          ],
+          "fields": {
+            "m_sName": "Position halten",
+            "m_sDescription": "Halte den Checkpoint 5 Minuten gegen den sowjetischen Gegenstoß"
+          }
+        }
+      ],
+      "triggers": [
+        {
+          "class": "SCR_BaseTriggerEntity",
+          "name": "Trigger_CheckpointZone",
+          "coords": [
+            450,
+            8,
+            200
+          ],
+          "radius": 60
+        },
+        {
+          "class": "SCR_BaseTriggerEntity",
+          "name": "Trigger_CheckpointCaptured",
+          "coords": [
+            450,
+            8,
+            200
+          ],
+          "radius": 50
+        },
+        {
+          "class": "SCR_BaseTriggerEntity",
+          "name": "Trigger_HoldComplete",
+          "coords": [
+            450,
+            8,
+            200
+          ],
+          "radius": 55
+        }
+      ],
+      "managers": [
+        "GameMode",
+        "FactionManager",
+        "LoadoutManager",
+        "TimeAndWeatherManagerEntity"
+      ],
+      "environment_overrides": {
+        "time_of_day": {
+          "hour": 10,
+          "minute": 0
+        },
+        "weather_preset": "clear"
+      }
+    },
+    "current-stage.json": {
+      "stage": 5,
+      "status": "auto-approved-self-test"
+    },
+    "output_tree": [
+      "addon.gproj",
+      "Missions/day-assault-arland.conf",
+      "Missions/day-assault-arland.conf.meta",
+      "Worlds/day-assault-arland.ent",
+      "Worlds/day-assault-arland.ent.meta",
+      "Worlds/day-assault-arland_gamemode.layer",
+      "Worlds/day-assault-arland_managers.layer",
+      "Worlds/day-assault-arland_spawnpoints.layer",
+      "Worlds/day-assault-arland_AI.layer",
+      "Worlds/day-assault-arland_tasks.layer",
+      "Worlds/day-assault-arland_triggers.layer",
+      "Worlds/day-assault-arland_environment.layer",
+      "DISCLOSURE.md"
+    ]
+  },
+  "diff_from_previous": {
+    "output_tree": {
+      "change": "added"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "class_name": "SCR_BaseTaskManager",
+  "guid": "B9CB53CDBFDD6FAE",
+  "path": "Prefabs/Managers/COE_TaskManager.et",
+  "source_file": "optionals/COE_Kunar_Compat/worlds/COE/Kunar/Kunar_Layers/managers.layer",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "kind": "entity_decl",
+  "type": "task",
+  "display_name": "SCR_BaseTaskManager",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

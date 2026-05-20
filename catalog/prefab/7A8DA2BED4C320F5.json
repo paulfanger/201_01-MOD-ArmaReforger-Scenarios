@@ -1,0 +1,11 @@
+{
+  "guid": "7A8DA2BED4C320F5",
+  "path": "Prefabs/Characters/HeadGear/Helmet_SSh68_01/Helmet_SSh68_01_green.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Configs/EntityCatalog/SampleFactionGREENFOR/SampleFactionGREENFOR_InventoryItems.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "Helmet_SSh68_01_green",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

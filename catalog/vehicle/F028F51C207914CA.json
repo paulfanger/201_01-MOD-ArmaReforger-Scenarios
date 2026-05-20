@@ -1,0 +1,11 @@
+{
+  "guid": "F028F51C207914CA",
+  "path": "Prefabs/Vehicles/Helis/R3D_UH60/R3D_UH60_Navy.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Vehicles/Helis/R3D_UH60/COE_UH60_Navy.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "vehicle",
+  "display_name": "R3D_UH60_Navy",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

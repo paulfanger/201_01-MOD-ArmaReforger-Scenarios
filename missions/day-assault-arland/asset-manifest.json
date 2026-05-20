@@ -1,0 +1,23 @@
+{
+  "mission_id": "day-assault-arland",
+  "stage": 2,
+  "resolved_assets": [
+    {
+      "narrative_ref": "ENF_Faction_US",
+      "guid": "ADFDBDA163950168",
+      "path": "Configs/Factions/US_Campaign.conf",
+      "type": "faction",
+      "role": "player"
+    },
+    {
+      "narrative_ref": "ENF_Faction_USSR",
+      "guid": "15B582F8FA0B0940",
+      "path": "Configs/Factions/USSR_Campaign.conf",
+      "type": "faction",
+      "role": "ai"
+    }
+  ],
+  "missing_assets": [],
+  "halt_required": false,
+  "halt_reason": null
+}

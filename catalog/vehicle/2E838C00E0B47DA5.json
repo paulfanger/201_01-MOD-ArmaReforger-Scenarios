@@ -1,0 +1,11 @@
+{
+  "guid": "2E838C00E0B47DA5",
+  "path": "Prefabs/Vehicles/Core/Vehicle_shadow_base.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewCar/Prefabs/Vehicles/Wheeled/SampleCar_01/VehParts/SampleCar_01_shadow.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "vehicle",
+  "display_name": "Vehicle_shadow_base",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

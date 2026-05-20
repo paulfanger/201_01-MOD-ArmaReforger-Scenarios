@@ -1,0 +1,11 @@
+{
+  "guid": "70BAEEFC2D3FEE64",
+  "path": "Prefabs/Vehicles/Helicopters/UH1H/UH1H.et",
+  "ext": "et",
+  "source_file": "optionals/COE_RHS_Kunar_Compat/Prefabs/Compositions/Base/COE_MainBase_FobMichigan_RHSUS.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "vehicle",
+  "display_name": "UH1H",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

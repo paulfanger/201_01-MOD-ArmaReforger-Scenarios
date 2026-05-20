@@ -1,0 +1,11 @@
+{
+  "guid": "FD74C82DECF02D01",
+  "path": "Configs/Editor/PlaceableEntities/Systems/Systems_SampleWeapon.conf",
+  "ext": "conf",
+  "source_file": "SampleMod_NewWeapon/Prefabs/Editor/Modes/EditorModeEdit.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "config",
+  "display_name": "Systems_SampleWeapon",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

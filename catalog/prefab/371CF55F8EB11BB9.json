@@ -1,0 +1,11 @@
+{
+  "guid": "371CF55F8EB11BB9",
+  "path": "PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_LivingArea_S_USSR_01_Campaign.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_LivingArea_S_SampleFactionREDFOR_01_Campaign.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "E_LivingArea_S_USSR_01_Campaign",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

@@ -1,0 +1,10 @@
+MetaFileClass {
+ Name "{CA1914AECFC5A68B}Worlds/night-recon-everon.ent"
+ Configurations {
+  ResourceClass PC {}
+  ResourceClass XBOX_ONE : PC {}
+  ResourceClass XBOX_SERIES : PC {}
+  ResourceClass PS4 : PC {}
+  ResourceClass HEADLESS : PC {}
+ }
+}

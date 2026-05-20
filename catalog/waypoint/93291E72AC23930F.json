@@ -1,0 +1,11 @@
+{
+  "guid": "93291E72AC23930F",
+  "path": "Prefabs/AI/Waypoints/AIWaypoint_Defend.et",
+  "ext": "et",
+  "source_file": "SampleCoop/Worlds/CoopTest_AI.layer",
+  "source_repo": "Reforger-Sample-Coop",
+  "type": "waypoint",
+  "display_name": "AIWaypoint_Defend",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

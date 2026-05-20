@@ -1,0 +1,11 @@
+{
+  "guid": "557283C29F82042D",
+  "path": "Prefabs/Compositions/Slotted/SlotFlatLarge/COE_LivingArea_L_US_01.et",
+  "ext": "et",
+  "source_file": "optionals/COE_RHS_Compat/Prefabs/Managers/COE_FactionManager.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "COE_LivingArea_L_US_01",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

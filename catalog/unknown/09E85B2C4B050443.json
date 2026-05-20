@@ -1,0 +1,11 @@
+{
+  "guid": "09E85B2C4B050443",
+  "path": "UI/Textures/MissionLoadingScreens/COE_Kunar_Preview.edds",
+  "ext": "edds",
+  "source_file": "optionals/COE_Kunar_Compat/Missions/COE_Kunar_US.conf",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "unknown",
+  "display_name": "COE_Kunar_Preview",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

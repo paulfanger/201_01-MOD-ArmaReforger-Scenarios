@@ -1,0 +1,11 @@
+{
+  "guid": "A33B68467443EBAF",
+  "path": "Prefabs/Structures/Industrial/Houses/Office_E_01/Office_E_01_ENP.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Managers/COE_ObjectiveManager.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "Office_E_01_ENP",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

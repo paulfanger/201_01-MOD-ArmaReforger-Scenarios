@@ -1,0 +1,12 @@
+{
+  "class_name": "SCR_CameraManager",
+  "guid": "33F9FD881E3700CC",
+  "path": "Prefabs/World/Game/SCR_CameraManager.et",
+  "source_file": "SampleCoop/Worlds/CoopTest_managers.layer",
+  "source_repo": "Reforger-Sample-Coop",
+  "kind": "entity_decl",
+  "type": "prefab",
+  "display_name": "SCR_CameraManager",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

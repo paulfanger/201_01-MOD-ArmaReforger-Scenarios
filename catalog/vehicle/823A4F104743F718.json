@@ -1,0 +1,11 @@
+{
+  "guid": "823A4F104743F718",
+  "path": "Prefabs/Vehicles/Core/DestructibleVehicleGlass_Base.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewCar/Prefabs/Vehicles/Wheeled/SampleCar_01/Dst/SampleCar_01_glass_base.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "vehicle",
+  "display_name": "DestructibleVehicleGlass_Base",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

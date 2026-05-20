@@ -1,0 +1,11 @@
+{
+  "guid": "D1D258E682DFC5E2",
+  "path": "Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/FIA/EquipmentBoxStack_FIA_01_V2_covered.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Prefabs/Systems/Arsenal/ArsenalBoxes/SampleFactionGREENFOR/ArsenalBox_SampleFactionGREENFOR.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "EquipmentBoxStack_FIA_01_V2_covered",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

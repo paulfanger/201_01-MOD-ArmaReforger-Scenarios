@@ -1,0 +1,11 @@
+{
+  "guid": "4DCA93BC652674D7",
+  "path": "worlds/COE/Eden/Eden.ent",
+  "ext": "ent",
+  "source_file": "addons/CombatOpsEnhanced/Configs/MissionHeaders/COE_Eden.conf",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "unknown",
+  "display_name": "Eden",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

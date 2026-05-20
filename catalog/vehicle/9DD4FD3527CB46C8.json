@@ -1,0 +1,11 @@
+{
+  "guid": "9DD4FD3527CB46C8",
+  "path": "Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_closed.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/MP/Modes/KEX_GameMode_CombatOps.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "vehicle",
+  "display_name": "Ural4320_transport_covered_closed",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

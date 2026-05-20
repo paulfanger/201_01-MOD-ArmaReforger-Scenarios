@@ -1,0 +1,7 @@
+TimeAndWeatherManagerEntity TimeAndWeatherManager {
+ TimeOfDay {
+  m_iDefaultHours 2
+  m_iDefaultMinutes 30
+ }
+ WeatherPreset "clear_cold"
+}

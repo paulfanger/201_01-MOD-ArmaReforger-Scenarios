@@ -1,0 +1,11 @@
+{
+  "guid": "FE65E8C60C751352",
+  "path": "Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_PL.et",
+  "ext": "et",
+  "source_file": "Worlds/GRAD_GM_Eden_Layers/gamemode.layer",
+  "source_repo": "GRAD-COOP-Template-Reforger",
+  "type": "faction",
+  "display_name": "Character_FIA_PL",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

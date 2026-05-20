@@ -1,0 +1,11 @@
+{
+  "guid": "69CCF922A74FB962",
+  "path": "Prefabs/Vehicles/Wheeled/Turret_M2_Modded.et",
+  "ext": "et",
+  "source_file": "SampleMod_ModdedCar/Prefabs/Vehicles/Wheeled/UAZ469_Modded.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "vehicle",
+  "display_name": "Turret_M2_Modded",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

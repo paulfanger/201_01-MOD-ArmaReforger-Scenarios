@@ -1,0 +1,11 @@
+{
+  "guid": "C012BB3488BEA0C2",
+  "path": "Prefabs/Vehicles/Wheeled/BTR70/BTR70.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Configs/Spawner/Vehicles_SampleFactionREDFOR.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "vehicle",
+  "display_name": "BTR70",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

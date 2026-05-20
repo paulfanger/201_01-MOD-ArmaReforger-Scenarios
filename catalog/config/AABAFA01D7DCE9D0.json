@@ -1,0 +1,11 @@
+{
+  "guid": "AABAFA01D7DCE9D0",
+  "path": "Configs/Hints/GameMode_Editor.conf",
+  "ext": "conf",
+  "source_file": "Worlds/GRAD_GM_Eden_Layers/gamemode.layer",
+  "source_repo": "GRAD-COOP-Template-Reforger",
+  "type": "config",
+  "display_name": "GameMode_Editor",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

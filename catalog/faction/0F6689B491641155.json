@@ -1,0 +1,14 @@
+{
+  "guid": "0F6689B491641155",
+  "path": "Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Sniper.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Managers/COE_FactionManager.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "faction",
+  "display_name": "Character_US_Sniper",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap",
+  "faction_key": "US",
+  "enriched_by": "catalog-enrich-factions",
+  "enriched_at": "2026-05-20"
+}

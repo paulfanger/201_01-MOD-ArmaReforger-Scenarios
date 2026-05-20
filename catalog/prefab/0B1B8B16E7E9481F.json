@@ -1,0 +1,11 @@
+{
+  "guid": "0B1B8B16E7E9481F",
+  "path": "Prefabs/Structures/Commercial/Pubs/PubVillage_E_2L01/PubVillage_E_2L01_Base.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Structures/Commercial/Pubs/PubVillage_E_2L01/PubVillage_E_2L01_V6_Upirata.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "PubVillage_E_2L01_Base",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

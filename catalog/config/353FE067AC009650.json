@@ -1,0 +1,11 @@
+{
+  "guid": "353FE067AC009650",
+  "path": "Configs/Arsenal/ArsenalConfig_SampleModdedWeapon.conf",
+  "ext": "conf",
+  "source_file": "SampleMod_Main/Worlds/Modding/Assets_Showcase_Basic_Layers/default.layer",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "config",
+  "display_name": "ArsenalConfig_SampleModdedWeapon",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

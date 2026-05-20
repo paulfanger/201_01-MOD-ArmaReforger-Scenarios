@@ -1,0 +1,11 @@
+{
+  "guid": "C93D9F19E9F3CD97",
+  "path": "Configs/Factions/SampleFactionREDFOR.conf",
+  "ext": "conf",
+  "source_file": "SampleMod_NewFaction/Configs/Factions/SampleFactionREDFOR_Campaign.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "faction",
+  "display_name": "SampleFactionREDFOR",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

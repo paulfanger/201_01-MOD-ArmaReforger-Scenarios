@@ -1,0 +1,4 @@
+SCR_SpawnPoint SpawnPoint_US_01 : "{CEA2B24051A44525}PrefabsEditable/SpawnPoints/E_SpawnPoint_US.et" {
+ coords 320 12 180
+ angleY 180.0
+}

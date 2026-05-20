@@ -1,0 +1,11 @@
+{
+  "guid": "A643E3CEBDAF05BB",
+  "path": "Prefabs/Compositions/Installation/US/COE_M923A1_Command.et",
+  "ext": "et",
+  "source_file": "optionals/COE_RHS_Compat/Prefabs/Managers/COE_FactionManager.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "COE_M923A1_Command",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

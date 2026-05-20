@@ -1,0 +1,11 @@
+{
+  "guid": "154E1AD4F84D5551",
+  "path": "UI/Textures/EditorPreviews/Vehicles/Wheeled/Ural4320/Ural4320_SampleFactionREDFOR.edds",
+  "ext": "edds",
+  "source_file": "SampleMod_NewFaction/Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_SampleFactionREDFOR.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "vehicle",
+  "display_name": "Ural4320_SampleFactionREDFOR",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

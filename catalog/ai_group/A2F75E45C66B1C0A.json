@@ -1,0 +1,15 @@
+{
+  "class_name": "SCR_AIGroup",
+  "guid": "A2F75E45C66B1C0A",
+  "path": "Prefabs/Groups/OPFOR/Group_USSR_MachineGunTeam.et",
+  "source_file": "SampleCoop/Worlds/CoopTest_AI.layer",
+  "source_repo": "Reforger-Sample-Coop",
+  "kind": "entity_decl",
+  "type": "ai_group",
+  "display_name": "SCR_AIGroup",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap",
+  "faction_key": "USSR",
+  "enriched_by": "catalog-enrich-factions",
+  "enriched_at": "2026-05-20"
+}

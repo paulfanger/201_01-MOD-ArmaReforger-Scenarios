@@ -1,0 +1,11 @@
+{
+  "guid": "96B440F2A3D3A33E",
+  "path": "Prefabs/Props/Commercial/Posters/PosterSet_E_01_Eden_V1.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Worlds/MP/CTI_Campaign_Eden_base_Layers/evacuation_posters.layer",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "PosterSet_E_01_Eden_V1",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

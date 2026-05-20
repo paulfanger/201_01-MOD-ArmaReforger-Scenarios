@@ -1,0 +1,11 @@
+{
+  "guid": "3CCA7A9BB4FD3197",
+  "path": "Prefabs/Characters/Uniforms/Jacket_US_BDU_rolledup.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Characters/Factions/BLUFOR/US_Army/COE_Character_US_Officer.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "Jacket_US_BDU_rolledup",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

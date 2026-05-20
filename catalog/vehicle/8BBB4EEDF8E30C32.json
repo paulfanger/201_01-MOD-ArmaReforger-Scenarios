@@ -1,0 +1,11 @@
+{
+  "guid": "8BBB4EEDF8E30C32",
+  "path": "Prefabs/Vehicles/Wheeled/M151A2/M151A2_gun_mount_M2HB.et",
+  "ext": "et",
+  "source_file": "SampleMod_ModdedCar/Prefabs/Vehicles/Wheeled/Turret_M2_Modded.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "vehicle",
+  "display_name": "M151A2_gun_mount_M2HB",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

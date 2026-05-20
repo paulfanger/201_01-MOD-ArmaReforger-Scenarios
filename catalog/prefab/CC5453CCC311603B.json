@@ -1,0 +1,11 @@
+{
+  "guid": "CC5453CCC311603B",
+  "path": "Prefabs/Props/Military/Sandbags/Sandbag_01_end_burlap.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Worlds/MP/CTI_Campaign_Eden_base_Layers/Relay_objects.layer",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "Sandbag_01_end_burlap",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

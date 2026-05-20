@@ -1,0 +1,11 @@
+{
+  "guid": "853E92315D1D9EFE",
+  "path": "worlds/Eden/Eden.ent",
+  "ext": "ent",
+  "source_file": "SampleMod_NewFaction/Worlds/MP/CTI_Campaign_Eden_base.ent",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "unknown",
+  "display_name": "Eden",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

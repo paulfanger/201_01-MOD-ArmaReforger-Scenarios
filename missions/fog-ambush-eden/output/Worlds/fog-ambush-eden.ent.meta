@@ -1,0 +1,10 @@
+MetaFileClass {
+ Name "{77FEFE6393741D13}Worlds/fog-ambush-eden.ent"
+ Configurations {
+  ResourceClass PC {}
+  ResourceClass XBOX_ONE : PC {}
+  ResourceClass XBOX_SERIES : PC {}
+  ResourceClass PS4 : PC {}
+  ResourceClass HEADLESS : PC {}
+ }
+}

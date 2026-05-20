@@ -1,0 +1,11 @@
+{
+  "guid": "DF4DA1F9AA7A1584",
+  "path": "Prefabs/Compositions/Slotted/SlotFlatSmall/LivingArea_S_USSR_01_Campaign.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Configs/Factions/SampleFactionGREENFOR_Campaign.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "LivingArea_S_USSR_01_Campaign",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

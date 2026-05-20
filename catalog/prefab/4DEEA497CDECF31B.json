@@ -1,0 +1,11 @@
+{
+  "guid": "4DEEA497CDECF31B",
+  "path": "PrefabsEditable/Auto/Compositions/Misc/SubCompositions/E_Sandbag_MG_US_02_M2HB.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/PrefabsEditable/Auto/Compositions/Misc/SubCompositions/E_Sandbag_MG_SampleFactionBLUFOR_02_M2HB.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "E_Sandbag_MG_US_02_M2HB",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

@@ -1,0 +1,11 @@
+{
+  "guid": "8869D0503AC7740E",
+  "path": "Prefabs/Weapons/Ammo/Ammo_65x39_FMJBT.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewWeapon/Configs/Weapons/Ammo/Ammo_65x39.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "weapon",
+  "display_name": "Ammo_65x39_FMJBT",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

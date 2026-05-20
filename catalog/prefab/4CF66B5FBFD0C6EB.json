@@ -1,0 +1,11 @@
+{
+  "guid": "4CF66B5FBFD0C6EB",
+  "path": "Prefabs/Structures/Military/CamoNets/Soviet/CamoNet_Folded_Soviet.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Worlds/MP/CTI_Campaign_Eden_base_Layers/Relay_objects.layer",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "CamoNet_Folded_Soviet",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

@@ -1,0 +1,11 @@
+{
+  "guid": "34C938BFD3963C29",
+  "path": "Language/GRAD_Localisation.ko_kr.conf",
+  "ext": "conf",
+  "source_file": "addon.gproj",
+  "source_repo": "GRAD-COOP-Template-Reforger",
+  "type": "config",
+  "display_name": "GRAD_Localisation.ko_kr",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

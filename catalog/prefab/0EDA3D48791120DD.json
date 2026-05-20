@@ -1,0 +1,12 @@
+{
+  "class_name": "HitRegistrationManager",
+  "guid": "0EDA3D48791120DD",
+  "path": "Prefabs/MP/HitRegManager.et",
+  "source_file": "optionals/COE_Kunar_Compat/worlds/COE/Kunar/Kunar_Layers/managers.layer",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "kind": "entity_decl",
+  "type": "prefab",
+  "display_name": "HitRegistrationManager",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

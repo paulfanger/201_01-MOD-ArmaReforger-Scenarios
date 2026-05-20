@@ -1,0 +1,10 @@
+MetaFileClass {
+ Name "{A7241A269EF71B78}Worlds/day-assault-arland.ent"
+ Configurations {
+  ResourceClass PC {}
+  ResourceClass XBOX_ONE : PC {}
+  ResourceClass XBOX_SERIES : PC {}
+  ResourceClass PS4 : PC {}
+  ResourceClass HEADLESS : PC {}
+ }
+}

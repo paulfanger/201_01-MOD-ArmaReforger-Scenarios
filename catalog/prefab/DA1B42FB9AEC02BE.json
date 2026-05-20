@@ -1,0 +1,11 @@
+{
+  "guid": "DA1B42FB9AEC02BE",
+  "path": "Prefabs/Structures/Military/Fortifications/Dragontooth_01/Dragontooth_01_V3.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Worlds/MP/CTI_Campaign_Eden_base_Layers/Compositions.layer",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "Dragontooth_01_V3",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

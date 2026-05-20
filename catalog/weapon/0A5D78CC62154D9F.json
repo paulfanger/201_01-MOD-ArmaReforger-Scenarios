@@ -1,0 +1,11 @@
+{
+  "guid": "0A5D78CC62154D9F",
+  "path": "Prefabs/Weapons/Magazines/Magazine_65x39C_SampleWeapon_01_30rnd_Tracer.et",
+  "ext": "et",
+  "source_file": "SampleMod_Main/Configs/Arsenal/ArsenalConfig_SampleMod.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "weapon",
+  "display_name": "Magazine_65x39C_SampleWeapon_01_30rnd_Tracer",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

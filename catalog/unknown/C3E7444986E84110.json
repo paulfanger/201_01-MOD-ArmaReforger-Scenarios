@@ -1,0 +1,11 @@
+{
+  "guid": "C3E7444986E84110",
+  "path": "UI/Textures/MissionThumbnails/GRAD_GM_Eden_800x800.edds",
+  "ext": "edds",
+  "source_file": "Missions/GRAD_GM_Eden.conf",
+  "source_repo": "GRAD-COOP-Template-Reforger",
+  "type": "unknown",
+  "display_name": "GRAD_GM_Eden_800x800",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

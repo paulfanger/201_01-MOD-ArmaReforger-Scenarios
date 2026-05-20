@@ -1,0 +1,11 @@
+{
+  "guid": "92F0C6A77A34E712",
+  "path": "worlds/TestMaps/TestWorld/TestWorld.ent",
+  "ext": "ent",
+  "source_file": "SampleMod_CinematicTutorial/Scenes/Cinematic_Tutorial.ent",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "unknown",
+  "display_name": "TestWorld",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

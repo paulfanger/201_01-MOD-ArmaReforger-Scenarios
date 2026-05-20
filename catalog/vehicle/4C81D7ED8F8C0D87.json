@@ -1,0 +1,11 @@
+{
+  "guid": "4C81D7ED8F8C0D87",
+  "path": "Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_tanker.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Configs/Campaign/VehicleAssetList_SampleNewFaction.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "vehicle",
+  "display_name": "Ural4320_tanker",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

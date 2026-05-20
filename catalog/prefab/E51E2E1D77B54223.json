@@ -1,0 +1,11 @@
+{
+  "guid": "E51E2E1D77B54223",
+  "path": "Prefabs/Compositions/Misc/CustomEntities/CompositionDecals/CompositionDecal_Dirt_Patch_01.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Worlds/MP/CTI_Campaign_Eden_base_Layers/Relay_objects.layer",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "CompositionDecal_Dirt_Patch_01",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

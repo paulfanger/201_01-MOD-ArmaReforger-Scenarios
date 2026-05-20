@@ -1,0 +1,11 @@
+{
+  "guid": "00EA65CF0B11AA5F",
+  "path": "Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/Character_US_USMC_RTO.et",
+  "ext": "et",
+  "source_file": "optionals/COE_RHS_Compat/Prefabs/Managers/COE_FactionManager.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "faction",
+  "display_name": "Character_US_USMC_RTO",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

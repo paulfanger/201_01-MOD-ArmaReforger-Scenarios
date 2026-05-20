@@ -1,0 +1,11 @@
+{
+  "guid": "7DA2AFFC7B4BE844",
+  "path": "Prefabs/Weapons/Warheads/Warhead_Grenade_HE.et",
+  "ext": "et",
+  "source_file": "SampleMod_ModdedWeapon/Prefabs/Weapons/Warheads/Warhead_Shell_HE_545x39_Modded.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "weapon",
+  "display_name": "Warhead_Grenade_HE",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

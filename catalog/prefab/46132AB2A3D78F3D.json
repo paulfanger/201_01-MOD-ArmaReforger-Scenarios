@@ -1,0 +1,11 @@
+{
+  "guid": "46132AB2A3D78F3D",
+  "path": "Prefabs/Structures/Bulding/House_C_4_Police.et",
+  "ext": "et",
+  "source_file": "optionals/COE_Kunar_Compat/worlds/COE/Kunar/Kunar_Layers/managers.layer",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "House_C_4_Police",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

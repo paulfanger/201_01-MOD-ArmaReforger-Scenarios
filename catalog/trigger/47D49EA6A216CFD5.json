@@ -1,0 +1,11 @@
+{
+  "guid": "47D49EA6A216CFD5",
+  "path": "Prefabs/ScenarioFramework/Triggers/TriggerCharacterSlow.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Compositions/Tasks/COE_TaskDeliverIntel.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "trigger",
+  "display_name": "TriggerCharacterSlow",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

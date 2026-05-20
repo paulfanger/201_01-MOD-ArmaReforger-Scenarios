@@ -1,0 +1,11 @@
+{
+  "guid": "36BDCC88B17B3BFA",
+  "path": "Prefabs/Vehicles/Wheeled/M923A1/M923A1_command.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/MP/Modes/KEX_GameMode_CombatOps.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "vehicle",
+  "display_name": "M923A1_command",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

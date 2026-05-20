@@ -1,0 +1,11 @@
+{
+  "guid": "CB7824D572DD0D5C",
+  "path": "Configs/Callsigns/Callsigns_US.conf",
+  "ext": "conf",
+  "source_file": "SampleMod_NewFaction/Configs/Factions/SampleFactionBLUFOR.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "config",
+  "display_name": "Callsigns_US",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

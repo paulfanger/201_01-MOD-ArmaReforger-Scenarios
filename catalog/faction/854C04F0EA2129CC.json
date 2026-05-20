@@ -1,0 +1,11 @@
+{
+  "guid": "854C04F0EA2129CC",
+  "path": "Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Unarmed.et",
+  "ext": "et",
+  "source_file": "Worlds/GRAD_GM_Eden_Layers/gamemode.layer",
+  "source_repo": "GRAD-COOP-Template-Reforger",
+  "type": "faction",
+  "display_name": "Character_FIA_Unarmed",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

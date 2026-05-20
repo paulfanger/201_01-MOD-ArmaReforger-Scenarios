@@ -1,0 +1,11 @@
+{
+  "guid": "DCA53EC8F3BA6AC5",
+  "path": "PrefabsEditable/Auto/Compositions/Slotted/SlotRoadMedium/E_Checkpoint_M_US_01.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/PrefabsEditable/Auto/Compositions/Slotted/SlotRoadMedium/E_Checkpoint_M_SampleFactionBLUFOR_01.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "E_Checkpoint_M_US_01",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

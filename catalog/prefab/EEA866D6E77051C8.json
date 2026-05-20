@@ -1,0 +1,11 @@
+{
+  "guid": "EEA866D6E77051C8",
+  "path": "PrefabsEditable/Auto/Props/Military/AmmoBoxes/US/E_EquipmentBoxWodden_SampleWeapon.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewWeapon/Configs/Editor/PlaceableEntities/Systems/Systems_SampleWeapon.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "E_EquipmentBoxWodden_SampleWeapon",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

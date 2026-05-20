@@ -1,0 +1,10 @@
+SCR_EliminateTask Task_AmbushConvoy {
+ coords 350 10 200
+ m_sName "Konvoi vernichten"
+ m_sDescription "Zerstöre den sowjetischen Konvoi im Nebel-Hinterhalt"
+}
+SCR_TriggerTask Task_BreakContact {
+ coords 350 8 600
+ m_sName "Kontakt brechen"
+ m_sDescription "Verlasse die Hinterhalt-Zone unter Nebel-Deckung und erreiche Exfil"
+}

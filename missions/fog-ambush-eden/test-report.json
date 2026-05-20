@@ -1,0 +1,49 @@
+{
+  "mission_id": "fog-ambush-eden",
+  "run_at": "2026-05-20T02:11:43.051487+00:00",
+  "stages": {
+    "stage_1": {
+      "status": "pass",
+      "source": "existing"
+    },
+    "stage_2": {
+      "status": "pass",
+      "resolved": 2,
+      "missing": 0
+    },
+    "stage_5_snapshot": {
+      "status": "pass",
+      "snapshot": "004_pre_generation_auto_approved.json"
+    },
+    "stage_6": {
+      "status": "pass",
+      "files": [
+        "addon.gproj",
+        "Missions/fog-ambush-eden.conf",
+        "Missions/fog-ambush-eden.conf.meta",
+        "Worlds/fog-ambush-eden.ent",
+        "Worlds/fog-ambush-eden.ent.meta",
+        "Worlds/fog-ambush-eden_gamemode.layer",
+        "Worlds/fog-ambush-eden_managers.layer",
+        "Worlds/fog-ambush-eden_spawnpoints.layer",
+        "Worlds/fog-ambush-eden_AI.layer",
+        "Worlds/fog-ambush-eden_tasks.layer",
+        "Worlds/fog-ambush-eden_triggers.layer",
+        "Worlds/fog-ambush-eden_environment.layer",
+        "DISCLOSURE.md"
+      ],
+      "warnings": []
+    },
+    "validation_schema": {
+      "status": "pass",
+      "warnings": 0,
+      "checked_files": 18
+    },
+    "validation_cross": {
+      "status": "pass"
+    }
+  },
+  "passed": true,
+  "errors": [],
+  "warnings": []
+}

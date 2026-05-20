@@ -1,0 +1,11 @@
+{
+  "guid": "259EE7B78C51B624",
+  "path": "Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et",
+  "ext": "et",
+  "source_file": "SampleCoop/Worlds/CoopTest_tasks.layer",
+  "source_repo": "Reforger-Sample-Coop",
+  "type": "vehicle",
+  "display_name": "UAZ469",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

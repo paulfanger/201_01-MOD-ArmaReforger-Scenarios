@@ -1,0 +1,15 @@
+{
+  "class_name": "SCR_ChimeraCharacter",
+  "guid": "DB108F0264C75F14",
+  "path": "Prefabs/Characters/Factions/BLUFOR/US_Army/COE_Character_US_Officer.et",
+  "source_file": "addons/CombatOpsEnhanced/worlds/COE/Test/Test_Layers/default.layer",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "kind": "entity_decl",
+  "type": "faction",
+  "display_name": "SCR_ChimeraCharacter",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap",
+  "faction_key": "US",
+  "enriched_by": "catalog-enrich-factions",
+  "enriched_at": "2026-05-20"
+}

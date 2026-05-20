@@ -1,0 +1,11 @@
+{
+  "guid": "E58490CA6FF8C50C",
+  "path": "Worlds/GRAD_GM_Eden.ent",
+  "ext": "ent",
+  "source_file": "Missions/GRAD_GM_Eden.conf",
+  "source_repo": "GRAD-COOP-Template-Reforger",
+  "type": "unknown",
+  "display_name": "GRAD_GM_Eden",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

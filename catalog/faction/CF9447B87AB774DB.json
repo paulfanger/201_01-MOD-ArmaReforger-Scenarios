@@ -1,0 +1,20 @@
+{
+  "guid": "CF9447B87AB774DB",
+  "path": "Configs/Factions/FIA_Campaign.conf",
+  "ext": "conf",
+  "source_file": "SampleCoop/Prefabs/MP/Managers/Factions/CoopFactionManager.et",
+  "source_repo": "Reforger-Sample-Coop",
+  "type": "faction",
+  "display_name": "FIA_Campaign",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap",
+  "faction_key": "FIA",
+  "faction_side": "INDFOR",
+  "class_hint": "SCR_CampaignFaction",
+  "aliases": [
+    "ENF_Faction_FIA",
+    "FIA_Campaign"
+  ],
+  "enriched_by": "catalog-enrich-factions",
+  "enriched_at": "2026-05-20"
+}

@@ -1,0 +1,11 @@
+{
+  "guid": "E88E1021CBFE0F99",
+  "path": "Language/GRAD_Localisation.ru_ru.conf",
+  "ext": "conf",
+  "source_file": "addon.gproj",
+  "source_repo": "GRAD-COOP-Template-Reforger",
+  "type": "config",
+  "display_name": "GRAD_Localisation.ru_ru",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

@@ -1,0 +1,11 @@
+{
+  "guid": "F68F3B7247F6E810",
+  "path": "Prefabs/Compositions/Slotted/SlotFlatLarge/LivingArea_L_USSR_01.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Compositions/Slotted/SlotFlatLarge/COE_LivingArea_L_USSR_01.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "LivingArea_L_USSR_01",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

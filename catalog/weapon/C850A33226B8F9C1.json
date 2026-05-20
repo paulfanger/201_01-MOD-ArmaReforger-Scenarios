@@ -1,0 +1,11 @@
+{
+  "guid": "C850A33226B8F9C1",
+  "path": "Prefabs/Weapons/Attachments/Optics/Optic_PSO1.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Configs/EntityCatalog/SampleFactionREDFOR/SampleFactionREDFOR_InventoryItems.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "weapon",
+  "display_name": "Optic_PSO1",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

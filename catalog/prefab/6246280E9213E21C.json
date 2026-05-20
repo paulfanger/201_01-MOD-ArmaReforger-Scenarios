@@ -1,0 +1,11 @@
+{
+  "guid": "6246280E9213E21C",
+  "path": "Prefabs/Characters/Vests/Vest_Lifchik/Vest_Lifchik_GrenadeBelt_green.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Prefabs/Characters/Vests/Vest_Lifchik/Vest_Lifchik_GL_green.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "Vest_Lifchik_GrenadeBelt_green",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

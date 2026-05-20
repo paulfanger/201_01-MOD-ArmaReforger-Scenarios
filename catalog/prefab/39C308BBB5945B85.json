@@ -1,0 +1,11 @@
+{
+  "guid": "39C308BBB5945B85",
+  "path": "Prefabs/Props/Military/Furniture/ChairMilitary_US_02.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Compositions/Base/COE_MainBaseLandUS.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "ChairMilitary_US_02",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

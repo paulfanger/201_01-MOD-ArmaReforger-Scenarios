@@ -1,0 +1,11 @@
+{
+  "guid": "B90CA0BEF3CC1D19",
+  "path": "Prefabs/Structures/Military/CamoNets/Soviet/CamoNet_Medium_Soviet.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Compositions/Installation/USSR/COE_Ural4320_Command.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "CamoNet_Medium_Soviet",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

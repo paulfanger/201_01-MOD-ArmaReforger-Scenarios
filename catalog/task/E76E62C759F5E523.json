@@ -1,0 +1,12 @@
+{
+  "class_name": "GenericEntity",
+  "guid": "E76E62C759F5E523",
+  "path": "Prefabs/Compositions/Tasks/COE_TaskKill.et",
+  "source_file": "addons/CombatOpsEnhanced/worlds/COE/Test/Test_Layers/default.layer",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "kind": "entity_decl",
+  "type": "task",
+  "display_name": "GenericEntity",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

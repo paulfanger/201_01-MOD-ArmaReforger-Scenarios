@@ -1,0 +1,11 @@
+{
+  "guid": "7CB1ED2B23DD26E6",
+  "path": "UI/Textures/EditorPreviews/Characters/OPFOR/USSR_Army/Character_USSR_SL.edds",
+  "ext": "edds",
+  "source_file": "Worlds/GRAD_GM_Eden_Layers/gamemode.layer",
+  "source_repo": "GRAD-COOP-Template-Reforger",
+  "type": "unknown",
+  "display_name": "Character_USSR_SL",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

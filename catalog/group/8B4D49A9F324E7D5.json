@@ -1,0 +1,11 @@
+{
+  "guid": "8B4D49A9F324E7D5",
+  "path": "Prefabs/Groups/PlayableGroup.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Groups/COE_PlayableGroup.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "group",
+  "display_name": "PlayableGroup",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

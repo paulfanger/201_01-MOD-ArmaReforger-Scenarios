@@ -1,0 +1,11 @@
+{
+  "guid": "A777B5723BB27A84",
+  "path": "Configs/Factions/SampleFactionREDFOR_Campaign.conf",
+  "ext": "conf",
+  "source_file": "SampleMod_NewFaction/Worlds/MP/CTI_Campaign_Eden_SampleFaction_01_Layers/logic.layer",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "faction",
+  "display_name": "SampleFactionREDFOR_Campaign",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

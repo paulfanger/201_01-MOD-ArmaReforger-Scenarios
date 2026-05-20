@@ -1,0 +1,11 @@
+{
+  "guid": "F9A490888BED61DB",
+  "path": "Prefabs/MP/Campaign/SupplyDepots/SupplyCache_S_FIA_04_Campaign.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Worlds/MP/CTI_Campaign_Eden_base_Layers/supply_depots.layer",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "SupplyCache_S_FIA_04_Campaign",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

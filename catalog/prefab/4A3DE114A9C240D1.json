@@ -1,0 +1,11 @@
+{
+  "guid": "4A3DE114A9C240D1",
+  "path": "Prefabs/Props/Military/Camps/Dst/PortableDesk_01_dst_01_Black.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewProp/Prefabs/Props/Military/Camps/PortableDesk_01_Black.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "PortableDesk_01_dst_01_Black",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

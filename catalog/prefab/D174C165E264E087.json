@@ -1,0 +1,11 @@
+{
+  "guid": "D174C165E264E087",
+  "path": "Prefabs/Structures/Signs/Military/SignRectangle_01_140x100/Sign_BaseEntrance_US_01.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Compositions/Base/COE_MainBaseLandUS.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "Sign_BaseEntrance_US_01",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

@@ -1,0 +1,11 @@
+{
+  "guid": "779D7DF9B32A0E43",
+  "path": "Prefabs/Props/Military/Camps/Dst/PortableDesk_01_dst_02_Olive.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewProp/Prefabs/Props/Military/Camps/PortableDesk_01_Olive.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "PortableDesk_01_dst_02_Olive",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

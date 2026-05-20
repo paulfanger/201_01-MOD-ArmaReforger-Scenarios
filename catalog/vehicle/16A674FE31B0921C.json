@@ -1,0 +1,11 @@
+{
+  "guid": "16A674FE31B0921C",
+  "path": "Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/MP/Modes/KEX_GameMode_CombatOps.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "vehicle",
+  "display_name": "UAZ469_uncovered",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

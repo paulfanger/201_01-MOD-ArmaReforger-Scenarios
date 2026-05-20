@@ -1,0 +1,11 @@
+{
+  "guid": "6DD8E59406070672",
+  "path": "Assets/Tests/Weapons/Rifle_M16A2_Camo.et",
+  "ext": "et",
+  "source_file": "SampleMod_Main/Worlds/Modding/Assets_Showcase_default.layer",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "weapon",
+  "display_name": "Rifle_M16A2_Camo",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

@@ -1,0 +1,10 @@
+SCR_TriggerTask Task_CaptureCheckpoint {
+ coords 450 8 200
+ m_sName "Checkpoint einnehmen"
+ m_sDescription "Eliminiere alle Feinde am Checkpoint und halte die Zone"
+}
+SCR_EliminateTask Task_HoldPosition {
+ coords 450 8 200
+ m_sName "Position halten"
+ m_sDescription "Halte den Checkpoint 5 Minuten gegen den sowjetischen Gegenstoß"
+}

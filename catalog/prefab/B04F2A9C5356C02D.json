@@ -1,0 +1,11 @@
+{
+  "guid": "B04F2A9C5356C02D",
+  "path": "Prefabs/Compositions/Slotted/SlotFlatSmall/SandbagPosition_S_FIA_01.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Worlds/MP/CTI_Campaign_Eden_base_Layers/supply_depots.layer",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "SandbagPosition_S_FIA_01",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

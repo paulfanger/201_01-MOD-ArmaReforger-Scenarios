@@ -1,0 +1,11 @@
+{
+  "guid": "9DB69176CEF0EE97",
+  "path": "Prefabs/Weapons/Grenades/Smoke_ANM8HC.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Characters/Factions/BLUFOR/US_Army/COE_Character_US_Officer.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "weapon",
+  "display_name": "Smoke_ANM8HC",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

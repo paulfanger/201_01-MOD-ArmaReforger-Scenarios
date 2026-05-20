@@ -1,0 +1,168 @@
+{
+  "spawn_points": [
+    {
+      "team": "US",
+      "role": "player",
+      "coords": [263, 9, 245],
+      "angle_y": 90.0,
+      "prefab_guid": "CEA2B24051A44525",
+      "prefab_path": "PrefabsEditable/SpawnPoints/E_SpawnPoint_US.et",
+      "instance_name": "SpawnPoint_US_01",
+      "loadout_ref": "recon_inf",
+      "description": "Küsten-Insertion Punkt, nahe Montignac Westküste"
+    },
+    {
+      "team": "US",
+      "role": "player",
+      "coords": [258, 9, 252],
+      "angle_y": 90.0,
+      "prefab_guid": "CEA2B24051A44525",
+      "prefab_path": "PrefabsEditable/SpawnPoints/E_SpawnPoint_US.et",
+      "instance_name": "SpawnPoint_US_02",
+      "loadout_ref": "recon_inf",
+      "description": "Backup Spawn nahe Insertion"
+    }
+  ],
+  "ai_groups": [
+    {
+      "name": "USSR_Patrol_NorthGate",
+      "prefab_guid": "30ED11AA4F0D41E5",
+      "prefab_path": "Prefabs/Groups/OPFOR/Group_USSR_FireGroup.et",
+      "coords": [380, 12, 295],
+      "waypoint_refs": ["WP_Patrol_N1", "WP_Patrol_N2", "WP_Patrol_N3", "WP_Patrol_N4"],
+      "behavior_mode": "patrol",
+      "alert_radius_m": 45,
+      "group_size": 3,
+      "description": "Nord-Patrol, Vorposten Nordseite"
+    },
+    {
+      "name": "USSR_Garrison_Outpost",
+      "prefab_guid": "359353A0A5A52216",
+      "prefab_path": "Prefabs/Groups/Campaign/Group_USSR_Defenders.et",
+      "coords": [395, 14, 315],
+      "waypoint_refs": ["WP_Defend_Center"],
+      "behavior_mode": "defend",
+      "alert_radius_m": 60,
+      "group_size": 4,
+      "description": "Vorposten-Garnison, statische Verteidiger am Hauptgebäude"
+    },
+    {
+      "name": "USSR_Reinforcement_Wave1",
+      "prefab_guid": "A2F75E45C66B1C0A",
+      "prefab_path": "Prefabs/Groups/OPFOR/Group_USSR_MachineGunTeam.et",
+      "coords": [450, 10, 280],
+      "waypoint_refs": ["WP_Reinforce_Route1"],
+      "behavior_mode": "patrol",
+      "alert_radius_m": 80,
+      "group_size": 3,
+      "description": "Verstärkungs-Welle 1 — spawnt bei Alarm-Trigger",
+      "spawn_on_trigger": "Trigger_AlarmZone"
+    }
+  ],
+  "waypoints": [
+    {
+      "name": "WP_Patrol_N1",
+      "type": "move",
+      "prefab_guid": "750A8D1695BD6998",
+      "prefab_path": "Prefabs/AI/Waypoints/AIWaypoint_Move.et",
+      "coords": [380, 12, 295]
+    },
+    {
+      "name": "WP_Patrol_N2",
+      "type": "move",
+      "prefab_guid": "750A8D1695BD6998",
+      "prefab_path": "Prefabs/AI/Waypoints/AIWaypoint_Move.et",
+      "coords": [360, 13, 310]
+    },
+    {
+      "name": "WP_Patrol_N3",
+      "type": "move",
+      "prefab_guid": "750A8D1695BD6998",
+      "prefab_path": "Prefabs/AI/Waypoints/AIWaypoint_Move.et",
+      "coords": [370, 11, 280]
+    },
+    {
+      "name": "WP_Patrol_N4",
+      "type": "move",
+      "prefab_guid": "750A8D1695BD6998",
+      "prefab_path": "Prefabs/AI/Waypoints/AIWaypoint_Move.et",
+      "coords": [390, 12, 270]
+    },
+    {
+      "name": "WP_Defend_Center",
+      "type": "defend",
+      "prefab_guid": "93291E72AC23930F",
+      "prefab_path": "Prefabs/AI/Waypoints/AIWaypoint_Defend.et",
+      "coords": [395, 14, 315]
+    },
+    {
+      "name": "WP_Reinforce_Route1",
+      "type": "move",
+      "prefab_guid": "750A8D1695BD6998",
+      "prefab_path": "Prefabs/AI/Waypoints/AIWaypoint_Move.et",
+      "coords": [410, 12, 305]
+    }
+  ],
+  "tasks": [
+    {
+      "name": "Task_ReachOutpost",
+      "class": "SCR_TriggerTask",
+      "coords": [390, 14, 310],
+      "fields": {
+        "m_sName": "Vorposten erreichen",
+        "m_sDescription": "Infiltriere zum sowjetischen Vorposten ohne entdeckt zu werden"
+      }
+    },
+    {
+      "name": "Task_MarkCommander",
+      "class": "SCR_EliminateTask",
+      "coords": [395, 14, 315],
+      "fields": {
+        "m_sName": "Kommandanten markieren",
+        "m_sDescription": "Identifiziere und markiere den sowjetischen Kommandanten (UAZ-Fahrzeug)"
+      }
+    },
+    {
+      "name": "Task_Exfil",
+      "class": "SCR_TriggerTask",
+      "coords": [800, 15, 245],
+      "fields": {
+        "m_sName": "Exfiltration",
+        "m_sDescription": "Erreiche den Extraktionspunkt bevor Verstärkung eintrifft"
+      }
+    }
+  ],
+  "triggers": [
+    {
+      "class": "SCR_BaseTriggerEntity",
+      "name": "Trigger_OutpostZone",
+      "coords": [390, 14, 310],
+      "radius": 80,
+      "description": "Zone um den Vorposten — aktiviert Task wenn betreten"
+    },
+    {
+      "class": "SCR_BaseTriggerEntity",
+      "name": "Trigger_AlarmZone",
+      "coords": [395, 14, 315],
+      "radius": 45,
+      "description": "Alarm-Zone — spawnt Verstärkungswelle wenn Spieler zu nah"
+    },
+    {
+      "class": "SCR_BaseTriggerEntity",
+      "name": "Trigger_ExfilZone",
+      "coords": [800, 15, 245],
+      "radius": 30,
+      "description": "Extraktions-LZ — Mission-Erfolg wenn alle Spieler drin"
+    }
+  ],
+  "managers": [
+    "GameMode",
+    "FactionManager",
+    "LoadoutManager",
+    "TimeAndWeatherManagerEntity"
+  ],
+  "environment_overrides": {
+    "time_of_day": {"hour": 2, "minute": 30},
+    "weather_preset": "clear_cold"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "guid": "EF238EED2E9FA24A",
+  "path": "Configs/MissionHeaders/COE_Base.conf",
+  "ext": "conf",
+  "source_file": "optionals/COE_Kunar_Compat/Configs/MissionHeaders/COE_Kunar.conf",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "config",
+  "display_name": "COE_Base",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

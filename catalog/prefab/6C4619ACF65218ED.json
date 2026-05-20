@@ -1,0 +1,11 @@
+{
+  "guid": "6C4619ACF65218ED",
+  "path": "Prefabs/Structures/Bulding/House_K_1_EP1.et",
+  "ext": "et",
+  "source_file": "optionals/COE_Kunar_Compat/Prefabs/Structures/Bulding/House_K_6_EP1_Full_Green.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "House_K_1_EP1",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

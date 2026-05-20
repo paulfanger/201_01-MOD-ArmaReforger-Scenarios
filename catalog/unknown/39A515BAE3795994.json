@@ -1,0 +1,11 @@
+{
+  "guid": "39A515BAE3795994",
+  "path": "UI/Textures/DeployMenu/Briefing/conflict_HintBanner_3_UI.edds",
+  "ext": "edds",
+  "source_file": "SampleCoop/Prefabs/MP/Modes/Coop/CoopGameMode.et",
+  "source_repo": "Reforger-Sample-Coop",
+  "type": "unknown",
+  "display_name": "conflict_HintBanner_3_UI",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

@@ -1,0 +1,11 @@
+{
+  "guid": "114DE81321786CD9",
+  "path": "Prefabs/Compositions/Slotted/SlotFlatSmall/MachineGunNest_S_USSR_01_PKM.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Worlds/MP/CTI_Campaign_Eden_base_Layers/Compositions.layer",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "MachineGunNest_S_USSR_01_PKM",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

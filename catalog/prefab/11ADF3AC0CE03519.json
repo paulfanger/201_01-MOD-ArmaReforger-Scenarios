@@ -1,0 +1,11 @@
+{
+  "guid": "11ADF3AC0CE03519",
+  "path": "Prefabs/Compositions/Misc/SubCompositions/Storage/Slotted/Shelter_Supplies_USSR_01.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Compositions/Base/COE_MainBaseLandUSSR.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "Shelter_Supplies_USSR_01",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

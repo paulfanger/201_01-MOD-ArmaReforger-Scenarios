@@ -1,0 +1,11 @@
+{
+  "guid": "87208DAD6F3C0DE2",
+  "path": "Prefabs/MP/Managers/Tasks/TaskManager_Editor.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Managers/COE_TaskManager.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "task",
+  "display_name": "TaskManager_Editor",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

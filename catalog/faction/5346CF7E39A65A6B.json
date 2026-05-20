@@ -1,0 +1,14 @@
+{
+  "guid": "5346CF7E39A65A6B",
+  "path": "Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Base.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/worlds/COE/Arland/Arland_Layers/managers.layer",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "faction",
+  "display_name": "Character_USSR_Base",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap",
+  "faction_key": "USSR",
+  "enriched_by": "catalog-enrich-factions",
+  "enriched_at": "2026-05-20"
+}

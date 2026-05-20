@@ -1,0 +1,11 @@
+{
+  "guid": "F15B99F6B06E7200",
+  "path": "Prefabs/Structures/Military/Radar/ApproachRadar_RPL5_01/ApproachRadar_RPL5_01_generator.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Compositions/Installation/USSR/COE_RPL5_Radar.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "ApproachRadar_RPL5_01_generator",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

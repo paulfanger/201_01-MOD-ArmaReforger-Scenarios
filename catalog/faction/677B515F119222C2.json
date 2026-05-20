@@ -1,0 +1,11 @@
+{
+  "guid": "677B515F119222C2",
+  "path": "Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL.et",
+  "ext": "et",
+  "source_file": "optionals/COE_Taliban_Compat/Prefabs/Managers/COE_FactionManager_Kunar.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "faction",
+  "display_name": "Character_FIA_SL",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

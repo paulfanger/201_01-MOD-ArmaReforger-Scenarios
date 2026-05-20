@@ -1,0 +1,11 @@
+{
+  "guid": "B00E14C07DEE788A",
+  "path": "Prefabs/Compositions/Misc/SubCompositions/Utility/Helipad_Lights_USSR_01.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Compositions/Base/COE_MainBaseLandUSSR.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "Helipad_Lights_USSR_01",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

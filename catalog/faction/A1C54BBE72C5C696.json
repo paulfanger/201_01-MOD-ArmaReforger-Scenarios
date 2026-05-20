@@ -1,0 +1,12 @@
+{
+  "class_name": "SCR_FactionManager",
+  "guid": "A1C54BBE72C5C696",
+  "path": "Prefabs/MP/Managers/Factions/FactionManager_FFA.et",
+  "source_file": "SampleMod_Main/Worlds/Modding/Assets_Showcase_Base_Layers/mission.layer",
+  "source_repo": "Arma-Reforger-Samples",
+  "kind": "entity_decl",
+  "type": "faction",
+  "display_name": "SCR_FactionManager",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

@@ -1,0 +1,9 @@
+{
+  "mission_id": "test-mission-pipeline-check",
+  "stage": 2,
+  "resolved_assets": [],
+  "missing_assets": [],
+  "halt_required": false,
+  "halt_reason": null,
+  "_note": "Asset manifest uses real GUIDs from catalog. Populated by asset-curator stage. For self-test, no assets are pre-resolved — reforger-bridge uses catalog-verified GUIDs directly."
+}

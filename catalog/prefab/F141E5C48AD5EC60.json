@@ -1,0 +1,11 @@
+{
+  "guid": "F141E5C48AD5EC60",
+  "path": "Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyStorage_S_USSR_01_Campaign.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Configs/Factions/SampleFactionGREENFOR_Campaign.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "SupplyStorage_S_USSR_01_Campaign",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

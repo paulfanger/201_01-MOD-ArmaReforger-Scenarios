@@ -1,0 +1,11 @@
+{
+  "guid": "15BEE7092B88B67D",
+  "path": "Prefabs/MP/Campaign/BuildEntity.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Prefabs/Characters/Campaign/Campaign_SampleFactionGREENFOR_Player.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "BuildEntity",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

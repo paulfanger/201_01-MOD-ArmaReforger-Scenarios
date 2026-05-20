@@ -1,0 +1,11 @@
+{
+  "guid": "137CA336F7DFF561",
+  "path": "Prefabs/MP/Modes/Coop/CoopGameMode_Base.et",
+  "ext": "et",
+  "source_file": "SampleCoop/Prefabs/MP/Modes/Coop/CoopGameMode.et",
+  "source_repo": "Reforger-Sample-Coop",
+  "type": "gamemode",
+  "display_name": "CoopGameMode_Base",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

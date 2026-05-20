@@ -1,0 +1,11 @@
+{
+  "guid": "6BF50F9E28546F36",
+  "path": "Prefabs/Groups/Campaign/Group_SampleFactionGREENFOR_Remnants_Sniper.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Configs/Factions/SampleFactionGREENFOR_Campaign.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "group",
+  "display_name": "Group_SampleFactionGREENFOR_Remnants_Sniper",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

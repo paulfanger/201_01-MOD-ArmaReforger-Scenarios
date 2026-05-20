@@ -1,0 +1,11 @@
+{
+  "guid": "70B8BDA4BE0E4215",
+  "path": "Prefabs/Props/Military/AmmoBoxes/AmmoBox_SampleWeaponMagazines.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewWeapon/PrefabsEditable/Auto/Props/Military/AmmoBoxes/E_AmmoBox_SampleWeaponMagazines.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "AmmoBox_SampleWeaponMagazines",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

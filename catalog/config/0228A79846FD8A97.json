@@ -1,0 +1,11 @@
+{
+  "guid": "0228A79846FD8A97",
+  "path": "Configs/Navmesh/Navmesh_GM_Eden_Vehicle.conf",
+  "ext": "conf",
+  "source_file": "optionals/COE_Kunar_Compat/worlds/COE/Kunar/Kunar_Layers/managers.layer",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "config",
+  "display_name": "Navmesh_GM_Eden_Vehicle",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

@@ -1,0 +1,14 @@
+{
+  "guid": "E97C426E941D8FDC",
+  "path": "Configs/Loadouts/USSR/Loadout_USSR_MG.conf",
+  "ext": "conf",
+  "source_file": "SampleCoop/Prefabs/MP/Managers/Loadouts/CoopLoadoutManager.et",
+  "source_repo": "Reforger-Sample-Coop",
+  "type": "loadout",
+  "display_name": "Loadout_USSR_MG",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap",
+  "faction_key": "USSR",
+  "enriched_by": "catalog-enrich-factions",
+  "enriched_at": "2026-05-20"
+}

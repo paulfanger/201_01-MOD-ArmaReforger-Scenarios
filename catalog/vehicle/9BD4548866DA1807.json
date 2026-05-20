@@ -1,0 +1,11 @@
+{
+  "guid": "9BD4548866DA1807",
+  "path": "Prefabs/Vehicles/Core/Configs/CargoCompartment_Base.conf",
+  "ext": "conf",
+  "source_file": "SampleMod_NewCar/Prefabs/Vehicles/Wheeled/SampleCar_01/SampleCar_01_Base.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "vehicle",
+  "display_name": "CargoCompartment_Base",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

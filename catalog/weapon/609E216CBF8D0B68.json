@@ -1,0 +1,11 @@
+{
+  "guid": "609E216CBF8D0B68",
+  "path": "Prefabs/Weapons/Ammo/Ammo_Rocket_PG7VL.et",
+  "ext": "et",
+  "source_file": "SampleMod_Main/Worlds/Modding/Assets_Showcase_default.layer",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "weapon",
+  "display_name": "Ammo_Rocket_PG7VL",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

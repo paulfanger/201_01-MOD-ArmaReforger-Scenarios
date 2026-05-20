@@ -1,0 +1,11 @@
+{
+  "guid": "508DD30BE11E25C2",
+  "path": "Prefabs/Compositions/Base/COE_MainBase_FobMichigan.et",
+  "ext": "et",
+  "source_file": "optionals/COE_Kunar_Compat/Prefabs/Managers/COE_FactionManager_Kunar.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "COE_MainBase_FobMichigan",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

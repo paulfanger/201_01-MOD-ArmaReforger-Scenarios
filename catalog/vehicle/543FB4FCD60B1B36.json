@@ -1,0 +1,11 @@
+{
+  "guid": "543FB4FCD60B1B36",
+  "path": "Prefabs/Vehicles/Core/Lights/UA_Lights.conf",
+  "ext": "conf",
+  "source_file": "SampleMod_NewCar/Prefabs/Vehicles/Wheeled/SampleCar_01/SampleCar_01_Base.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "vehicle",
+  "display_name": "UA_Lights",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

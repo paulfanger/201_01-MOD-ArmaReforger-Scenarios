@@ -1,0 +1,11 @@
+{
+  "guid": "67CC3987A55EF161",
+  "path": "Prefabs/Systems/Arsenal/ArsenalBoxes/USSR/ArsenalBox_SampleNewWeapon.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewWeapon/PrefabsEditable/Auto/Systems/Arsenal/ArsenalBoxes/USSR/E_ArsenalBox_SampleNewWeapon.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "ArsenalBox_SampleNewWeapon",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

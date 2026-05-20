@@ -1,0 +1,11 @@
+{
+  "guid": "46EA80F58AE20878",
+  "path": "Configs/MissionHeaders/COE_Kunar.conf",
+  "ext": "conf",
+  "source_file": "optionals/COE_Kunar_Compat/Missions/COE_Kunar_US.conf",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "config",
+  "display_name": "COE_Kunar",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

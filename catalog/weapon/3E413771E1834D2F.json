@@ -1,0 +1,11 @@
+{
+  "guid": "3E413771E1834D2F",
+  "path": "Prefabs/Weapons/Rifles/M16/Rifle_M16A2.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Characters/Factions/BLUFOR/US_Army/COE_Character_US_Officer.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "weapon",
+  "display_name": "Rifle_M16A2",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

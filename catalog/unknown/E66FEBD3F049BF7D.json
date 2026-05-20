@@ -1,0 +1,11 @@
+{
+  "guid": "E66FEBD3F049BF7D",
+  "path": "UI/Textures/EditorPreviews/Characters/BLUFOR/US_Army/Character_US_SL.edds",
+  "ext": "edds",
+  "source_file": "Worlds/GRAD_GM_Eden_Layers/gamemode.layer",
+  "source_repo": "GRAD-COOP-Template-Reforger",
+  "type": "unknown",
+  "display_name": "Character_US_SL",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

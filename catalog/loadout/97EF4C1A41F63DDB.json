@@ -1,0 +1,12 @@
+{
+  "class_name": "SCR_LoadoutManager",
+  "guid": "97EF4C1A41F63DDB",
+  "path": "Prefabs/MP/Managers/Loadouts/LoadoutManager_USxUSSR.et",
+  "source_file": "Worlds/GRAD_GM_Eden_Layers/gamemode.layer",
+  "source_repo": "GRAD-COOP-Template-Reforger",
+  "kind": "entity_decl",
+  "type": "loadout",
+  "display_name": "SCR_LoadoutManager",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

@@ -1,0 +1,11 @@
+{
+  "guid": "B866318EB7E84833",
+  "path": "Prefabs/Tasks/EliminateTask.et",
+  "ext": "et",
+  "source_file": "SampleCoop/Worlds/CoopTest_tasks.layer",
+  "source_repo": "Reforger-Sample-Coop",
+  "type": "task",
+  "display_name": "EliminateTask",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

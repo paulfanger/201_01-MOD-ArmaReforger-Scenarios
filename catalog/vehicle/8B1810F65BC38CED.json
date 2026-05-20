@@ -1,0 +1,11 @@
+{
+  "guid": "8B1810F65BC38CED",
+  "path": "Prefabs/Vehicles/Wheeled/SampleCar_01/Lights/SampleCar_01_ES_Front_L.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewCar/Prefabs/Vehicles/Wheeled/SampleCar_01/SampleCar_01_Base.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "vehicle",
+  "display_name": "SampleCar_01_ES_Front_L",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

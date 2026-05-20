@@ -1,0 +1,43 @@
+$grp AIWaypoint_Move : "{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et" {
+ WP_Patrol_N1 {
+  coords 380 12 295
+ }
+ WP_Patrol_N2 {
+  coords 360 13 310
+ }
+ WP_Patrol_N3 {
+  coords 370 11 280
+ }
+ WP_Patrol_N4 {
+  coords 390 12 270
+ }
+ WP_Reinforce_Route1 {
+  coords 410 12 305
+ }
+}
+$grp AIWaypoint_Move : "{93291E72AC23930F}Prefabs/AI/Waypoints/AIWaypoint_Defend.et" {
+ WP_Defend_Center {
+  coords 395 14 315
+ }
+}
+SCR_AIGroup USSR_Patrol_NorthGate : "{30ED11AA4F0D41E5}Prefabs/Groups/OPFOR/Group_USSR_FireGroup.et" {
+ coords 380 12 295
+ m_aWaypoints {
+  "WP_Patrol_N1"
+  "WP_Patrol_N2"
+  "WP_Patrol_N3"
+  "WP_Patrol_N4"
+ }
+}
+SCR_AIGroup USSR_Garrison_Outpost : "{359353A0A5A52216}Prefabs/Groups/Campaign/Group_USSR_Defenders.et" {
+ coords 395 14 315
+ m_aWaypoints {
+  "WP_Defend_Center"
+ }
+}
+SCR_AIGroup USSR_Reinforcement_Wave1 : "{A2F75E45C66B1C0A}Prefabs/Groups/OPFOR/Group_USSR_MachineGunTeam.et" {
+ coords 450 10 280
+ m_aWaypoints {
+  "WP_Reinforce_Route1"
+ }
+}

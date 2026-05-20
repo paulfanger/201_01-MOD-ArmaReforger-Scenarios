@@ -1,0 +1,11 @@
+{
+  "guid": "5A2220DD0C16958B",
+  "path": "Prefabs/MP/Spawning/SpawnPoint_US.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Managers/COE_FactionManager.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "SpawnPoint_US",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

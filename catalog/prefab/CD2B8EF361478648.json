@@ -1,0 +1,11 @@
+{
+  "guid": "CD2B8EF361478648",
+  "path": "Prefabs/Characters/Core/DefaultPlayerControllerMP_ScenarioFramework.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Characters/Core/COE_PlayerController.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "DefaultPlayerControllerMP_ScenarioFramework",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

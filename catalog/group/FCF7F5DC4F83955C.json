@@ -1,0 +1,14 @@
+{
+  "guid": "FCF7F5DC4F83955C",
+  "path": "Prefabs/Groups/BLUFOR/Group_US_LightFireTeam.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Managers/COE_FactionManager.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "group",
+  "display_name": "Group_US_LightFireTeam",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap",
+  "faction_key": "US",
+  "enriched_by": "catalog-enrich-factions",
+  "enriched_at": "2026-05-20"
+}

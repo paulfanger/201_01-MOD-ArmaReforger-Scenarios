@@ -1,0 +1,312 @@
+{
+  "index": 5,
+  "label": "post_generation_validated",
+  "stage": 6,
+  "timestamp": "2026-05-20T02:11:43.057824+00:00",
+  "content": {
+    "narrative.json": {
+      "title": "Fog Ambush Eden",
+      "tagline": "Ein US-Hinterhalttrupp legt einem sowjetischen Konvoi im Morgennebel auf Eden eine Falle.",
+      "premise": "Eine 2-6-köpfige US-Einheit plant einen Hinterhalt gegen einen sowjetischen Versorgungskonvoi auf Eden. Dichter Morgennebel bietet taktische Deckung — aber auch dem Feind. Ziel: Konvoi vernichten und unter Nebeldeckung zur Exfil-Zone absetzen.",
+      "factions": {
+        "player": {
+          "id": "US",
+          "asset_id_ref": "ENF_Faction_US",
+          "role": "Hinterhalttrupp, 2-6 Spieler, leichtes Kampfloadout"
+        },
+        "ai": {
+          "id": "USSR",
+          "asset_id_ref": "ENF_Faction_USSR",
+          "role": "Konvoi-Eskorte + Reaktionstruppe"
+        }
+      },
+      "biome": {
+        "map_id_ref": "eden",
+        "region_hint": "Eden Straßennetz, Waldflächen und Hügel"
+      },
+      "tone": {
+        "primary": "tense",
+        "secondary": [
+          "cinematic",
+          "atmospheric"
+        ],
+        "color_palette_hint": [
+          "grey_fog",
+          "muted_green",
+          "dawn_orange"
+        ]
+      },
+      "pacing": {
+        "phase_1": {
+          "name": "Aufstellung",
+          "duration_min": 3,
+          "description": "Einheit bezieht Hinterhaltposition an der Konvoi-Route",
+          "ai_state": "patrol_normal",
+          "player_objective": "Hinterhaltposition vor Konvoi-Ankunft beziehen"
+        },
+        "phase_2": {
+          "name": "Hinterhalt",
+          "duration_min": 6,
+          "description": "Konvoi fährt durch Killzone — Überraschungsangriff im Nebel",
+          "ai_state": "convoy_patrol",
+          "player_objective": "Konvoi-Eskorte und Fahrzeuge vernichten"
+        },
+        "phase_3": {
+          "name": "Kontakt brechen",
+          "duration_min": 8,
+          "description": "Reaktionstruppe wird alarmiert — schneller Rückzug zur Exfil unter Nebel",
+          "ai_state": "pursuit_aggressive",
+          "player_objective": "Exfil-Zone erreichen und evakuieren"
+        }
+      },
+      "time_of_day": {
+        "hour": 6,
+        "minute": 0,
+        "description": "Morgendämmerung — leichter Nebel gibt taktische Deckung aber schränkt Sicht ein"
+      },
+      "weather": {
+        "preset": "fog_light",
+        "description": "Leichter Nebel am frühen Morgen — Sichtweite ca. 200m, dramatische Atmosphäre"
+      },
+      "player_setup": {
+        "min_players": 2,
+        "max_players": 6,
+        "loadout_type": "Leichte Hinterhalt-Infanterie",
+        "loadout_hint": "Halbautomatische Waffen, Sprengstoff optional, kein schweres Gerät"
+      },
+      "narrative_anchors": [
+        "Konvoi-Route entlang der Hauptstraße durch Waldgebiet",
+        "Dichter Nebel in Morgenstunden als taktisches Element",
+        "Sowjetische Reaktionstruppe kommt nach Alarm aus Richtung Ost",
+        "Exfil-Punkt 600m von Killzone entfernt in sicherem Gebiet"
+      ],
+      "out_of_scope": [
+        "PVP-Elemente",
+        "Fahrzeuge für Spieler (MVP)",
+        "Fahrzeugsimulation des Konvois (statische Gruppen in MVP)",
+        "Live-AI-Calls während des Gameplays"
+      ]
+    },
+    "asset-manifest.json": {
+      "mission_id": "fog-ambush-eden",
+      "stage": 2,
+      "resolved_assets": [
+        {
+          "narrative_ref": "ENF_Faction_US",
+          "guid": "ADFDBDA163950168",
+          "path": "Configs/Factions/US_Campaign.conf",
+          "type": "faction",
+          "role": "player"
+        },
+        {
+          "narrative_ref": "ENF_Faction_USSR",
+          "guid": "15B582F8FA0B0940",
+          "path": "Configs/Factions/USSR_Campaign.conf",
+          "type": "faction",
+          "role": "ai"
+        }
+      ],
+      "missing_assets": [],
+      "halt_required": false,
+      "halt_reason": null
+    },
+    "encounters.json": {
+      "spawn_points": [
+        {
+          "team": "US",
+          "role": "player",
+          "coords": [
+            320,
+            12,
+            180
+          ],
+          "angle_y": 180.0,
+          "prefab_guid": "CEA2B24051A44525",
+          "prefab_path": "PrefabsEditable/SpawnPoints/E_SpawnPoint_US.et",
+          "instance_name": "SpawnPoint_Ambush_01"
+        }
+      ],
+      "ai_groups": [
+        {
+          "name": "USSR_Convoy_Escort",
+          "prefab_guid": "359353A0A5A52216",
+          "prefab_path": "Prefabs/Groups/Campaign/Group_USSR_Defenders.et",
+          "coords": [
+            350,
+            10,
+            200
+          ],
+          "waypoint_refs": [
+            "WP_Convoy_Route1",
+            "WP_Convoy_Route2",
+            "WP_Convoy_Route3"
+          ],
+          "behavior_mode": "patrol",
+          "alert_radius_m": 40,
+          "group_size": 4,
+          "description": "Konvoi-Eskorte auf Marschroute"
+        },
+        {
+          "name": "USSR_Reaction_Force",
+          "prefab_guid": "30ED11AA4F0D41E5",
+          "prefab_path": "Prefabs/Groups/OPFOR/Group_USSR_FireGroup.et",
+          "coords": [
+            450,
+            8,
+            190
+          ],
+          "waypoint_refs": [
+            "WP_React_Route"
+          ],
+          "behavior_mode": "patrol",
+          "alert_radius_m": 60,
+          "group_size": 4,
+          "spawn_on_trigger": "Trigger_AmbushStarted"
+        }
+      ],
+      "waypoints": [
+        {
+          "name": "WP_Convoy_Route1",
+          "type": "move",
+          "prefab_guid": "750A8D1695BD6998",
+          "prefab_path": "Prefabs/AI/Waypoints/AIWaypoint_Move.et",
+          "coords": [
+            300,
+            10,
+            200
+          ]
+        },
+        {
+          "name": "WP_Convoy_Route2",
+          "type": "move",
+          "prefab_guid": "750A8D1695BD6998",
+          "prefab_path": "Prefabs/AI/Waypoints/AIWaypoint_Move.et",
+          "coords": [
+            350,
+            10,
+            200
+          ]
+        },
+        {
+          "name": "WP_Convoy_Route3",
+          "type": "move",
+          "prefab_guid": "750A8D1695BD6998",
+          "prefab_path": "Prefabs/AI/Waypoints/AIWaypoint_Move.et",
+          "coords": [
+            400,
+            10,
+            200
+          ]
+        },
+        {
+          "name": "WP_React_Route",
+          "type": "move",
+          "prefab_guid": "750A8D1695BD6998",
+          "prefab_path": "Prefabs/AI/Waypoints/AIWaypoint_Move.et",
+          "coords": [
+            380,
+            10,
+            200
+          ]
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Task_AmbushConvoy",
+          "class": "SCR_EliminateTask",
+          "coords": [
+            350,
+            10,
+            200
+          ],
+          "fields": {
+            "m_sName": "Konvoi vernichten",
+            "m_sDescription": "Zerstöre den sowjetischen Konvoi im Nebel-Hinterhalt"
+          }
+        },
+        {
+          "name": "Task_BreakContact",
+          "class": "SCR_TriggerTask",
+          "coords": [
+            350,
+            8,
+            600
+          ],
+          "fields": {
+            "m_sName": "Kontakt brechen",
+            "m_sDescription": "Verlasse die Hinterhalt-Zone unter Nebel-Deckung und erreiche Exfil"
+          }
+        }
+      ],
+      "triggers": [
+        {
+          "class": "SCR_BaseTriggerEntity",
+          "name": "Trigger_AmbushKillZone",
+          "coords": [
+            350,
+            10,
+            200
+          ],
+          "radius": 60
+        },
+        {
+          "class": "SCR_BaseTriggerEntity",
+          "name": "Trigger_AmbushStarted",
+          "coords": [
+            350,
+            10,
+            200
+          ],
+          "radius": 80
+        },
+        {
+          "class": "SCR_BaseTriggerEntity",
+          "name": "Trigger_ExfilPoint",
+          "coords": [
+            350,
+            8,
+            600
+          ],
+          "radius": 25
+        }
+      ],
+      "managers": [
+        "GameMode",
+        "FactionManager",
+        "LoadoutManager",
+        "TimeAndWeatherManagerEntity"
+      ],
+      "environment_overrides": {
+        "time_of_day": {
+          "hour": 6,
+          "minute": 0
+        },
+        "weather_preset": "fog_light"
+      }
+    },
+    "current-stage.json": {
+      "stage": 5,
+      "status": "auto-approved-self-test"
+    },
+    "output_tree": [
+      "addon.gproj",
+      "Missions/fog-ambush-eden.conf",
+      "Missions/fog-ambush-eden.conf.meta",
+      "Worlds/fog-ambush-eden.ent",
+      "Worlds/fog-ambush-eden.ent.meta",
+      "Worlds/fog-ambush-eden_gamemode.layer",
+      "Worlds/fog-ambush-eden_managers.layer",
+      "Worlds/fog-ambush-eden_spawnpoints.layer",
+      "Worlds/fog-ambush-eden_AI.layer",
+      "Worlds/fog-ambush-eden_tasks.layer",
+      "Worlds/fog-ambush-eden_triggers.layer",
+      "Worlds/fog-ambush-eden_environment.layer",
+      "DISCLOSURE.md"
+    ]
+  },
+  "diff_from_previous": {
+    "output_tree": {
+      "change": "added"
+    }
+  }
+}

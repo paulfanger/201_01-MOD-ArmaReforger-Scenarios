@@ -1,0 +1,11 @@
+{
+  "guid": "5EDF39860639027D",
+  "path": "Prefabs/ScenarioFramework/Components/LayerTaskDestroy.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Compositions/Tasks/COE_TaskDestroy.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "LayerTaskDestroy",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

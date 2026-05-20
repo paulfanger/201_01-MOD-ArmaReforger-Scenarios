@@ -1,0 +1,11 @@
+{
+  "guid": "333DA6244C7DA34C",
+  "path": "Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SR.et",
+  "ext": "et",
+  "source_file": "Worlds/GRAD_GM_Eden_Layers/gamemode.layer",
+  "source_repo": "GRAD-COOP-Template-Reforger",
+  "type": "faction",
+  "display_name": "Character_USSR_SR",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

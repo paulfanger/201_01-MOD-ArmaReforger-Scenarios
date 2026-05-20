@@ -1,0 +1,11 @@
+{
+  "guid": "6204943E9EC70EC2",
+  "path": "Prefabs/Structures/Military/Camps/Canvas_Covers/US/CanvasCover_Medium_US.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Compositions/Base/COE_MainBaseLandUS.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "CanvasCover_Medium_US",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

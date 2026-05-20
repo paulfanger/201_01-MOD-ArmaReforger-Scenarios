@@ -1,0 +1,12 @@
+{
+  "class_name": "SCR_SpawnPoint",
+  "guid": "CEA2B24051A44525",
+  "path": "PrefabsEditable/SpawnPoints/E_SpawnPoint_US.et",
+  "source_file": "SampleCoop/Worlds/CoopTest_gamemode.layer",
+  "source_repo": "Reforger-Sample-Coop",
+  "kind": "entity_decl",
+  "type": "spawnpoint",
+  "display_name": "SCR_SpawnPoint",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

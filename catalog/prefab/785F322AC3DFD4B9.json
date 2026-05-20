@@ -1,0 +1,11 @@
+{
+  "guid": "785F322AC3DFD4B9",
+  "path": "Prefabs/Compositions/Misc/SubCompositions/Furniture/Chair_Light_US_01.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Compositions/Base/COE_MainBaseLandUS.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "Chair_Light_US_01",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

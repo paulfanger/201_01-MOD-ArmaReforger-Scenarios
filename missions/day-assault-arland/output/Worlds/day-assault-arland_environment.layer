@@ -1,0 +1,6 @@
+TimeAndWeatherManagerEntity TimeAndWeatherManager {
+ TimeOfDay {
+  m_iDefaultHours 10
+  m_iDefaultMinutes 0
+ }
+}

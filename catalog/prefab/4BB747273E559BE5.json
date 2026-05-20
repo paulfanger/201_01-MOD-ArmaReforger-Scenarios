@@ -1,0 +1,11 @@
+{
+  "guid": "4BB747273E559BE5",
+  "path": "Prefabs/Structures/Bulding/House_C_2_EP1_Full.et",
+  "ext": "et",
+  "source_file": "optionals/COE_Kunar_Compat/worlds/COE/Kunar/Kunar_Layers/managers.layer",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "House_C_2_EP1_Full",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

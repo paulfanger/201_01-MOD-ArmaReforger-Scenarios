@@ -1,0 +1,11 @@
+{
+  "guid": "D8F2CA92583B23D3",
+  "path": "Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_Last_5Tracer.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Characters/Factions/BLUFOR/US_Army/COE_Character_US_Officer.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "weapon",
+  "display_name": "Magazine_556x45_STANAG_30rnd_Last_5Tracer",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

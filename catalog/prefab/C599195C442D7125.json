@@ -1,0 +1,11 @@
+{
+  "guid": "C599195C442D7125",
+  "path": "Prefabs/Compositions/Misc/CustomEntities/CompositionDecals/CompositionDecal_CigarButts_01.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Compositions/Base/COE_MainBaseLandUS.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "CompositionDecal_CigarButts_01",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

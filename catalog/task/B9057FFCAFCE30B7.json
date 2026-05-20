@@ -1,0 +1,12 @@
+{
+  "class_name": "GenericEntity",
+  "guid": "B9057FFCAFCE30B7",
+  "path": "Prefabs/Compositions/Tasks/COE_TaskDeliverIntel.et",
+  "source_file": "addons/CombatOpsEnhanced/worlds/COE/Test/Test_Layers/default.layer",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "kind": "entity_decl",
+  "type": "task",
+  "display_name": "GenericEntity",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

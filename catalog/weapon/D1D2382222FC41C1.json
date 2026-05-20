@@ -1,0 +1,11 @@
+{
+  "guid": "D1D2382222FC41C1",
+  "path": "Prefabs/Weapons/Attachments/Muzzle/Suppressor_SampleSuppresor_01/Suppressor_SampleSuppressor_01.et",
+  "ext": "et",
+  "source_file": "SampleMod_Main/Worlds/Modding/Assets_Showcase_Basic_Layers/assets.layer",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "weapon",
+  "display_name": "Suppressor_SampleSuppressor_01",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

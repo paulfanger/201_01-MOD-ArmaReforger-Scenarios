@@ -1,0 +1,11 @@
+{
+  "guid": "6CD65604C7945A66",
+  "path": "Prefabs/Compositions/Misc/CustomEntities/CompositionDecals/CompositionDecal_Dirt_Patch_03.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Compositions/Base/COE_MainBaseLandUS.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "CompositionDecal_Dirt_Patch_03",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

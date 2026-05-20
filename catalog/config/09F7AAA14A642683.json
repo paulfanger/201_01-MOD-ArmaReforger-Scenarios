@@ -1,0 +1,11 @@
+{
+  "guid": "09F7AAA14A642683",
+  "path": "Configs/NameTags/NametagFriendlies.conf",
+  "ext": "conf",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/MP/Modes/COE_GameMode.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "config",
+  "display_name": "NametagFriendlies",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

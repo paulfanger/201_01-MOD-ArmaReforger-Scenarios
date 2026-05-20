@@ -1,0 +1,11 @@
+{
+  "guid": "6058AB54781A0C52",
+  "path": "Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_AMG.et",
+  "ext": "et",
+  "source_file": "Worlds/GRAD_GM_Eden_Layers/gamemode.layer",
+  "source_repo": "GRAD-COOP-Template-Reforger",
+  "type": "faction",
+  "display_name": "Character_US_AMG",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

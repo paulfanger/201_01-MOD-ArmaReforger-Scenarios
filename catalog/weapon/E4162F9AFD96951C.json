@@ -1,0 +1,11 @@
+{
+  "guid": "E4162F9AFD96951C",
+  "path": "Prefabs/Weapons/Rifles/SampleWeapon_01_Optics.et",
+  "ext": "et",
+  "source_file": "SampleMod_Main/Configs/Arsenal/ArsenalConfig_SampleMod.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "weapon",
+  "display_name": "SampleWeapon_01_Optics",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

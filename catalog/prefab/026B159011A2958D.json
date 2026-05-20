@@ -1,0 +1,11 @@
+{
+  "guid": "026B159011A2958D",
+  "path": "Prefabs/Characters/Vests/Vest_Lifchik/Vest_Lifchik_GL_red.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Configs/EntityCatalog/SampleFactionREDFOR/SampleFactionREDFOR_InventoryItems.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "Vest_Lifchik_GL_red",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

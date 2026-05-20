@@ -1,0 +1,11 @@
+{
+  "guid": "49B2DF0651711783",
+  "path": "Prefabs/Compositions/Tasks/COE_TaskExfil.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Managers/COE_ObjectiveManager.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "task",
+  "display_name": "COE_TaskExfil",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

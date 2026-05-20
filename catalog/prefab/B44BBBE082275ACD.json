@@ -1,0 +1,11 @@
+{
+  "guid": "B44BBBE082275ACD",
+  "path": "Prefabs/Compositions/Misc/SubCompositions/WoodenBoxCluttered_04.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Worlds/MP/CTI_Campaign_Eden_base_Layers/Relay_objects.layer",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "WoodenBoxCluttered_04",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

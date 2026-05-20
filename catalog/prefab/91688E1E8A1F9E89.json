@@ -1,0 +1,11 @@
+{
+  "guid": "91688E1E8A1F9E89",
+  "path": "Prefabs/Characters/Uniforms/Pants_M88_Item_red.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Prefabs/Characters/Uniforms/Pants_M88_red.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "Pants_M88_Item_red",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

@@ -1,0 +1,11 @@
+{
+  "guid": "1E7BDD22DCA4EA90",
+  "path": "Configs/Inventory/ItemHints/VehicleSupplyStored_ItemHint.conf",
+  "ext": "conf",
+  "source_file": "SampleMod_NewCar/Prefabs/Vehicles/Wheeled/SampleCar_01/SampleCar_01_Base.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "config",
+  "display_name": "VehicleSupplyStored_ItemHint",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

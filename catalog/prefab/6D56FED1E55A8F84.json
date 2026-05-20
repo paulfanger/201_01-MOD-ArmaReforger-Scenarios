@@ -1,0 +1,11 @@
+{
+  "guid": "6D56FED1E55A8F84",
+  "path": "Prefabs/Items/Misc/IntelligenceFolder_E_01/IntelligenceFolder_E_01.et",
+  "ext": "et",
+  "source_file": "optionals/COE_Taliban_Compat/Prefabs/Managers/COE_FactionManager_Kunar.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "IntelligenceFolder_E_01",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

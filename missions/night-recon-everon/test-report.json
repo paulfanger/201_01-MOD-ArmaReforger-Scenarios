@@ -1,0 +1,49 @@
+{
+  "mission_id": "night-recon-everon",
+  "run_at": "2026-05-20T02:11:42.942512+00:00",
+  "stages": {
+    "stage_1": {
+      "status": "pass",
+      "source": "existing"
+    },
+    "stage_2": {
+      "status": "pass",
+      "resolved": 2,
+      "missing": 0
+    },
+    "stage_5_snapshot": {
+      "status": "pass",
+      "snapshot": "004_pre_generation_auto_approved.json"
+    },
+    "stage_6": {
+      "status": "pass",
+      "files": [
+        "addon.gproj",
+        "Missions/night-recon-everon.conf",
+        "Missions/night-recon-everon.conf.meta",
+        "Worlds/night-recon-everon.ent",
+        "Worlds/night-recon-everon.ent.meta",
+        "Worlds/night-recon-everon_gamemode.layer",
+        "Worlds/night-recon-everon_managers.layer",
+        "Worlds/night-recon-everon_spawnpoints.layer",
+        "Worlds/night-recon-everon_AI.layer",
+        "Worlds/night-recon-everon_tasks.layer",
+        "Worlds/night-recon-everon_triggers.layer",
+        "Worlds/night-recon-everon_environment.layer",
+        "DISCLOSURE.md"
+      ],
+      "warnings": []
+    },
+    "validation_schema": {
+      "status": "pass",
+      "warnings": 0,
+      "checked_files": 18
+    },
+    "validation_cross": {
+      "status": "pass"
+    }
+  },
+  "passed": true,
+  "errors": [],
+  "warnings": []
+}

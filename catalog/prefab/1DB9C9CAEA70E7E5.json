@@ -1,0 +1,11 @@
+{
+  "guid": "1DB9C9CAEA70E7E5",
+  "path": "PrefabsEditable/Auto/Props/Military/Fortification/E_BarbedTape_KnifeRest.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/PrefabsEditable/Auto/Props/Military/Fortification/E_BarbedTape_KnifeRest.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "E_BarbedTape_KnifeRest",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

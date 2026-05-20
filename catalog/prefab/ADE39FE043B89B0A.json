@@ -1,0 +1,11 @@
+{
+  "guid": "ADE39FE043B89B0A",
+  "path": "Prefabs/Props/Industrial/ConcretePanel_01_B.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Worlds/MP/CTI_Campaign_Eden_base_Layers/Relay_objects.layer",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "ConcretePanel_01_B",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

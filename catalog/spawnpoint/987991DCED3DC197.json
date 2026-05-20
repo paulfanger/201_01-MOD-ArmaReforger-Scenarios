@@ -1,0 +1,11 @@
+{
+  "guid": "987991DCED3DC197",
+  "path": "PrefabsEditable/SpawnPoints/E_SpawnPoint.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/PrefabsEditable/SpawnPoints/E_SpawnPoint_BLUFOR.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "spawnpoint",
+  "display_name": "E_SpawnPoint",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

@@ -1,0 +1,11 @@
+{
+  "guid": "6A8FF7A3F9007CD0",
+  "path": "UI/Textures/EditorPreviews/Characters/OPFOR/USSR_Army/Character_USSR_Rifleman.edds",
+  "ext": "edds",
+  "source_file": "addons/CombatOpsEnhanced/worlds/COE/Arland/Arland_Layers/managers.layer",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "unknown",
+  "display_name": "Character_USSR_Rifleman",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

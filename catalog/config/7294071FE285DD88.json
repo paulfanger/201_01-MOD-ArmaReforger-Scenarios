@@ -1,0 +1,11 @@
+{
+  "guid": "7294071FE285DD88",
+  "path": "Configs/Core/GarbageSystemBase.conf",
+  "ext": "conf",
+  "source_file": "addons/CombatOpsEnhanced/Configs/Core/COE_GarbageSystem.conf",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "config",
+  "display_name": "GarbageSystemBase",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

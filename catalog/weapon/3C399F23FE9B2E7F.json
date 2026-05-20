@@ -1,0 +1,11 @@
+{
+  "guid": "3C399F23FE9B2E7F",
+  "path": "Prefabs/Weapons/Rifles/Rifle_AK74_Modded.et",
+  "ext": "et",
+  "source_file": "SampleMod_ModdedWeapon/Configs/Arsenal/ArsenalConfig_SampleModdedWeapon.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "weapon",
+  "display_name": "Rifle_AK74_Modded",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

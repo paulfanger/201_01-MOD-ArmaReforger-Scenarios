@@ -1,0 +1,12 @@
+{
+  "class_name": "SCR_BatteryHitZone",
+  "guid": "AA309D7C68080A94",
+  "path": "Prefabs/Vehicles/Core/Configs/HitZones/Battery.conf",
+  "source_file": "SampleMod_NewCar/Prefabs/Vehicles/Wheeled/SampleCar_01/SampleCar_01_Base.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "kind": "entity_decl",
+  "type": "vehicle",
+  "display_name": "SCR_BatteryHitZone",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

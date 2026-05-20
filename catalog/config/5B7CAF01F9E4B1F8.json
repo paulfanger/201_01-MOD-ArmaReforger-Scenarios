@@ -1,0 +1,11 @@
+{
+  "guid": "5B7CAF01F9E4B1F8",
+  "path": "Configs/Editor/PlaceableEntities/Groups_SampleFaction.conf",
+  "ext": "conf",
+  "source_file": "SampleMod_NewFaction/Prefabs/Editor/Modes/EditorModeEdit.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "config",
+  "display_name": "Groups_SampleFaction",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

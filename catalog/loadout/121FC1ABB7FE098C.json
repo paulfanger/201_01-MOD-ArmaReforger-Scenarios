@@ -1,0 +1,14 @@
+{
+  "guid": "121FC1ABB7FE098C",
+  "path": "Configs/Loadouts/US/Loadout_US_LAT.conf",
+  "ext": "conf",
+  "source_file": "SampleCoop/Prefabs/MP/Managers/Loadouts/CoopLoadoutManager.et",
+  "source_repo": "Reforger-Sample-Coop",
+  "type": "loadout",
+  "display_name": "Loadout_US_LAT",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap",
+  "faction_key": "US",
+  "enriched_by": "catalog-enrich-factions",
+  "enriched_at": "2026-05-20"
+}

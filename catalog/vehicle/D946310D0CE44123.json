@@ -1,0 +1,11 @@
+{
+  "guid": "D946310D0CE44123",
+  "path": "Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_fuel_tank.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_fuel_tank_SampleFactionREDFOR.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "vehicle",
+  "display_name": "Ural4320_fuel_tank",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

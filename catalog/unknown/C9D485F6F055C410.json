@@ -1,0 +1,11 @@
+{
+  "guid": "C9D485F6F055C410",
+  "path": "UI/Textures/MissionLoadingScreens/COE_Arland_Preview.edds",
+  "ext": "edds",
+  "source_file": "addons/CombatOpsEnhanced/Configs/MissionHeaders/COE_Base.conf",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "unknown",
+  "display_name": "COE_Arland_Preview",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

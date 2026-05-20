@@ -1,0 +1,11 @@
+{
+  "guid": "588A3DAF0296B0C1",
+  "path": "PrefabsEditable/Slots/Flat/E_SlotFlatSmall.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Prefabs/MP/Campaign/CampaignFactionManager_Base.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "E_SlotFlatSmall",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

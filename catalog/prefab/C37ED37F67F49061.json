@@ -1,0 +1,11 @@
+{
+  "guid": "C37ED37F67F49061",
+  "path": "Prefabs/Characters/Vests/Vest_Sample/Vest_Sample_01_Addon.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewCharacter/Prefabs/Characters/Vests/Vest_Sample/Vest_Sample_01_Heavy.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "Vest_Sample_01_Addon",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

@@ -1,0 +1,12 @@
+{
+  "class_name": "SCR_MPDestructionManager",
+  "guid": "9BB369F2803C6F71",
+  "path": "Prefabs/MP/MPDestructionManager.et",
+  "source_file": "SampleCoop/Worlds/CoopTest_managers.layer",
+  "source_repo": "Reforger-Sample-Coop",
+  "kind": "entity_decl",
+  "type": "prefab",
+  "display_name": "SCR_MPDestructionManager",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

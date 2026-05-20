@@ -1,0 +1,11 @@
+{
+  "guid": "9EDD3A569D1FE096",
+  "path": "Prefabs/MP/Modes/COE_GameMode.et",
+  "ext": "et",
+  "source_file": "optionals/COE_Kunar_Compat/worlds/COE/Kunar/Kunar_Layers/managers.layer",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "gamemode",
+  "display_name": "COE_GameMode",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

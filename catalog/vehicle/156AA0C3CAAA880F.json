@@ -1,0 +1,12 @@
+{
+  "class_name": "SCR_FuelHitZone",
+  "guid": "156AA0C3CAAA880F",
+  "path": "Prefabs/Vehicles/Core/Configs/HitZones/FuelTank_Offroad.conf",
+  "source_file": "SampleMod_NewCar/Prefabs/Vehicles/Wheeled/SampleCar_01/SampleCar_01_Base.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "kind": "entity_decl",
+  "type": "vehicle",
+  "display_name": "SCR_FuelHitZone",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

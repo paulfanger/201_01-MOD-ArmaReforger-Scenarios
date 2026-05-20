@@ -1,0 +1,11 @@
+{
+  "guid": "C84595BF6F321B09",
+  "path": "Prefabs/Weapons/Attachments/Optics/Optic_SampleCollimator_01.et",
+  "ext": "et",
+  "source_file": "SampleMod_Main/Worlds/Modding/Assets_Showcase_Basic_Layers/assets.layer",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "weapon",
+  "display_name": "Optic_SampleCollimator_01",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

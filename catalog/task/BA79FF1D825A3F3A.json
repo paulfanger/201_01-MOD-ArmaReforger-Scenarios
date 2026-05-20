@@ -1,0 +1,12 @@
+{
+  "class_name": "SCR_CoopTaskManager",
+  "guid": "BA79FF1D825A3F3A",
+  "path": "Prefabs/MP/Managers/Tasks/CoopTaskManager.et",
+  "source_file": "SampleCoop/Worlds/CoopTest_managers.layer",
+  "source_repo": "Reforger-Sample-Coop",
+  "kind": "entity_decl",
+  "type": "task",
+  "display_name": "SCR_CoopTaskManager",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

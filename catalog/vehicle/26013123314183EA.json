@@ -1,0 +1,11 @@
+{
+  "guid": "26013123314183EA",
+  "path": "Prefabs/Vehicles/Wheeled/M923A1/M923A1_tanker_MERDC.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Configs/Campaign/VehicleAssetList_SampleNewFaction.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "vehicle",
+  "display_name": "M923A1_tanker_MERDC",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

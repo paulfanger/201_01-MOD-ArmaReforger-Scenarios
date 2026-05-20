@@ -1,0 +1,11 @@
+{
+  "guid": "6DB115703B951505",
+  "path": "Configs/Editor/PlaceableEntities/ModdedCar_Vehicles.conf",
+  "ext": "conf",
+  "source_file": "SampleMod_ModdedCar/Prefabs/Editor/Modes/EditorModeEdit.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "config",
+  "display_name": "ModdedCar_Vehicles",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

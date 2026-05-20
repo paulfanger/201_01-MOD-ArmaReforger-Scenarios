@@ -1,0 +1,14 @@
+{
+  "guid": "FB56BAF9A1BBAB39",
+  "path": "Configs/Loadouts/USSR/Loadout_USSR_Sharpshooter.conf",
+  "ext": "conf",
+  "source_file": "SampleCoop/Prefabs/MP/Managers/Loadouts/CoopLoadoutManager.et",
+  "source_repo": "Reforger-Sample-Coop",
+  "type": "loadout",
+  "display_name": "Loadout_USSR_Sharpshooter",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap",
+  "faction_key": "USSR",
+  "enriched_by": "catalog-enrich-factions",
+  "enriched_at": "2026-05-20"
+}

@@ -1,0 +1,11 @@
+{
+  "guid": "1440E215A94C7EFE",
+  "path": "Prefabs/Vehicles/Wheeled/UAZ469/dst/UAZ469_window_LF_02.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Prefabs/Vehicles/Wheeled/UAZ469/VehParts/Doors/Red/UAZ469_door_L01_top_Red.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "vehicle",
+  "display_name": "UAZ469_window_LF_02",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

@@ -1,0 +1,11 @@
+{
+  "guid": "590D0CC992E8AC25",
+  "path": "Prefabs/Compositions/Misc/SubCompositions/Decorations/Crate_Bottles_01.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Compositions/Base/COE_MainBaseLandUSSR.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "Crate_Bottles_01",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

@@ -1,0 +1,11 @@
+{
+  "guid": "F33BD814AC844C61",
+  "path": "UI/Textures/EditorPreviews/Characters/OPFOR/SampleFactionREDFOR/Character_SampleFactionREDFOR_GL.edds",
+  "ext": "edds",
+  "source_file": "SampleMod_NewFaction/Prefabs/Characters/Factions/OPFOR/SampleFactionREDFOR/Character_SampleFactionREDFOR_GL.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "unknown",
+  "display_name": "Character_SampleFactionREDFOR_GL",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

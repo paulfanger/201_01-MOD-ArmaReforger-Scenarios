@@ -1,0 +1,11 @@
+{
+  "guid": "C026AEDDA55DB43C",
+  "path": "Prefabs/Systems/Arsenal/AmmoBoxes/US/AmmoBoxArsenal_Launcher_US.et",
+  "ext": "et",
+  "source_file": "SampleCoop/Worlds/CoopTest_environment.layer",
+  "source_repo": "Reforger-Sample-Coop",
+  "type": "prefab",
+  "display_name": "AmmoBoxArsenal_Launcher_US",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

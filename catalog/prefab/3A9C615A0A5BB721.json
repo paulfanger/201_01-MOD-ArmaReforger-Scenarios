@@ -1,0 +1,11 @@
+{
+  "guid": "3A9C615A0A5BB721",
+  "path": "Prefabs/Props/Military/Compositions/USSR/COE_VehicleService_RHSRF_Large.et",
+  "ext": "et",
+  "source_file": "optionals/COE_RHS_Compat/Prefabs/Managers/COE_FactionManager.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "COE_VehicleService_RHSRF_Large",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

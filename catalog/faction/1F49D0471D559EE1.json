@@ -1,0 +1,11 @@
+{
+  "guid": "1F49D0471D559EE1",
+  "path": "Prefabs/Characters/Factions/INDFOR/SampleFactionGREENFOR/Character_SampleFactionGREENFOR_AT.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Configs/Editor/PlaceableEntities/Characters_SampleFactionGREENFOR.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "faction",
+  "display_name": "Character_SampleFactionGREENFOR_AT",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

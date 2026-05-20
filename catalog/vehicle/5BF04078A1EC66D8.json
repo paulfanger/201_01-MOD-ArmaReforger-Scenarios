@@ -1,0 +1,11 @@
+{
+  "guid": "5BF04078A1EC66D8",
+  "path": "Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MTT-A_Black_no_pylons.et",
+  "ext": "et",
+  "source_file": "optionals/COE_RHS_Kunar_Compat/Prefabs/Compositions/Base/COE_MainBase_FobMichigan_RHSRF.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "vehicle",
+  "display_name": "Mi8MTT-A_Black_no_pylons",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

@@ -1,0 +1,14 @@
+{
+  "guid": "657590C1EC9E27D3",
+  "path": "Prefabs/Groups/OPFOR/Group_USSR_LightFireTeam.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Managers/COE_FactionManager.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "group",
+  "display_name": "Group_USSR_LightFireTeam",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap",
+  "faction_key": "USSR",
+  "enriched_by": "catalog-enrich-factions",
+  "enriched_at": "2026-05-20"
+}

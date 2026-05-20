@@ -1,0 +1,11 @@
+{
+  "guid": "09DEA8153A0C312D",
+  "path": "Prefabs/Characters/Core/EquipmentPart_Base.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewCharacter/Prefabs/Characters/Vests/Vest_Sample/Vest_Sample_01_Addon.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "EquipmentPart_Base",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

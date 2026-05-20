@@ -1,0 +1,11 @@
+{
+  "guid": "F0DCB55B7FDB746B",
+  "path": "Prefabs/Compositions/Misc/CustomEntities/CompositionDecals/CompositionDecal_Dirt_Footprints_02.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Compositions/Base/COE_MainBaseLandUS.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "CompositionDecal_Dirt_Footprints_02",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

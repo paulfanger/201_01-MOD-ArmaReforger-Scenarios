@@ -1,0 +1,11 @@
+{
+  "guid": "C207A6BA934F5200",
+  "path": "Prefabs/Weapons/Warheads/Warhead_Shell_HE_545x39_Modded.et",
+  "ext": "et",
+  "source_file": "SampleMod_ModdedWeapon/Prefabs/Weapons/Ammo/Ammo_545x39_ball_Modded.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "weapon",
+  "display_name": "Warhead_Shell_HE_545x39_Modded",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

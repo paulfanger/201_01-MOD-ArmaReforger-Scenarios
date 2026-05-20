@@ -1,0 +1,11 @@
+{
+  "guid": "23FC9DFF19A54CD4",
+  "path": "Prefabs/Weapons/Ammo/Ammo_545x39_ball_green_Modded.et",
+  "ext": "et",
+  "source_file": "SampleMod_ModdedWeapon/Configs/Weapons/Ammo/Ammo_545x39_Modded.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "weapon",
+  "display_name": "Ammo_545x39_ball_green_Modded",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

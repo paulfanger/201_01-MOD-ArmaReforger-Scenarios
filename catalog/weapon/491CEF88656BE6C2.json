@@ -1,0 +1,11 @@
+{
+  "guid": "491CEF88656BE6C2",
+  "path": "Prefabs/Weapons/Core/Suppressor_base.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewWeapon/Prefabs/Weapons/Attachments/Muzzle/Suppressor_SampleSuppresor_01/Suppressor_SampleSuppressor_01_base.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "weapon",
+  "display_name": "Suppressor_base",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

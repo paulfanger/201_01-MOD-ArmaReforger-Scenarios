@@ -1,0 +1,11 @@
+{
+  "guid": "1D9DDE1632F33A9E",
+  "path": "Prefabs/Weapons/Ammo/Ammo_545x39_Ball_7N6.et",
+  "ext": "et",
+  "source_file": "SampleMod_ModdedWeapon/Prefabs/Weapons/Ammo/Ammo_545x39_ball_green_Modded.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "weapon",
+  "display_name": "Ammo_545x39_Ball_7N6",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

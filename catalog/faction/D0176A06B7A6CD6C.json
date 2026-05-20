@@ -1,0 +1,11 @@
+{
+  "guid": "D0176A06B7A6CD6C",
+  "path": "Prefabs/Characters/Factions/INDFOR/SampleFactionGREENFOR/Character_SampleFactionGREENFOR_Rifleman.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Configs/Editor/PlaceableEntities/Characters_SampleFactionGREENFOR.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "faction",
+  "display_name": "Character_SampleFactionGREENFOR_Rifleman",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

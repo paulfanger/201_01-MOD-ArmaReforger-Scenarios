@@ -1,0 +1,15 @@
+SCR_TriggerTask Task_ReachOutpost {
+ coords 390 14 310
+ m_sName "Vorposten erreichen"
+ m_sDescription "Infiltriere zum sowjetischen Vorposten ohne entdeckt zu werden"
+}
+SCR_EliminateTask Task_MarkCommander {
+ coords 395 14 315
+ m_sName "Kommandanten markieren"
+ m_sDescription "Identifiziere und markiere den sowjetischen Kommandanten (UAZ-Fahrzeug)"
+}
+SCR_TriggerTask Task_Exfil {
+ coords 800 15 245
+ m_sName "Exfiltration"
+ m_sDescription "Erreiche den Extraktionspunkt bevor Verstärkung eintrifft"
+}

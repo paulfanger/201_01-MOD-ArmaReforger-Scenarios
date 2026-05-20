@@ -1,0 +1,11 @@
+{
+  "guid": "616F4E93658E5A3A",
+  "path": "Prefabs/Props/Military/Generators/GeneratorFloodlight_USSR_01.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Compositions/Base/COE_MainBaseLandUSSR.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "GeneratorFloodlight_USSR_01",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

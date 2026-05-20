@@ -1,0 +1,11 @@
+{
+  "guid": "39FC44E47347DF5D",
+  "path": "Prefabs/Structures/Services/Hotels/MountainHotel_01/MountainHotel_01_green.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Managers/COE_ObjectiveManager.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "MountainHotel_01_green",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

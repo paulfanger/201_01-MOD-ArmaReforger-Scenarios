@@ -1,0 +1,12 @@
+{
+  "class_name": "SCR_BaseGameMode",
+  "guid": "904EC091C347AEA9",
+  "path": "Prefabs/MP/Modes/Coop/CoopGameMode.et",
+  "source_file": "SampleCoop/Worlds/CoopTest_gamemode.layer",
+  "source_repo": "Reforger-Sample-Coop",
+  "kind": "entity_decl",
+  "type": "gamemode",
+  "display_name": "SCR_BaseGameMode",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

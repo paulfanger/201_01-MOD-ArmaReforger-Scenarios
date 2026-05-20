@@ -1,0 +1,11 @@
+{
+  "guid": "15CD521098748195",
+  "path": "Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_HeliCrew.et",
+  "ext": "et",
+  "source_file": "Worlds/GRAD_GM_Eden_Layers/gamemode.layer",
+  "source_repo": "GRAD-COOP-Template-Reforger",
+  "type": "faction",
+  "display_name": "Character_US_HeliCrew",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

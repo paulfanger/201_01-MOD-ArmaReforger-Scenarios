@@ -1,0 +1,11 @@
+{
+  "guid": "F362DCBDEABC4DEC",
+  "path": "Prefabs/Characters/Uniforms/Pants_M88_blue.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Configs/EntityCatalog/SampleFactionBLUFOR/SampleFactionBLUFOR_InventoryItems.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "Pants_M88_blue",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

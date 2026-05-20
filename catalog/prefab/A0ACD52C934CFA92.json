@@ -1,0 +1,11 @@
+{
+  "guid": "A0ACD52C934CFA92",
+  "path": "Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/EquipmentBoxStack_USSR_01_V5_covered.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Worlds/MP/CTI_Campaign_Eden_base_Layers/Relay_objects.layer",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "EquipmentBoxStack_USSR_01_V5_covered",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

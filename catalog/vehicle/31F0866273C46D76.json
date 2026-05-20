@@ -1,0 +1,11 @@
+{
+  "guid": "31F0866273C46D76",
+  "path": "Prefabs/Vehicles/Wheeled/K17/APC_K17_Berezok.et",
+  "ext": "et",
+  "source_file": "optionals/COE_RHS_Compat/Prefabs/Managers/COE_FactionManager.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "vehicle",
+  "display_name": "APC_K17_Berezok",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

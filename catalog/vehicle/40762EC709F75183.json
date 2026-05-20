@@ -1,0 +1,11 @@
+{
+  "guid": "40762EC709F75183",
+  "path": "Prefabs/Vehicles/Core/Lights/Light_HazardRight.conf",
+  "ext": "conf",
+  "source_file": "SampleMod_NewCar/Prefabs/Vehicles/Wheeled/SampleCar_01/SampleCar_01_Base.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "vehicle",
+  "display_name": "Light_HazardRight",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

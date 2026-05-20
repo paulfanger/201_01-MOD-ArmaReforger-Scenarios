@@ -1,0 +1,11 @@
+{
+  "guid": "91A3208022732A9A",
+  "path": "Configs/Weapons/Ammo/Ammo_545x39_Modded.conf",
+  "ext": "conf",
+  "source_file": "SampleMod_ModdedWeapon/Prefabs/Weapons/Magazines/Magazine_AK74_30rnd_Modded.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "weapon",
+  "display_name": "Ammo_545x39_Modded",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

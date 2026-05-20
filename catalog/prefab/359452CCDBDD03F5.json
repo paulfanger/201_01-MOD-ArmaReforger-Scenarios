@@ -1,0 +1,11 @@
+{
+  "guid": "359452CCDBDD03F5",
+  "path": "Prefabs/Sounds/Music/MusicManager_Base.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Worlds/MP/CTI_Campaign_Eden_SampleFaction_01_Layers/logic.layer",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "MusicManager_Base",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

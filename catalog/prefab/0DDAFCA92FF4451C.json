@@ -1,0 +1,11 @@
+{
+  "guid": "0DDAFCA92FF4451C",
+  "path": "Prefabs/Systems/AmbientVehicles/AmbientVehicleSpawnpoint_CIV.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Worlds/MP/CTI_Campaign_Eden_base_Layers/VehicleSpawns_CIV.layer",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "AmbientVehicleSpawnpoint_CIV",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

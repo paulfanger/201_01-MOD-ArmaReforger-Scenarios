@@ -1,0 +1,11 @@
+{
+  "guid": "0F4F2F8A1BB4766F",
+  "path": "Prefabs/Structures/Signs/Military/SignRectangle_01_140x100/SignFlag_USSR_01.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Compositions/Base/COE_MainBaseLandUSSR.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "SignFlag_USSR_01",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

@@ -1,0 +1,12 @@
+SCR_BaseTriggerEntity Trigger_CheckpointZone {
+ coords 450 8 200
+ SphereRadius 60
+}
+SCR_BaseTriggerEntity Trigger_CheckpointCaptured {
+ coords 450 8 200
+ SphereRadius 50
+}
+SCR_BaseTriggerEntity Trigger_HoldComplete {
+ coords 450 8 200
+ SphereRadius 55
+}

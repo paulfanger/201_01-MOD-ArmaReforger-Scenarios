@@ -1,0 +1,52 @@
+{
+  "spawn_points": [
+    {
+      "team": "US", "role": "player",
+      "coords": [320, 12, 180], "angle_y": 180.0,
+      "prefab_guid": "CEA2B24051A44525",
+      "prefab_path": "PrefabsEditable/SpawnPoints/E_SpawnPoint_US.et",
+      "instance_name": "SpawnPoint_Ambush_01"
+    }
+  ],
+  "ai_groups": [
+    {
+      "name": "USSR_Convoy_Escort",
+      "prefab_guid": "359353A0A5A52216",
+      "prefab_path": "Prefabs/Groups/Campaign/Group_USSR_Defenders.et",
+      "coords": [350, 10, 200],
+      "waypoint_refs": ["WP_Convoy_Route1", "WP_Convoy_Route2", "WP_Convoy_Route3"],
+      "behavior_mode": "patrol",
+      "alert_radius_m": 40,
+      "group_size": 4,
+      "description": "Konvoi-Eskorte auf Marschroute"
+    },
+    {
+      "name": "USSR_Reaction_Force",
+      "prefab_guid": "30ED11AA4F0D41E5",
+      "prefab_path": "Prefabs/Groups/OPFOR/Group_USSR_FireGroup.et",
+      "coords": [450, 8, 190],
+      "waypoint_refs": ["WP_React_Route"],
+      "behavior_mode": "patrol",
+      "alert_radius_m": 60,
+      "group_size": 4,
+      "spawn_on_trigger": "Trigger_AmbushStarted"
+    }
+  ],
+  "waypoints": [
+    {"name": "WP_Convoy_Route1", "type": "move", "prefab_guid": "750A8D1695BD6998", "prefab_path": "Prefabs/AI/Waypoints/AIWaypoint_Move.et", "coords": [300, 10, 200]},
+    {"name": "WP_Convoy_Route2", "type": "move", "prefab_guid": "750A8D1695BD6998", "prefab_path": "Prefabs/AI/Waypoints/AIWaypoint_Move.et", "coords": [350, 10, 200]},
+    {"name": "WP_Convoy_Route3", "type": "move", "prefab_guid": "750A8D1695BD6998", "prefab_path": "Prefabs/AI/Waypoints/AIWaypoint_Move.et", "coords": [400, 10, 200]},
+    {"name": "WP_React_Route", "type": "move", "prefab_guid": "750A8D1695BD6998", "prefab_path": "Prefabs/AI/Waypoints/AIWaypoint_Move.et", "coords": [380, 10, 200]}
+  ],
+  "tasks": [
+    {"name": "Task_AmbushConvoy", "class": "SCR_EliminateTask", "coords": [350, 10, 200], "fields": {"m_sName": "Konvoi vernichten", "m_sDescription": "Zerstöre den sowjetischen Konvoi im Nebel-Hinterhalt"}},
+    {"name": "Task_BreakContact", "class": "SCR_TriggerTask", "coords": [350, 8, 600], "fields": {"m_sName": "Kontakt brechen", "m_sDescription": "Verlasse die Hinterhalt-Zone unter Nebel-Deckung und erreiche Exfil"}}
+  ],
+  "triggers": [
+    {"class": "SCR_BaseTriggerEntity", "name": "Trigger_AmbushKillZone", "coords": [350, 10, 200], "radius": 60},
+    {"class": "SCR_BaseTriggerEntity", "name": "Trigger_AmbushStarted", "coords": [350, 10, 200], "radius": 80},
+    {"class": "SCR_BaseTriggerEntity", "name": "Trigger_ExfilPoint", "coords": [350, 8, 600], "radius": 25}
+  ],
+  "managers": ["GameMode", "FactionManager", "LoadoutManager", "TimeAndWeatherManagerEntity"],
+  "environment_overrides": {"time_of_day": {"hour": 6, "minute": 0}, "weather_preset": "fog_light"}
+}

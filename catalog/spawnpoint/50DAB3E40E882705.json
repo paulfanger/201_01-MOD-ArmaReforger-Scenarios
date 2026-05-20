@@ -1,0 +1,12 @@
+{
+  "class_name": "SCR_SpawnPoint",
+  "guid": "50DAB3E40E882705",
+  "path": "Prefabs/MP/Spawning/SpawnPoint_MSV_CP.et",
+  "source_file": "optionals/COE_RHS_Kunar_Compat/Prefabs/Compositions/Base/COE_MainBase_FobMichigan_RHSRF.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "kind": "entity_decl",
+  "type": "spawnpoint",
+  "display_name": "SCR_SpawnPoint",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

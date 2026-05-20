@@ -1,0 +1,14 @@
+{
+  "guid": "976AC400219898FA",
+  "path": "Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Sharpshooter.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Managers/COE_FactionManager.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "faction",
+  "display_name": "Character_USSR_Sharpshooter",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap",
+  "faction_key": "USSR",
+  "enriched_by": "catalog-enrich-factions",
+  "enriched_at": "2026-05-20"
+}

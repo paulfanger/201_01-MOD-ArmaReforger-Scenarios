@@ -1,0 +1,11 @@
+{
+  "guid": "B89C671B75B43849",
+  "path": "Prefabs/Structures/Military/CamoNets/US/CamoNet_Medium_US.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Compositions/Installation/US/COE_M923A1_Command.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "CamoNet_Medium_US",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

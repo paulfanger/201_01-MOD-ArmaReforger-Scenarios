@@ -1,0 +1,11 @@
+{
+  "guid": "27F6A0815E6FF6EF",
+  "path": "Prefabs/Compositions/Slotted/SlotRoadMedium/Barricade_M_USSR_01.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Worlds/MP/CTI_Campaign_Eden_base_Layers/supply_depots.layer",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "Barricade_M_USSR_01",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

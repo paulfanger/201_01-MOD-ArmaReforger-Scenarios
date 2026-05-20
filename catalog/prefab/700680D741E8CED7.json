@@ -1,0 +1,11 @@
+{
+  "guid": "700680D741E8CED7",
+  "path": "PrefabsEditable/Auto/Systems/Arsenal/ArsenalBoxes/SampleFactionBLUFOR/E_ArsenalBox_SampleFactionBLUFOR.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Configs/Editor/PlaceableEntities/Systems/Systems_SampleFaction.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "E_ArsenalBox_SampleFactionBLUFOR",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

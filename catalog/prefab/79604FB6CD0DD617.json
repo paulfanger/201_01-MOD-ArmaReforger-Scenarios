@@ -1,0 +1,11 @@
+{
+  "guid": "79604FB6CD0DD617",
+  "path": "Prefabs/Props/Military/Compositions/US/VehicleService_US_Small.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Props/Military/Compositions/US/COE_VehicleService_US_Small.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "VehicleService_US_Small",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

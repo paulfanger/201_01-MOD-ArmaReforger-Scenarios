@@ -1,0 +1,11 @@
+{
+  "guid": "79B5D4B750B9D596",
+  "path": "Prefabs/Props/Military/Compositions/US/COE_VehicleService_US_Large.et",
+  "ext": "et",
+  "source_file": "optionals/COE_RHS_Compat/Prefabs/Props/Military/Compositions/US/COE_VehicleService_RHSUS_Large.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "COE_VehicleService_US_Large",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

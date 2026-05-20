@@ -1,0 +1,11 @@
+{
+  "guid": "9D720679B696FEE1",
+  "path": "Prefabs/Compositions/Slotted/SlotFlatSmall/MachineGunNest_S_US_01_M2HB.et",
+  "ext": "et",
+  "source_file": "optionals/COE_RHS_Compat/Prefabs/Managers/COE_FactionManager.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "MachineGunNest_S_US_01_M2HB",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

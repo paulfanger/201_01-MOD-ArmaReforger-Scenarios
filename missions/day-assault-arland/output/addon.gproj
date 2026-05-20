@@ -1,0 +1,9 @@
+GameProject {
+ ID "dayassaultarland"
+ GUID "{85231016051D2564}"
+ TITLE "Day Assault Arland"
+ Author "AI-Native Mission Authoring System"
+ Dependencies {
+  "58D0FB3206B6F859"
+ }
+}

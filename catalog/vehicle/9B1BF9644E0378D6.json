@@ -1,0 +1,11 @@
+{
+  "guid": "9B1BF9644E0378D6",
+  "path": "Prefabs/Vehicles/Wheeled/M998/M998_covered_long.et",
+  "ext": "et",
+  "source_file": "optionals/COE_RHS_Kunar_Compat/Prefabs/Compositions/Base/COE_MainBase_FobMichigan_RHSUS.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "vehicle",
+  "display_name": "M998_covered_long",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

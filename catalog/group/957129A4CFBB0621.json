@@ -1,0 +1,11 @@
+{
+  "guid": "957129A4CFBB0621",
+  "path": "Prefabs/Groups/BLUFOR/Group_SampleFactionBLUFOR_LightFireTeam.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Configs/Editor/PlaceableEntities/Groups_SampleFaction.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "group",
+  "display_name": "Group_SampleFactionBLUFOR_LightFireTeam",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

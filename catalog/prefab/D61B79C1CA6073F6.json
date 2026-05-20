@@ -1,0 +1,11 @@
+{
+  "guid": "D61B79C1CA6073F6",
+  "path": "Prefabs/Characters/Campaign/Campaign_SampleFactionBLUFOR_Player.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Worlds/MP/CTI_Campaign_Eden_SampleFaction_01_Layers/logic.layer",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "Campaign_SampleFactionBLUFOR_Player",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

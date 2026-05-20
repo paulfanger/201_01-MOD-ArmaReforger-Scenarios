@@ -1,0 +1,11 @@
+{
+  "guid": "D1B241E965B734F5",
+  "path": "Prefabs/Characters/HeadGear/SampleHeadGear/Helmet_SampleHeadGear_01.et",
+  "ext": "et",
+  "source_file": "SampleMod_Main/Configs/Arsenal/ArsenalConfig_SampleMod.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "Helmet_SampleHeadGear_01",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

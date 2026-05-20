@@ -1,0 +1,12 @@
+{
+  "class_name": "SCR_WheelHitZone",
+  "guid": "47C1960CC52E85C0",
+  "path": "Prefabs/Vehicles/Core/Configs/HitZones/Wheel_Offroad.conf",
+  "source_file": "SampleMod_NewCar/Prefabs/Vehicles/Wheeled/SampleCar_01/VehParts/SampleCar_01_wheel.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "kind": "entity_decl",
+  "type": "vehicle",
+  "display_name": "SCR_WheelHitZone",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

@@ -1,0 +1,11 @@
+{
+  "guid": "E13A9028862AD233",
+  "path": "Configs/EntityCatalog/FactionLess/SampleMod_NewCharacter_InventoryItems.conf",
+  "ext": "conf",
+  "source_file": "SampleMod_Main/Worlds/Modding/Assets_Showcase_Base_Layers/mission.layer",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "config",
+  "display_name": "SampleMod_NewCharacter_InventoryItems",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

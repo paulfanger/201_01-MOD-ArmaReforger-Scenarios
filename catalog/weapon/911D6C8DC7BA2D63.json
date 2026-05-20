@@ -1,0 +1,11 @@
+{
+  "guid": "911D6C8DC7BA2D63",
+  "path": "Prefabs/Weapons/Core/Rifle_Base.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewWeapon/Prefabs/Weapons/Rifles/SampleWeapon_01_base.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "weapon",
+  "display_name": "Rifle_Base",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

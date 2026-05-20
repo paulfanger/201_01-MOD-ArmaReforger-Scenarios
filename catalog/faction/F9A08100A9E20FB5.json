@@ -1,0 +1,12 @@
+{
+  "class_name": "COE_FactionManager",
+  "guid": "F9A08100A9E20FB5",
+  "path": "Prefabs/Managers/COE_FactionManager.et",
+  "source_file": "addons/CombatOpsEnhanced/worlds/COE/Arland/Arland_Layers/managers.layer",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "kind": "entity_decl",
+  "type": "faction",
+  "display_name": "COE_FactionManager",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

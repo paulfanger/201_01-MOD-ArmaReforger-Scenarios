@@ -1,0 +1,11 @@
+{
+  "guid": "720E8E61D7692172",
+  "path": "Configs/Map/MapMarkerConfig.conf",
+  "ext": "conf",
+  "source_file": "addons/CombatOpsEnhanced/worlds/COE/Test/Test_Layers/managers.layer",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "config",
+  "display_name": "MapMarkerConfig",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

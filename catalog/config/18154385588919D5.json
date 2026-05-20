@@ -1,0 +1,11 @@
+{
+  "guid": "18154385588919D5",
+  "path": "Configs/EntityCatalog/SampleFactionBLUFOR/SampleFactionBLUFOR_Vehicles.conf",
+  "ext": "conf",
+  "source_file": "SampleMod_NewFaction/Configs/Factions/SampleFactionBLUFOR.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "config",
+  "display_name": "SampleFactionBLUFOR_Vehicles",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

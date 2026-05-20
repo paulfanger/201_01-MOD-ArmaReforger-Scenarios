@@ -1,0 +1,11 @@
+{
+  "guid": "C7663F2142D9F41F",
+  "path": "PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_MachineGunNest_S_SampleFactionBLUFOR_01_M60_Campaign.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Configs/Campaign/Building_Conflict_SampleNewFaction.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "E_MachineGunNest_S_SampleFactionBLUFOR_01_M60_Campaign",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

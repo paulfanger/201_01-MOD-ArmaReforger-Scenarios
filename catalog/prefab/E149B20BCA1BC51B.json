@@ -1,0 +1,11 @@
+{
+  "guid": "E149B20BCA1BC51B",
+  "path": "Prefabs/Structures/Signs/Military/Supplies/Sign_SupplyStorage_01_Supplies_USSR.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Compositions/Base/COE_MainBaseLandUSSR.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "Sign_SupplyStorage_01_Supplies_USSR",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

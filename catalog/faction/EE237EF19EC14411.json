@@ -1,0 +1,12 @@
+{
+  "class_name": "COE_FactionManager",
+  "guid": "EE237EF19EC14411",
+  "path": "Prefabs/Managers/COE_FactionManager_Kunar.et",
+  "source_file": "optionals/COE_Kunar_Compat/worlds/COE/Kunar/Kunar_Layers/managers.layer",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "kind": "entity_decl",
+  "type": "faction",
+  "display_name": "COE_FactionManager",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

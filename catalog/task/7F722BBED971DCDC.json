@@ -1,0 +1,11 @@
+{
+  "guid": "7F722BBED971DCDC",
+  "path": "Prefabs/Tasks/CampaignBuildingTask.et",
+  "ext": "et",
+  "source_file": "SampleCoop/Prefabs/MP/Managers/Tasks/CoopTaskManager.et",
+  "source_repo": "Reforger-Sample-Coop",
+  "type": "task",
+  "display_name": "CampaignBuildingTask",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

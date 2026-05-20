@@ -1,0 +1,11 @@
+{
+  "guid": "576D8FB5D80A6FAC",
+  "path": "Configs/EntityCatalog/SampleFactionBLUFOR/SampleFactionBLUFOR_Characters.conf",
+  "ext": "conf",
+  "source_file": "SampleMod_NewFaction/Configs/Factions/SampleFactionBLUFOR.conf",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "config",
+  "display_name": "SampleFactionBLUFOR_Characters",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

@@ -1,0 +1,11 @@
+{
+  "guid": "DC21E543DF39D2C0",
+  "path": "Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered_closed_MERDC.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/MP/Modes/KEX_GameMode_CombatOps.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "vehicle",
+  "display_name": "M923A1_transport_covered_closed_MERDC",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

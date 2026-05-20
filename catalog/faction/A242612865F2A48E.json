@@ -1,0 +1,11 @@
+{
+  "guid": "A242612865F2A48E",
+  "path": "Prefabs/MP/Managers/Factions/FactionManager_Base.et",
+  "ext": "et",
+  "source_file": "SampleCoop/Prefabs/MP/Managers/Factions/CoopFactionManager_Base.et",
+  "source_repo": "Reforger-Sample-Coop",
+  "type": "faction",
+  "display_name": "FactionManager_Base",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

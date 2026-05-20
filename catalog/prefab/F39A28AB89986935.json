@@ -1,0 +1,11 @@
+{
+  "guid": "F39A28AB89986935",
+  "path": "Prefabs/Structures/Misc/Table.et",
+  "ext": "et",
+  "source_file": "optionals/COE_Kunar_Compat/worlds/COE/Kunar/Kunar_Layers/areas.layer",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "Table",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

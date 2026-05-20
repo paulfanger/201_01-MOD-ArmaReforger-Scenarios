@@ -1,0 +1,11 @@
+{
+  "guid": "9DDDA4BB387EC0B6",
+  "path": "Prefabs/ScenarioFramework/Tasks/TaskDeliver.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/Managers/COE_TaskManager.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "task",
+  "display_name": "TaskDeliver",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

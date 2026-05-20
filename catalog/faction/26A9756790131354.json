@@ -1,0 +1,12 @@
+{
+  "class_name": "SCR_ChimeraCharacter",
+  "guid": "26A9756790131354",
+  "path": "Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman.et",
+  "source_file": "SampleMod_CinematicTutorial/Scenes/Cinematic_Tutorial_default.layer",
+  "source_repo": "Arma-Reforger-Samples",
+  "kind": "entity_decl",
+  "type": "faction",
+  "display_name": "SCR_ChimeraCharacter",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

@@ -1,0 +1,11 @@
+{
+  "guid": "58B3FB7F102A8B1B",
+  "path": "Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_cargo.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_cargo_SampleFactionREDFOR.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "vehicle",
+  "display_name": "Ural4320_cargo",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

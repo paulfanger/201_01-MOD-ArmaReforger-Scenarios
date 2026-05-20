@@ -1,0 +1,11 @@
+{
+  "guid": "2BE1F8B9299B67C1",
+  "path": "Prefabs/Vehicles/Wheeled/M923A1/M923A1_tanker.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/Prefabs/MP/Modes/KEX_GameMode_CombatOps.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "vehicle",
+  "display_name": "M923A1_tanker",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

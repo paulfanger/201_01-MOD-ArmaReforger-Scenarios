@@ -1,0 +1,11 @@
+{
+  "guid": "AC3DCB3D059AE5D0",
+  "path": "Prefabs/Compositions/Misc/SubCompositions/Sandbag_short_Cluttered_USSR_01.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewFaction/Worlds/MP/CTI_Campaign_Eden_base_Layers/Relay_objects.layer",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "Sandbag_short_Cluttered_USSR_01",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

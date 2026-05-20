@@ -1,0 +1,11 @@
+{
+  "guid": "A3D6AEFB172D819C",
+  "path": "Configs/Navmesh/Navmesh_CTI_Campaign_Eden_Vehicle.conf",
+  "ext": "conf",
+  "source_file": "SampleMod_NewFaction/Worlds/MP/CTI_Campaign_Eden_base_Layers/AI.layer",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "config",
+  "display_name": "Navmesh_CTI_Campaign_Eden_Vehicle",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

@@ -1,0 +1,11 @@
+{
+  "guid": "B86F916928A1430F",
+  "path": "PrefabsEditable/Auto/Props/Military/Compositions/USSR/E_VehicleService_USSR_Small.et",
+  "ext": "et",
+  "source_file": "addons/CombatOpsEnhanced/worlds/COE/Test/Test_Layers/default.layer",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "prefab",
+  "display_name": "E_VehicleService_USSR_Small",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

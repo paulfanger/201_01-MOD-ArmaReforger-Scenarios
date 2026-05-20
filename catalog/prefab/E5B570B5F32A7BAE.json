@@ -1,0 +1,11 @@
+{
+  "guid": "E5B570B5F32A7BAE",
+  "path": "Prefabs/Systems/Destruction/DestructionManager.et",
+  "ext": "et",
+  "source_file": "SampleMod_Main/Worlds/Modding/Assets_Showcase_Base_Layers/default.layer",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "prefab",
+  "display_name": "DestructionManager",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

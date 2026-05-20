@@ -1,0 +1,11 @@
+{
+  "guid": "1F9BB80C3EC3C891",
+  "path": "Prefabs/Vehicles/Core/Wheeled_Car_Base.et",
+  "ext": "et",
+  "source_file": "SampleMod_NewCar/Prefabs/Vehicles/Wheeled/SampleCar_01/SampleCar_01_Base.et",
+  "source_repo": "Arma-Reforger-Samples",
+  "type": "vehicle",
+  "display_name": "Wheeled_Car_Base",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

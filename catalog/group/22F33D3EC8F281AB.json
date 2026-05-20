@@ -1,0 +1,11 @@
+{
+  "guid": "22F33D3EC8F281AB",
+  "path": "Prefabs/Groups/INDFOR/Group_FIA_MachineGunTeam.et",
+  "ext": "et",
+  "source_file": "optionals/COE_Taliban_Compat/Prefabs/Managers/COE_FactionManager_Kunar.et",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "type": "group",
+  "display_name": "Group_FIA_MachineGunTeam",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}

@@ -1,0 +1,12 @@
+{
+  "class_name": "COE_EntitySpawner",
+  "guid": "66C9366A037F7CB7",
+  "path": "Prefabs/Spawner/COE_EntitySpawner.et",
+  "source_file": "addons/CombatOpsEnhanced/worlds/COE/Arland/Arland_Layers/areas.layer",
+  "source_repo": "CombatOpsEnhanced_AR",
+  "kind": "entity_decl",
+  "type": "spawnpoint",
+  "display_name": "COE_EntitySpawner",
+  "verified_at": "2026-05-20",
+  "verified_by": "catalog-bootstrap"
+}
