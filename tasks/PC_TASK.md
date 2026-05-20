@@ -1,207 +1,236 @@
-# PC Task — Task 006-CS: Headless-Only DRY-Demo + Re-Validate (CS-kompatibel)
+# PC Task — Task 007-CS: Empirical Cheatsheet + Sanity-Check (kurz, CS-kompatibel)
 
 STATUS: PENDING
-TASK_ID: 006-CS
-TURN_ID: 5
+TASK_ID: 007-CS
+TURN_ID: 6
 PHASE: 2
-TYPE: headless_verification + dry_pattern_demo + revalidate
-NOTE: User spielt parallel Counter-Strike. KEINE GUI-Launches in dieser Task.
-      GUI Smoke wurde in Task 007 (post-CS) verlegt.
+TYPE: documentation_capture + headless_sanity
+NOTE: User spielt weiter CS. KEINE GUI-Launches, KEINE Screenshots.
+      GUI Smoke wartet auf Task 008 (post-CS, "ready für GUI smoke").
 
 ## Kontext
 
-Mac hat Smoke-Alternative (b) GUI+Screenshot gewählt + pc-setup.ps1 quoting bug gefixt
-+ research/06 Section B als DISCONFIRMED markiert + 🧪 DRY marker activated.
+Task 006-CS lieferte:
+- ✅ pc-setup.ps1 fix verifiziert (kein Parse-Error mehr)
+- ✅ DRY pattern erfolgreich demonstriert (hash 1AB7CCED395B508F, 3× cleanup+recopy)
+- ✅ Re-validate 3/3 PASS (DRY hat nichts kaputt gemacht)
+- ✅ Sonnet 4.6 keine Qualitäts-Differenz für structured headless
+- ✅ Turn-Budget: 1.25 min von 15 min (sehr effizient)
 
-User spielt jetzt CS auf Steam. Workbench-GUI würde mit CS um Focus + GPU kämpfen,
-Screenshots würden Mischmasch capturen. → Diese Task macht **nur headless Steps**.
+Mac hat 3 PC-Qs beantwortet:
+1. **Reflection naming formalisiert**: `logs/reflection-turn-<N>-<side>.md` (siehe RELAY_PROTOCOL)
+2. **PowerShell-Quoting-Rule dokumentiert**: PC_AGENT_BRIEF neue Sektion "PowerShell-Quoting Pitfalls"
+3. **Task 008 GUI smoke**: wartet auf User-Signal post-CS
 
-GUI Smoke (Steps 5-7 aus Task 006-original) ist in Task 007 verlegt → User triggert
-das wenn CS fertig ist.
+Diese Task ist sehr klein (~2 min): pull updates, validiere Empirie-Wissen, schreib
+einen PC-Cheatsheet, push.
 
 ## Phase A (Two-Phase Reception)
 
-⚙️ DO Items: **0** — alles headless, keine User-Klicks nötig.
-
-Falls Sonnet-Switch gewünscht: vor Phase C im Modell-Selector wählen.
-Sonst direkt Phase C starten.
+⚙️ DO Items: **0**. Direct zu Phase C.
 
 ## Phase C — Steps (alle headless)
 
-### Step 1 — STATE.json + Logger + Reflection
+### Step 1 — Sync + STATE + Reflection lesen
 
 ```powershell
 $repo = "C:\Users\pfofa\Desktop\000_Projekte\201_01-MOD-ArmaReforger-Scenarios"
 cd $repo
 git pull --rebase
 
-if (Test-Path "logs\reflection-turn-5.md") {
-    Write-Output "=== Reading turn-5 reflection (Mac-side) ==="
-    Get-Content "logs\reflection-turn-5.md"
+# Read Mac reflection-turn-5-mac.md if exists (new naming convention)
+if (Test-Path "logs\reflection-turn-5-mac.md") {
+    Get-Content "logs\reflection-turn-5-mac.md"
+} elseif (Test-Path "logs\reflection-turn-5.md") {
+    Get-Content "logs\reflection-turn-5.md"  # old naming, still valid
 }
 
+# Update STATE
 $state = @{
-    turn_id = 5
+    turn_id = 6
     owner = "pc"
     phase = "PHASE_C_EXEC"
     started_at = (Get-Date -Format "yyyy-MM-ddTHH:mm:ssZ")
     pending_do = @()
     pending_exec = @(
-        @{ id="exec-1"; desc="Verify pc-setup.ps1 fix (re-run idempotent)"; status="queued" }
-        @{ id="exec-2"; desc="🧪 DRY plan compute + hash"; status="queued" }
-        @{ id="exec-3"; desc="DRY approve + execute cleanup + recopy"; status="queued" }
-        @{ id="exec-4"; desc="Re-validate 3 missions (confirm DRY didn't break)"; status="queued" }
-        @{ id="exec-5"; desc="Auditor + reflection + push"; status="queued" }
+        @{ id="exec-1"; desc="Read Mac doc updates (RELAY + PC_AGENT_BRIEF)"; status="queued" }
+        @{ id="exec-2"; desc="Write playbook/CHEATSHEET-PC.md with empirical learnings"; status="queued" }
+        @{ id="exec-3"; desc="Quick sanity re-validate (just night-recon, fast check)"; status="queued" }
+        @{ id="exec-4"; desc="Audit + reflection-turn-6-pc.md + push"; status="queued" }
     )
     loop_signals = @()
-    notes = "CS parallel running on PC. NO GUI launches in this task. GUI smoke deferred to Task 007."
+    notes = "CS still running. Headless-only. Cheatsheet capture from PC empirical knowledge."
 } | ConvertTo-Json -Depth 5
 $state | Set-Content "tasks\STATE.json" -Encoding UTF8
 
 $ts = Get-Date -Format "yyyyMMdd_HHmmss"
-$logFile = "logs\pc-events-task006cs-$ts.jsonl"
-"{`"t`":`"$((Get-Date -Format 's')+'Z')`",`"kind`":`"start`",`"turn_id`":5,`"task_id`":`"006-CS`"}" | Add-Content $logFile
+"{`"t`":`"$((Get-Date -Format 's')+'Z')`",`"kind`":`"start`",`"turn_id`":6,`"task_id`":`"007-CS`"}" | Add-Content "logs\pc-events-task007cs-$ts.jsonl"
 ```
 
-### Step 2 — Verify pc-setup.ps1 fix (re-run idempotent)
+### Step 2 — Read Mac doc updates
 
+Lies (2 Sätze Summary je File):
+1. `playbook/RELAY_PROTOCOL.md` — neue Sektion "Reflection per turn" mit Naming-Convention
+2. `PC_AGENT_BRIEF.md` — neue Sektion "PowerShell-Quoting Pitfalls"
+
+Bestätige im Result dass beide gefunden + verstanden.
+
+### Step 3 — Write playbook/CHEATSHEET-PC.md (deine Empirie)
+
+Du hast jetzt empirisches Wissen aus 6 Turns. Schreib einen Cheatsheet aus PC-Perspektive
+mit dem was funktioniert (validated) vs. was nicht funktioniert (disconfirmed). Format:
+
+```markdown
+# PC Cheatsheet — Arma Reforger Workbench on Windows
+
+> Stand: 2026-05-20
+> Source: empirical learnings from Tasks 001-007 (PC-side)
+
+## Verified Working ✅
+
+### Steam install via CLI
+- `Start-Process "steam://install/<AppID>"` — Steam-Dialog opens, user clicks Install
+- App-IDs: Game=1874880, Tools=1874910 (NOT 1874881 as old docs claim)
+
+### Workbench-Diag executable
+- Pfad: `C:\Program Files (x86)\Steam\steamapps\common\Arma Reforger Tools\Workbench\ArmaReforgerWorkbenchSteamDiag.exe`
+- Version 1.6.0.119 (Stand 2026-01-23)
+- NICHT direkt im Tools-Ordner — im Sub-Folder `Workbench\`
+- Diag-Variante: mehr crash-info als plain Workbench, sonst funktional identisch
+
+### Vanilla addon junctions (one-time setup)
+- Workbench-Diag braucht `core` + `data` als findable addons
+- Setup: `scripts/pc-setup.ps1` (PowerShell-native New-Item -Junction)
+- Lokationen:
+  - `%USERPROFILE%\Documents\my games\ArmaReforgerWorkbench\addons\_vanilla_core`
+  - `%USERPROFILE%\Documents\my games\ArmaReforgerWorkbench\addons\_vanilla_data`
+
+### Validate compile-gate (headless, no GUI)
+- CLI: `WorkbenchDiag.exe -gproj "X.gproj" -validate -wbSilent -exitAfterInit -logsDir "Y"`
+- Pass: 0 Fatal + 0 Error im console.log
+- Dauer: ~6s pro Mission
+- Exit-Code: UNRELIABLE — use log-pattern matching
+
+### File paths (Windows post-2024)
+- Addons: `%USERPROFILE%\Documents\my games\ArmaReforger\addons\` (NOT %LOCALAPPDATA%)
+- Workbench Logs: `%USERPROFILE%\Documents\my games\ArmaReforgerWorkbench\logs\logs_<TS>\`
+- Game AppData: `%USERPROFILE%\Documents\my games\ArmaReforger\`
+
+### Screenshot (native PowerShell, no install)
 ```powershell
-powershell -ExecutionPolicy Bypass -File "$repo\scripts\pc-setup.ps1"
+Add-Type -AssemblyName System.Windows.Forms,System.Drawing
+$bmp = New-Object Drawing.Bitmap [width],[height]
+# ... see PC_AGENT_BRIEF
 ```
 
-Erwartung: **Kein Parse-Error mehr.** Output sollte:
-- `[skip] Junction _vanilla_core existiert bereits`
-- `[skip] Junction _vanilla_data existiert bereits`
-- Leerzeile
-- `Done. Workbench-Diag kann jetzt Vanilla-Deps resolven.`
+## Disconfirmed Empirically ❌
 
-Falls Parse-Error: Result mit Bug-Fix-Vorschlag, kein Block.
+### World-load smoke test via CLI
+- `-load "$Addon:Worlds/X.ent" -wbSilent -exitAfterInit` — does NOT trigger world load
+- Workbench-Diag 1.6.0.119 exited clean nach Engine-Init in ~5s ohne Entities-Load
+- Alternatives: (a) Workbench-Plugin (pseudocode skeleton only), (b) GUI+Screenshot,
+  (c) Linux dedi -listScenarios
+- Status: research/06 Section B labelled DISCONFIRMED 2026-05-20
 
-### Step 3 — 🧪 DRY Marker: Plan addon-cleanup + recopy
+### `Author` keyword in addon.gproj
+- Enfusion Schema kennt das nicht — `-validate` fails mit "Unknown keyword 'Author'"
+- Fix: removed from gproj.py template + alle 3 mission outputs (commit 011f068)
+- Attribution lebt in DISCLOSURE.md
 
+### Exit codes from Workbench-Diag
+- Empty exit-code bei success UND failure
+- Switch zu log-pattern matching (siehe research/06 success heuristic)
+
+## PowerShell Pitfalls (siehe PC_AGENT_BRIEF)
+
+### Variable vor Colon
+- `"$mission:path"` → "<mission-drive>:path" attempt
+- `"${mission}:path"` ✓ or `"$($mission):path"` ✓
+
+### Embedded quotes für cmd.exe
+- Vermeiden, PowerShell-native nehmen (z.B. New-Item -Junction statt mklink)
+
+### Backtick-n in double-quoted strings
+- ⚠️ kann parse-error werfen
+- ✅ separate `Write-Output ""` + `Write-Output "..."`
+
+## Anti-Patterns (heilig)
+
+- ❌ Mission-Files eigenmächtig ändern (Mac-Designer territory)
+- ❌ User klicken lassen wenn ui-tester + loop-detector verfügbar sind
+- ❌ Exit-Code als Pass/Fail-Signal nehmen (UNRELIABLE)
+- ❌ `-Author`-keyword wieder in gproj einfügen
+- ❌ `-load $A:X.ent -wbSilent` als smoke (disconfirmed)
+
+## Recovery / Cleanup
+
+### Junctions weg
 ```powershell
-$addonsRoot = "$env:USERPROFILE\Documents\my games\ArmaReforger\addons"
-$missions = @("night-recon-everon","day-assault-arland","fog-ambush-eden")
-
-$dryPlan = @()
-foreach ($mission in $missions) {
-    $target = "$addonsRoot\ai_$mission"
-    $src = "$repo\missions\$mission\output"
-    $action = if (Test-Path $target) { "REMOVE_THEN_COPY" } else { "COPY" }
-    $dryPlan += [PSCustomObject]@{
-        mission = $mission
-        target = $target
-        src = $src
-        action = $action
-        files_to_delete = if (Test-Path $target) { (Get-ChildItem -Path $target -Recurse | Measure-Object).Count } else { 0 }
-        files_to_copy = (Get-ChildItem -Path $src -Recurse | Measure-Object).Count
-    }
-}
-
-$planJson = $dryPlan | ConvertTo-Json -Depth 3
-$planHash = [BitConverter]::ToString(
-    [System.Security.Cryptography.SHA256]::Create().ComputeHash(
-        [System.Text.Encoding]::UTF8.GetBytes($planJson)
-    )
-).Replace("-","").Substring(0,16)
-
-Write-Output "🧪 DRY PLAN (hash: $planHash)"
-$dryPlan | Format-Table -AutoSize
-
-$planJson | Set-Content "$repo\logs\dry-plan-task006cs-$ts.json"
-"--- hash ---`n$planHash" | Add-Content "$repo\logs\dry-plan-task006cs-$ts.json"
+cmd /c rmdir "$env:USERPROFILE\Documents\my games\ArmaReforgerWorkbench\addons\_vanilla_core"
+cmd /c rmdir "$env:USERPROFILE\Documents\my games\ArmaReforgerWorkbench\addons\_vanilla_data"
 ```
 
-### Step 4 — DRY Self-Approve + Execute
-
-Cleanup ist reversibel (Re-Copy from missions/<id>/output), daher self-approve OK:
-
+### Workbench/Game-Prozesse killen
 ```powershell
-Write-Output "DRY plan hash $planHash — self-approved (cleanup reversible via re-copy)"
-
-foreach ($plan in $dryPlan) {
-    if ($plan.action -eq "REMOVE_THEN_COPY") {
-        Remove-Item -Path $plan.target -Recurse -Force
-    }
-    Copy-Item -Path $plan.src -Destination $plan.target -Recurse -Force
-    Write-Output "[$($plan.mission)] $($plan.action): done"
-}
+Get-Process | Where-Object { $_.ProcessName -like "*Workbench*" -or $_.ProcessName -like "*ArmaReforger*" } | Stop-Process -Force
 ```
 
-### Step 5 — Re-Validate (confirms DRY didn't break anything)
+### Mission-Addons löschen (vor DRY-Recopy)
+- Self-approve OK weil reversibel (Source liegt im Repo: missions/<id>/output)
+- Verwende `Remove-Item -Recurse -Force` (oder DRY-Pattern mit Hash für Audit-Trail)
+```
+
+Speicher als `playbook/CHEATSHEET-PC.md`.
+
+### Step 4 — Quick Sanity Re-Validate (nur night-recon, fast)
 
 ```powershell
 $diag = "C:\Program Files (x86)\Steam\steamapps\common\Arma Reforger Tools\Workbench\ArmaReforgerWorkbenchSteamDiag.exe"
-$revalidateResults = @{}
+$gproj = "$env:USERPROFILE\Documents\my games\ArmaReforger\addons\ai_night-recon-everon\addon.gproj"
+$logDir = "$repo\logs\sanity-validate-task007cs"
+New-Item -ItemType Directory -Path $logDir -Force | Out-Null
 
-foreach ($mission in $missions) {
-    $gproj = "$addonsRoot\ai_$mission\addon.gproj"
-    $logDir = "$repo\logs\revalidate-$mission-task006cs"
-    New-Item -ItemType Directory -Path $logDir -Force | Out-Null
+$proc = Start-Process -FilePath $diag -ArgumentList @(
+    "-gproj", "`"$gproj`"",
+    "-validate",
+    "-wbSilent",
+    "-exitAfterInit",
+    "-logsDir", "`"$logDir`""
+) -PassThru -NoNewWindow
 
-    $proc = Start-Process -FilePath $diag -ArgumentList @(
-        "-gproj", "`"$gproj`"",
-        "-validate",
-        "-wbSilent",
-        "-exitAfterInit",
-        "-logsDir", "`"$logDir`""
-    ) -PassThru -NoNewWindow
-
-    $waitSec = 0
-    while (-not $proc.HasExited -and $waitSec -lt 30) {
-        Start-Sleep -Seconds 2
-        $waitSec += 2
-    }
-    if (-not $proc.HasExited) {
-        Stop-Process -Id $proc.Id -Force
-        $revalidateResults[$mission] = @{status="TIMEOUT"}
-        continue
-    }
-
-    $console = Get-ChildItem "$logDir\logs_*\console.log" -Recurse | Sort-Object LastWriteTime -Desc | Select-Object -First 1
-    if (-not $console) {
-        $revalidateResults[$mission] = @{status="NO_LOG"}
-        continue
-    }
-
-    $content = Get-Content $console.FullName -Raw
-    $fatals = ([regex]::Matches($content, "(?m)^(WORLD|ENGINE|SCRIPT)\s+\(F\):")).Count
-    $errors = ([regex]::Matches($content, "(?m)^(WORLD|ENGINE|SCRIPT)\s+\(E\):")).Count
-
-    $revalidateResults[$mission] = @{
-        status = if (($fatals -eq 0) -and ($errors -eq 0)) {"PASS"} else {"FAIL"}
-        fatal_count = $fatals
-        error_count = $errors
-        console_log = $console.FullName
-    }
+$waitSec = 0
+while (-not $proc.HasExited -and $waitSec -lt 20) {
+    Start-Sleep -Seconds 2
+    $waitSec += 2
 }
 
-$revalidateResults | ConvertTo-Json -Depth 5 | Out-File "$repo\logs\revalidate-results-task006cs.json"
+$console = Get-ChildItem "$logDir\logs_*\console.log" -Recurse | Sort-Object LastWriteTime -Desc | Select-Object -First 1
+$content = if ($console) { Get-Content $console.FullName -Raw } else { "" }
+$fatals = ([regex]::Matches($content, "(?m)^(WORLD|ENGINE|SCRIPT)\s+\(F\):")).Count
+$errors = ([regex]::Matches($content, "(?m)^(WORLD|ENGINE|SCRIPT)\s+\(E\):")).Count
+$verdict = if (($fatals -eq 0) -and ($errors -eq 0)) {"PASS"} else {"FAIL"}
+
+Write-Output "Sanity re-validate (night-recon): $verdict · Fatal=$fatals · Error=$errors"
 ```
 
-Erwartung: alle 3 PASS (wie Task 005). Falls FAIL → DRY hat was zerstört → bug-fixer.
+Erwartung: PASS (CI-gate ist stabil, 4× in Folge jetzt).
 
-**Wichtig**: Workbench-Diag läuft mit `-wbSilent -exitAfterInit -validate` — kein GUI-Fenster,
-kein Focus-Steal, kein Screenshot. Sicher mit CS parallel.
-
-### Step 6 — Auditor + Reflection + Push
+### Step 5 — Audit + Reflection + Push
 
 ```powershell
-# Auditor (verifies):
-# - DRY plan + hash + execute alle gepaired
-# - Re-validate alle 3 PASS oder explicit bug-fixer-Vorschlag
-# - keine GUI-Launches (regression check für CS-compat)
+# Auditor: CHEATSHEET-PC.md exists + sanity PASS + reflection-turn-6-pc.md exists
+# Reflection (NEUE Naming-Convention)
+$reflectionPath = "$repo\logs\reflection-turn-6-pc.md"
+# ... schreib Turn-6 reflection mit Standard-Struktur
 
-# reflection-turn-5.md (PC) schreiben
-# Push:
 cd $repo
 $state = Get-Content "tasks\STATE.json" -Raw | ConvertFrom-Json
 $state.phase = "PHASE_D_RETURN"
 $state | ConvertTo-Json -Depth 5 | Set-Content "tasks\STATE.json" -Encoding UTF8
 
 git pull --rebase
-git add tasks/PC_RESULT.md tasks/STATE.json logs/
-git commit -m "PC: Task 006-CS -- headless DRY + re-validate (CS-compat)"
+git add playbook/CHEATSHEET-PC.md tasks/PC_RESULT.md tasks/STATE.json logs/
+git commit -m "PC: Task 007-CS -- empirical cheatsheet + sanity (CS-compat)"
 git push
 ```
 
@@ -209,27 +238,26 @@ git push
 
 ## Pause-Conditions
 
-- DRY plan hash invalid zwischen Plan und Exec → STOP
-- Re-validate FAIL für ≥1 Mission → STOP, bug-fixer (DRY hat etwas zerstört)
-- Workbench-Diag crasht im validate-Mode → STOP (das wäre ein neuer Bug, nicht Task-Issue)
-- turn_time_budget (15 min — Task ist kurz) → STOP
+- Sanity re-validate FAIL → bug-fixer + STOP (würde bedeuten der Validate-Gate ist plötzlich brüchig — wäre Big Deal)
+- turn_time_budget (10 min — task ist kurz) → STOP
 
 ---
 
 ## Erwartete Dauer
 
-- Steps 1-4: ~30s (alles File-Ops)
-- Step 5 (Re-Validate × 3): ~30s
-- Step 6 (Audit + reflection + push): ~1 min
+- Steps 1-2: 30s
+- Step 3 (Cheatsheet schreiben): 1-2 min (länger weil substantielle Doc)
+- Step 4 (Sanity Validate): 15s
+- Step 5 (Audit + reflection + push): 30s
 
-**Total: ~2-3 min, alles headless, CS bleibt ungestört.**
+**Total: ~3 min, headless durchgängig, CS bleibt ungestört.**
 
 PAUSE FLAG: nein.
 
 ---
 
-## NEXT (Task 007, post-CS)
+## NEXT
 
-Wenn User CS beendet und in den Mac-Chat tippt "ready für GUI smoke" oder "Task 007 go":
-Mac kompiliert Task 007 mit den GUI-Steps die ursprünglich in Task 006 waren (Workbench
-launch + Screenshots + ui-tester multimodal classify).
+Wenn User CS beendet → tippt im Mac-Chat "GUI smoke go" → Mac compiles Task 008 mit
+GUI-Workbench-Launch + Screenshots + multimodal ui-tester classify (ursprünglich
+geplant für Task 006, deferred zu post-CS).

@@ -1,40 +1,12 @@
-﻿{
-    "turn_id":  5,
-    "owner":  "pc",
-    "phase":  "PHASE_D_RETURN",
-    "started_at":  "2026-05-20T22:44:25Z",
-    "pending_do":  [
-
-                   ],
-    "pending_exec":  [
-                         {
-                             "status":  "queued",
-                             "id":  "exec-1",
-                             "desc":  "Verify pc-setup.ps1 fix (re-run idempotent)"
-                         },
-                         {
-                             "status":  "queued",
-                             "id":  "exec-2",
-                             "desc":  "DRY plan compute + hash"
-                         },
-                         {
-                             "status":  "queued",
-                             "id":  "exec-3",
-                             "desc":  "DRY approve + execute cleanup + recopy"
-                         },
-                         {
-                             "status":  "queued",
-                             "id":  "exec-4",
-                             "desc":  "Re-validate 3 missions"
-                         },
-                         {
-                             "status":  "queued",
-                             "id":  "exec-5",
-                             "desc":  "Auditor + reflection + push"
-                         }
-                     ],
-    "loop_signals":  [
-
-                     ],
-    "notes":  "CS parallel running. NO GUI launches. GUI smoke deferred Task 007."
+{
+  "turn_id": 6,
+  "owner": "mac",
+  "phase": "PHASE_D_RETURN",
+  "started_at": "2026-05-20T22:55:00Z",
+  "pending_do": [],
+  "pending_exec": [],
+  "last_reflection": "logs/reflection-turn-6-mac.md",
+  "rollback_snapshot": null,
+  "loop_signals": [],
+  "notes": "Mac Loop Turn #6 prepared: 3 PC questions answered (reflection naming formalized, PowerShell quoting documented, Task 008 GUI smoke deferred post-CS). Task 007-CS spec'd: headless cheatsheet capture (~3 min). Owner flips to pc on next read."
 }

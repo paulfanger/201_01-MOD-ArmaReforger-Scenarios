@@ -391,7 +391,16 @@ On crash recovery: read STATE.json, resume from `phase`.
 
 At the end of every turn (just before Phase D return), the orchestrator MUST write:
 
-`logs/reflection-turn-<N>.md` with structure:
+`logs/reflection-turn-<N>-<side>.md`
+
+where `<side>` is `mac` or `pc` (or other device id in multi-device setups).
+
+Examples: `reflection-turn-5-mac.md`, `reflection-turn-5-pc.md`.
+
+(Formalized per PC question in Task 006-CS — was inconsistently named in turns 3-4.
+Existing files left as-is for history; convention applies from turn 5 onwards.)
+
+With structure:
 
 ```markdown
 # Turn <N> Reflection

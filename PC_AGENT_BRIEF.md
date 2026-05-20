@@ -253,6 +253,26 @@ Vollständige Definitionen + Patterns: `playbook/RELAY_PROTOCOL.md` Sektion "Sub
 
 ---
 
+## PowerShell-Quoting Pitfalls (empirisch, per Task 005-006)
+
+**Variable vor Doppelpunkt:** PowerShell interpretiert `:` direkt nach `$var` als
+Drive-Separator. Fix:
+- ❌ `"$mission:path"` — wird zu `"<mission-drive>:path"`-Versuch
+- ✅ `"${mission}:path"` — explizite Variable-Klammern
+- ✅ `"$($mission):path"` — sub-expression mit `$()`
+- ✅ Separate Variable: `$ref = "$mission" + ":path"`
+
+**Embedded Quotes für cmd.exe-Aufrufe:** vermeiden, lieber PowerShell-native:
+- ❌ `cmd /c mklink /J "` "$path` "" "` "$target` ""` — Quoting-Mess
+- ✅ `New-Item -ItemType Junction -Path $path -Target $target -Force`
+
+**Backtick-n in Strings:** funktioniert in Theorie, kann aber parser stolperen lassen:
+- ⚠️ `Write-Output "` + `nDone."` — manchmal Parse-Error
+- ✅ `Write-Output ""`  +  `Write-Output "Done."` — sicher
+
+**Heredoc-style multiline:** PowerShell hat `@'..'@` für single-quoted oder
+`@"..."@` für double-quoted (Variable-Expansion). Nur am Zeilenanfang!
+
 ## Screenshot-Tooling (Windows, native, kein Install)
 
 ```powershell
