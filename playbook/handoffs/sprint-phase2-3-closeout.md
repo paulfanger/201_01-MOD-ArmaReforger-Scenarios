@@ -405,10 +405,11 @@ Du bist PC-Executor. CS ist beendet. Du führst jetzt einen kompletten
 Phase 2-3 Closeout Sprint aus — alle 5 Stages end-to-end auf PC alleine.
 
 Lies in dieser Reihenfolge:
-1. playbook/RELAY_PROTOCOL.md (Two-Phase Reception, Sub-Agents, Guards)
-2. PC_AGENT_BRIEF.md (deine Rolle, Pfade, Tools)
-3. playbook/CHEATSHEET-PC.md (deine eigene empirische Wissensbasis)
-4. playbook/handoffs/sprint-phase2-3-closeout.md ← der vollständige Sprint-Plan
+1. playbook/handoffs/PROJECT_STATE_2026-05-21.md ← Single-Doc Onboarding (start hier!)
+2. playbook/RELAY_PROTOCOL.md (Two-Phase Reception, Sub-Agents, Guards)
+3. PC_AGENT_BRIEF.md (deine Rolle, Pfade, Tools)
+4. playbook/CHEATSHEET-PC.md (deine eigene empirische Wissensbasis)
+5. playbook/handoffs/sprint-phase2-3-closeout.md ← der vollständige Sprint-Plan
 
 Executiere Sprint Stages 1-5 strikt nach dem Plan.
 
