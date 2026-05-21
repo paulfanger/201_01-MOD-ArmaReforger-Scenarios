@@ -73,3 +73,14 @@ F2 API connectivity: PASS (Haiku responded OK)
 python -m pip install --user mss pyautogui pygetwindow
 winget install AutoHotkey.AutoHotkey -e --silent --accept-package-agreements --accept-source-agreements
 python -c "import mss, pyautogui, pygetwindow; print('all ok')"
+
+---
+## UPDATE — 14:38 (user at PC)
+
+A3: EMAIL — no mid-sprint mobile prompts ✅
+C2: ALL PACKAGES OK (mss 10.2.0, pyautogui 0.9.54, pygetwindow 0.0.9) ✅
+C3: AutoHotkey v2.0.26 installed at C:\Program Files\AutoHotkey\v2\AutoHotkey.exe ✅
+
+**UPDATED VERDICT: GO ✅**
+All critical checks pass. Sprint-FINAL-S5-MAXED kann starten.
+
