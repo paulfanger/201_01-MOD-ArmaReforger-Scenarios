@@ -1,8 +1,9 @@
 ﻿{
     "turn_id":  "MEGA-A",
     "owner":  "pc",
-    "phase":  "PHASE_C_EXEC",
-    "started_at":  "2026-05-21T04:24:43Z",
+    "phase":  "PHASE_D_RETURN",
+    "started_at":  "2026-05-21T02:24:43Z",
+    "finished_at":  "2026-05-21T04:50:26Z",
     "cs_closed":  true,
     "user_absent":  true,
     "steam_running":  true,
@@ -10,15 +11,16 @@
 
                    ],
     "pending_exec":  [
-                         "A.0",
-                         "A.S1",
-                         "A.S2",
-                         "A.S5PREP",
-                         "A.FINAL"
+
                      ],
     "loop_signals":  [
 
                      ],
-    "notes":  "MEGA-A autonomous sprint. User absent 5-7h. Goal: PC S5-ready for Sprint B.",
-    "ready_for_sprint_B":  false
+    "ready_for_audit":  true,
+    "ready_for_sprint_B":  true,
+    "s1_complete":  true,
+    "s2_partial":  true,
+    "s5prep_complete":  true,
+    "s2_blocker":  "ArmaReforgerServer.exe not installed (AppID 1874900) — needs user-click in Steam Library",
+    "notes":  "Sprint MEGA-A complete. 116/116 tests PASS. S2 partial (server not installed). S5PREP complete. Type \u0027audit go\u0027 in Mac chat."
 }
