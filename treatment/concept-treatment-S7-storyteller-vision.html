@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ELOS · Storyteller Vision — From Words to Playthrough</title>
+<style>
+  *,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+
+  :root {
+    --bg-deep:    #050608;
+    --bg-mid:     #0d1018;
+    --bg-card:    #16192a;
+    --bg-card-hi: #1f2438;
+    --line:       #25304a;
+    --line-bright:#3d4862;
+
+    --accent:     #ff7a3d;
+    --accent-glow:#ff9555;
+    --accent-soft:#ff7a3d22;
+
+    --story:      #c084ed;   /* phase 1 — storyteller */
+    --build:      #5ab5e8;   /* phase 2 — editor */
+    --direct:     #ff7a3d;   /* phase 3 — game master */
+    --play:       #6dd49e;   /* phase 4 — playthrough */
+
+    --text-bright:#fafaf0;
+    --text-mid:   #aaada0;
+    --text-dim:   #545862;
+    --text-deepdim:#363a45;
+
+    --serif: 'Cormorant Garamond', 'Georgia', serif;
+    --sans:  'Inter', -apple-system, 'Helvetica Neue', sans-serif;
+    --mono:  'JetBrains Mono', 'Menlo', 'Consolas', monospace;
+  }
+
+  html { font-size: 16px; }
+
+  body {
+    background: var(--bg-deep);
+    color: var(--text-bright);
+    font-family: var(--sans);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.01) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.01) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .slide {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 7vh 7vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 2;
+    page-break-after: always;
+    break-after: page;
+  }
+
+  .slide-num {
+    position: absolute;
+    top: 4vh;
+    right: 6vw;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    letter-spacing: 0.2em;
+  }
+
+  .slide-tag {
+    position: absolute;
+    top: 4vh;
+    left: 6vw;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+
+  .slide-footer {
+    position: absolute;
+    bottom: 4vh;
+    left: 6vw;
+    right: 6vw;
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    letter-spacing: 0.15em;
+  }
+
+  /* COVER */
+  .cover {
+    background:
+      radial-gradient(ellipse 70% 60% at top right, rgba(192,132,237,0.10), transparent 60%),
+      radial-gradient(ellipse 50% 50% at center, rgba(90,181,232,0.08), transparent 60%),
+      radial-gradient(ellipse 60% 50% at bottom left, rgba(255,122,61,0.12), transparent 60%),
+      var(--bg-deep);
+  }
+
+  .brand-mark {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 5rem;
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.3em;
+    color: var(--text-mid);
+    text-transform: uppercase;
+  }
+
+  .brand-dots {
+    display: flex;
+    gap: 6px;
+  }
+
+  .brand-dots span {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+  }
+  .brand-dots span:nth-child(1) { background: var(--story); box-shadow: 0 0 12px var(--story); }
+  .brand-dots span:nth-child(2) { background: var(--build); box-shadow: 0 0 12px var(--build); }
+  .brand-dots span:nth-child(3) { background: var(--direct); box-shadow: 0 0 12px var(--direct); }
+  .brand-dots span:nth-child(4) { background: var(--play); box-shadow: 0 0 12px var(--play); }
+
+  h1.cover-title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(3.5rem, 8vw, 6.5rem);
+    line-height: 0.95;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.025em;
+  }
+
+  h1.cover-title .accent { color: var(--accent); font-style: italic; }
+
+  .cover-subtitle {
+    font-family: var(--mono);
+    font-size: clamp(0.85rem, 1.3vw, 1.1rem);
+    color: var(--accent);
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+  }
+
+  .cover-tagline {
+    font-family: var(--serif);
+    font-size: clamp(1.2rem, 2vw, 1.7rem);
+    color: var(--text-mid);
+    font-style: italic;
+    max-width: 900px;
+    margin-bottom: 5rem;
+    line-height: 1.4;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 3rem;
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    color: var(--text-mid);
+  }
+
+  .cover-meta-item .label {
+    color: var(--text-dim);
+    display: block;
+    font-size: 0.7rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .cover-meta-item .value { color: var(--text-bright); }
+
+  .vision-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 16px;
+    border: 1px solid var(--story);
+    border-radius: 3px;
+    background: rgba(192,132,237,0.1);
+    color: var(--story);
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+  }
+
+  /* SECTION TITLES */
+  h2.section-title {
+    font-family: var(--serif);
+    font-size: clamp(2.5rem, 4.5vw, 4rem);
+    font-weight: 400;
+    line-height: 1.05;
+    margin-bottom: 2rem;
+    letter-spacing: -0.015em;
+  }
+
+  h2.section-title .accent { color: var(--accent); font-style: italic; }
+  h2.section-title .story { color: var(--story); font-style: italic; }
+  h2.section-title .build { color: var(--build); font-style: italic; }
+  h2.section-title .direct { color: var(--direct); font-style: italic; }
+  h2.section-title .play { color: var(--play); font-style: italic; }
+
+  /* ───────────────────────────────────────────────────────
+     SLIDE 2 — THE BIG PICTURE (4-phase ring/flow)
+     ─────────────────────────────────────────────────────── */
+  .bigpic-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    max-width: 1500px;
+  }
+
+  .bigpic-narrative {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    color: var(--text-mid);
+    line-height: 1.55;
+  }
+
+  .bigpic-narrative p { margin-bottom: 1.25rem; }
+  .bigpic-narrative strong { color: var(--text-bright); font-weight: 400; }
+  .bigpic-narrative em { color: var(--accent); font-style: italic; }
+
+  .bigpic-stages {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .bigpic-stage {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .bigpic-stage-num {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+  }
+
+  .bigpic-stage.story  .bigpic-stage-num { color: var(--story); }
+  .bigpic-stage.build  .bigpic-stage-num { color: var(--build); }
+  .bigpic-stage.direct .bigpic-stage-num { color: var(--direct); }
+  .bigpic-stage.play   .bigpic-stage-num { color: var(--play); }
+
+  .bigpic-stage-name {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    color: var(--text-bright);
+    margin-bottom: 0.3rem;
+  }
+
+  .bigpic-stage-detail {
+    font-size: 0.92rem;
+    color: var(--text-mid);
+    line-height: 1.4;
+  }
+
+  /* ───────────────────────────────────────────────────────
+     MOCKUP — base (used in slides 3 + 4)
+     ─────────────────────────────────────────────────────── */
+  .mockup-container {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 2rem;
+    max-width: 1500px;
+  }
+
+  .mockup-window {
+    background: var(--bg-deep);
+    border: 1px solid var(--line-bright);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  }
+
+  .mockup-titlebar {
+    background: linear-gradient(to bottom, #1a1f2e, #131826);
+    padding: 0.6rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .mockup-titlebar-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--text-deepdim);
+  }
+  .mockup-titlebar-dot.red    { background: #ff6052; }
+  .mockup-titlebar-dot.yellow { background: #f5c869; }
+  .mockup-titlebar-dot.green  { background: #6dd49e; }
+
+  .mockup-titlebar-title {
+    margin-left: 1rem;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--text-mid);
+  }
+
+  .mockup-titlebar-state {
+    margin-left: auto;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--play);
+    letter-spacing: 0.2em;
+  }
+
+  .mockup-body {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    min-height: 460px;
+  }
+
+  /* CHAT (right side of mockups) */
+  .mockup-chat {
+    background: var(--bg-mid);
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid var(--line);
+  }
+
+  .mockup-chat-header {
+    padding: 1rem;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .chat-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--play);
+    box-shadow: 0 0 6px var(--play);
+  }
+
+  .mockup-chat-messages {
+    flex: 1;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    overflow-y: auto;
+    font-family: var(--sans);
+    font-size: 0.85rem;
+  }
+
+  .chat-msg-user { color: var(--text-bright); line-height: 1.4; }
+  .chat-msg-user::before {
+    content: "PAUL";
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    color: var(--text-dim);
+    letter-spacing: 0.2em;
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  .chat-msg-ai { color: var(--text-mid); line-height: 1.4; }
+  .chat-msg-ai::before {
+    content: "✦ ELOS";
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  .chat-msg-applied {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--play);
+    letter-spacing: 0.05em;
+    background: rgba(109,212,158,0.05);
+    border-left: 2px solid var(--play);
+    padding: 0.4rem 0.7rem;
+    line-height: 1.4;
+  }
+
+  .chat-msg-applied .sub { color: var(--text-dim); }
+
+  .mockup-chat-input {
+    padding: 1rem;
+    border-top: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--bg-card);
+  }
+
+  .mockup-chat-input-field {
+    flex: 1;
+    background: var(--bg-deep);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 0.5rem 0.8rem;
+    color: var(--text-mid);
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    font-style: italic;
+  }
+
+  /* ───────────────────────────────────────────────────────
+     SLIDE 3 — Storyteller (Workbench)
+     ─────────────────────────────────────────────────────── */
+  .mockup-workbench {
+    background:
+      radial-gradient(ellipse 70% 50% at center, rgba(106,182,224,0.08), transparent 70%),
+      linear-gradient(180deg, #0a1525 0%, #0d1828 50%, #0f1a30 100%);
+    position: relative;
+  }
+
+  .mockup-grid-floor {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(106,182,224,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(106,182,224,0.05) 1px, transparent 1px);
+    background-size: 30px 30px;
+    transform: perspective(400px) rotateX(60deg) translateY(50px);
+    transform-origin: center bottom;
+  }
+
+  .mockup-toolbar {
+    padding: 0.6rem 1rem;
+    display: flex;
+    gap: 1.5rem;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--text-mid);
+    letter-spacing: 0.15em;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    position: relative;
+    z-index: 3;
+  }
+
+  .mockup-toolbar span.active { color: var(--build); }
+
+  .mockup-entity {
+    position: absolute;
+    width: 12px; height: 12px;
+    border: 2px solid;
+    background: var(--bg-deep);
+    z-index: 2;
+  }
+
+  .mockup-entity.spawn { border-color: var(--play); border-radius: 2px; }
+  .mockup-entity.ai    { border-color: #e07171; border-radius: 50%; }
+  .mockup-entity.trigger { border-color: #f5c869; border-radius: 50%; width: 16px; height: 16px; opacity: 0.6; }
+
+  .mockup-entity-label {
+    position: absolute;
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    color: var(--text-mid);
+    letter-spacing: 0.1em;
+    transform: translateY(-18px);
+    white-space: nowrap;
+  }
+
+  .mockup-fog {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 60%;
+    background: linear-gradient(180deg, transparent, rgba(180,200,220,0.15));
+    pointer-events: none;
+  }
+
+  .mockup-state-indicator {
+    position: absolute;
+    top: 60px; left: 20px;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    z-index: 3;
+  }
+
+  /* ───────────────────────────────────────────────────────
+     SLIDE 4 — Game Master (top-down map view)
+     ─────────────────────────────────────────────────────── */
+  .mockup-gamemaster {
+    background:
+      radial-gradient(ellipse 60% 50% at center, rgba(255,122,61,0.06), transparent 70%),
+      linear-gradient(180deg, #0a0c12 0%, #0d1018 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .gm-map {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 380px;
+  }
+
+  .gm-terrain {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,122,61,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,122,61,0.04) 1px, transparent 1px);
+    background-size: 35px 35px;
+  }
+
+  /* Topo lines */
+  .gm-topo {
+    position: absolute;
+    border: 1px dashed rgba(255,122,61,0.15);
+    border-radius: 50%;
+  }
+  .gm-topo.t1 { top: 20%; left: 30%; width: 240px; height: 180px; }
+  .gm-topo.t2 { top: 30%; left: 35%; width: 160px; height: 120px; opacity: 0.6; }
+  .gm-topo.t3 { top: 38%; left: 38%; width: 90px; height: 70px; opacity: 0.4; }
+
+  .gm-toolbar {
+    padding: 0.6rem 1rem;
+    display: flex;
+    gap: 1.5rem;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--text-mid);
+    letter-spacing: 0.15em;
+    border-bottom: 1px solid rgba(255,122,61,0.1);
+    position: relative;
+    z-index: 5;
+  }
+
+  .gm-toolbar span.active { color: var(--direct); }
+
+  .gm-marker {
+    position: absolute;
+    z-index: 3;
+  }
+
+  .gm-marker.player {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: var(--play);
+    box-shadow: 0 0 8px var(--play);
+    border: 2px solid #06080a;
+  }
+
+  .gm-marker.player-label {
+    position: absolute;
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    color: var(--play);
+    letter-spacing: 0.15em;
+    transform: translate(24px, 3px);
+    white-space: nowrap;
+  }
+
+  .gm-marker.opfor {
+    width: 16px; height: 16px;
+    background: #e07171;
+    transform: rotate(45deg);
+    border: 1px solid #06080a;
+    box-shadow: 0 0 6px rgba(224,113,113,0.4);
+  }
+
+  .gm-marker.opfor-label {
+    position: absolute;
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    color: #e07171;
+    letter-spacing: 0.15em;
+    transform: translate(24px, -3px);
+    white-space: nowrap;
+  }
+
+  .gm-marker.objective {
+    width: 22px; height: 22px;
+    border: 2px solid var(--accent);
+    border-radius: 4px;
+    background: rgba(255,122,61,0.15);
+  }
+
+  .gm-marker.objective-label {
+    position: absolute;
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    transform: translate(28px, 4px);
+    white-space: nowrap;
+  }
+
+  .gm-marker.trigger-zone {
+    border: 2px dashed #f5c869;
+    border-radius: 50%;
+    background: rgba(245,200,105,0.04);
+  }
+
+  .gm-state-bar {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: rgba(13,16,24,0.95);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid var(--line);
+    padding: 0.6rem 1rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    z-index: 5;
+  }
+
+  .gm-state-item .label {
+    color: var(--text-dim);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .gm-state-item .value {
+    color: var(--text-bright);
+    font-size: 0.9rem;
+    margin-top: 2px;
+  }
+
+  .gm-state-item .value.accent { color: var(--accent); }
+  .gm-state-item .value.play   { color: var(--play); }
+
+  /* ───────────────────────────────────────────────────────
+     SLIDE 5 — Iteration Loop (continuous architecture)
+     ─────────────────────────────────────────────────────── */
+  .loop-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 4rem;
+    max-width: 1500px;
+    align-items: center;
+  }
+
+  .loop-prose {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    color: var(--text-mid);
+    line-height: 1.55;
+  }
+
+  .loop-prose p { margin-bottom: 1.25rem; }
+  .loop-prose strong { color: var(--text-bright); font-weight: 400; }
+  .loop-prose em { color: var(--accent); font-style: italic; }
+
+  .loop-quote {
+    border-left: 3px solid var(--accent);
+    padding: 0.5rem 0 0.5rem 1.5rem;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.35rem;
+    color: var(--text-bright);
+    line-height: 1.4;
+    margin: 1.5rem 0;
+  }
+
+  /* ───────────────────────────────────────────────────────
+     SLIDE 6 — Capabilities ladder
+     ─────────────────────────────────────────────────────── */
+  .cap-section-intro {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    color: var(--text-mid);
+    max-width: 800px;
+    margin-bottom: 2.5rem;
+  }
+
+  .cap-ladder {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .cap-card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 2rem 1.6rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cap-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+  }
+
+  .cap-card.story  ::before { background: var(--story); }
+  .cap-card.build  ::before { background: var(--build); }
+  .cap-card.direct ::before { background: var(--direct); }
+
+  .cap-card-tag {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+
+  .cap-card.story  .cap-card-tag { color: var(--story); }
+  .cap-card.build  .cap-card-tag { color: var(--build); }
+  .cap-card.direct .cap-card-tag { color: var(--direct); }
+
+  .cap-card-title {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    color: var(--text-bright);
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+
+  .cap-card-prompt {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--text-mid);
+    margin-bottom: 1.5rem;
+    padding: 0.6rem 0.9rem;
+    background: var(--bg-deep);
+    border-radius: 4px;
+    border-left: 2px solid var(--accent);
+  }
+
+  .cap-card-prompt::before { content: '"'; color: var(--accent); }
+  .cap-card-prompt::after  { content: '"'; color: var(--accent); }
+
+  .cap-card-features {
+    list-style: none;
+    font-size: 0.85rem;
+    color: var(--text-mid);
+  }
+
+  .cap-card-features li {
+    padding: 0.3rem 0;
+    display: flex;
+    gap: 0.5rem;
+    line-height: 1.4;
+  }
+
+  .cap-card-features li::before {
+    content: "→";
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .roadmap-note {
+    margin-top: 3rem;
+    padding: 1.5rem 2rem;
+    background: var(--bg-card);
+    border-left: 3px solid var(--story);
+    border-radius: 6px;
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    color: var(--text-mid);
+    line-height: 1.5;
+  }
+
+  .roadmap-note strong { color: var(--text-bright); font-weight: 400; }
+
+  /* PRINT */
+  @media print {
+    body::before { display: none; }
+    .slide {
+      min-height: 100vh;
+      padding: 4vh 5vw;
+      page-break-after: always;
+      page-break-inside: avoid;
+    }
+    .cover { padding-top: 8vh; }
+    @page { size: A4 landscape; margin: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════
+     SLIDE 1 — COVER
+     ═══════════════════════════════════════════════════════ -->
+<section class="slide cover">
+  <span class="slide-num">01 / 06</span>
+  <span class="slide-tag">Storyteller Vision · Phase 5–7</span>
+
+  <div class="brand-mark">
+    <div class="brand-dots"><span></span><span></span><span></span><span></span></div>
+    ELOS · 201_01 · Treatment vS7
+  </div>
+
+  <div class="cover-subtitle">FROM WORDS TO PLAYTHROUGH</div>
+
+  <h1 class="cover-title">
+    Du erzählst.<br>
+    Es <span class="accent">spielt.</span>
+  </h1>
+
+  <p class="cover-tagline">
+    Eine Geschichte wird zum Szenario.<br>
+    Ein Szenario wird zur Mission.<br>
+    Eine Mission wird zum Spiel — <em>live dirigiert, kontinuierlich verfeinert</em>.<br>
+    Alles über eine einzige durchgängige Chat-Schicht.
+  </p>
+
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="label">Phasen</span>
+      <span class="value"><span class="vision-badge">5 → 7 (End-State)</span></span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="label">Inspiration</span>
+      <span class="value">Blender-MCP · Cursor · Zeus (Arma 3)</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="label">Targets</span>
+      <span class="value">Workbench · Game Master · Live Session</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="label">Stand</span>
+      <span class="value">2026-05-21</span>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span>ELOS Storyteller Treatment — End-to-End Vision</span>
+    <span>github.com/paulfanger/201_01-MOD-ArmaReforger-Scenarios</span>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     SLIDE 2 — THE BIG PICTURE
+     ═══════════════════════════════════════════════════════ -->
+<section class="slide">
+  <span class="slide-tag">01 · The Big Picture</span>
+  <span class="slide-num">02 / 06</span>
+
+  <div class="bigpic-grid">
+    <div>
+      <h2 class="section-title">
+        Vier Stationen.<br>
+        <span class="accent">Eine Stimme.</span>
+      </h2>
+
+      <div class="bigpic-narrative">
+        <p>
+          Klassisches Mission-Design ist <strong>fragmentiert</strong> — du wechselst zwischen
+          Tools, Workflows, Iterationen. Idee verlorengeht zwischen Editor, Test-Build,
+          In-Game-Direktion, Notizen-im-Discord.
+        </p>
+
+        <p>
+          Diese Vision macht aus dem fragmentierten Prozess <em>eine durchgängige
+          Konversation</em>. Du erzählst eine Story. AI baut sie zum Szenario.
+          Du verfeinerst im Editor durch Chat. Du startest die Mission und dirigierst
+          live im Spiel durch Chat. Nach der Session iterierst du wieder — durch Chat.
+        </p>
+
+        <p>
+          <strong>Eine Schicht. Vier Stationen. Same LLM throughout.</strong>
+        </p>
+      </div>
+    </div>
+
+    <div class="bigpic-stages">
+      <div class="bigpic-stage story">
+        <div class="bigpic-stage-num">01</div>
+        <div>
+          <div class="bigpic-stage-name">Story</div>
+          <div class="bigpic-stage-detail">
+            Du erzählst eine Mission-Idee. AI strukturiert sie als narrative.json
+            mit Goals, Factions, Beats, Atmosphäre.
+          </div>
+        </div>
+      </div>
+
+      <div class="bigpic-stage build">
+        <div class="bigpic-stage-num">02</div>
+        <div>
+          <div class="bigpic-stage-name">Build (Workbench)</div>
+          <div class="bigpic-stage-detail">
+            Pipeline generiert .ent, .layer, .conf. Plugin renderd live im
+            3D-Editor. Du verfeinerst per Chat — fog dichter, Phase kürzer, neuer Spawn.
+          </div>
+        </div>
+      </div>
+
+      <div class="bigpic-stage direct">
+        <div class="bigpic-stage-num">03</div>
+        <div>
+          <div class="bigpic-stage-name">Direct (Game Master)</div>
+          <div class="bigpic-stage-detail">
+            Mission läuft. Spieler drin. Du als Director siehst Top-Down-Map.
+            Chat-Befehle spawnen AI-Wellen, triggern Events, ändern Wetter — live.
+          </div>
+        </div>
+      </div>
+
+      <div class="bigpic-stage play">
+        <div class="bigpic-stage-num">04</div>
+        <div>
+          <div class="bigpic-stage-name">Play & Iterate</div>
+          <div class="bigpic-stage-detail">
+            Nach Session: AI analysiert Replay. Du sagst was war gut/schlecht.
+            Loop zurück zu Story-Stage — refined Version startet.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span>Storyteller Vision · The Big Picture</span>
+    <span>02 / 06</span>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     SLIDE 3 — STORYTELLER + BUILD (Workbench Mockup)
+     ═══════════════════════════════════════════════════════ -->
+<section class="slide">
+  <span class="slide-tag">02 · Story + Build</span>
+  <span class="slide-num">03 / 06</span>
+
+  <h2 class="section-title">
+    Du <span class="story">erzählst.</span>
+    AI <span class="build">baut.</span>
+  </h2>
+
+  <div class="mockup-container">
+    <div class="mockup-window">
+      <div class="mockup-titlebar">
+        <div class="mockup-titlebar-dot red"></div>
+        <div class="mockup-titlebar-dot yellow"></div>
+        <div class="mockup-titlebar-dot green"></div>
+        <div class="mockup-titlebar-title">Arma Reforger Workbench · ai_eden-recon · Story Mode</div>
+        <div class="mockup-titlebar-state">DESIGN PHASE</div>
+      </div>
+
+      <div class="mockup-body">
+        <!-- VIEWPORT (Workbench) -->
+        <div class="mockup-workbench">
+          <div class="mockup-grid-floor"></div>
+          <div class="mockup-state-indicator">⏵ EDEN · TOD 02:30 · FOG_HEAVY · NIGHT</div>
+
+          <div class="mockup-toolbar">
+            <span class="active">▸ World Editor</span>
+            <span>Layers</span>
+            <span>Resources</span>
+            <span>Scripts</span>
+          </div>
+
+          <!-- Entities -->
+          <div class="mockup-entity spawn" style="left: 22%; top: 45%;">
+            <span class="mockup-entity-label">SP_RECON_01</span>
+          </div>
+          <div class="mockup-entity spawn" style="left: 27%; top: 52%;">
+            <span class="mockup-entity-label">SP_RECON_02</span>
+          </div>
+          <div class="mockup-entity ai" style="left: 58%; top: 30%;">
+            <span class="mockup-entity-label">PATROL_NORTH</span>
+          </div>
+          <div class="mockup-entity ai" style="left: 64%; top: 50%;">
+            <span class="mockup-entity-label">DEFENDERS_OBJ</span>
+          </div>
+          <div class="mockup-entity trigger" style="left: 50%; top: 55%;">
+            <span class="mockup-entity-label">PHASE_2_TRIGGER</span>
+          </div>
+
+          <div class="mockup-fog"></div>
+        </div>
+
+        <!-- CHAT -->
+        <div class="mockup-chat">
+          <div class="mockup-chat-header">
+            <span class="chat-dot"></span>
+            ELOS · STORY EDITOR
+          </div>
+
+          <div class="mockup-chat-messages">
+            <div class="chat-msg-user">
+              Bau mir 'ne Nacht-Recon-Mission auf Eden, 4 Spieler, schleichen
+              müssen, OPFOR Patrouille hat MG-Stellung auf nem Hügel
+            </div>
+            <div class="chat-msg-applied">
+              ✓ narrative.json created<br>
+              ✓ 2 spawn points · 2 AI groups · 1 trigger generated<br>
+              ✓ weather: fog_heavy · TOD 02:30 set<br>
+              <span class="sub">~6s · 4 entities placed</span>
+            </div>
+
+            <div class="chat-msg-user">
+              Mach den Fog noch dichter und schieb die MG-Stellung weiter
+              nach Norden
+            </div>
+            <div class="chat-msg-applied">
+              ✓ weather.fog_density: 0.6 → 0.85<br>
+              ✓ entity_move: PATROL_NORTH +180m N<br>
+              <span class="sub">~1.8s · viewport updated live</span>
+            </div>
+
+            <div class="chat-msg-ai">
+              Done. Soll ich auch noch Patrouillen-Sound-Cues setzen?
+              (würde Tension erhöhen — wären 3 zusätzliche Trigger.)
+            </div>
+
+            <div class="chat-msg-user">
+              Ja, aber subtil — alle 4-6 Min, nicht aufdringlich
+            </div>
+          </div>
+
+          <div class="mockup-chat-input">
+            <span style="color: var(--accent);">✦</span>
+            <div class="mockup-chat-input-field">Story continuation...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span>Storyteller Vision · Story + Build</span>
+    <span>03 / 06</span>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     SLIDE 4 — DIRECT (Game Master Mockup)
+     ═══════════════════════════════════════════════════════ -->
+<section class="slide">
+  <span class="slide-tag">03 · Direct (Game Master)</span>
+  <span class="slide-num">04 / 06</span>
+
+  <h2 class="section-title">
+    Spieler sind drin.<br>
+    Du <span class="direct">dirigierst</span> in Echtzeit.
+  </h2>
+
+  <div class="mockup-container">
+    <div class="mockup-window">
+      <div class="mockup-titlebar">
+        <div class="mockup-titlebar-dot red"></div>
+        <div class="mockup-titlebar-dot yellow"></div>
+        <div class="mockup-titlebar-dot green"></div>
+        <div class="mockup-titlebar-title">Arma Reforger · Game Master · ai_eden-recon · LIVE</div>
+        <div class="mockup-titlebar-state">PLAYING · 12:34</div>
+      </div>
+
+      <div class="mockup-body">
+        <!-- GAME MASTER MAP (top-down) -->
+        <div class="mockup-gamemaster">
+          <div class="gm-toolbar">
+            <span class="active">▸ Director View</span>
+            <span>Entities</span>
+            <span>Triggers</span>
+            <span>Replay</span>
+          </div>
+
+          <div class="gm-map">
+            <div class="gm-terrain"></div>
+
+            <!-- Topo lines (hills) -->
+            <div class="gm-topo t1"></div>
+            <div class="gm-topo t2"></div>
+            <div class="gm-topo t3"></div>
+
+            <!-- Players (4) -->
+            <div class="gm-marker player" style="left: 18%; top: 60%;">
+              <span class="gm-marker player-label">P1 · Hawk</span>
+            </div>
+            <div class="gm-marker player" style="left: 21%; top: 65%;">
+              <span class="gm-marker player-label">P2 · Wolf</span>
+            </div>
+            <div class="gm-marker player" style="left: 19%; top: 70%;">
+              <span class="gm-marker player-label">P3 · Echo</span>
+            </div>
+            <div class="gm-marker player" style="left: 23%; top: 68%;">
+              <span class="gm-marker player-label">P4 · Ghost</span>
+            </div>
+
+            <!-- OPFOR groups -->
+            <div class="gm-marker opfor" style="left: 55%; top: 25%;">
+              <span class="gm-marker opfor-label">PATROL_NORTH · 4</span>
+            </div>
+            <div class="gm-marker opfor" style="left: 62%; top: 35%;">
+              <span class="gm-marker opfor-label">MG_HILL · 2</span>
+            </div>
+            <div class="gm-marker opfor" style="left: 60%; top: 50%;">
+              <span class="gm-marker opfor-label">DEFENDERS · 6</span>
+            </div>
+
+            <!-- Newly spawned (orange pulse-ish) -->
+            <div class="gm-marker opfor" style="left: 48%; top: 70%; box-shadow: 0 0 20px rgba(255,122,61,0.8);">
+              <span class="gm-marker opfor-label" style="color: var(--accent);">⚡ AMBUSH_SOUTH · 3</span>
+            </div>
+
+            <!-- Objective -->
+            <div class="gm-marker objective" style="left: 63%; top: 30%;">
+              <span class="gm-marker objective-label">OBJ_INTEL</span>
+            </div>
+
+            <!-- Trigger zone -->
+            <div class="gm-marker trigger-zone" style="left: 38%; top: 50%; width: 100px; height: 80px;"></div>
+
+          </div>
+
+          <!-- Bottom state bar -->
+          <div class="gm-state-bar">
+            <div class="gm-state-item">
+              <div class="label">Phase</div>
+              <div class="value">2 of 3 · INFILTRATE</div>
+            </div>
+            <div class="gm-state-item">
+              <div class="label">Players</div>
+              <div class="value play">4 / 4 alive</div>
+            </div>
+            <div class="gm-state-item">
+              <div class="label">OPFOR Active</div>
+              <div class="value">15 (3 squads + ambush)</div>
+            </div>
+            <div class="gm-state-item">
+              <div class="label">Time</div>
+              <div class="value accent">02:47 · FOG_HEAVY</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CHAT -->
+        <div class="mockup-chat">
+          <div class="mockup-chat-header">
+            <span class="chat-dot"></span>
+            ELOS · DIRECTOR
+          </div>
+
+          <div class="mockup-chat-messages">
+            <div class="chat-msg-user">
+              Spieler bewegen sich zu schnell — spawn 'nen Ambush im Süden
+            </div>
+            <div class="chat-msg-applied">
+              ✓ entity_create: SCR_AIGroup "AMBUSH_SOUTH" @ [550, 240, -1700]<br>
+              ✓ behavior: aggressive_intercept<br>
+              ✓ trigger: arm in 30s<br>
+              <span class="sub">live in-game · 3 OPFOR spawned</span>
+            </div>
+
+            <div class="chat-msg-ai">
+              ⚠ Ambush ready in 30s. Spieler sind ~140m entfernt.
+              ETA Kontakt: ~90s.
+            </div>
+
+            <div class="chat-msg-user">
+              Perfekt. Auch — ändere Wetter auf storm in 2 min,
+              passend zur Klimax
+            </div>
+            <div class="chat-msg-applied">
+              ✓ scheduled: weather.transition fog_heavy → storm_light<br>
+              ✓ start in 120s, duration 60s<br>
+              <span class="sub">dramatic cue queued</span>
+            </div>
+
+            <div class="chat-msg-user">
+              Wenn Phase 2 done: trigger cinematic slowmo wenn
+              erster OPFOR im MG-Nest fällt
+            </div>
+          </div>
+
+          <div class="mockup-chat-input">
+            <span style="color: var(--direct);">✦</span>
+            <div class="mockup-chat-input-field">Live directorial command...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span>Storyteller Vision · Direct</span>
+    <span>04 / 06</span>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     SLIDE 5 — THE CONTINUOUS LOOP
+     ═══════════════════════════════════════════════════════ -->
+<section class="slide">
+  <span class="slide-tag">04 · The Continuous Loop</span>
+  <span class="slide-num">05 / 06</span>
+
+  <div class="loop-grid">
+    <div>
+      <h2 class="section-title">
+        Eine Stimme.<br>
+        <span class="accent">Persistente Welt.</span>
+      </h2>
+
+      <div class="loop-prose">
+        <p>
+          Das LLM ist nicht nur ein Tool pro Phase — es ist <strong>derselbe Agent
+          durch alle vier Stationen</strong>. Es kennt deine narrative.json aus Phase 1,
+          erinnert sich an die Verfeinerungen in Phase 2, und nutzt diesen Kontext
+          live in Phase 3.
+        </p>
+
+        <blockquote class="loop-quote">
+          "Spieler sind tactical aufgestellt — spawn die Reaktionstruppe wie
+          original geplant, aber mit dem aggressiveren Vibe den wir bei Phase 2
+          besprochen haben."
+        </blockquote>
+
+        <p>
+          Nach der Session liest das LLM den Replay-Log, deine Notizen, deine
+          Reaktionen während dem Spiel — und schlägt für die nächste Version
+          konkrete Verbesserungen vor. <em>"Phase 3 war 2 Min zu kurz, Spieler
+          hatten zu wenig Zeit am Objective."</em>
+        </p>
+
+        <p>
+          Die Mission entwickelt sich über mehrere Spiel-Sessions weiter.
+          Nicht als Versionssprung — als kontinuierliche Verfeinerung.
+          <strong>Eine lebende Welt, die deine erzählerische Stimme hat.</strong>
+        </p>
+      </div>
+    </div>
+
+    <div>
+      <svg viewBox="0 0 400 460" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 100%; max-width: 420px;">
+        <!-- Background dotted ring -->
+        <circle cx="200" cy="230" r="170" stroke="#25304a" stroke-width="1" stroke-dasharray="2 4"/>
+
+        <!-- Phase arcs (4 colors) -->
+        <defs>
+          <marker id="arr-s" markerWidth="10" markerHeight="10" refX="6" refY="5" orient="auto">
+            <polygon points="0 0, 8 5, 0 10" fill="#c084ed"/>
+          </marker>
+          <marker id="arr-b" markerWidth="10" markerHeight="10" refX="6" refY="5" orient="auto">
+            <polygon points="0 0, 8 5, 0 10" fill="#5ab5e8"/>
+          </marker>
+          <marker id="arr-d" markerWidth="10" markerHeight="10" refX="6" refY="5" orient="auto">
+            <polygon points="0 0, 8 5, 0 10" fill="#ff7a3d"/>
+          </marker>
+          <marker id="arr-p" markerWidth="10" markerHeight="10" refX="6" refY="5" orient="auto">
+            <polygon points="0 0, 8 5, 0 10" fill="#6dd49e"/>
+          </marker>
+        </defs>
+
+        <path d="M 200 60 A 170 170 0 0 1 370 230" stroke="#c084ed" stroke-width="2.5" fill="none" marker-end="url(#arr-b)"/>
+        <path d="M 370 230 A 170 170 0 0 1 200 400" stroke="#5ab5e8" stroke-width="2.5" fill="none" marker-end="url(#arr-d)"/>
+        <path d="M 200 400 A 170 170 0 0 1 30 230" stroke="#ff7a3d" stroke-width="2.5" fill="none" marker-end="url(#arr-p)"/>
+        <path d="M 30 230 A 170 170 0 0 1 200 60" stroke="#6dd49e" stroke-width="2.5" fill="none" marker-end="url(#arr-s)"/>
+
+        <!-- 4 nodes -->
+        <g>
+          <circle cx="200" cy="60" r="38" fill="#0d1018" stroke="#c084ed" stroke-width="2"/>
+          <text x="200" y="55" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#c084ed" letter-spacing="1.5">01</text>
+          <text x="200" y="71" text-anchor="middle" font-family="Cormorant Garamond" font-size="14" fill="#fafaf0">Story</text>
+        </g>
+        <g>
+          <circle cx="370" cy="230" r="38" fill="#0d1018" stroke="#5ab5e8" stroke-width="2"/>
+          <text x="370" y="225" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#5ab5e8" letter-spacing="1.5">02</text>
+          <text x="370" y="241" text-anchor="middle" font-family="Cormorant Garamond" font-size="14" fill="#fafaf0">Build</text>
+        </g>
+        <g>
+          <circle cx="200" cy="400" r="38" fill="#0d1018" stroke="#ff7a3d" stroke-width="2"/>
+          <text x="200" y="395" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#ff7a3d" letter-spacing="1.5">03</text>
+          <text x="200" y="411" text-anchor="middle" font-family="Cormorant Garamond" font-size="14" fill="#fafaf0">Direct</text>
+        </g>
+        <g>
+          <circle cx="30" cy="230" r="38" fill="#0d1018" stroke="#6dd49e" stroke-width="2"/>
+          <text x="30" y="225" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#6dd49e" letter-spacing="1.5">04</text>
+          <text x="30" y="241" text-anchor="middle" font-family="Cormorant Garamond" font-size="14" fill="#fafaf0">Iterate</text>
+        </g>
+
+        <!-- Center: ELOS persistent -->
+        <circle cx="200" cy="230" r="60" fill="rgba(13,16,24,0.7)" stroke="#3d4862" stroke-width="1"/>
+        <text x="200" y="220" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#aaada0" letter-spacing="3">PERSISTENT</text>
+        <text x="200" y="237" text-anchor="middle" font-family="Cormorant Garamond" font-style="italic" font-size="14" fill="#fafaf0">ELOS</text>
+        <text x="200" y="252" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#5a5e6a" letter-spacing="2">memory · context · voice</text>
+
+        <!-- Phase descriptions -->
+        <text x="200" y="100" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#aaada0" letter-spacing="1">tell the tale</text>
+        <text x="370" y="270" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#aaada0" letter-spacing="1">refine in editor</text>
+        <text x="200" y="440" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#aaada0" letter-spacing="1">live direction</text>
+        <text x="30" y="270" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#aaada0" letter-spacing="1">replay + refine</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span>Storyteller Vision · The Loop</span>
+    <span>05 / 06</span>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     SLIDE 6 — CAPABILITIES + ROADMAP NOTE
+     ═══════════════════════════════════════════════════════ -->
+<section class="slide">
+  <span class="slide-tag">05 · Capabilities Ladder</span>
+  <span class="slide-num">06 / 06</span>
+
+  <h2 class="section-title">
+    Was du <span class="accent">tatsächlich</span> sagen kannst.
+  </h2>
+
+  <p class="cap-section-intro">
+    Drei Modi. Eine Stimme. Beispiel-Prompts pro Phase — alle sind realistisch implementierbar.
+  </p>
+
+  <div class="cap-ladder">
+
+    <!-- STORY PROMPTS -->
+    <div class="cap-card story">
+      <div class="cap-card-tag">Story Mode</div>
+      <div class="cap-card-title">Erzähl die Mission</div>
+      <div class="cap-card-prompt">
+        Recon auf Eden, Morgendämmerung, 4 Spieler schleichen.
+        Sowjet-Patrol mit MG-Stellung. Ziel: Intel klauen,
+        ohne entdeckt zu werden.
+      </div>
+      <ul class="cap-card-features">
+        <li>narrative.json auto-generiert</li>
+        <li>Spawn-Points, AI-Gruppen, Triggers, Phases</li>
+        <li>Atmosphäre + Wetter + Time-of-Day</li>
+        <li>5-10 Sekunden bis erste Version steht</li>
+      </ul>
+    </div>
+
+    <!-- BUILD PROMPTS -->
+    <div class="cap-card build">
+      <div class="cap-card-tag">Build Mode</div>
+      <div class="cap-card-title">Verfeinere im Editor</div>
+      <div class="cap-card-prompt">
+        Mach den Fog dichter, schieb die MG-Stellung nach Norden,
+        Phase 3 auf 4 Min kürzen, ein versteckter Bonus-Spawn
+        falls Spieler too aggressive werden.
+      </div>
+      <ul class="cap-card-features">
+        <li>Live im 3D-Viewport sichtbar</li>
+        <li>~1-2 Sek pro Revision</li>
+        <li>5 Op-Types: edit · create · delete · move · batch</li>
+        <li>Persistent History — Mission entwickelt sich</li>
+      </ul>
+    </div>
+
+    <!-- DIRECT PROMPTS -->
+    <div class="cap-card direct">
+      <div class="cap-card-tag">Direct Mode</div>
+      <div class="cap-card-title">Dirigiere live im Spiel</div>
+      <div class="cap-card-prompt">
+        Spieler bewegen sich zu schnell — spawn 'nen Ambush
+        im Süden, Wetter auf storm in 2 min als Klimax,
+        cinematic slowmo wenn erster OPFOR im MG-Nest fällt.
+      </div>
+      <ul class="cap-card-features">
+        <li>Top-Down Map mit Player + AI tracking</li>
+        <li>Live spawn / despawn / behavior switch</li>
+        <li>Scheduled events ("in 2 Min")</li>
+        <li>Cinematic triggers + dramatic cues</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="roadmap-note">
+    <strong>Wo wir stehen (2026-05-21):</strong>
+    Story + Build Phasen sind <strong>~80% gebaut</strong> (MEGA-A done) — Plugin refactored,
+    backend revisions live, file-watch scaffolded. Sprint FINAL-S5-MAXED schließt das auf
+    100% MVP ab. <strong>Direct (Game Master) ist Phase 7+</strong> — separate Plugin-Architektur
+    auf Game-Side (SCR_BaseGameMaster + Runtime-Scripts), aber dieselbe Chat-Schicht.
+    Estimated: weitere 2-4 Dev-Wochen nach S5 MVP für Game Master Integration.
+    <em>Die Vision ist real. Die Reihenfolge ist klar. S5 zuerst, dann S7.</em>
+  </div>
+
+  <div class="slide-footer">
+    <span>Storyteller Vision · End of Treatment</span>
+    <span>06 / 06</span>
+  </div>
+</section>
+
+</body>
+</html>
