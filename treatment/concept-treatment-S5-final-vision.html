@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ELOS Scenario Builder · S5 Final Vision</title>
+<style>
+  *,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+
+  :root {
+    --bg-deep:    #050608;
+    --bg-mid:     #0d1018;
+    --bg-card:    #16192a;
+    --bg-card-hi: #1f2438;
+    --line:       #25304a;
+    --line-bright:#3d4862;
+
+    --accent:     #ff7a3d;   /* military orange */
+    --accent-glow:#ff9555;
+    --accent-dim: #cc6230;
+    --accent-soft:#ff7a3d1a;
+
+    --green:      #6dd49e;
+    --blue:       #5ab5e8;
+    --purple:     #a474ed;
+    --yellow:     #f5c869;
+    --red:        #e07171;
+
+    --text-bright:#fafaf0;
+    --text-mid:   #aaada0;
+    --text-dim:   #545862;
+    --text-deepdim:#363a45;
+
+    --serif: 'Cormorant Garamond', 'Georgia', serif;
+    --sans:  'Inter', -apple-system, 'Helvetica Neue', sans-serif;
+    --mono:  'JetBrains Mono', 'Menlo', 'Consolas', monospace;
+  }
+
+  html { font-size: 16px; }
+
+  body {
+    background: var(--bg-deep);
+    color: var(--text-bright);
+    font-family: var(--sans);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .slide {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 7vh 7vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 2;
+    page-break-after: always;
+    break-after: page;
+  }
+
+  .slide-num {
+    position: absolute;
+    top: 4vh;
+    right: 6vw;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    letter-spacing: 0.2em;
+  }
+
+  .slide-tag {
+    position: absolute;
+    top: 4vh;
+    left: 6vw;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+
+  .slide-footer {
+    position: absolute;
+    bottom: 4vh;
+    left: 6vw;
+    right: 6vw;
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    letter-spacing: 0.15em;
+  }
+
+  /* COVER */
+  .cover {
+    background:
+      radial-gradient(ellipse 80% 60% at top right, rgba(255,122,61,0.18), transparent 60%),
+      radial-gradient(ellipse 60% 50% at bottom left, rgba(164,116,237,0.1), transparent 60%),
+      var(--bg-deep);
+  }
+
+  .brand-mark {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 5rem;
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.3em;
+    color: var(--text-mid);
+    text-transform: uppercase;
+  }
+
+  .brand-dot {
+    width: 10px; height: 10px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 20px var(--accent), 0 0 40px var(--accent-soft);
+    animation: pulse 2.5s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%,100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.4); opacity: 0.7; }
+  }
+
+  h1.cover-title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(3.5rem, 8vw, 6.5rem);
+    line-height: 0.95;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.025em;
+  }
+
+  h1.cover-title .accent { color: var(--accent); font-style: italic; }
+
+  .cover-subtitle {
+    font-family: var(--mono);
+    font-size: clamp(0.85rem, 1.3vw, 1.1rem);
+    color: var(--accent);
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+  }
+
+  .cover-tagline {
+    font-family: var(--serif);
+    font-size: clamp(1.2rem, 2vw, 1.7rem);
+    color: var(--text-mid);
+    font-style: italic;
+    max-width: 800px;
+    margin-bottom: 5rem;
+    line-height: 1.4;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 3rem;
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    color: var(--text-mid);
+  }
+
+  .cover-meta-item .label {
+    color: var(--text-dim);
+    display: block;
+    font-size: 0.7rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .cover-meta-item .value { color: var(--text-bright); }
+
+  .vision-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 16px;
+    border: 1px solid var(--accent);
+    border-radius: 3px;
+    background: rgba(255,122,61,0.1);
+    color: var(--accent);
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+  }
+
+  .vision-badge::before {
+    content: "";
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent);
+  }
+
+  /* SECTION TITLES */
+  h2.section-title {
+    font-family: var(--serif);
+    font-size: clamp(2.5rem, 4.5vw, 4rem);
+    font-weight: 400;
+    line-height: 1.05;
+    margin-bottom: 2rem;
+    letter-spacing: -0.015em;
+  }
+
+  h2.section-title .accent { color: var(--accent); font-style: italic; }
+
+  /* THE DREAM */
+  .dream-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+    max-width: 1500px;
+  }
+
+  .dream-prose {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    line-height: 1.6;
+    color: var(--text-mid);
+  }
+
+  .dream-prose p { margin-bottom: 1.5rem; }
+  .dream-prose strong { color: var(--text-bright); font-weight: 400; }
+  .dream-prose em { color: var(--accent); font-style: italic; }
+
+  .dream-quote {
+    border-left: 3px solid var(--accent);
+    padding: 0.5rem 0 0.5rem 1.5rem;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.4rem;
+    color: var(--text-bright);
+    line-height: 1.4;
+    margin: 2rem 0;
+  }
+
+  .dream-comparison {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 2rem;
+    margin-top: 1rem;
+  }
+
+  .dream-comparison-row {
+    display: grid;
+    grid-template-columns: auto 1fr 1fr;
+    gap: 1.5rem;
+    align-items: baseline;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .dream-comparison-row:last-child { border-bottom: none; }
+
+  .dream-comparison-label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    min-width: 90px;
+  }
+
+  .dream-comparison-blender {
+    font-family: var(--serif);
+    color: var(--text-mid);
+    font-style: italic;
+  }
+
+  .dream-comparison-elos {
+    font-family: var(--serif);
+    color: var(--accent);
+  }
+
+  /* MOCKUP */
+  .mockup-container {
+    margin-top: 2rem;
+    padding: 2rem;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    max-width: 1400px;
+  }
+
+  .mockup-window {
+    background: var(--bg-deep);
+    border: 1px solid var(--line-bright);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  }
+
+  .mockup-titlebar {
+    background: linear-gradient(to bottom, #1a1f2e, #131826);
+    padding: 0.6rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .mockup-titlebar-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--text-deepdim);
+  }
+  .mockup-titlebar-dot.red    { background: #ff6052; }
+  .mockup-titlebar-dot.yellow { background: #f5c869; }
+  .mockup-titlebar-dot.green  { background: #6dd49e; }
+
+  .mockup-titlebar-title {
+    margin-left: 1rem;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--text-mid);
+  }
+
+  .mockup-body {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    min-height: 480px;
+  }
+
+  /* Viewport (left) */
+  .mockup-viewport {
+    background:
+      radial-gradient(ellipse 70% 50% at center, rgba(106,182,224,0.08), transparent 70%),
+      linear-gradient(180deg, #0a1525 0%, #0d1828 40%, #0f1a30 100%);
+    position: relative;
+    overflow: hidden;
+    border-right: 1px solid var(--line);
+  }
+
+  .mockup-grid-floor {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(106,182,224,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(106,182,224,0.06) 1px, transparent 1px);
+    background-size: 30px 30px;
+    transform: perspective(400px) rotateX(60deg) translateY(50px);
+    transform-origin: center bottom;
+  }
+
+  .mockup-viewport-toolbar {
+    position: relative;
+    z-index: 2;
+    padding: 0.6rem 1rem;
+    display: flex;
+    gap: 1.5rem;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--text-mid);
+    letter-spacing: 0.15em;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .mockup-viewport-toolbar span.active { color: var(--accent); }
+
+  .mockup-entities {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  .mockup-entity {
+    position: absolute;
+    width: 12px; height: 12px;
+    border: 2px solid;
+    border-radius: 2px;
+    background: var(--bg-deep);
+  }
+
+  .mockup-entity.spawn { border-color: var(--green); }
+  .mockup-entity.ai    { border-color: var(--red); border-radius: 50%; }
+  .mockup-entity.trigger { border-color: var(--yellow); border-radius: 50%; width: 16px; height: 16px; opacity: 0.6; }
+
+  .mockup-entity-label {
+    position: absolute;
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    color: var(--text-mid);
+    letter-spacing: 0.1em;
+    transform: translateY(-18px);
+    white-space: nowrap;
+  }
+
+  /* Atmosphere */
+  .mockup-fog {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 60%;
+    background: linear-gradient(180deg, transparent, rgba(180,200,220,0.15));
+    pointer-events: none;
+  }
+
+  .mockup-tod-indicator {
+    position: absolute;
+    top: 60px; left: 20px;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    z-index: 3;
+  }
+
+  /* Chat panel (right) */
+  .mockup-chat {
+    background: var(--bg-mid);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mockup-chat-header {
+    padding: 1rem;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .chat-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 6px var(--green);
+  }
+
+  .mockup-chat-messages {
+    flex: 1;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    overflow-y: auto;
+    font-family: var(--sans);
+    font-size: 0.85rem;
+  }
+
+  .chat-msg { line-height: 1.4; }
+  .chat-msg-user { color: var(--text-bright); }
+  .chat-msg-user::before {
+    content: "PAUL ";
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    color: var(--text-dim);
+    letter-spacing: 0.2em;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .chat-msg-ai { color: var(--text-mid); }
+  .chat-msg-ai::before {
+    content: "✦ ELOS ";
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .chat-msg-applied {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--green);
+    letter-spacing: 0.05em;
+    background: rgba(109,212,158,0.05);
+    border-left: 2px solid var(--green);
+    padding: 0.4rem 0.7rem;
+  }
+
+  .mockup-chat-input {
+    padding: 1rem;
+    border-top: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--bg-card);
+  }
+
+  .mockup-chat-input-field {
+    flex: 1;
+    background: var(--bg-deep);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 0.5rem 0.8rem;
+    color: var(--text-mid);
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    font-style: italic;
+  }
+
+  .mockup-chat-input-cursor {
+    display: inline-block;
+    width: 1px;
+    height: 0.9em;
+    background: var(--accent);
+    animation: blink 1s step-end infinite;
+    vertical-align: middle;
+    margin-left: 2px;
+  }
+
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+
+  /* ARCHITECTURE */
+  .arch-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    max-width: 1500px;
+  }
+
+  .arch-flow {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr) auto;
+    gap: 0.8rem;
+    align-items: stretch;
+  }
+
+  .arch-node {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 1.4rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+  }
+
+  .arch-node-num {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--accent);
+    letter-spacing: 0.3em;
+    margin-bottom: 0.6rem;
+  }
+
+  .arch-node-icon-svg {
+    width: 28px; height: 28px;
+    margin-bottom: 1rem;
+    color: var(--accent);
+  }
+
+  .arch-node-title {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+    color: var(--text-bright);
+  }
+
+  .arch-node-detail {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    line-height: 1.3;
+  }
+
+  .arch-arrow {
+    display: flex;
+    align-items: center;
+    color: var(--accent);
+    font-size: 1.4rem;
+    font-family: var(--mono);
+  }
+
+  .arch-latency {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .arch-latency-card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    padding: 1.5rem;
+    border-radius: 6px;
+  }
+
+  .arch-latency-tag {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--accent);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .arch-latency-num {
+    font-family: var(--serif);
+    font-size: 2.5rem;
+    color: var(--text-bright);
+    line-height: 1;
+    margin-bottom: 0.6rem;
+  }
+
+  .arch-latency-num .unit { color: var(--text-dim); font-size: 1.2rem; }
+
+  .arch-latency-detail {
+    font-size: 0.85rem;
+    color: var(--text-mid);
+    line-height: 1.4;
+  }
+
+  /* CAPABILITIES */
+  .cap-intro {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    color: var(--text-mid);
+    max-width: 800px;
+    margin-bottom: 3rem;
+  }
+
+  .cap-prompt-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+    margin-bottom: 3rem;
+  }
+
+  .cap-prompt {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 1.4rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    position: relative;
+  }
+
+  .cap-prompt::before {
+    content: "✦";
+    position: absolute;
+    top: 1.4rem;
+    right: 1.6rem;
+    color: var(--accent);
+    font-size: 0.9rem;
+    opacity: 0.6;
+  }
+
+  .cap-prompt-input {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    color: var(--text-bright);
+    font-style: italic;
+    line-height: 1.3;
+  }
+
+  .cap-prompt-input::before {
+    content: '"';
+    color: var(--accent);
+  }
+  .cap-prompt-input::after {
+    content: '"';
+    color: var(--accent);
+  }
+
+  .cap-prompt-applied {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--green);
+    letter-spacing: 0.05em;
+    line-height: 1.4;
+  }
+
+  .cap-prompt-applied span { color: var(--text-dim); }
+
+  .cap-numbers {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .cap-stat {
+    text-align: left;
+    border-left: 2px solid var(--accent);
+    padding-left: 1.2rem;
+  }
+
+  .cap-stat-num {
+    font-family: var(--serif);
+    font-size: 2.8rem;
+    color: var(--text-bright);
+    line-height: 1;
+  }
+
+  .cap-stat-num .unit { color: var(--accent); font-size: 1.4rem; }
+
+  .cap-stat-label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--text-mid);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-top: 0.4rem;
+  }
+
+  /* COMPARISON */
+  .comp-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    max-width: 1500px;
+  }
+
+  .comp-card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 2.5rem 2rem;
+    position: relative;
+  }
+
+  .comp-card.now::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: var(--text-dim);
+  }
+
+  .comp-card.s5::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: var(--accent);
+    box-shadow: 0 0 14px var(--accent);
+  }
+
+  .comp-card-tag {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .comp-card.now .comp-card-tag { color: var(--text-dim); }
+  .comp-card.s5 .comp-card-tag { color: var(--accent); }
+
+  .comp-card-title {
+    font-family: var(--serif);
+    font-size: 2rem;
+    color: var(--text-bright);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  .comp-card.now .comp-card-title { color: var(--text-mid); }
+
+  .comp-card-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.9rem;
+  }
+
+  .comp-card-row:last-child { border-bottom: none; }
+
+  .comp-card-row-label { color: var(--text-mid); }
+
+  .comp-card.now .comp-card-row-value { color: var(--text-mid); font-family: var(--mono); font-size: 0.8rem; }
+  .comp-card.s5 .comp-card-row-value { color: var(--accent); font-family: var(--mono); font-size: 0.8rem; }
+
+  /* BEYOND */
+  .beyond-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .beyond-card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 2rem 1.6rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .beyond-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+  }
+
+  .beyond-card.s6::before { background: var(--blue); }
+  .beyond-card.s7::before { background: var(--purple); }
+  .beyond-card.s8::before { background: var(--yellow); }
+
+  .beyond-card-phase {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+
+  .beyond-card-title {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    color: var(--text-bright);
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+
+  .beyond-card-desc {
+    font-size: 0.88rem;
+    color: var(--text-mid);
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+
+  .beyond-card-features {
+    list-style: none;
+    font-size: 0.8rem;
+    color: var(--text-mid);
+  }
+
+  .beyond-card-features li {
+    padding: 0.3rem 0;
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .beyond-card-features li::before {
+    content: "→";
+    color: var(--accent);
+  }
+
+  /* PRINT */
+  @media print {
+    body::before { display: none; }
+    .slide {
+      min-height: 100vh;
+      padding: 4vh 5vw;
+      page-break-after: always;
+      page-break-inside: avoid;
+    }
+    .cover { padding-top: 8vh; }
+    @page { size: A4 landscape; margin: 0; }
+    .brand-dot { animation: none; box-shadow: 0 0 4px var(--accent); }
+    .chat-dot { animation: none; }
+    .mockup-chat-input-cursor { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════
+     SLIDE 1 — COVER
+     ═══════════════════════════════════════════════════════ -->
+<section class="slide cover">
+  <span class="slide-num">01 / 06</span>
+  <span class="slide-tag">S5 · Final Vision</span>
+
+  <div class="brand-mark">
+    <span class="brand-dot"></span>
+    ELOS · 201_01 · S5 Treatment v1
+  </div>
+
+  <div class="cover-subtitle">END OF THE ROAD</div>
+
+  <h1 class="cover-title">
+    Wenn der Editor<br>
+    <span class="accent">mitdenkt.</span>
+  </h1>
+
+  <p class="cover-tagline">
+    Du sprichst zur Welt — und sie verändert sich vor deinen Augen.<br>
+    Cursor-Composer für Game-Missionen. Blender-MCP für Arma Reforger.<br>
+    Live, in-editor, ohne Reload.
+  </p>
+
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="label">Status</span>
+      <span class="value"><span class="vision-badge">S5 — Final Target</span></span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="label">ETA</span>
+      <span class="value">~2-4 Dev-Days post-S2</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="label">Inspiration</span>
+      <span class="value">Blender-MCP · Cursor Composer</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="label">Stand</span>
+      <span class="value">2026-05-21</span>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span>S5 Final Vision — ELOS Scenario Builder</span>
+    <span>github.com/paulfanger/201_01-MOD-ArmaReforger-Scenarios</span>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     SLIDE 2 — THE DREAM
+     ═══════════════════════════════════════════════════════ -->
+<section class="slide">
+  <span class="slide-tag">01 · The Dream</span>
+  <span class="slide-num">02 / 06</span>
+
+  <div class="dream-grid">
+    <div>
+      <h2 class="section-title">
+        Was Blender für 3D ist —<br>
+        <span class="accent">das hier für Missionen.</span>
+      </h2>
+
+      <div class="dream-prose">
+        <p>
+          Es gibt eine <strong>Blender-MCP-Integration</strong>, bei der Claude live in
+          Blender 3D-Welten baut. Du sagst: <em>"eine Spirale aus Glas, schwebend
+          in einer Waldlichtung"</em> — und siehst, wie die Geometrie vor dir entsteht.
+          Kein Klicken, kein Menü-Tunneling. Sprache, Vision, Wirkung.
+        </p>
+
+        <blockquote class="dream-quote">
+          "Mach den Nebel dichter. Phase 3 auf 5 Minuten kürzen. Spawn-Punkte um 200m
+          nach Süden verschieben."
+        </blockquote>
+
+        <p>
+          <strong>S5 macht dasselbe für Arma Reforger.</strong> Workbench-Editor offen,
+          Mission live im Viewport, Chat-Panel daneben. Du tippst auf Deutsch.
+          Innerhalb 1-2 Sekunden ändert sich die Welt vor deinen Augen.
+        </p>
+      </div>
+    </div>
+
+    <div>
+      <div class="dream-comparison">
+        <div class="dream-comparison-row">
+          <span class="dream-comparison-label">Inspiration</span>
+          <span class="dream-comparison-blender">Blender + MCP</span>
+          <span class="dream-comparison-elos">ELOS + Reforger</span>
+        </div>
+        <div class="dream-comparison-row">
+          <span class="dream-comparison-label">Editor</span>
+          <span class="dream-comparison-blender">Blender 4.x</span>
+          <span class="dream-comparison-elos">Reforger Workbench 1.6</span>
+        </div>
+        <div class="dream-comparison-row">
+          <span class="dream-comparison-label">Script-API</span>
+          <span class="dream-comparison-blender">Python (bpy)</span>
+          <span class="dream-comparison-elos">Enforce Script (WorldEditorAPI)</span>
+        </div>
+        <div class="dream-comparison-row">
+          <span class="dream-comparison-label">Domäne</span>
+          <span class="dream-comparison-blender">3D-Modelle, Szenen, Rendering</span>
+          <span class="dream-comparison-elos">PVE-Missionen, AI-Gruppen, Pacing</span>
+        </div>
+        <div class="dream-comparison-row">
+          <span class="dream-comparison-label">Iteration</span>
+          <span class="dream-comparison-blender">~1-3 Sek pro Prompt</span>
+          <span class="dream-comparison-elos">~1-2 Sek pro Prompt</span>
+        </div>
+        <div class="dream-comparison-row">
+          <span class="dream-comparison-label">Manual Edit</span>
+          <span class="dream-comparison-blender">jederzeit, parallel</span>
+          <span class="dream-comparison-elos">jederzeit, parallel</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span>S5 Final Vision — The Dream</span>
+    <span>02 / 06</span>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     SLIDE 3 — UI MOCKUP
+     ═══════════════════════════════════════════════════════ -->
+<section class="slide">
+  <span class="slide-tag">02 · UI Mockup</span>
+  <span class="slide-num">03 / 06</span>
+
+  <h2 class="section-title">
+    Die Oberfläche:<br>
+    <span class="accent">Welt + Chat. Mehr braucht's nicht.</span>
+  </h2>
+
+  <div class="mockup-container">
+    <div class="mockup-window">
+      <!-- Title bar -->
+      <div class="mockup-titlebar">
+        <div class="mockup-titlebar-dot red"></div>
+        <div class="mockup-titlebar-dot yellow"></div>
+        <div class="mockup-titlebar-dot green"></div>
+        <div class="mockup-titlebar-title">Arma Reforger Workbench · ai_night-recon-everon · S5 ELOS-Plugin aktiv</div>
+      </div>
+
+      <!-- Body: viewport + chat -->
+      <div class="mockup-body">
+
+        <!-- VIEWPORT (left) -->
+        <div class="mockup-viewport">
+          <div class="mockup-grid-floor"></div>
+          <div class="mockup-tod-indicator">⏵ TOD 02:30 · FOG_LIGHT · DAWN</div>
+
+          <div class="mockup-viewport-toolbar">
+            <span class="active">▸ World Editor</span>
+            <span>Script Editor</span>
+            <span>Resource Manager</span>
+            <span>Layers</span>
+          </div>
+
+          <div class="mockup-entities">
+            <!-- Spawn points (green) -->
+            <div class="mockup-entity spawn" style="left: 25%; top: 45%;">
+              <span class="mockup-entity-label">SP_US_01</span>
+            </div>
+            <div class="mockup-entity spawn" style="left: 30%; top: 52%;">
+              <span class="mockup-entity-label">SP_US_02</span>
+            </div>
+
+            <!-- AI groups (red circles) -->
+            <div class="mockup-entity ai" style="left: 60%; top: 35%;">
+              <span class="mockup-entity-label">AI_OPFOR_FIRE</span>
+            </div>
+            <div class="mockup-entity ai" style="left: 65%; top: 42%;">
+              <span class="mockup-entity-label">AI_OPFOR_MG</span>
+            </div>
+            <div class="mockup-entity ai" style="left: 70%; top: 55%;">
+              <span class="mockup-entity-label">AI_DEFENDERS</span>
+            </div>
+
+            <!-- Triggers (yellow) -->
+            <div class="mockup-entity trigger" style="left: 48%; top: 60%;">
+              <span class="mockup-entity-label">PHASE_2_TRIGGER</span>
+            </div>
+            <div class="mockup-entity trigger" style="left: 80%; top: 30%;">
+              <span class="mockup-entity-label">EXFIL_ZONE</span>
+            </div>
+          </div>
+
+          <div class="mockup-fog"></div>
+        </div>
+
+        <!-- CHAT (right) -->
+        <div class="mockup-chat">
+          <div class="mockup-chat-header">
+            <span class="chat-dot"></span>
+            ELOS · LIVE EDITOR
+          </div>
+
+          <div class="mockup-chat-messages">
+            <div class="chat-msg chat-msg-user">
+              Mach den Nebel dichter und Phase 3 kürzer
+            </div>
+            <div class="chat-msg chat-msg-applied">
+              ✓ weather.fog_density: 0.4 → 0.7<br>
+              ✓ phases.phase_3.duration_min: 8 → 5<br>
+              <span style="color: var(--text-dim)">applied in 1.4s · viewport updated</span>
+            </div>
+
+            <div class="chat-msg chat-msg-user">
+              Add ein MG-Team auf dem Hügel südlich
+            </div>
+            <div class="chat-msg chat-msg-applied">
+              ✓ entity_create: SCR_AIGroup "MG_OPFOR_HILL"<br>
+              ✓ coords: [2841, 412, -1893]<br>
+              ✓ patrol: defensive_overlook<br>
+              <span style="color: var(--text-dim)">applied in 1.8s</span>
+            </div>
+
+            <div class="chat-msg chat-msg-ai">
+              Done. Die neue MG-Stellung deckt den Süd-Approach.
+              Soll ich dafür auch einen Phase-2-Trigger setzen
+              (wenn Spieler in 300m Range → Alert)?
+            </div>
+
+            <div class="chat-msg chat-msg-user">
+              Ja, plus Cinematic-Slowmo wenn der Trigger feuert
+            </div>
+          </div>
+
+          <div class="mockup-chat-input">
+            <span style="color: var(--accent);">✦</span>
+            <div class="mockup-chat-input-field">
+              Mission revision...<span class="mockup-chat-input-cursor"></span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span>S5 Final Vision — UI Mockup</span>
+    <span>03 / 06</span>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     SLIDE 4 — ARCHITECTURE
+     ═══════════════════════════════════════════════════════ -->
+<section class="slide">
+  <span class="slide-tag">03 · Architecture</span>
+  <span class="slide-num">04 / 06</span>
+
+  <h2 class="section-title">
+    Wie es <span class="accent">funktioniert.</span>
+  </h2>
+
+  <div class="arch-layout">
+    <div class="arch-flow">
+      <!-- 1: Prompt -->
+      <div class="arch-node">
+        <div class="arch-node-num">01</div>
+        <svg class="arch-node-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M3 12c0-4.97 4.03-9 9-9s9 4.03 9 9-4.03 9-9 9c-1.5 0-2.9-.36-4.14-1L3 21l1.07-4.86A8.97 8.97 0 0 1 3 12z"/>
+          <line x1="8" y1="10" x2="16" y2="10"/>
+          <line x1="8" y1="14" x2="13" y2="14"/>
+        </svg>
+        <div class="arch-node-title">Chat Prompt</div>
+        <div class="arch-node-detail">Natural Language<br>Deutsch / English</div>
+      </div>
+
+      <div class="arch-arrow">→</div>
+
+      <!-- 2: Claude -->
+      <div class="arch-node">
+        <div class="arch-node-num">02</div>
+        <svg class="arch-node-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M12 6v6l4 2"/>
+        </svg>
+        <div class="arch-node-title">Claude Parse</div>
+        <div class="arch-node-detail">Sonnet 4.6<br>Intent → JSON-Patch</div>
+      </div>
+
+      <div class="arch-arrow">→</div>
+
+      <!-- 3: spec.json -->
+      <div class="arch-node">
+        <div class="arch-node-num">03</div>
+        <svg class="arch-node-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="9" y1="13" x2="15" y2="13"/>
+          <line x1="9" y1="17" x2="15" y2="17"/>
+        </svg>
+        <div class="arch-node-title">spec.json</div>
+        <div class="arch-node-detail">$profile:elos/<br>ai-spec.json</div>
+      </div>
+
+      <div class="arch-arrow">→</div>
+
+      <!-- 4: Plugin -->
+      <div class="arch-node">
+        <div class="arch-node-num">04</div>
+        <svg class="arch-node-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+          <polyline points="22 4 12 14.01 9 11.01"/>
+        </svg>
+        <div class="arch-node-title">Plugin</div>
+        <div class="arch-node-detail">AI_GeneratePlugin.c<br>WorldEditorAPI calls</div>
+      </div>
+
+      <div class="arch-arrow">→</div>
+
+      <!-- 5: Viewport -->
+      <div class="arch-node">
+        <div class="arch-node-num">05</div>
+        <svg class="arch-node-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="2" y="3" width="20" height="14" rx="2"/>
+          <line x1="8" y1="21" x2="16" y2="21"/>
+          <line x1="12" y1="17" x2="12" y2="21"/>
+        </svg>
+        <div class="arch-node-title">Live Viewport</div>
+        <div class="arch-node-detail">3D Editor<br>Render update</div>
+      </div>
+    </div>
+
+    <div class="arch-latency">
+      <div class="arch-latency-card">
+        <div class="arch-latency-tag">P50 Latency</div>
+        <div class="arch-latency-num">1.4 <span class="unit">sec</span></div>
+        <div class="arch-latency-detail">
+          Prompt → spec.json → file-watcher (chokidar) → Workbench reload-hotkey
+          → plugin reads spec → WorldEditorAPI applies ops → viewport repaint.
+        </div>
+      </div>
+      <div class="arch-latency-card">
+        <div class="arch-latency-tag">Op Coverage</div>
+        <div class="arch-latency-num">5 <span class="unit">types</span></div>
+        <div class="arch-latency-detail">
+          Attribute-edit · Entity-create · Entity-delete · Entity-move · Batch
+          (≥3 ops in one prompt). Auf Reforger-Vanilla + Workshop-Addons.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span>S5 Final Vision — Architecture</span>
+    <span>04 / 06</span>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     SLIDE 5 — CAPABILITIES (real prompts)
+     ═══════════════════════════════════════════════════════ -->
+<section class="slide">
+  <span class="slide-tag">04 · What You Can Do</span>
+  <span class="slide-num">05 / 06</span>
+
+  <h2 class="section-title">
+    Beispiel-Prompts<br>
+    <span class="accent">die einfach klappen.</span>
+  </h2>
+
+  <p class="cap-intro">
+    Jeder dieser Prompts wird live im Editor angewandt. Du sprichst,
+    siehst die Änderung, spielst sie an, gibst weiteren Prompt.
+  </p>
+
+  <div class="cap-prompt-list">
+    <div class="cap-prompt">
+      <div class="cap-prompt-input">Mach den Nebel dichter und die Stimmung dunkler</div>
+      <div class="cap-prompt-applied">
+        weather.fog_density: 0.4 → 0.7<br>
+        time_of_day.hour: 6 → 3<br>
+        <span>2 ops · 1.6s · 2 entities updated</span>
+      </div>
+    </div>
+
+    <div class="cap-prompt">
+      <div class="cap-prompt-input">Add zwei MG-Teams auf dem Hügel südlich</div>
+      <div class="cap-prompt-applied">
+        entity_create: SCR_AIGroup "MG_01" @ [2841, 412, -1893]<br>
+        entity_create: SCR_AIGroup "MG_02" @ [2870, 410, -1880]<br>
+        <span>2 ops · 2.1s · 2 entities created</span>
+      </div>
+    </div>
+
+    <div class="cap-prompt">
+      <div class="cap-prompt-input">Phase 3 auf 5 Minuten kürzen und Exfil weiter weg</div>
+      <div class="cap-prompt-applied">
+        phases.phase_3.duration_min: 8 → 5<br>
+        entity_move: EXFIL_ZONE +400m east<br>
+        <span>2 ops · 1.4s · 1 entity moved</span>
+      </div>
+    </div>
+
+    <div class="cap-prompt">
+      <div class="cap-prompt-input">Lösch alle Spawn-Punkte in der Killzone</div>
+      <div class="cap-prompt-applied">
+        entity_delete: SP_US_03 (in killzone)<br>
+        entity_delete: SP_US_04 (in killzone)<br>
+        <span>2 ops · 1.2s · 2 entities deleted</span>
+      </div>
+    </div>
+
+    <div class="cap-prompt">
+      <div class="cap-prompt-input">Mach's dramatischer — Sturm, mehr AI, engere Killzone</div>
+      <div class="cap-prompt-applied">
+        weather.preset: fog_light → storm_heavy<br>
+        entity_create: 3× AI patrol groups<br>
+        triggers.killzone.radius: 800 → 500<br>
+        <span>5 ops · 2.8s · 3 created, 2 updated</span>
+      </div>
+    </div>
+
+    <div class="cap-prompt">
+      <div class="cap-prompt-input">Move alle defender 200m nach norden, faction wechseln zu USSR</div>
+      <div class="cap-prompt-applied">
+        entity_batch_move: [3 entities] +200m north<br>
+        entity_batch_attr_edit: faction US → USSR<br>
+        <span>6 ops · 2.5s · 3 entities updated</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="cap-numbers">
+    <div class="cap-stat">
+      <div class="cap-stat-num">≤ 2 <span class="unit">sec</span></div>
+      <div class="cap-stat-label">P50 Latency</div>
+    </div>
+    <div class="cap-stat">
+      <div class="cap-stat-num">95 <span class="unit">%</span></div>
+      <div class="cap-stat-label">Reliability</div>
+    </div>
+    <div class="cap-stat">
+      <div class="cap-stat-num">50 <span class="unit">+</span></div>
+      <div class="cap-stat-label">Sequential Revisions</div>
+    </div>
+    <div class="cap-stat">
+      <div class="cap-stat-num">5 <span class="unit">/ 5</span></div>
+      <div class="cap-stat-label">Paraphrase Robust</div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span>S5 Final Vision — Capabilities</span>
+    <span>05 / 06</span>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     SLIDE 6 — BEYOND S5
+     ═══════════════════════════════════════════════════════ -->
+<section class="slide">
+  <span class="slide-tag">05 · Beyond S5</span>
+  <span class="slide-num">06 / 06</span>
+
+  <h2 class="section-title">
+    Was nach S5 noch <span class="accent">kommen kann.</span>
+  </h2>
+
+  <p class="cap-intro" style="margin-bottom: 2.5rem;">
+    S5 ist der Live-Editor. Aber es muss nicht da enden.
+    Hier sind die nächsten Ideen — wenn du sie willst, integriere ich sie in den Roadmap.
+  </p>
+
+  <div class="beyond-grid">
+    <div class="beyond-card s6">
+      <div class="beyond-card-phase">Phase 6 · Creative</div>
+      <div class="beyond-card-title">AI als Co-Designer</div>
+      <div class="beyond-card-desc">
+        Statt Claude nur deine Prompts umzusetzen, agiert er als kreativer Partner.
+        Du beschreibst die Stimmung — Claude schlägt 3 Varianten vor, du wählst.
+      </div>
+      <ul class="beyond-card-features">
+        <li>"Schlag mir 3 verschiedene Endings vor"</li>
+        <li>Mood-Boards aus Prompts</li>
+        <li>Balance-Audits ("zu schwer für 4 Spieler?")</li>
+        <li>Cinematic-Direction-Suggestions</li>
+      </ul>
+    </div>
+
+    <div class="beyond-card s7">
+      <div class="beyond-card-phase">Phase 7 · Workshop</div>
+      <div class="beyond-card-title">Steam Workshop Publish-Loop</div>
+      <div class="beyond-card-desc">
+        Eine fertige Mission ist ein Workshop-Upload weit entfernt von Spielern.
+        S7 macht das mit einem Prompt.
+      </div>
+      <ul class="beyond-card-features">
+        <li>"Publish mit Tags night/coop/sneaky"</li>
+        <li>Auto-generierte Preview-Images aus Editor-Screenshots</li>
+        <li>Changelog aus Revision-History</li>
+        <li>One-Prompt: idea → mission → workshop</li>
+      </ul>
+    </div>
+
+    <div class="beyond-card s8">
+      <div class="beyond-card-phase">Phase 8 · Multi-Mission</div>
+      <div class="beyond-card-title">Kampagnen-Generator</div>
+      <div class="beyond-card-desc">
+        S5 baut einzelne Missionen. S8 verkettet sie zu Story-Arcs mit
+        carry-over, persistent factions, dynamic difficulty.
+      </div>
+      <ul class="beyond-card-features">
+        <li>"Bau eine 5-Mission-Kampagne über Eden-Befreiung"</li>
+        <li>Mission-Outcome → next-Mission-State</li>
+        <li>Faction-Pressure-Model</li>
+        <li>Cross-Mission Easter-Eggs</li>
+      </ul>
+    </div>
+
+    <div class="beyond-card s6">
+      <div class="beyond-card-phase">Phase 9 · Voice</div>
+      <div class="beyond-card-title">Spoken Live-Edit</div>
+      <div class="beyond-card-desc">
+        Du sprichst (Whisper STT) — Mission ändert sich. Hands-free
+        creative session. Für Bett-Modus + Brainstorming.
+      </div>
+      <ul class="beyond-card-features">
+        <li>Whisper-Integration als Chat-Input</li>
+        <li>Voice-Activity-Detection</li>
+        <li>"Read back the changes" als TTS-Response</li>
+      </ul>
+    </div>
+
+    <div class="beyond-card s7">
+      <div class="beyond-card-phase">Phase 10 · Replay</div>
+      <div class="beyond-card-title">Mission-Recording &amp; Auto-Refine</div>
+      <div class="beyond-card-desc">
+        Aufzeichnung der Spielsession. Claude analysiert das Replay
+        und schlägt Mission-Verbesserungen vor.
+      </div>
+      <ul class="beyond-card-features">
+        <li>"Wo war es zu schwer? Wo zu leicht?"</li>
+        <li>Heatmaps aus Spieler-Bewegung</li>
+        <li>Auto-Balance-Tuning basierend auf Performance</li>
+      </ul>
+    </div>
+
+    <div class="beyond-card s8">
+      <div class="beyond-card-phase">Phase 11 · Multi-User</div>
+      <div class="beyond-card-title">Co-Design mit Mitspielern</div>
+      <div class="beyond-card-desc">
+        Mehrere User in einem Workbench-Session. Alle können Prompts geben.
+        Claude orchestriert + verhindert Konflikte.
+      </div>
+      <ul class="beyond-card-features">
+        <li>Shared session über Cloudflare Durable Objects</li>
+        <li>Per-User-Edit-History</li>
+        <li>Conflict-Resolution-Chat</li>
+        <li>"Was hat Ody gerade geändert?"</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span>S5 Final Vision — Beyond · End of Treatment</span>
+    <span>06 / 06</span>
+  </div>
+</section>
+
+</body>
+</html>
