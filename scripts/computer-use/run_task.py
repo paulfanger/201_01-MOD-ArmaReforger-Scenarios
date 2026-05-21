@@ -16,10 +16,15 @@ opus-4-6 per Anthropic).
 """
 
 import argparse
+import io
 import json
 import os
 import sys
 import time
+
+# Force UTF-8 stdout so emoji in Claude responses don't crash on Windows CP1252 console
+if hasattr(sys.stdout, "buffer"):
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 from datetime import datetime
 from pathlib import Path
 
