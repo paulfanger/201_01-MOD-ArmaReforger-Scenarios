@@ -1,0 +1,18 @@
+Open the Arma Reforger Workbench with the ELOS plugin addon and verify the plugin appears in the Plugins menu.
+
+Steps:
+1. Take a screenshot first.
+2. Close any existing Workbench windows if they are open.
+3. Open PowerShell (click taskbar PowerShell or Win+R → powershell).
+4. Type this command exactly and press Enter:
+   & "C:\Program Files (x86)\Steam\steamapps\common\Arma Reforger Tools\Workbench\ArmaReforgerWorkbenchSteamDiag.exe" "-gproj" "C:\Users\pfofa\Documents\my games\ArmaReforger\addons\elos-plugin\addon.gproj"
+5. Wait 35 seconds for Workbench to fully load.
+6. Take a screenshot.
+7. Click on the "Plugins" menu in the top menu bar of Workbench.
+8. Take a screenshot showing the Plugins menu.
+9. Look carefully for "AI Generate Mission" or "ELOS" in the menu list.
+10. Report exactly what menu items you see under Plugins.
+11. Close Workbench with Alt+F4.
+
+This time we are using the ELOS plugin addon.gproj (not the night-recon mission addon).
+Report: PASS if "AI Generate Mission" appears, FAIL if it does not.

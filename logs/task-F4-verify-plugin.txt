@@ -1,0 +1,20 @@
+Verify that the AI_GeneratePlugin appears in Workbench Plugins menu.
+
+First, take a screenshot to see the current desktop state.
+
+Then do these steps:
+1. Open PowerShell: press Win key, type "powershell", click Windows PowerShell in results.
+2. In PowerShell, paste and run this command:
+   & "C:\Program Files (x86)\Steam\steamapps\common\Arma Reforger Tools\Workbench\ArmaReforgerWorkbenchSteamDiag.exe" "-gproj" "C:\Users\pfofa\Documents\my games\ArmaReforger\addons\ai_night-recon-everon\addon.gproj"
+3. Wait 35 seconds for Workbench to fully load.
+4. Take a screenshot.
+5. In the Workbench window, look at the top menu bar for a "Plugins" menu item. Click on it.
+6. Take a screenshot showing the menu that opened.
+7. Look for "AI Generate Mission" or "ELOS" in the Plugins menu. Report what you see.
+8. Press Escape to close the menu.
+9. Close Workbench: click the X button on the Workbench window.
+
+Success = "AI Generate Mission" or "ELOS" entry appears in the Plugins menu.
+Failure = Plugins menu is empty or has no ELOS entry.
+
+Report your findings clearly.
