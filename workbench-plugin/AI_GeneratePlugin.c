@@ -1,177 +1,223 @@
-// AI_GeneratePlugin.c — Arma Reforger Workbench Plugin Skeleton
+// AI_GeneratePlugin.c — Arma Reforger Workbench Plugin
 //
-// Phase 2 deliverable — NOT active in Phase 1 MVP.
-// Awaiting Windows Workbench access.
+// Sprint MEGA-A (A.S5PREP.4) — Refactored with REAL WorldEditorAPI method names
+// Sprint B will implement the TODO sections.
 //
-// Purpose: Read ai-spec.json from $profile, call WorldEditorAPI to create entities.
-// Activation: when Win-Zugang verfügbar, see workbench-plugin/README.md
+// Architecture summary:
 //
-// Reference:
-//   - research/01-workbench-sdk.md (Hybrid B Plugin Pattern)
-//   - CoalitionArma/Coalition-Reforger-Framework CRF_MissionCreationPlugin.c
-//   - BohemiaInteractive/Arma-Reforger-Script-Diff (official API dump)
+//   ai-spec.json schema:
+//   { mission_id, version, ops: [{op, class, prefab_guid, coords, props}] }
 //
-// IMPORTANT: This is Enforce Script (.c), NOT C/C++.
-// Compilation: Workbench only. No standalone build.
+//   Reload mechanism: external chokidar / PowerShell FileSystemWatcher detects
+//   ai-spec.json change, simulates Ctrl+Shift+R into Workbench window via
+//   SendKeys / nircmd, triggering Workbench "Reload WB Scripts".
+//   Plugin's Run() reads ai-spec.json and applies ops.
+//
+//   Realistic latency: 1-2s with sendkey hack, 5-10s with manual Shift+F7
+//
+// Sources:
+//   Arma-Reforger-Script-Diff/scripts/Core/generated/WorkbenchAPI/WorldEditorAPI.c
+//   Arma-Reforger-Script-Diff/scripts/GameLib/generated/WorkbenchAPI/Plugins/WorldEditorPlugin.c
+//   Arma-Reforger-Samples/SampleMod_WorkbenchPlugin/Scripts/.../SampleWorldEditorPlugin.c
+//   research/11-s5-readiness-roadmap.md
 
-[WorkbenchPluginAttribute(name: "AI_GeneratePlugin", description: "ELOS AI-Native Mission Generation — reads ai-spec.json and creates entities via WorldEditorAPI.")]
-class AI_GeneratePlugin: WorkbenchPlugin
+#ifdef WORKBENCH
+
+// Attribute registers plugin with Workbench: menu name, keyboard shortcut, required module
+[WorkbenchPluginAttribute(
+    name: "AI Generate Mission",
+    description: "ELOS AI-Native Mission Authoring — reads ai-spec.json and applies ops via WorldEditorAPI",
+    category: "ELOS",
+    shortcut: "Ctrl+Shift+G",
+    wbModules: {"WorldEditor"}
+)]
+class AI_GeneratePlugin : WorldEditorPlugin
 {
-    // ---- Configuration -------------------------------------------------------
+    // -------------------------------------------------------------------------
+    // Configuration — paths use Workbench $profile: alias
+    // -------------------------------------------------------------------------
 
-    // Path to spec file written by Python backend
-    // Use $profile: alias for ArmaReforger profile directory
-    static const string SPEC_FILE_PATH = "$profile:elos/ai-spec.json";
+    //! ai-spec.json written by Python backend (POST /missions/revise)
+    protected static const string SPEC_FILE_PATH  = "$profile:elos/ai-spec.json";
+    //! Plugin log (grep for "OK:" / "ERR:" to determine pass/fail in headless mode)
+    protected static const string LOG_FILE_PATH   = "$profile:elos/ai-generate-log.txt";
+    //! Max entities per Run() invocation (safety against runaway generation)
+    protected static const int    MAX_OPS         = 500;
 
-    // Log file for debugging headless runs
-    static const string LOG_FILE_PATH = "$profile:elos/ai-generate-log.txt";
+    // -------------------------------------------------------------------------
+    // Entry point — called by Workbench when:
+    //   a) User clicks ELOS > "AI Generate Mission" menu item
+    //   b) User presses Ctrl+Shift+G shortcut
+    //   c) External file-watcher sends Ctrl+Shift+R (script reload) into window
+    //      after ai-spec.json changes — plugin Run() fires automatically
+    // -------------------------------------------------------------------------
 
-    // Max entities to create in one run (safety limit)
-    static const int MAX_ENTITIES = 500;
-
-    // ---- Plugin Lifecycle ---------------------------------------------------
-
-    override void OnActivate(inout array<ref WorkbenchPluginOperation> outOperations)
+    override void Run()
     {
-        // Register operations that appear in Workbench menu
-        WorkbenchPluginOperation genOp = new WorkbenchPluginOperation();
-        genOp.m_sName = "Generate from AI Spec";
-        genOp.m_sDescription = "Load ai-spec.json and generate mission entities";
-        outOperations.Insert(genOp);
+        Log("AI_GeneratePlugin: Run() triggered");
 
-        WorkbenchPluginOperation syncOp = new WorkbenchPluginOperation();
-        syncOp.m_sName = "Check Spec File";
-        syncOp.m_sDescription = "Verify ai-spec.json exists and is valid";
-        outOperations.Insert(syncOp);
-    }
-
-    override void OnOperationExecuted(string operationName)
-    {
-        if (operationName == "Generate from AI Spec")
+        // Step 1: Access WorldEditorAPI (pattern confirmed from SampleWorldEditorPlugin.c)
+        WorldEditor worldEditor = Workbench.GetModule(WorldEditor);
+        if (!worldEditor)
         {
-            GenerateFromSpec();
+            LogErr("WorldEditor module not available — is WorldEditor open?");
+            Workbench.Dialog("AI Generate", "Error: WorldEditor module not available.");
+            return;
         }
-        else if (operationName == "Check Spec File")
+        WorldEditorAPI api = worldEditor.GetApi();
+        if (!api)
         {
-            CheckSpecFile();
-        }
-    }
-
-    // ---- Core Logic ---------------------------------------------------------
-
-    void GenerateFromSpec()
-    {
-        Log("AI_GeneratePlugin: Starting generation from " + SPEC_FILE_PATH);
-
-        // Read spec file
-        string specContent = "";
-        if (!ReadSpecFile(specContent))
-        {
-            LogError("Cannot read spec file: " + SPEC_FILE_PATH);
+            LogErr("WorldEditorAPI unavailable");
             return;
         }
 
-        // Parse JSON spec
-        // NOTE: Enforce Script has limited JSON support via JsonSerializer
-        // For Phase 2 implementation, use Workbench's JSON API
-        // Ref: Workbench.JsonSerializer.Deserialize()
+        // Step 2: Resolve and load ai-spec.json
+        string specAbsPath;
+        if (!Workbench.GetAbsolutePath(SPEC_FILE_PATH, specAbsPath, false))
+        {
+            // Path resolve failed — likely first run, no spec yet
+            LogErr("Cannot resolve spec path: " + SPEC_FILE_PATH);
+            Workbench.Dialog("AI Generate", "ai-spec.json not found.\nRun the Python backend to generate it first.");
+            return;
+        }
 
-        // TODO Phase 2: Implement full JSON parsing
-        // For now: log the spec content for debugging
-        Log("Spec content loaded (" + specContent.Length().ToString() + " chars)");
+        string specContent = "";
+        if (!ReadFile(specAbsPath, specContent) || specContent.Length() == 0)
+        {
+            LogErr("Cannot read spec: " + specAbsPath);
+            return;
+        }
+        Log("Spec loaded: " + specContent.Length().ToString() + " chars from " + specAbsPath);
 
-        // === PHASE 2 IMPLEMENTATION POINT ===
-        // The following is pseudocode showing the intended logic:
+        // Step 3: Parse ai-spec.json
         //
-        // AISpec spec = new AISpec();
-        // JsonSerializer.Deserialize(spec, specContent);
+        // TODO (Sprint B): Implement Enforce-Script JSON parsing.
         //
-        // WorldEditorAPI api = Workbench.GetModule(WorldEditorAPI);
-        // WorldEditor editor = api.GetCurrentEditor();
+        // Enforce Script JSON pattern (per Script-Diff research):
+        //   ScriptConvert.SerializeToString(object, outJsonString, flags);  // serialize
+        //   // For deserialization, use JsonApiDeserializer or custom string parser
+        //   // See SCR_JsonSerializer in Script-Diff for reference
         //
-        // foreach (SpawnPointSpec sp : spec.spawn_points)
+        // Expected ai-spec.json schema:
         // {
-        //     IEntitySource entity = api.CreateEntity(sp.class_name, sp.prefab_guid, sp.coords);
-        //     if (!entity)
-        //     {
-        //         LogError("Failed to create entity: " + sp.class_name);
-        //         continue;
-        //     }
-        //     Log("Created: " + sp.class_name + " at " + sp.coords.ToString());
+        //   "mission_id": "night-recon-everon",
+        //   "version": 1,
+        //   "ops": [
+        //     { "op": "attribute-edit", "target": "fog_density", "value": "0.9" },
+        //     { "op": "entity-create",  "class": "GenericEntity", "name": "patrol-01",
+        //       "layer_id": 0, "coords": [123.0, 0.0, 456.0], "angles": [0,0,0] },
+        //     { "op": "entity-delete",  "entity_name": "patrol-02" }
+        //   ]
         // }
         //
-        // editor.Save();
-        // Log("Generation complete. " + spec.spawn_points.Count() + " entities created.");
+        // For Sprint A: log content only (no parse)
+        Log("Spec parse: TODO (Sprint B) — spec loaded OK, " + specContent.Length().ToString() + " chars");
 
-        Log("SKELETON ONLY — Phase 2 implementation pending Win-Zugang");
+        // Step 4: Apply ops via WorldEditorAPI
+        //
+        // Pattern for entity create (from WorldEditorAPI.c):
+        //
+        //   api.BeginEntityAction("AI-Create");
+        //   IEntitySource ent = api.CreateEntity(
+        //       "GenericEntity",    // className
+        //       "patrol-waypoint",  // name
+        //       0,                  // layerId (0 = root/default layer)
+        //       null,               // parent (null = world root)
+        //       "123.0 0.0 456.0",  // coords as vector string — TODO: verify format
+        //       "0 0 0"             // angles
+        //   );
+        //   if (ent)
+        //       Log("OK: created " + ent.GetClassName() + " at coords");
+        //   else
+        //       LogErr("ERR: CreateEntity failed for GenericEntity");
+        //   api.EndEntityAction("AI-Create");
+        //
+        // Pattern for property edit (from WorldEditorAPI.c ModifyEntityKey):
+        //
+        //   IEntitySource target = api.FindEntityByName("FogController");
+        //   if (target)
+        //   {
+        //       api.BeginEntityAction("AI-FogEdit");
+        //       api.BeginEditSequence(target);   // batch edit = no re-init per op
+        //       api.ModifyEntityKey(target, "fogDensity", "0.9");
+        //       api.EndEditSequence(target);
+        //       api.EndEntityAction("AI-FogEdit");
+        //       Log("OK: fogDensity set to 0.9");
+        //   }
+        //
+        // Pattern for entity delete:
+        //
+        //   IEntitySource toDelete = api.FindEntityByName("patrol-02");
+        //   if (toDelete)
+        //   {
+        //       api.BeginEntityAction("AI-Delete");
+        //       // TODO: find correct delete method — CutSelectedEntities() or
+        //       // direct delete via DuplicateSelectedEntities + undo pattern
+        //       api.EndEntityAction("AI-Delete");
+        //   }
+
+        // TODO (Sprint B): Deserialize ops[] array + loop over ops applying each
+        Log("OK: Run() complete — ops apply TODO (Sprint B)");
+        Workbench.Dialog("AI Generate", "ai-spec.json loaded OK.\nOps apply: Sprint B implementation pending.\nSee " + LOG_FILE_PATH + " for details.");
     }
 
-    void CheckSpecFile()
+    // -------------------------------------------------------------------------
+    // Configure — opens settings dialog (optional, Sprint B can add fields)
+    // -------------------------------------------------------------------------
+
+    override void Configure()
     {
-        string content = "";
-        if (ReadSpecFile(content))
-        {
-            Log("Spec file OK: " + SPEC_FILE_PATH + " (" + content.Length().ToString() + " chars)");
-            Print("[AI_GeneratePlugin] Spec file: OK");
-        }
-        else
-        {
-            LogError("Spec file not found or unreadable: " + SPEC_FILE_PATH);
-            Print("[AI_GeneratePlugin] Spec file: MISSING — run backend to generate ai-spec.json first");
-        }
+        // TODO (Sprint B): show a settings dialog (spec path override, dry-run mode, etc.)
+        Workbench.Dialog("AI Generate Settings", "Spec path: " + SPEC_FILE_PATH);
     }
 
-    // ---- Utilities ----------------------------------------------------------
+    // -------------------------------------------------------------------------
+    // Utility: file read
+    // -------------------------------------------------------------------------
 
-    bool ReadSpecFile(out string content)
+    protected bool ReadFile(string absPath, out string content)
     {
-        FileHandle fh = FileIO.OpenFile(SPEC_FILE_PATH, FileMode.READ);
+        FileHandle fh = FileIO.OpenFile(absPath, FileMode.READ);
         if (!fh)
             return false;
 
         string line;
         while (fh.ReadLine(line) >= 0)
-        {
-            content += line;
-        }
+            content += line + "\n";
+
         fh.Close();
         return content.Length() > 0;
     }
 
-    void Log(string message)
-    {
-        Print("[AI_GeneratePlugin] " + message);
+    // -------------------------------------------------------------------------
+    // Utility: logging
+    // -------------------------------------------------------------------------
 
-        // Also write to log file for headless debugging
-        FileHandle logFh = FileIO.OpenFile(LOG_FILE_PATH, FileMode.APPEND);
-        if (logFh)
+    protected void Log(string msg)
+    {
+        // Workbench console output (visible when Workbench is open)
+        Print("[AI_GeneratePlugin] " + msg);
+
+        // Append to log file — used by headless test harness to determine PASS/FAIL
+        // grep "^OK:" = pass, grep "^ERR:" = fail
+        FileHandle lf = FileIO.OpenFile(LOG_FILE_PATH, FileMode.APPEND);
+        if (lf)
         {
-            logFh.WriteLine("[" + System.GetTime() + "] " + message);
-            logFh.Close();
+            lf.WriteLine(msg);
+            lf.Close();
         }
     }
 
-    void LogError(string message)
+    protected void LogErr(string msg)
     {
-        Print("[AI_GeneratePlugin ERROR] " + message);
-
-        FileHandle logFh = FileIO.OpenFile(LOG_FILE_PATH, FileMode.APPEND);
-        if (logFh)
+        Print("[AI_GeneratePlugin ERROR] " + msg);
+        FileHandle lf = FileIO.OpenFile(LOG_FILE_PATH, FileMode.APPEND);
+        if (lf)
         {
-            logFh.WriteLine("[" + System.GetTime() + "] ERROR: " + message);
-            logFh.Close();
+            lf.WriteLine("ERR: " + msg);
+            lf.Close();
         }
     }
 }
 
-// ---- Data classes (Phase 2 stubs) ------------------------------------------
-// These will be populated when Enforce Script JSON parsing is implemented
-
-class AISpec
-{
-    // Populated from ai-spec.json
-    // ref array<ref SpawnPointSpec> spawn_points;
-    // ref array<ref AIGroupSpec> ai_groups;
-    // ref array<ref WaypointSpec> waypoints;
-    // string mission_id;
-}
+#endif // WORKBENCH

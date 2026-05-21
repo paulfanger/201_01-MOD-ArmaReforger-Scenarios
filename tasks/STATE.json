@@ -1,40 +1,24 @@
 ﻿{
-    "turn_id":  7,
+    "turn_id":  "MEGA-A",
     "owner":  "pc",
-    "phase":  "PHASE_D_RETURN",
-    "started_at":  "2026-05-21T00:17:31Z",
+    "phase":  "PHASE_C_EXEC",
+    "started_at":  "2026-05-21T04:24:43Z",
+    "cs_closed":  true,
+    "user_absent":  true,
+    "steam_running":  true,
     "pending_do":  [
 
                    ],
     "pending_exec":  [
-                         {
-                             "status":  "queued",
-                             "id":  "exec-1",
-                             "desc":  "Read reflection-turn-7-mac"
-                         },
-                         {
-                             "status":  "queued",
-                             "id":  "exec-2",
-                             "desc":  "Task 008 DRAFT review"
-                         },
-                         {
-                             "status":  "queued",
-                             "id":  "exec-3",
-                             "desc":  "CHEATSHEET Section 5 HW-discovery + append"
-                         },
-                         {
-                             "status":  "queued",
-                             "id":  "exec-4",
-                             "desc":  "Sanity re-validate night-recon (6th)"
-                         },
-                         {
-                             "status":  "queued",
-                             "id":  "exec-5",
-                             "desc":  "Audit + reflection + push"
-                         }
+                         "A.0",
+                         "A.S1",
+                         "A.S2",
+                         "A.S5PREP",
+                         "A.FINAL"
                      ],
     "loop_signals":  [
 
                      ],
-    "notes":  "CS parallel. NO GUI. Last CS-Edition before Phase 3."
+    "notes":  "MEGA-A autonomous sprint. User absent 5-7h. Goal: PC S5-ready for Sprint B.",
+    "ready_for_sprint_B":  false
 }
