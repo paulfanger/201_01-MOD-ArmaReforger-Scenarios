@@ -1,0 +1,239 @@
+---------------------------------------------
+Log C:\Users\pfofa\Desktop\000_Projekte\201_01-MOD-ArmaReforger-Scenarios\logs\plugin-validate-F4\console.log started at 2026-05-21 19:03:28 (2026-05-21 17:03:28 UTC)
+
+19:03:28.924   ENGINE       : FileSystem: Adding relative directory 'C:\Users\pfofa\Desktop\000_Projekte\201_01-MOD-ArmaReforger-Scenarios\logs\plugin-validate-F4' to filesystem under name logs
+19:03:28.924   ENGINE       : FileSystem: Adding relative directory 'C:\Users\pfofa\Documents\My Games\ArmaReforgerWorkbench\profile' to filesystem under name profile
+19:03:28.925  PROFILING    : Workbench Create Engine took: 8.169000 ms
+19:03:28.925  INIT         : INIT         : Workbench Init Engine
+19:03:28.925   ENGINE       : Initializing engine, version 187974
+19:03:28.925   ENGINE       : CLI Params: -gproj C:\Users\pfofa\Documents\my games\ArmaReforger\addons\elos-plugin\addon.gproj -validate -wbSilent -exitAfterInit -logsDir C:\Users\pfofa\Desktop\000_Projekte\201_01-MOD-ArmaReforger-Scenarios\logs\plugin-validate-F4 
+19:03:28.928   ENGINE       : Addon dirs:
+19:03:28.928    ENGINE       : dir: 'C:/Users/pfofa/Documents/my games/ArmaReforger/addons/elos-plugin/'
+19:03:28.928    ENGINE       : dir: './addons'
+19:03:28.928    ENGINE       : dir: 'C:/Users/pfofa/Documents/My Games/ArmaReforgerWorkbench/addons'
+19:03:28.928   ENGINE       : Available addons:
+19:03:28.928    ENGINE       : gproj: 'C:/Users/pfofa/Documents/my games/ArmaReforger/addons/elos-plugin/addon.gproj' guid: '{157C9C5C3309A618}'
+19:03:28.928    ENGINE       : gproj: 'C:/Users/pfofa/Documents/My Games/ArmaReforgerWorkbench/addons/_vanilla_core/core.gproj' guid: '5614BBCCBB55ED1C' (packed)
+19:03:28.928    ENGINE       : gproj: 'C:/Users/pfofa/Documents/My Games/ArmaReforgerWorkbench/addons/_vanilla_data/ArmaReforger.gproj' guid: '58D0FB3206B6F859' (packed)
+19:03:28.928   ENGINE       : FileSystem: Adding relative directory 'C:\Users\pfofa\Documents\my games\ArmaReforger\addons\elos-plugin' to filesystem under name ELOSPlugin
+19:03:29.018   ENGINE       : FileSystem: Adding package 'C:/Users/pfofa/Documents/My Games/ArmaReforgerWorkbench/addons/_vanilla_data/' (pak count: 14) to filesystem under name ArmaReforger
+19:03:29.021   ENGINE       : FileSystem: Adding package 'C:/Users/pfofa/Documents/My Games/ArmaReforgerWorkbench/addons/_vanilla_core/' (pak count: 2) to filesystem under name core
+19:03:29.021   ENGINE       : CPU vendor         : GenuineIntel
+19:03:29.021   ENGINE       : CPU type           : 1
+19:03:29.021   ENGINE       : CPU name           : Intel(R) Core(TM) i9-9900K CPU @ 3.60GHz
+19:03:29.021   ENGINE       : CPU cache info     : L1 [Inst 32KB, Data 32KB], L2 [Unif 256KB], L3 [Unif 16384KB]
+19:03:29.021   ENGINE       : CPU count logical  : 16
+19:03:29.021   ENGINE       : CPU count physical : 8
+19:03:29.021   ENGINE       : CPU features       : mmx sse sse2 sse3 ssse3 sse4_1 sse4_2 aesni pclmulqdq osxsave avx avx2
+19:03:29.021   RESOURCES    : ResourceDB: loading cache (id=0 name=ELOSPlugin path=C:\Users\pfofa\Documents\my games\ArmaReforger\addons\elos-plugin/resourceDatabase.rdb)
+19:03:29.021   RESOURCES    : ResourceDB: loading cache (id=1 name=ArmaReforger path=C:/Users/pfofa/Documents/My Games/ArmaReforgerWorkbench/addons/_vanilla_data/resourceDatabase.rdb)
+19:03:29.432   RESOURCES    : ResourceDB: loading cache (id=2 name=core path=C:/Users/pfofa/Documents/My Games/ArmaReforgerWorkbench/addons/_vanilla_core/resourceDatabase.rdb)
+19:03:29.433   RESOURCES    : ResourceDB: loading cache (id=3 name=profile path=C:\Users\pfofa\Documents\My Games\ArmaReforgerWorkbench\profile/resourceDatabase.rdb)
+19:03:29.433   RESOURCES    : ResourceDB: loading cache (id=4 name=logs path=C:\Users\pfofa\Desktop\000_Projekte\201_01-MOD-ArmaReforger-Scenarios\logs\plugin-validate-F4/resourceDatabase.rdb)
+19:03:29.573   RESOURCES    : RESOURCES    : ResourceDB: full scan
+19:03:29.577    RESOURCES    : RESOURCES    : scanning...
+19:03:29.577     RESOURCES    : RESOURCES    : scanning @"ELOSPlugin"
+19:03:29.577     RESOURCES    : RESOURCES    : scanning @"ArmaReforger"
+19:03:29.683     RESOURCES    : RESOURCES    : scanning @"core"
+19:03:29.685     RESOURCES    : RESOURCES    : scanning @"profile"
+19:03:29.686     RESOURCES    : RESOURCES    : scanning @"logs"
+19:03:29.686    RESOURCES    : RESOURCES    : processing meta-files...
+19:03:29.734    RESOURCES    : RESOURCES    : processing files...
+19:03:29.736 INIT         : Workbench startup
+19:03:29.736  INIT         : Workbench Init Engine
+19:03:29.736   RESOURCES    : ResourceDB: full scan
+19:03:29.736    RESOURCES    : processing files...
+19:03:29.736     RESOURCES (W): resource not registered: @"$profile:elos/ai-spec.json". Setting null GUID
+19:03:29.736     RESOURCES (W): resource not registered: @"$profile:elos/spec.json". Setting null GUID
+19:03:29.736    RESOURCES    : RESOURCES    : processing folders...
+19:03:29.740    RESOURCES    : RESOURCES    : creating GUID-item mapping...
+19:03:29.741    RESOURCES    : creating GUID-item mapping...
+19:03:29.741     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Sounds/Music/KS/Samples/MU_Respawn_02.snd" and @"$ArmaReforger:Sounds/Music/KS/Samples/MU_KS_Respawn_02.snd"
+19:03:29.745     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Sounds/Music/KS/Samples/MU_KS_Death_02.snd" and @"$ArmaReforger:Sounds/Music/KS/Samples/MU_Death_02.snd"
+19:03:29.745     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Tasks/EvacuateTask.et" and @"$ArmaReforger:Prefabs/Systems/Tasks/EvacuateTask.et"
+19:03:29.746     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Tasks/NeutralizeTask.et" and @"$ArmaReforger:Prefabs/Systems/Tasks/NeutralizeTask.et"
+19:03:29.746     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Sounds/Music/Samples/MU_Respawn_01.snd" and @"$ArmaReforger:Sounds/Music/Samples/MU_KS_Respawn_01.snd"
+19:03:29.747     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Sounds/Music/Samples/MU_KS_Coast_01.snd" and @"$ArmaReforger:Sounds/Music/Samples/MU_Coast_01.snd"
+19:03:29.747     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Systems/Tasks/SupportEntities/BaseTaskSupportEntity.et" and @"$ArmaReforger:Prefabs/Tasks/SupportEntities/BaseTaskSupportEntity.et"
+19:03:29.747     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Tasks/SupportEntities/TriggerTaskSupportEntity.et" and @"$ArmaReforger:Prefabs/Systems/Tasks/SupportEntities/TriggerTaskSupportEntity.et"
+19:03:29.747     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Systems/Tasks/RequestedTask.et" and @"$ArmaReforger:Prefabs/Tasks/RequestedTask.et"
+19:03:29.749     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Tasks/MoveTask.et" and @"$ArmaReforger:Prefabs/Systems/Tasks/MoveTask.et"
+19:03:29.749     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Tasks/SupportEntities/CampaignTaskSupportEntity.et" and @"$ArmaReforger:Prefabs/Systems/Tasks/SupportEntities/CampaignTaskSupportEntity.et"
+19:03:29.749     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Systems/Tasks/BaseTriggerTask.et" and @"$ArmaReforger:Prefabs/Tasks/BaseTriggerTask.et"
+19:03:29.750     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Systems/Tasks/DefendTask.et" and @"$ArmaReforger:Prefabs/Tasks/DefendTask.et"
+19:03:29.751     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Tasks/CampaignDefendTask.et" and @"$ArmaReforger:Prefabs/Systems/Tasks/CampaignDefendTask.et"
+19:03:29.751     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:UI/Imagesets/Tasks/Task_Icons.imageset" and @"$ArmaReforger:UI/Imagesets/Tasks/Task-Icons.imageset"
+19:03:29.751     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Sounds/Music/KS/Samples/MU_Map_Theme.snd" and @"$ArmaReforger:Sounds/Music/KS/Samples/MU_KS_Map_Theme.snd"
+19:03:29.751     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Systems/Tasks/SeizeTask.et" and @"$ArmaReforger:Prefabs/Tasks/SeizeTask.et"
+19:03:29.752     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Systems/ScenarioFramework/Triggers/ScenarioFrameworkCharacterTrigger.et" and @"$ArmaReforger:Prefabs/Systems/ScenarioFramework/Triggers/TriggerCharacterSlow.et"
+19:03:29.752     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Systems/Tasks/CampaignBuildingTask.et" and @"$ArmaReforger:Prefabs/Tasks/CampaignBuildingTask.et"
+19:03:29.752     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:anims/anm/player/locomotion/machineguns/IdleTurns/p_lmg_pne_idle_ras_breath.anm" and @"$ArmaReforger:anims/anm/player/locomotion/machineguns/p_lmg_pne_idle_ras_breath.anm"
+19:03:29.752     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Tasks/RefuelTask.et" and @"$ArmaReforger:Prefabs/Systems/Tasks/RefuelTask.et"
+19:03:29.752     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Tasks/SupportEntities/EditorTaskSupportEntity.et" and @"$ArmaReforger:Prefabs/Systems/Tasks/SupportEntities/EditorTaskSupportEntity.et"
+19:03:29.752     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Sounds/Music/KS/Samples/Layers/MU_Coast_01.snd" and @"$ArmaReforger:Sounds/Music/KS/Samples/Layers/MU_KS_Coast_01.snd"
+19:03:29.752     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Sounds/Music/KS/Samples/MU_Death.snd" and @"$ArmaReforger:Sounds/Music/KS/Samples/MU_KS_Death.snd"
+19:03:29.752     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Tasks/CustomTask.et" and @"$ArmaReforger:Prefabs/Systems/Tasks/CustomTask.et"
+19:03:29.753     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:anims/anm/player/locomotion/machineguns/p_lmg_pne_aimspace_body_ras.anm" and @"$ArmaReforger:anims/anm/player/locomotion/machineguns/IdleTurns/p_lmg_pne_aimspace_body_ras.anm"
+19:03:29.753     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Tasks/SupportEntities/CampaignBuildingTaskSupportEntity.et" and @"$ArmaReforger:Prefabs/Systems/Tasks/SupportEntities/CampaignBuildingTaskSupportEntity.et"
+19:03:29.754     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Sounds/Music/KS/Samples/MU_KS_Respawn_01.snd" and @"$ArmaReforger:Sounds/Music/KS/Samples/MU_Respawn_01.snd"
+19:03:29.754     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Systems/Tasks/CampaignTask.et" and @"$ArmaReforger:Prefabs/Tasks/CampaignTask.et"
+19:03:29.754     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Tasks/TransportTask.et" and @"$ArmaReforger:Prefabs/Systems/Tasks/TransportTask.et"
+19:03:29.755    RESOURCES    : RESOURCES    : building tree...
+19:03:29.795   PROFILING    : ResourceDB: full scan took: 221.996300 ms
+19:03:29.797   RESOURCES    : ResourceDB: saving cache (id=0 name=ELOSPlugin path=C:\Users\pfofa\Documents\my games\ArmaReforger\addons\elos-plugin/resourceDatabase.rdb)
+19:03:29.798   RESOURCES    : ResourceDB: written 329/329 bytes
+19:03:29.798   RESOURCES    : ResourceDB: cache successfully saved
+19:03:29.798   RESOURCES    : ResourceDB: saving cache (id=3 name=profile path=C:\Users\pfofa\Documents\My Games\ArmaReforgerWorkbench\profile/resourceDatabase.rdb)
+19:03:29.799   RESOURCES    : ResourceDB: written 263/263 bytes
+19:03:29.799   RESOURCES    : ResourceDB: cache successfully saved
+19:03:29.799   RESOURCES    : ResourceDB: saving cache (id=4 name=logs path=C:\Users\pfofa\Desktop\000_Projekte\201_01-MOD-ArmaReforger-Scenarios\logs\plugin-validate-F4/resourceDatabase.rdb)
+19:03:29.800   RESOURCES    : ResourceDB: written 171/171 bytes
+19:03:29.800   RESOURCES    : ResourceDB: cache successfully saved
+19:03:29.801   ENGINE       : GameProject load
+19:03:29.801    ENGINE       : Loaded addons:
+19:03:29.801     ENGINE       : gproj: 'C:/Users/pfofa/Documents/My Games/ArmaReforgerWorkbench/addons/_vanilla_core/core.gproj' guid: '5614BBCCBB55ED1C'
+19:03:29.801     ENGINE       : gproj: 'C:/Users/pfofa/Documents/My Games/ArmaReforgerWorkbench/addons/_vanilla_data/ArmaReforger.gproj' guid: '58D0FB3206B6F859'
+19:03:29.801     ENGINE       : gproj: 'C:/Users/pfofa/Documents/my games/ArmaReforger/addons/elos-plugin/addon.gproj' guid: '{157C9C5C3309A618}'
+19:03:29.802   ENGINE       : Loading custom engine user config '$profile:.save/app1874910_user76561198041204253/settings/ReforgerEngineSettings.conf'
+19:03:29.802   ENGINE       : No Enfusion settings file loaded. Continuing with defaults
+19:03:29.833   RENDER       : (OK) Adapter 'AMD Radeon RX 5700 XT' supports feature level 12_0
+19:03:29.835   RENDER       : Basic screen setup:
+19:03:29.835   RENDER       :   Back buffer format	       : TEXFMT_R8G8B8A8_SRGB (29)
+19:03:29.835   RENDER       :   MSAA                      : none
+19:03:30.105   RENDER       : AMD AGS library initialized, version 6.1.0 x DLL 6.1.0
+19:03:30.105   RENDER       :   Extendeded AMD info for AMD Radeon RX 5700 XT (primary device)
+19:03:30.105   RENDER       :   * architecture RDNA, 40 CUs, 20 WGPs (for RDNA), 64 ROPs
+19:03:30.105   RENDER       :   * core clocks 1815 MHz, memory 1750 MHz
+19:03:30.105   RENDER       :   * TFlops 9.3, memory bandwidth (437.5 GB/s)
+19:03:30.105   RENDER       : AMD AGS correctly initialized
+19:03:30.105   RENDER       : Driver for AMD Radeon RX 5700 XT is from 3.3.2026 (2 months, 21 days old)
+19:03:30.105   RENDER       : GPU_ATI (0x1002) (AMD Radeon RX 5700 XT) with 1 GPU detected, VRAM 8151MB (fast 0MB), shared 32736MB, driver version 25.10.43.05-260303a-198974C-AMD-Software-Adrenalin-Edition
+19:03:30.105   RENDER       : Detected output devices:
+19:03:30.105   RENDER       :  * 1 device/s connected to AMD Radeon RX 5700 XT:
+19:03:30.105   RENDER       :    Generic PnP Monitor (\\.\DISPLAY1), 1920x1080 (offset 0x0), 59Hz
+19:03:30.105   RENDER       :   Concurrent frames limit 2
+19:03:30.205   RENDER       : DX12 device successfully created by AMD AGS library
+19:03:30.205   RENDER       :  * user markers supported
+19:03:30.205   RENDER       : Graphics device features
+19:03:30.205   RENDER       :  Needed:
+19:03:30.205   RENDER       :  * Highest supported shader model: 6.8 (6.0 needed)
+19:03:30.205   RENDER       :  Optional:
+19:03:30.205   RENDER       :  * Allow tearing (VSYNC) : 1
+19:03:30.205   RENDER       :  * 16 bits : 1
+19:03:30.205   RENDER       :  * Resource heap tier : 3
+19:03:30.205   RENDER       :  * Persistent heaps (DRED) : 1
+19:03:30.205   RENDER       :  * DRED 1.2 is supported by compiler
+19:03:30.225   RENDER       : Main RT format setup.
+19:03:30.225   RENDER       :   Main RT format for quality 0	: TEXFMT_R11G11B10_FLOAT (26)
+19:03:30.225   RENDER       :   Main RT format for quality 1	: TEXFMT_R16G16B16A16_FLOAT (10)
+19:03:30.232   ENGINE       : Job system settings: coreCount=16, shortJobContextCount=16, shortJobThreadCount=15, longJobThreadCount=16
+19:03:30.280   PROFILING    : Settings changed took: 0.021200 ms
+19:03:30.319   AUDIO        : Lautsprecher (Realtek(R) Audio)
+19:03:30.323   RENDER       : RENDER       : Reload shaders
+19:03:30.323    RENDER       : Enfusion shader version 119
+19:03:30.323    INIT         : INIT         : ShaderListReload
+19:03:30.323    PROFILING    : ShaderListReload took: 0.001400 ms
+19:03:30.475    RENDER       : Loaded 3868 newer shader binaries
+19:03:30.475   PROFILING    : Reload shaders took: 152.224100 ms
+19:03:30.475   ENGINE       : Initializing inputs.
+19:03:30.481   NETWORK      : Initializing networking.
+19:03:30.481   NETWORK      : Using new GameRplScheduler.
+19:03:30.481   SCRIPT       : SCRIPT       : Initializing scripts
+19:03:30.481    SCRIPT       : SCRIPT       : ScriptProjectManager init
+19:03:30.483    PROFILING    : ScriptProjectManager init took: 0.631900 ms
+19:03:30.504   PROFILING    : Initializing scripts took: 22.225300 ms
+19:03:30.517   ENGINE       : Enfusion engine successfully created.
+19:03:30.517  PROFILING    : Workbench Init Engine took: 1590.949200 ms
+19:03:30.517  INIT         : INIT         : Workbench Create Game
+19:03:30.534   GUI          : Using default language (en_us)
+19:03:30.534   GUI          : Loading 'en_us' localization file.
+19:03:30.534   INIT         : INIT         : Loading StringTable
+19:03:30.553   PROFILING    : Loading StringTable took: 20.696900 ms
+19:03:30.553   SCRIPT       : SCRIPT       : Compiling GameLib scripts
+19:03:30.589    SCRIPT       : Module: Workbench; loaded 19x files; 37x classes; used 130/10485 kB (1%) of static memory; defines: "ENF_WB,WORKBENCH,PLATFORM_WINDOWS,ENABLE_DIAG,ENF_ENABLE_VHC_OVERRIDE,ENF_ENABLE_RPLCOMPONENT_IN_GAMECODE"; CRC32: 7d50b840
+19:03:30.589    SCRIPT       : Module: GameLib; loaded 382x files; 556x classes; used 692/2097 kB (32%) of static memory; defines: "ENF_WB,WORKBENCH,PLATFORM_WINDOWS,ENABLE_DIAG,ENF_ENABLE_VHC_OVERRIDE,ENF_ENABLE_RPLCOMPONENT_IN_GAMECODE"; CRC32: d0e6be82
+19:03:30.590   PROFILING    : Compiling GameLib scripts took: 36.212800 ms
+19:03:30.590   SCRIPT       : SCRIPT       : Compiling Game scripts
+19:03:31.071  INIT         : Workbench Create Game
+19:03:31.071   SCRIPT       : Compiling Game scripts
+19:03:31.071    SCRIPT    (W): @"scripts/Game/Network/ServerCommands/UploadSaveCommand.c,15": 'OnError' is obsolete: Use BackendCallback.SetOnError() instead.
+19:03:31.071    SCRIPT    (W): @"scripts/Game/Network/ServerCommands/UploadSaveCommand.c,22": 'OnSuccess' is obsolete: Use BackendCallback.SetOnSuccess() instead.
+19:03:31.071    SCRIPT    (W): @"scripts/Game/Network/ServerCommands/UploadSaveCommand.c,28": 'OnTimeout' is obsolete: Use BackendCallback.SetOnError() instead.
+19:03:31.322    SCRIPT    (W): @"scripts/Game/Campaign/SCR_PlayerProfileManagerComponent.c,114": 'PlayerRequest' is obsolete
+19:03:31.322    SCRIPT    (W): @"scripts/Game/Campaign/SCR_PlayerProfileManagerComponent.c,133": 'PlayerData' is obsolete
+19:03:31.325    SCRIPT    (W): @"scripts/Game/Character/Cameras/FirstPerson/CharacterCamera1stPersonUnconscious.c,56": 'GetBoneMatrix' is obsolete: Use GetAnimation().GetBoneMatrix() instead
+19:03:31.379    SCRIPT    (W): @"scripts/Game/DataCollection/PlayerData/SCR_PlayerData.c,210": 'PlayerData' is obsolete
+19:03:31.379    SCRIPT    (W): @"scripts/Game/DataCollection/PlayerData/SCR_PlayerData.c,222": 'IsAuthenticated' is obsolete: Use BackendAuthenticatorApi.IsAuthenticated() instead.
+19:03:31.379    SCRIPT    (W): @"scripts/Game/DataCollection/PlayerData/SCR_PlayerData.c,227": 'PlayerRequest' is obsolete
+19:03:31.379    SCRIPT    (W): @"scripts/Game/DataCollection/PlayerData/SCR_PlayerData.c,307": 'PlayerRequest' is obsolete
+19:03:31.391    SCRIPT    (W): @"scripts/Game/Editor/Components/EditableEntity/SCR_EditableEntityComponent.c,774": 'GetPlayerPlatformKind' is obsolete
+19:03:31.391    SCRIPT    (W): @"scripts/Game/Editor/Components/EditableEntity/SCR_EditableEntityComponent.c,775": 'GetPlayerPlatformId' is obsolete
+19:03:31.398    SCRIPT    (W): @"scripts/Game/Editor/Components/Editor/SCR_CameraEditorComponent.c,226": Possible variable name conflict 'editorManagerEntity'
+19:03:31.398    SCRIPT    (W): @"scripts/Game/Editor/Components/Editor/SCR_CameraEditorComponent.c,243": Possible variable name conflict 'editorManagerEntity'
+19:03:31.398    SCRIPT    (W): @"scripts/Game/Editor/Components/Editor/SCR_CameraEditorComponent.c,265": Possible variable name conflict 'editorManagerEntity'
+19:03:31.398    SCRIPT    (W): @"scripts/Game/Editor/Components/Editor/SCR_CameraEditorComponent.c,274": Possible variable name conflict 'editorManagerEntity'
+19:03:31.398    SCRIPT    (W): @"scripts/Game/Editor/Components/Editor/SCR_CameraEditorComponent.c,303": Possible variable name conflict 'editorManagerEntity'
+19:03:31.441    SCRIPT    (W): @"scripts/Game/Editor/UI/Components/Save/SCR_SaveEditorUIComponent.c,207": 'GetKeyByValue' is obsolete: Use SCR_MapHelper.GetKeyByValue
+19:03:31.441    SCRIPT    (W): @"scripts/Game/Editor/UI/Components/Save/SCR_SaveEditorUIComponent.c,214": 'GetKeyByValue' is obsolete: Use SCR_MapHelper.GetKeyByValue
+19:03:31.441    SCRIPT    (W): @"scripts/Game/Editor/UI/Components/Save/SCR_SaveEditorUIComponent.c,221": 'GetKeyByValue' is obsolete: Use SCR_MapHelper.GetKeyByValue
+19:03:31.458    SCRIPT    (W): @"scripts/Game/FactionCommander/Components/SCR_CampaignFactionCommanderPlayerComponent.c,253": 'GetKeyByValue' is obsolete: Use SCR_MapHelper.GetKeyByValue
+19:03:31.461    SCRIPT    (W): @"scripts/Game/FactionCommander/Components/SCR_FactionCommanderPlayerComponent.c,821": 'GetKeyByValue' is obsolete: Use SCR_MapHelper.GetKeyByValue
+19:03:31.518    SCRIPT    (W): @"scripts/Game/Helpers/SCR_ServicesStatusHelper.c,76": 'IsAuthenticated' is obsolete: Use BackendAuthenticatorApi.IsAuthenticated() instead.
+19:03:31.545    SCRIPT    (W): @"scripts/Game/Network/ServerCommands/UploadSaveCommand.c,17": 'OnError' is obsolete: Use BackendCallback.SetOnError() instead.
+19:03:31.545    SCRIPT    (W): @"scripts/Game/Network/ServerCommands/UploadSaveCommand.c,24": 'OnSuccess' is obsolete: Use BackendCallback.SetOnSuccess() instead.
+19:03:31.545    SCRIPT    (W): @"scripts/Game/Network/ServerCommands/UploadSaveCommand.c,30": 'OnTimeout' is obsolete: Use BackendCallback.SetOnError() instead.
+19:03:31.608    SCRIPT    (W): @"scripts/Game/UI/Components/MainMenu/SCR_AccountWidgetComponent.c,187": 'IsAuthenticated' is obsolete: Use BackendAuthenticatorApi.IsAuthenticated() instead.
+19:03:31.637    SCRIPT    (W): @"scripts/Game/UI/HUD/SCR_NearbyContextDisplay.c,455": 'GetKeyByValue' is obsolete: Use SCR_MapHelper.GetKeyByValue
+19:03:31.660    SCRIPT    (W): @"scripts/Game/UI/Menu/CareerMenuUI.c,133": 'IsAuthenticated' is obsolete: Use BackendAuthenticatorApi.IsAuthenticated() instead.
+19:03:31.660    SCRIPT    (W): @"scripts/Game/UI/Menu/CareerMenuUI.c,140": 'PlayerRequest' is obsolete
+19:03:31.700    SCRIPT    (W): @"scripts/Game/UI/Menu/SettingsMenu/SCR_SettingsManagerKeybindModule.c,433": Variable 'path' is not used
+19:03:31.725    SCRIPT    (W): @"scripts/Game/Utilities/SCR_PlayerIdentityUtils.c,20": 'GetPlayerIdentityId' is obsolete
+19:03:32.672    SCRIPT    (E): @"Scripts/WorkbenchGame/AI_GeneratePlugin.c,100": Broken expression (missing ';'?)
+19:03:32.672    SCRIPT    (E): @"Scripts/WorkbenchGame/AI_GeneratePlugin.c,100": Broken expression (missing ';'?)
+19:03:32.672    SCRIPT    (E): @"Scripts/WorkbenchGame/AI_GeneratePlugin.c,182": Invalid statement ':'
+19:03:32.672    SCRIPT    (E): @"Scripts/WorkbenchGame/AI_GeneratePlugin.c,24": Syntax error
+19:03:32.672    SCRIPT    (E): @"Scripts/WorkbenchGame/AI_GeneratePlugin.c,25": Syntax error
+19:03:32.672    SCRIPT    (E): Can't compile "WorkbenchGame" script module!
+19:03:32.690    SCRIPT       : Module: Game; loaded 5518x files; 10826x classes; used 31624/62914 kB (50%) of static memory; defines: "ENF_WB,WORKBENCH,PLATFORM_WINDOWS,ENABLE_DIAG,ENF_ENABLE_VHC_OVERRIDE,ENF_ENABLE_RPLCOMPONENT_IN_GAMECODE,ENABLE_BASE_DESTRUCTION,BUDGET_OPTIMIZATION_CHECKS,SHOW_DISCLAIMER,DEBUG,RESPAWN_TIMER_COMPONENT_DEBUG,GAME_MODE_DEBUG,DEBUG_CONFIGURABLE_DIALOGS,DISABLE_WEAPON_SWITCHING,SCRIPTED_AIM_MODIFIER_DEBUG"; CRC32: 4a7d1298
+19:03:32.723   PROFILING    : Compiling Game scripts took: 2133.135700 ms
+19:03:32.728   INIT         : Creating game instance(ArmaReforgerScripted), version 1.6.0.119 built 2026-01-23 18:14:39 UTC.
+19:03:32.751   ENGINE       : Game successfully created.
+19:03:32.751  PROFILING    : Workbench Create Game took: 2235.171800 ms
+19:03:32.753 PROFILING    : Workbench startup took: 3873.833000 ms
+19:03:32.754 RESOURCES    : ResourceDB: saving cache (id=0 name=ELOSPlugin path=C:\Users\pfofa\Documents\my games\ArmaReforger\addons\elos-plugin/resourceDatabase.rdb)
+19:03:32.756 RESOURCES    : ResourceDB: written 329/329 bytes
+19:03:32.756 RESOURCES    : ResourceDB: cache successfully saved
+19:03:32.756 RESOURCES    : ResourceDB: saving cache (id=3 name=profile path=C:\Users\pfofa\Documents\My Games\ArmaReforgerWorkbench\profile/resourceDatabase.rdb)
+19:03:32.757 RESOURCES    : ResourceDB: written 263/263 bytes
+19:03:32.757 RESOURCES    : ResourceDB: cache successfully saved
+19:03:32.757 RESOURCES    : ResourceDB: saving cache (id=4 name=logs path=C:\Users\pfofa\Desktop\000_Projekte\201_01-MOD-ArmaReforger-Scenarios\logs\plugin-validate-F4/resourceDatabase.rdb)
+19:03:32.758 RESOURCES    : ResourceDB: written 171/171 bytes
+19:03:32.758 RESOURCES    : ResourceDB: cache successfully saved
+19:03:32.777 ENGINE       : Game destroyed.
+19:03:32.778 ENGINE       : Game destroyed.
+19:03:32.798 RPL          : Pip::Destroy
+19:03:32.815 RESOURCES (E): ==== Resource leaks ====
+19:03:32.815 RESOURCES (E): UI/Fonts/RobotoCondensed/RobotoCondensed_Regular.edds   1
+19:03:32.815 RESOURCES (E): UI/Textures/Cursor/arrow_place_geometry_uiuc.edds   1
+19:03:32.815 RESOURCES (E): UI/Textures/Cursor/arrow_transform_geometry_uiuc.edds   1
+19:03:32.815 RESOURCES (E): UI/Textures/Cursor/cursors_atlas.edds   1
+19:03:32.815 RESOURCES (E): UI/Textures/Cursor/arrow_objective_uiuc.edds   1
+19:03:32.815 RESOURCES (E): UI/Textures/Cursor/arrow_waypoint_uiuc.edds   1
+19:03:32.815 RESOURCES (E): UI/Textures/Cursor/arrow_rotate_uiuc.edds   1
+19:03:32.815 RESOURCES (E): UI/Textures/Cursor/arrow_transform_snap_disabled_uiuc.edds   1
+19:03:32.815 RESOURCES (E): UI/Textures/Cursor/arrow_transform_snap_uiuc.edds   1
+19:03:32.815 RESOURCES (E): UI/Textures/Cursor/arrow_move_camera_uiuc.edds   1
+19:03:32.815 RESOURCES (E): UI/Textures/Cursor/arrow_wait_uiuc.edds   1
+19:03:32.815 RESOURCES (E): UI/Textures/Cursor/arrow_transform_disabled_uiuc.edds   1
+19:03:32.815 RESOURCES (E): UI/Textures/Cursor/arrow_transform_uiuc.edds   1
+19:03:32.815 RESOURCES (E): UI/Textures/Cursor/arrow_place_uiuc.edds   1
+19:03:32.815 RESOURCES (E): UI/Textures/Cursor/arrow_select_uiuc.edds   1
+19:03:32.815 RESOURCES (E): UI/Textures/Cursor/arrow_raw_uiuc.edds   1
+19:03:32.815 RESOURCES (E): UI/Imagesets/Panels/Shadow/panels_fadedBackground-16-100_atlas.edds   1
+19:03:32.815 RESOURCES (E): UI/Imagesets/Panels/Outline/panels_roundedOutline_atlas.edds   1
+19:03:32.815 RESOURCES (E): UI/Imagesets/Panels/panels_roundedCorners_atlas.edds   1
+19:03:32.815 RESOURCES (E): UI/Imagesets/WeaponInfo/panel_style_magazines.edds   1
+19:03:32.815 RESOURCES (E): UI/Imagesets/debugUI.edds   1
+19:03:32.815 RESOURCES (E): UI/Textures/WidgetLibrary/ScrollBarRectangles.edds   1
+19:03:32.815 RESOURCES (E): UI/Imagesets/default.edds   1
+19:03:32.815 RESOURCES (E): ui/fonts/robotomono_msdf_28.edds   1
