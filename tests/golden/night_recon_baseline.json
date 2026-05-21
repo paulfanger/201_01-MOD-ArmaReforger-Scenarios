@@ -1,0 +1,21 @@
+{
+  "_meta": {
+    "description": "Golden baseline for night-recon-everon narrative (no revisions applied)",
+    "mission_id": "night-recon-everon",
+    "created_at": "2026-05-21",
+    "sha256_short": "baseline"
+  },
+  "title": "Night Recon Everon",
+  "tagline": "Eine US-Recon-Einheit beschattet einen sowjetischen Vorposten in der Nacht.",
+  "factions": {
+    "player": {"id": "US"},
+    "ai": {"id": "USSR"}
+  },
+  "biome": {"map_id_ref": "everon"},
+  "tone": {"primary": "tense", "secondary": ["cinematic", "tactical"]},
+  "pacing": {
+    "phase_1": {"name": "Infiltration"},
+    "phase_2": {"name": "Reconnaissance"},
+    "phase_3": {"name": "Exfiltration"}
+  }
+}

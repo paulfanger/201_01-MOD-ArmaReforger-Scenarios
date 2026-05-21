@@ -45,13 +45,9 @@ async def health() -> dict:
     return {"status": "ok", "service": "reforger-mission-backend", "version": "0.1.0-mvp"}
 
 
-# Route modules will be wired in by Sonnet 4.6 after research/02-mission-format.md is final:
-#
-# from routes import catalog, missions, snapshots, exporters
-# app.include_router(catalog.router, prefix="/catalog", tags=["catalog"])
-# app.include_router(missions.router, prefix="/missions", tags=["missions"])
-# app.include_router(snapshots.router, prefix="/snapshots", tags=["snapshots"])
-# app.include_router(exporters.router, prefix="/exporters", tags=["exporters"])
+from backend.routes import revisions as revisions_router
+
+app.include_router(revisions_router.router, prefix="/missions", tags=["revisions"])
 
 
 if __name__ == "__main__":

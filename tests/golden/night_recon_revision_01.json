@@ -1,0 +1,22 @@
+{
+  "_meta": {
+    "description": "Revision trajectory: change tone from tense to intense, add fog palette hint",
+    "mission_id": "night-recon-everon",
+    "revision_number": 1,
+    "created_at": "2026-05-21"
+  },
+  "input_patch": [
+    {"op": "replace", "path": "/tone/primary", "value": "intense"},
+    {"op": "add", "path": "/tone/color_palette_hint", "value": ["dark_blue", "dense_fog", "cold_grey"]}
+  ],
+  "expected_output_delta": {
+    "/tone/primary": "intense",
+    "/tone/color_palette_hint": ["dark_blue", "dense_fog", "cold_grey"]
+  },
+  "invariants": {
+    "title": "Night Recon Everon",
+    "factions.player.id": "US",
+    "factions.ai.id": "USSR",
+    "biome.map_id_ref": "everon"
+  }
+}
