@@ -1,0 +1,96 @@
+---------------------------------------------
+Log C:\Users\pfofa\Desktop\000_Projekte\201_01-MOD-ArmaReforger-Scenarios\logs\pre-audit-validate-smoke\error.log started at 2026-05-21 03:30:30 (2026-05-21 01:30:30 UTC)
+
+03:30:30.811 INIT         : Workbench startup
+03:30:30.811  INIT         : Workbench Init Engine
+03:30:30.811   RESOURCES    : ResourceDB: full scan
+03:30:30.811    RESOURCES    : creating GUID-item mapping...
+03:30:30.811     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Sounds/Music/KS/Samples/MU_Respawn_02.snd" and @"$ArmaReforger:Sounds/Music/KS/Samples/MU_KS_Respawn_02.snd"
+03:30:30.814     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Sounds/Music/KS/Samples/MU_KS_Death_02.snd" and @"$ArmaReforger:Sounds/Music/KS/Samples/MU_Death_02.snd"
+03:30:30.815     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Tasks/EvacuateTask.et" and @"$ArmaReforger:Prefabs/Systems/Tasks/EvacuateTask.et"
+03:30:30.816     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Tasks/NeutralizeTask.et" and @"$ArmaReforger:Prefabs/Systems/Tasks/NeutralizeTask.et"
+03:30:30.816     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Sounds/Music/Samples/MU_Respawn_01.snd" and @"$ArmaReforger:Sounds/Music/Samples/MU_KS_Respawn_01.snd"
+03:30:30.816     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Sounds/Music/Samples/MU_KS_Coast_01.snd" and @"$ArmaReforger:Sounds/Music/Samples/MU_Coast_01.snd"
+03:30:30.816     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Systems/Tasks/SupportEntities/BaseTaskSupportEntity.et" and @"$ArmaReforger:Prefabs/Tasks/SupportEntities/BaseTaskSupportEntity.et"
+03:30:30.817     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Tasks/SupportEntities/TriggerTaskSupportEntity.et" and @"$ArmaReforger:Prefabs/Systems/Tasks/SupportEntities/TriggerTaskSupportEntity.et"
+03:30:30.817     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Systems/Tasks/RequestedTask.et" and @"$ArmaReforger:Prefabs/Tasks/RequestedTask.et"
+03:30:30.818     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Tasks/MoveTask.et" and @"$ArmaReforger:Prefabs/Systems/Tasks/MoveTask.et"
+03:30:30.819     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Tasks/SupportEntities/CampaignTaskSupportEntity.et" and @"$ArmaReforger:Prefabs/Systems/Tasks/SupportEntities/CampaignTaskSupportEntity.et"
+03:30:30.819     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Systems/Tasks/BaseTriggerTask.et" and @"$ArmaReforger:Prefabs/Tasks/BaseTriggerTask.et"
+03:30:30.819     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Systems/Tasks/DefendTask.et" and @"$ArmaReforger:Prefabs/Tasks/DefendTask.et"
+03:30:30.821     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Tasks/CampaignDefendTask.et" and @"$ArmaReforger:Prefabs/Systems/Tasks/CampaignDefendTask.et"
+03:30:30.821     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:UI/Imagesets/Tasks/Task_Icons.imageset" and @"$ArmaReforger:UI/Imagesets/Tasks/Task-Icons.imageset"
+03:30:30.821     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Sounds/Music/KS/Samples/MU_Map_Theme.snd" and @"$ArmaReforger:Sounds/Music/KS/Samples/MU_KS_Map_Theme.snd"
+03:30:30.821     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Systems/Tasks/SeizeTask.et" and @"$ArmaReforger:Prefabs/Tasks/SeizeTask.et"
+03:30:30.822     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Systems/ScenarioFramework/Triggers/ScenarioFrameworkCharacterTrigger.et" and @"$ArmaReforger:Prefabs/Systems/ScenarioFramework/Triggers/TriggerCharacterSlow.et"
+03:30:30.822     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Systems/Tasks/CampaignBuildingTask.et" and @"$ArmaReforger:Prefabs/Tasks/CampaignBuildingTask.et"
+03:30:30.822     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:anims/anm/player/locomotion/machineguns/IdleTurns/p_lmg_pne_idle_ras_breath.anm" and @"$ArmaReforger:anims/anm/player/locomotion/machineguns/p_lmg_pne_idle_ras_breath.anm"
+03:30:30.822     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Tasks/RefuelTask.et" and @"$ArmaReforger:Prefabs/Systems/Tasks/RefuelTask.et"
+03:30:30.822     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Tasks/SupportEntities/EditorTaskSupportEntity.et" and @"$ArmaReforger:Prefabs/Systems/Tasks/SupportEntities/EditorTaskSupportEntity.et"
+03:30:30.822     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Sounds/Music/KS/Samples/Layers/MU_Coast_01.snd" and @"$ArmaReforger:Sounds/Music/KS/Samples/Layers/MU_KS_Coast_01.snd"
+03:30:30.822     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Sounds/Music/KS/Samples/MU_Death.snd" and @"$ArmaReforger:Sounds/Music/KS/Samples/MU_KS_Death.snd"
+03:30:30.823     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Tasks/CustomTask.et" and @"$ArmaReforger:Prefabs/Systems/Tasks/CustomTask.et"
+03:30:30.823     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:anims/anm/player/locomotion/machineguns/p_lmg_pne_aimspace_body_ras.anm" and @"$ArmaReforger:anims/anm/player/locomotion/machineguns/IdleTurns/p_lmg_pne_aimspace_body_ras.anm"
+03:30:30.823     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Tasks/SupportEntities/CampaignBuildingTaskSupportEntity.et" and @"$ArmaReforger:Prefabs/Systems/Tasks/SupportEntities/CampaignBuildingTaskSupportEntity.et"
+03:30:30.824     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Sounds/Music/KS/Samples/MU_KS_Respawn_01.snd" and @"$ArmaReforger:Sounds/Music/KS/Samples/MU_Respawn_01.snd"
+03:30:30.824     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Systems/Tasks/CampaignTask.et" and @"$ArmaReforger:Prefabs/Tasks/CampaignTask.et"
+03:30:30.824     RESOURCES (W): ResourceDB: duplicate GUID found! @"$ArmaReforger:Prefabs/Tasks/TransportTask.et" and @"$ArmaReforger:Prefabs/Systems/Tasks/TransportTask.et"
+03:30:32.474  INIT         : Workbench Create Game
+03:30:32.474   SCRIPT       : Compiling Game scripts
+03:30:32.474    SCRIPT    (W): @"scripts/Game/Network/ServerCommands/UploadSaveCommand.c,15": 'OnError' is obsolete: Use BackendCallback.SetOnError() instead.
+03:30:32.474    SCRIPT    (W): @"scripts/Game/Network/ServerCommands/UploadSaveCommand.c,22": 'OnSuccess' is obsolete: Use BackendCallback.SetOnSuccess() instead.
+03:30:32.474    SCRIPT    (W): @"scripts/Game/Network/ServerCommands/UploadSaveCommand.c,28": 'OnTimeout' is obsolete: Use BackendCallback.SetOnError() instead.
+03:30:32.728    SCRIPT    (W): @"scripts/Game/Campaign/SCR_PlayerProfileManagerComponent.c,114": 'PlayerRequest' is obsolete
+03:30:32.728    SCRIPT    (W): @"scripts/Game/Campaign/SCR_PlayerProfileManagerComponent.c,133": 'PlayerData' is obsolete
+03:30:32.731    SCRIPT    (W): @"scripts/Game/Character/Cameras/FirstPerson/CharacterCamera1stPersonUnconscious.c,56": 'GetBoneMatrix' is obsolete: Use GetAnimation().GetBoneMatrix() instead
+03:30:32.788    SCRIPT    (W): @"scripts/Game/DataCollection/PlayerData/SCR_PlayerData.c,210": 'PlayerData' is obsolete
+03:30:32.788    SCRIPT    (W): @"scripts/Game/DataCollection/PlayerData/SCR_PlayerData.c,222": 'IsAuthenticated' is obsolete: Use BackendAuthenticatorApi.IsAuthenticated() instead.
+03:30:32.788    SCRIPT    (W): @"scripts/Game/DataCollection/PlayerData/SCR_PlayerData.c,227": 'PlayerRequest' is obsolete
+03:30:32.788    SCRIPT    (W): @"scripts/Game/DataCollection/PlayerData/SCR_PlayerData.c,307": 'PlayerRequest' is obsolete
+03:30:32.799    SCRIPT    (W): @"scripts/Game/Editor/Components/EditableEntity/SCR_EditableEntityComponent.c,774": 'GetPlayerPlatformKind' is obsolete
+03:30:32.800    SCRIPT    (W): @"scripts/Game/Editor/Components/EditableEntity/SCR_EditableEntityComponent.c,775": 'GetPlayerPlatformId' is obsolete
+03:30:32.806    SCRIPT    (W): @"scripts/Game/Editor/Components/Editor/SCR_CameraEditorComponent.c,226": Possible variable name conflict 'editorManagerEntity'
+03:30:32.806    SCRIPT    (W): @"scripts/Game/Editor/Components/Editor/SCR_CameraEditorComponent.c,243": Possible variable name conflict 'editorManagerEntity'
+03:30:32.806    SCRIPT    (W): @"scripts/Game/Editor/Components/Editor/SCR_CameraEditorComponent.c,265": Possible variable name conflict 'editorManagerEntity'
+03:30:32.806    SCRIPT    (W): @"scripts/Game/Editor/Components/Editor/SCR_CameraEditorComponent.c,274": Possible variable name conflict 'editorManagerEntity'
+03:30:32.806    SCRIPT    (W): @"scripts/Game/Editor/Components/Editor/SCR_CameraEditorComponent.c,303": Possible variable name conflict 'editorManagerEntity'
+03:30:32.851    SCRIPT    (W): @"scripts/Game/Editor/UI/Components/Save/SCR_SaveEditorUIComponent.c,207": 'GetKeyByValue' is obsolete: Use SCR_MapHelper.GetKeyByValue
+03:30:32.851    SCRIPT    (W): @"scripts/Game/Editor/UI/Components/Save/SCR_SaveEditorUIComponent.c,214": 'GetKeyByValue' is obsolete: Use SCR_MapHelper.GetKeyByValue
+03:30:32.851    SCRIPT    (W): @"scripts/Game/Editor/UI/Components/Save/SCR_SaveEditorUIComponent.c,221": 'GetKeyByValue' is obsolete: Use SCR_MapHelper.GetKeyByValue
+03:30:32.868    SCRIPT    (W): @"scripts/Game/FactionCommander/Components/SCR_CampaignFactionCommanderPlayerComponent.c,253": 'GetKeyByValue' is obsolete: Use SCR_MapHelper.GetKeyByValue
+03:30:32.870    SCRIPT    (W): @"scripts/Game/FactionCommander/Components/SCR_FactionCommanderPlayerComponent.c,821": 'GetKeyByValue' is obsolete: Use SCR_MapHelper.GetKeyByValue
+03:30:32.928    SCRIPT    (W): @"scripts/Game/Helpers/SCR_ServicesStatusHelper.c,76": 'IsAuthenticated' is obsolete: Use BackendAuthenticatorApi.IsAuthenticated() instead.
+03:30:32.956    SCRIPT    (W): @"scripts/Game/Network/ServerCommands/UploadSaveCommand.c,17": 'OnError' is obsolete: Use BackendCallback.SetOnError() instead.
+03:30:32.956    SCRIPT    (W): @"scripts/Game/Network/ServerCommands/UploadSaveCommand.c,24": 'OnSuccess' is obsolete: Use BackendCallback.SetOnSuccess() instead.
+03:30:32.956    SCRIPT    (W): @"scripts/Game/Network/ServerCommands/UploadSaveCommand.c,30": 'OnTimeout' is obsolete: Use BackendCallback.SetOnError() instead.
+03:30:33.018    SCRIPT    (W): @"scripts/Game/UI/Components/MainMenu/SCR_AccountWidgetComponent.c,187": 'IsAuthenticated' is obsolete: Use BackendAuthenticatorApi.IsAuthenticated() instead.
+03:30:33.046    SCRIPT    (W): @"scripts/Game/UI/HUD/SCR_NearbyContextDisplay.c,455": 'GetKeyByValue' is obsolete: Use SCR_MapHelper.GetKeyByValue
+03:30:33.069    SCRIPT    (W): @"scripts/Game/UI/Menu/CareerMenuUI.c,133": 'IsAuthenticated' is obsolete: Use BackendAuthenticatorApi.IsAuthenticated() instead.
+03:30:33.069    SCRIPT    (W): @"scripts/Game/UI/Menu/CareerMenuUI.c,140": 'PlayerRequest' is obsolete
+03:30:33.110    SCRIPT    (W): @"scripts/Game/UI/Menu/SettingsMenu/SCR_SettingsManagerKeybindModule.c,433": Variable 'path' is not used
+03:30:33.135    SCRIPT    (W): @"scripts/Game/Utilities/SCR_PlayerIdentityUtils.c,20": 'GetPlayerIdentityId' is obsolete
+03:30:34.297 RESOURCES (E): ==== Resource leaks ====
+03:30:34.297 RESOURCES (E): UI/Fonts/RobotoCondensed/RobotoCondensed_Regular.edds   1
+03:30:34.297 RESOURCES (E): UI/Textures/Cursor/arrow_place_geometry_uiuc.edds   1
+03:30:34.297 RESOURCES (E): UI/Textures/Cursor/arrow_transform_geometry_uiuc.edds   1
+03:30:34.297 RESOURCES (E): UI/Textures/Cursor/cursors_atlas.edds   1
+03:30:34.297 RESOURCES (E): UI/Textures/Cursor/arrow_objective_uiuc.edds   1
+03:30:34.297 RESOURCES (E): UI/Textures/Cursor/arrow_waypoint_uiuc.edds   1
+03:30:34.297 RESOURCES (E): UI/Textures/Cursor/arrow_rotate_uiuc.edds   1
+03:30:34.297 RESOURCES (E): UI/Textures/Cursor/arrow_transform_snap_disabled_uiuc.edds   1
+03:30:34.297 RESOURCES (E): UI/Textures/Cursor/arrow_transform_snap_uiuc.edds   1
+03:30:34.297 RESOURCES (E): UI/Textures/Cursor/arrow_move_camera_uiuc.edds   1
+03:30:34.297 RESOURCES (E): UI/Textures/Cursor/arrow_wait_uiuc.edds   1
+03:30:34.298 RESOURCES (E): UI/Textures/Cursor/arrow_transform_disabled_uiuc.edds   1
+03:30:34.298 RESOURCES (E): UI/Textures/Cursor/arrow_transform_uiuc.edds   1
+03:30:34.298 RESOURCES (E): UI/Textures/Cursor/arrow_place_uiuc.edds   1
+03:30:34.298 RESOURCES (E): UI/Textures/Cursor/arrow_select_uiuc.edds   1
+03:30:34.298 RESOURCES (E): UI/Textures/Cursor/arrow_raw_uiuc.edds   1
+03:30:34.298 RESOURCES (E): UI/Imagesets/Panels/Shadow/panels_fadedBackground-16-100_atlas.edds   1
+03:30:34.298 RESOURCES (E): UI/Imagesets/Panels/Outline/panels_roundedOutline_atlas.edds   1
+03:30:34.298 RESOURCES (E): UI/Imagesets/Panels/panels_roundedCorners_atlas.edds   1
+03:30:34.298 RESOURCES (E): UI/Imagesets/WeaponInfo/panel_style_magazines.edds   1
+03:30:34.298 RESOURCES (E): UI/Imagesets/debugUI.edds   1
+03:30:34.298 RESOURCES (E): UI/Textures/WidgetLibrary/ScrollBarRectangles.edds   1
+03:30:34.298 RESOURCES (E): UI/Imagesets/default.edds   1
+03:30:34.298 RESOURCES (E): ui/fonts/robotomono_msdf_28.edds   1
