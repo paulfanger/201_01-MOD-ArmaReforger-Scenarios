@@ -1,0 +1,17 @@
+# Python deps for ELOS Arma Reforger PC executor
+# Single source of truth: pc-requirements.toml
+# This file exists for: (a) pip install -r requirements.txt, (b) Auto Mode
+# classifier recognition as manifest-declared deps.
+# Per Postmortem #3 fix.
+
+anthropic>=0.42.0
+pyautogui
+mss
+pygetwindow
+pillow
+pydirectinput
+jsonpatch
+jsonschema
+pytest
+pywebview
+pyperclip

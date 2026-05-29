@@ -1,0 +1,178 @@
+# pc-requirements.toml
+# ─────────────────────────────────────────────────────────────────────────────
+# MANIFEST for autonomous sprints. Single source of truth for PC-side deps.
+#
+# WHY THIS EXISTS (Postmortem Failure #3):
+# Auto Mode classifier blocks `winget install X` / `pip install Y` unless the
+# package is "already declared in the repo's manifest" (per Anthropic's
+# auto-mode design doc). This file IS that manifest.
+#
+# RULE: Sprint plans NEVER install at runtime. They USE what this manifest
+# declared. New dep needed? Add to this file in user-present session BEFORE
+# next sprint, install via scripts/verify-deps.ps1.
+#
+# Last updated: 2026-05-30
+# ─────────────────────────────────────────────────────────────────────────────
+
+[meta]
+project = "ELOS Arma Reforger AI-Native Mission Authoring"
+target_os = "Windows 11"
+declared_by = "Mac-Opus pre-flight, 2026-05-30"
+classifier_purpose = "Per Auto-Mode Tier 1 allowlist carve-out for manifest-declared installs"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# WINGET — system tools
+# ─────────────────────────────────────────────────────────────────────────────
+# Install command: winget install --id <name> -e --accept-package-agreements --accept-source-agreements
+# Verify: run verify_cmd; expect 0 exit.
+
+[winget."Git.Git"]
+verify_cmd = "git --version"
+purpose = "Repo sync"
+
+[winget."GitHub.cli"]
+verify_cmd = "gh --version"
+purpose = "Clone Bohemia samples + Script-Diff (public repos, no auth needed)"
+
+[winget."Microsoft.VisualStudioCode"]
+verify_cmd = "code --version"
+purpose = "Enforce Script editing + manual code review"
+
+[winget."OpenJS.NodeJS.LTS"]
+verify_cmd = "node --version"
+purpose = "chokidar file-watcher CLI"
+
+[winget."Python.Python.3.12"]
+verify_cmd = "python --version"
+purpose = "Backend + chat window + Computer Use"
+
+[winget."Microsoft.PowerShell"]
+verify_cmd = "pwsh --version"
+purpose = "PowerShell 7 (better than 5.1 for scripts)"
+optional = true
+
+[winget."AutoHotkey.AutoHotkey"]
+verify_cmd = "where AutoHotkey"
+purpose = "DEPRECATED per Postmortem #5 - kept in manifest for legacy; new code uses CLI re-invocation, not AHK"
+deprecated = true
+
+[winget."NirSoft.NirCmd"]
+verify_cmd = "where nircmd"
+purpose = "Fallback Win32 commands (rare)"
+optional = true
+
+# ─────────────────────────────────────────────────────────────────────────────
+# NPM GLOBAL — JS CLI tools
+# ─────────────────────────────────────────────────────────────────────────────
+# Install: npm install -g <name>
+
+[npm_global."chokidar-cli"]
+verify_cmd = "chokidar --help"
+purpose = "File watcher with awaitWriteFinish debounce (per Postmortem #5 pattern)"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# PIP — Python packages (use requirements.txt for actual install)
+# ─────────────────────────────────────────────────────────────────────────────
+# Install: pip install --user -r requirements.txt
+# Verify: each must `python -c "import <name>"` cleanly.
+
+[pip.anthropic]
+version_min = "0.42.0"
+purpose = "Anthropic SDK for chat window + Computer Use"
+
+[pip.pyautogui]
+purpose = "Computer Use host adapter (mouse + screenshot)"
+
+[pip.mss]
+purpose = "Fast cross-platform screenshots for Computer Use"
+
+[pip.pygetwindow]
+purpose = "Window enumeration for Computer Use"
+
+[pip.pillow]
+purpose = "Image processing (screenshot resize to 1280x800)"
+
+[pip.pydirectinput]
+purpose = "DirectInput keystrokes for Reforger Game (NOT pyautogui — DX game)"
+
+[pip.jsonpatch]
+purpose = "RFC 6902 JSON-Patch for revisions API"
+
+[pip.jsonschema]
+purpose = "Validate revision specs"
+
+[pip.pytest]
+purpose = "Backend test runner"
+
+[pip.pywebview]
+purpose = "S6 Polish — HTML/CSS chat window replacing Tk"
+added_2026_05_30 = "for Stage B of S5+S6+S7 sprint"
+
+[pip.pyperclip]
+purpose = "Clipboard manipulation (paste prompts efficiently)"
+optional = true
+
+# ─────────────────────────────────────────────────────────────────────────────
+# VSCODE EXTENSIONS
+# ─────────────────────────────────────────────────────────────────────────────
+# Install: code --install-extension <id> --force
+
+[vscode."YouAreBamboozled.enforce-vscode-plugin"]
+purpose = "Enforce Script syntax + autocomplete"
+
+[vscode."YouAreBamboozled.enforce-script-syntax-highlighting"]
+purpose = "Enforce Script highlighting (minimal)"
+
+[vscode."ms-vscode.powershell"]
+purpose = "PowerShell language support"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# STEAM APPS — manual install only (no CLI install path)
+# ─────────────────────────────────────────────────────────────────────────────
+# Install via Steam client: Library → Tools/Games → install
+# Verify: check expected path exists.
+
+[steam."Arma Reforger"]
+app_id = 1874880
+verify_path = 'C:\Program Files (x86)\Steam\steamapps\common\Arma Reforger\ArmaReforgerSteam.exe'
+purpose = "Game client for Game Master mode testing"
+
+[steam."Arma Reforger Tools"]
+app_id = 1874910
+verify_path = 'C:\Program Files (x86)\Steam\steamapps\common\Arma Reforger Tools\Workbench\ArmaReforgerWorkbenchSteam.exe'
+purpose = "Workbench editor (S5 + S6 work happens here)"
+note = "AppID was 1874881 in pre-PSA assumption — DISCONFIRMED, real is 1874910"
+
+[steam."Arma Reforger Server"]
+verify_path = 'C:\Program Files (x86)\Steam\steamapps\common\Arma Reforger Server\ArmaReforgerServer.exe'
+purpose = "Local dedicated server (S2 had hopes for this, mostly deprecated)"
+optional = true
+
+# ─────────────────────────────────────────────────────────────────────────────
+# WORKBENCH ADDONS / JUNCTIONS — special bootstrap (not installable via pkg mgr)
+# ─────────────────────────────────────────────────────────────────────────────
+
+[junctions._vanilla_core]
+type = "directory_junction"
+source = 'C:\Program Files (x86)\Steam\steamapps\common\Arma Reforger\addons\core'
+target = '%USERPROFILE%\Documents\my games\ArmaReforgerWorkbench\addons\_vanilla_core'
+purpose = "Workbench-Diag finds vanilla deps for addon validation"
+script = "scripts/pc-setup.ps1"
+
+[junctions._vanilla_data]
+type = "directory_junction"
+source = 'C:\Program Files (x86)\Steam\steamapps\common\Arma Reforger\addons\data'
+target = '%USERPROFILE%\Documents\my games\ArmaReforgerWorkbench\addons\_vanilla_data'
+purpose = "Vanilla data dep"
+script = "scripts/pc-setup.ps1"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# ENVIRONMENT VARIABLES — user-scope
+# ─────────────────────────────────────────────────────────────────────────────
+
+[env.ANTHROPIC_API_KEY]
+scope = "User"
+purpose = "Anthropic SDK auth (chat window + Computer Use)"
+verify_cmd = '[System.Environment]::GetEnvironmentVariable("ANTHROPIC_API_KEY", "User") -ne $null'
+rotate_after_chat_disclosure = true
+last_rotated = "TBD — see MANUAL-GATES-CHECKLIST P3"
