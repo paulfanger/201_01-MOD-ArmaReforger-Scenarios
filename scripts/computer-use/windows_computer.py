@@ -49,19 +49,22 @@ SCREENSHOT_H = 800
 # personal windows (banking, passwords, email) during autonomous sprint.
 
 WHITELISTED_TITLES = [
-    "ArmaReforgerWorkbench",
-    "Enfusion Workbench",
-    "Steam",
+    "ArmaReforgerWorkbench",     # Any Workbench variant
+    "Enfusion Workbench",        # Workbench alt title
+    "Steam",                     # Steam client
     "Windows Terminal",
     "Windows PowerShell",
     "PowerShell",
     "Command Prompt",
     "cmd",
-    "Notepad",
+    "Notepad",                   # Smoke tests
     "File Explorer",
     "Explorer",
-    "ELOS",
-    "Claude",
+    "ELOS",                      # ELOS chat window
+    "Claude",                    # Claude Code itself
+    "Suche",                     # German Windows Search (navigation)
+    "Search",                    # English Windows Search
+    "Start",                     # Windows Start menu
 ]
 
 

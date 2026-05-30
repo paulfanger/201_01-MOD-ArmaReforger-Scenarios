@@ -22,6 +22,9 @@ WHITELISTED_TITLES = [
     "Explorer",
     "ELOS",                      # ELOS chat window
     "Claude",                    # Claude Code itself
+    "Suche",                     # German Windows Search (navigation tool)
+    "Search",                    # English Windows Search
+    "Start",                     # Windows Start menu
 ]
 ```
 
