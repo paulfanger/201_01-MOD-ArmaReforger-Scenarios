@@ -1,7 +1,7 @@
 # Mission Disclosure
 
 **Mission:** Fog Ambush Eden
-**Generated:** 2026-05-20
+**Generated:** 2026-05-21
 **System:** ELOS AI-Native Mission Authoring System
 
 ## AI Usage Disclosure
