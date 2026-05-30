@@ -65,6 +65,25 @@ WHITELISTED_TITLES = [
     "Suche",                     # German Windows Search (navigation)
     "Search",                    # English Windows Search
     "Start",                     # Windows Start menu
+    "World Editor",              # Workbench WorldEditor sub-module window
+    "Resource Manager",          # Workbench ResourceManager sub-module
+    "Script Editor",             # Workbench Script Editor
+    "Workbench",                 # Any Workbench sub-window
+    "Aktive Anwendungen",        # German Windows Task View
+    "Task View",                 # English Windows Task View
+    "Aufgabenansicht",           # Alternative German Task View
+    "Windows-Eingabe",           # Windows Input Experience
+    "TextInputHost",             # Text input host
+    "Script Authorization",      # Workbench script permission dialogs
+    "Authorization",             # Generic authorization dialogs from Workbench
+    "Validating",                # Workbench file validation dialogs
+    "nightreconeveron",          # Workbench world-specific dialogs
+    "$",                         # Any Workbench resource path dialog (starts with $)
+    "Worlds",                    # World-related dialogs
+    "Warning",                   # Warning dialogs (Workbench often shows these)
+    "Confirmation",              # Confirmation dialogs
+    "Question",                  # Workbench question dialogs
+    "File",                      # File operation dialogs
 ]
 
 
@@ -90,6 +109,11 @@ def _check_whitelist(action_name: str) -> None:
     Only enforced for click/key/type actions — not for screenshot/wait/list_windows.
     """
     title = _get_active_window_title()
+
+    # Empty title = desktop, taskbar, thumbnail popup, or shell — allow for navigation
+    if not title.strip():
+        return
+
     for allowed in WHITELISTED_TITLES:
         if allowed.lower() in title.lower():
             return

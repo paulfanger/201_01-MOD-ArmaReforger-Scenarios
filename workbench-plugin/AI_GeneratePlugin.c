@@ -1,85 +1,186 @@
 // AI_GeneratePlugin.c — ELOS Live Mission Editor Plugin
-// Sprint FINAL-S5-MAXED (F.3) — Full implementation with 5 op-types
+// Sprint STAGE-A (S5 Close) — Refactored to documented Bohemia RunCommandline() pattern
 //
-// Architecture:
-//   elos_chat.py → writes spec.json → AHK detects change → Ctrl+Shift+R
-//   → Workbench reloads WB Scripts → this plugin's Run() executes
-//   → reads spec.json → applies WorldEditorAPI ops → writes outbox.json
-//   → elos_chat.py reads outbox.json → shows confirmation + latency
+// TWO ENTRY POINTS:
+//   1. RunCommandline() — CLI-driven, WorldEditor guaranteed active via -wbmodule=WorldEditor
+//   2. Run()            — Menu-driven (ELOS > AI Generate Mission), may need WorldEditor open
 //
-// Spec.json schema:
-//   { "mission_id": "...", "version": "ISO8601", "ops": [...], "narrative_patch": [...] }
+// CLI INVOCATION (guaranteed to work, per postmortem Failure #4 fix):
+//   ArmaReforgerWorkbenchSteamDiag.exe ^
+//     -gproj "path\to\addon.gproj" ^
+//     -wbmodule=WorldEditor ^
+//     -plugin=AI_GeneratePlugin ^
+//     -exitAfterInit ^
+//     -- -input=spec.json -output=outbox.json
 //
-// Op schema:
-//   attribute_edit: { "op": "attribute_edit", "target": "entityName|className", "field": "varName", "value": "strValue" }
-//   entity_create:  { "op": "entity_create", "class": "ClassName", "name": "entName", "coords": "x y z", "layer_id": 0 }
-//   entity_delete:  { "op": "entity_delete", "target": "entityName" }
-//   entity_move:    { "op": "entity_move", "target": "entityName", "coords": "x y z" }
-//   batch:          { "op": "batch", "sub_ops": [...] }
+// FILE PATHS (spec.json + outbox.json):
+//   Default: $profile:ELOS/spec.json + $profile:ELOS/outbox.json
+//   CLI override: -input=<absPath> -output=<absPath>
 //
-// Sources: Arma-Reforger-Script-Diff WorldEditorAPI.c, WorldExporterPlugin.c, SampleWorldEditorPlugin.c
+// SPEC FORMAT: { "ops": [{ "op": "attribute_edit|entity_create|...", ... }] }
+//
+// Sources: Arma-Reforger-Script-Diff ShoreTool.c + WorldTestTool.c (GetCmdLine pattern)
 
 #ifdef WORKBENCH
 
 [WorkbenchPluginAttribute(
     name: "AI Generate Mission",
-    description: "ELOS Live Editor - reads spec.json, applies ops, writes outbox.json",
+    description: "ELOS Live Editor - RunCommandline for CLI, Run for menu. See category ELOS.",
     category: "ELOS",
     shortcut: "Ctrl+Shift+G"
 )]
 class AI_GeneratePlugin : WorkbenchPlugin
 {
-    // -------------------------------------------------------------------------
-    // Paths
-
-    static const string SPEC_PATH   = "$profile:ELOS/spec.json";
-    static const string OUTBOX_PATH = "$profile:ELOS/outbox.json";
-    static const string LOG_PATH    = "$profile:ELOS/plugin-log.txt";
+    // Default paths (used when no CLI -input/-output args given)
+    static const string DEFAULT_SPEC_PATH   = "$profile:ELOS/spec.json";
+    static const string DEFAULT_OUTBOX_PATH = "$profile:ELOS/outbox.json";
+    static const string LOG_PATH            = "$profile:ELOS/plugin-log.txt";
 
     // -------------------------------------------------------------------------
-    // Entry Point
+    // ENTRY POINT 1: CLI (called by -plugin=AI_GeneratePlugin with -wbmodule=WorldEditor)
+    // WorldEditor is guaranteed active when -wbmodule=WorldEditor is used.
+    // Pattern: ShoreTool.c + WorldTestTool.c (RunCommandline + GetCmdLine)
+
+    override void RunCommandline()
+    {
+        Log("AI_GeneratePlugin.RunCommandline() - CLI mode starting");
+
+        // Ensure WorldEditor is open (may already be active via -wbmodule=WorldEditor)
+        WorldEditor we = Workbench.GetModule(WorldEditor);
+        if (!we)
+        {
+            Log("WorldEditor not active, opening module...");
+            Workbench.OpenModule(WorldEditor);
+            we = Workbench.GetModule(WorldEditor);
+        }
+
+        if (!we)
+        {
+            Log("ERROR: WorldEditor module unavailable in CLI mode");
+            WriteOutbox(DEFAULT_OUTBOX_PATH, "error", 0, {"WorldEditor module unavailable"});
+            Workbench.Exit(-1);
+            return;
+        }
+
+        WorldEditorAPI api = we.GetApi();
+        if (!api)
+        {
+            Log("ERROR: WorldEditorAPI unavailable");
+            WriteOutbox(DEFAULT_OUTBOX_PATH, "error", 0, {"WorldEditorAPI unavailable"});
+            Workbench.Exit(-1);
+            return;
+        }
+
+        // Parse CLI args using documented Bohemia pattern (per ShoreTool.c line 12, WorldTestTool.c line 9)
+        // CLI: -- -input=<path> -output=<path>
+        string specArgPath;
+        string outboxArgPath;
+        we.GetCmdLine("-input", specArgPath);
+        we.GetCmdLine("-output", outboxArgPath);
+
+        // Fall back to defaults if not provided
+        string specAbsPath;
+        string outboxAbsPath;
+
+        if (specArgPath)
+        {
+            specAbsPath = specArgPath;
+            Log("spec path from CLI arg: " + specAbsPath);
+        }
+        else
+        {
+            if (!Workbench.GetAbsolutePath(DEFAULT_SPEC_PATH, specAbsPath, false))
+            {
+                Log("ERROR: Cannot resolve default spec path: " + DEFAULT_SPEC_PATH);
+                WriteOutbox(DEFAULT_OUTBOX_PATH, "error", 0, {"spec.json path not resolvable"});
+                Workbench.Exit(-1);
+                return;
+            }
+        }
+
+        if (outboxArgPath)
+        {
+            outboxAbsPath = outboxArgPath;
+        }
+        else
+        {
+            if (!Workbench.GetAbsolutePath(DEFAULT_OUTBOX_PATH, outboxAbsPath, false))
+            {
+                Log("WARNING: Cannot resolve default outbox path, using spec dir");
+                outboxAbsPath = specAbsPath;  // fallback, shouldn't happen
+            }
+        }
+
+        Log("spec: " + specAbsPath);
+        Log("outbox: " + outboxAbsPath);
+
+        // Execute
+        int exitCode = DoWork(api, specAbsPath, outboxAbsPath);
+        Log("RunCommandline() done, exit code: " + exitCode.ToString());
+        Workbench.Exit(exitCode);
+    }
+
+    // -------------------------------------------------------------------------
+    // ENTRY POINT 2: Menu (called by ELOS > AI Generate Mission menu click)
+    // WorldEditor must be the active module when this fires.
 
     override void Run()
     {
-        Log("AI_GeneratePlugin.Run() - reading spec");
+        Log("AI_GeneratePlugin.Run() - menu mode starting");
 
-        WorldEditor worldEditor = Workbench.GetModule(WorldEditor);
-        if (!worldEditor)
+        WorldEditor we = Workbench.GetModule(WorldEditor);
+        if (!we)
         {
-            WriteOutbox("error", 0, {"WorldEditor module unavailable"});
+            WriteOutbox(DEFAULT_OUTBOX_PATH, "error", 0, {"WorldEditor module unavailable - open via Editors > World Editor first"});
+            Workbench.Dialog("AI Generate Mission", "Open World Editor first (Editors menu), then try again.");
             return;
         }
-        WorldEditorAPI api = worldEditor.GetApi();
+
+        WorldEditorAPI api = we.GetApi();
         if (!api)
         {
-            WriteOutbox("error", 0, {"WorldEditorAPI unavailable"});
+            WriteOutbox(DEFAULT_OUTBOX_PATH, "error", 0, {"WorldEditorAPI unavailable"});
             return;
         }
 
-        // Load spec.json
         string specAbsPath;
-        if (!Workbench.GetAbsolutePath(SPEC_PATH, specAbsPath, false))
+        string outboxAbsPath;
+        if (!Workbench.GetAbsolutePath(DEFAULT_SPEC_PATH, specAbsPath, false))
         {
-            WriteOutbox("error", 0, {"spec.json path not resolvable: " + SPEC_PATH});
+            WriteOutbox(DEFAULT_OUTBOX_PATH, "error", 0, {"spec.json not found at: " + DEFAULT_SPEC_PATH});
+            Workbench.Dialog("AI Generate Mission", "spec.json not found. Run elos_chat.py first.");
             return;
         }
+        Workbench.GetAbsolutePath(DEFAULT_OUTBOX_PATH, outboxAbsPath, false);
+
+        DoWork(api, specAbsPath, outboxAbsPath);
+    }
+
+    // -------------------------------------------------------------------------
+    // SHARED WORK: parse spec.json + execute ops via WorldEditorAPI
+
+    protected int DoWork(WorldEditorAPI api, string specAbsPath, string outboxAbsPath)
+    {
+        // Read spec.json
         string specContent;
         if (!ReadFile(specAbsPath, specContent) || specContent.Length() == 0)
         {
-            WriteOutbox("error", 0, {"spec.json empty or unreadable: " + specAbsPath});
-            return;
+            Log("ERROR: spec.json empty or unreadable: " + specAbsPath);
+            WriteOutbox(outboxAbsPath, "error", 0, {"spec.json empty or unreadable: " + specAbsPath});
+            return -1;
         }
-        Log("spec.json loaded (" + specContent.Length().ToString() + " chars)");
+        Log("spec loaded: " + specContent.Length().ToString() + " chars");
 
-        // Parse ops array from spec JSON
-        // Enforce Script JSON: use string parsing (no stdlib JSON)
+        // Parse ops
         array<ref SCR_AIOp> ops = ParseOps(specContent);
         if (!ops || ops.Count() == 0)
         {
-            WriteOutbox("ok", 0, {});
             Log("No ops in spec - nothing to do");
-            return;
+            WriteOutbox(outboxAbsPath, "ok", 0, {});
+            return 0;
         }
+
+        Log("Executing " + ops.Count().ToString() + " ops...");
 
         // Execute ops
         int applied = 0;
@@ -92,7 +193,10 @@ class AI_GeneratePlugin : WorkbenchPlugin
             if (err.IsEmpty())
                 applied++;
             else
+            {
                 errors.Insert(err);
+                Log("Op error: " + err);
+            }
         }
         api.EndEntityAction("ELOS-batch");
 
@@ -101,8 +205,13 @@ class AI_GeneratePlugin : WorkbenchPlugin
             status = "ok";
         else
             status = "partial";
-        WriteOutbox(status, applied, errors);
+
+        WriteOutbox(outboxAbsPath, status, applied, errors);
         Log("Done: " + applied.ToString() + " applied, " + errors.Count().ToString() + " errors");
+        if (errors.Count() == 0)
+            return 0;
+        else
+            return 1;
     }
 
     // -------------------------------------------------------------------------
@@ -131,11 +240,7 @@ class AI_GeneratePlugin : WorkbenchPlugin
         return "";
     }
 
-    // ---- attribute_edit ------------------------------------------------------
-    // Sets a named variable on an entity.
-    // target: entity name in scene (e.g. "WeatherManager", "weatherManager_0")
-    // field:  variable name (e.g. "m_fFogDensity")
-    // value:  string representation (e.g. "0.7" or "true")
+    // ---- attribute_edit -------------------------------------------------------
     protected string Op_AttributeEdit(WorldEditorAPI api, SCR_AIOp op)
     {
         if (op.target.IsEmpty() || op.field.IsEmpty())
@@ -156,12 +261,7 @@ class AI_GeneratePlugin : WorkbenchPlugin
         return "";
     }
 
-    // ---- entity_create -------------------------------------------------------
-    // Creates a new entity of given class at given world coords.
-    // class:    Enforce class name (e.g. "GenericEntity", "SCR_AIGroupEntity")
-    // name:     display name for the new entity
-    // coords:   "x y z" world-space
-    // layer_id: sub-scene layer (0 = root)
+    // ---- entity_create --------------------------------------------------------
     protected string Op_EntityCreate(WorldEditorAPI api, SCR_AIOp op)
     {
         if (op.class_name.IsEmpty())
@@ -172,13 +272,12 @@ class AI_GeneratePlugin : WorkbenchPlugin
             coords = "0 0 0";
         else
             coords = op.coords;
-        int layerId = op.layer_id;
 
         IEntitySource newEnt = api.CreateEntity(
             op.class_name,
             op.name,
-            layerId,
-            null,   // no parent
+            op.layer_id,
+            null,
             coords.ToVector(),
             Vector(0, 0, 0)
         );
@@ -186,18 +285,14 @@ class AI_GeneratePlugin : WorkbenchPlugin
         if (!newEnt)
             return "entity_create: CreateEntity returned null for " + op.class_name;
 
-        // Apply extra props if given (key=value pairs)
         foreach (SCR_KVPair kv : op.props)
-        {
             api.SetVariableValue(newEnt, null, kv.key, kv.value);
-        }
 
         Log("entity_create: " + op.class_name + " '" + op.name + "' at " + coords);
         return "";
     }
 
-    // ---- entity_delete -------------------------------------------------------
-    // Deletes the entity by name.
+    // ---- entity_delete --------------------------------------------------------
     protected string Op_EntityDelete(WorldEditorAPI api, SCR_AIOp op)
     {
         if (op.target.IsEmpty())
@@ -212,8 +307,7 @@ class AI_GeneratePlugin : WorkbenchPlugin
         return "";
     }
 
-    // ---- entity_move ---------------------------------------------------------
-    // Moves entity to new world coords.
+    // ---- entity_move ----------------------------------------------------------
     protected string Op_EntityMove(WorldEditorAPI api, SCR_AIOp op)
     {
         if (op.target.IsEmpty() || op.coords.IsEmpty())
@@ -232,20 +326,16 @@ class AI_GeneratePlugin : WorkbenchPlugin
     }
 
     // -------------------------------------------------------------------------
-    // Minimal JSON op parser — extracts ops array from spec.json
-    // Real JSON parsing in Enforce Script requires ScriptConvert (available in runtime)
-    // For Workbench plugin: use string tokenisation on known schema
+    // JSON parser (Enforce Script string-based, no stdlib JSON)
 
     protected array<ref SCR_AIOp> ParseOps(string json)
     {
         array<ref SCR_AIOp> result = {};
 
-        // Find "ops": [ ... ]
         int opsStart = json.IndexOf("\"ops\"");
         if (opsStart < 0)
             return result;
 
-        // Find the opening [ of the ops array
         string afterOpsKey = json.Substring(opsStart, json.Length() - opsStart);
         int relArrOpen = afterOpsKey.IndexOf("[");
         int arrOpen;
@@ -253,11 +343,10 @@ class AI_GeneratePlugin : WorkbenchPlugin
             arrOpen = opsStart + relArrOpen;
         else
             arrOpen = -1;
+
         if (arrOpen < 0)
             return result;
 
-        // Extract each { ... } object from the ops array
-        // Handles 1-level nesting (batch sub_ops parsed separately)
         int depth = 0;
         int objStart = -1;
         int i = arrOpen;
@@ -292,7 +381,7 @@ class AI_GeneratePlugin : WorkbenchPlugin
                     }
                 }
                 else if (ch == "]" && depth == 0)
-                    break;  // end of ops array
+                    break;
             }
             i++;
         }
@@ -319,7 +408,6 @@ class AI_GeneratePlugin : WorkbenchPlugin
         if (op.op_type.IsEmpty())
             return null;
 
-        // batch: recursively parse sub_ops
         if (op.op_type == "batch")
         {
             int subStart = obj.IndexOf("\"sub_ops\"");
@@ -329,7 +417,6 @@ class AI_GeneratePlugin : WorkbenchPlugin
         return op;
     }
 
-    // Extract the string value of a JSON field (handles both string and number values)
     protected string ExtractStringField(string json, string fieldName)
     {
         string needle = "\"" + fieldName + "\"";
@@ -337,36 +424,35 @@ class AI_GeneratePlugin : WorkbenchPlugin
         if (pos < 0) return "";
 
         string searchArea1 = json.Substring(pos + needle.Length(), json.Length() - pos - needle.Length());
-        int relIdx1 = searchArea1.IndexOf(":");
+        int relColon = searchArea1.IndexOf(":");
         int colon;
-        if (relIdx1 >= 0)
-            colon = pos + needle.Length() + relIdx1;
+        if (relColon >= 0)
+            colon = pos + needle.Length() + relColon;
         else
             colon = -1;
+
         if (colon < 0) return "";
 
-        // Skip whitespace
         int valStart = colon + 1;
         while (valStart < json.Length() && json.Get(valStart) == " ")
             valStart++;
 
         if (valStart >= json.Length()) return "";
 
-        // String value (quoted)
         if (json.Get(valStart) == "\"")
         {
             string searchArea2 = json.Substring(valStart + 1, json.Length() - valStart - 1);
-            int relIdx2 = searchArea2.IndexOf("\"");
+            int relEnd = searchArea2.IndexOf("\"");
             int end;
-            if (relIdx2 >= 0)
-                end = valStart + 1 + relIdx2;
+            if (relEnd >= 0)
+                end = valStart + 1 + relEnd;
             else
                 end = -1;
+
             if (end < 0) return "";
             return json.Substring(valStart + 1, end - valStart - 1);
         }
 
-        // Number / bool — read until delimiter
         int end2 = valStart;
         while (end2 < json.Length())
         {
@@ -379,20 +465,23 @@ class AI_GeneratePlugin : WorkbenchPlugin
     }
 
     // -------------------------------------------------------------------------
-    // Write outbox.json (consumed by elos_chat.py)
+    // outbox.json writer (takes explicit path for both CLI and menu modes)
 
-    protected void WriteOutbox(string status, int appliedCount, array<string> errors)
+    protected void WriteOutbox(string absPath, string status, int appliedCount, array<string> errors)
     {
-        string outboxAbsPath;
-        if (!Workbench.GetAbsolutePath(OUTBOX_PATH, outboxAbsPath, false))
-            return;
+        string outboxAbsPath = absPath;
+        if (outboxAbsPath.IsEmpty())
+        {
+            if (!Workbench.GetAbsolutePath(DEFAULT_OUTBOX_PATH, outboxAbsPath, false))
+                return;
+        }
 
         string errArr = "";
         if (errors && errors.Count() > 0)
         {
-            foreach (int i, string e : errors)
+            foreach (int idx, string e : errors)
             {
-                if (i > 0) errArr += ",";
+                if (idx > 0) errArr += ",";
                 errArr += "\"" + e + "\"";
             }
         }
@@ -411,7 +500,7 @@ class AI_GeneratePlugin : WorkbenchPlugin
     }
 
     // -------------------------------------------------------------------------
-    // File utilities
+    // File I/O + logging
 
     protected bool ReadFile(string absPath, out string content)
     {
@@ -441,16 +530,16 @@ class AI_GeneratePlugin : WorkbenchPlugin
 
 class SCR_AIOp
 {
-    string op_type;    // attribute_edit | entity_create | entity_delete | entity_move | batch
-    string target;     // entity name or class-search term
-    string field;      // attribute_edit: variable name
-    string value;      // attribute_edit: new value (as string)
-    string class_name; // entity_create: Enforce class
-    string name;       // entity_create: display name
-    string coords;     // entity_create/move: "x y z"
-    int    layer_id;   // entity_create: sub-scene layer
-    ref array<ref SCR_KVPair> props = {};   // entity_create: extra key=value props
-    ref array<ref SCR_AIOp>   sub_ops = {}; // batch: nested ops
+    string op_type;
+    string target;
+    string field;
+    string value;
+    string class_name;
+    string name;
+    string coords;
+    int    layer_id;
+    ref array<ref SCR_KVPair> props = {};
+    ref array<ref SCR_AIOp>   sub_ops = {};
 }
 
 class SCR_KVPair
