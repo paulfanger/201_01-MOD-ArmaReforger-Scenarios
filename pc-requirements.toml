@@ -139,9 +139,9 @@ purpose = "Game client for Game Master mode testing"
 
 [steam."Arma Reforger Tools"]
 app_id = 1874910
-verify_path = 'C:\Program Files (x86)\Steam\steamapps\common\Arma Reforger Tools\Workbench\ArmaReforgerWorkbenchSteam.exe'
+verify_path = 'C:\Program Files (x86)\Steam\steamapps\common\Arma Reforger Tools\Workbench\ArmaReforgerWorkbenchSteamDiag.exe'
 purpose = "Workbench editor (S5 + S6 work happens here)"
-note = "AppID was 1874881 in pre-PSA assumption — DISCONFIRMED, real is 1874910"
+note = "AppID was 1874881 in pre-PSA assumption — DISCONFIRMED, real is 1874910. Installed exe has SteamDiag suffix."
 
 [steam."Arma Reforger Server"]
 verify_path = 'C:\Program Files (x86)\Steam\steamapps\common\Arma Reforger Server\ArmaReforgerServer.exe'

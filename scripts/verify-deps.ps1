@@ -39,6 +39,12 @@ $wingetDeps = @(
 )
 foreach ($d in $wingetDeps) {
     $deprecated = if ($d.deprecated) { " [deprecated]" } else { "" }
+    # Deprecated items: skip as not required (per Postmortem #5, no longer used)
+    if ($d.deprecated) {
+        Write-Host "  [SKIP]    $($d.id)$deprecated (not required)" -ForegroundColor DarkGray
+        $results.skipped += $d.id
+        continue
+    }
     try {
         $out = Invoke-Expression $d.verify 2>&1
         if ($LASTEXITCODE -eq 0 -or $out) {
@@ -58,12 +64,24 @@ foreach ($d in $wingetDeps) {
 Write-Host ""
 Write-Host "-- PIP --" -ForegroundColor Cyan
 $reqPath = Join-Path $repo "requirements.txt"
+# pip package name -> python import name (where they differ)
+$pipImportMap = @{
+    "pillow"    = "PIL"
+    "pywebview" = "webview"
+    "pyyaml"    = "yaml"
+    "beautifulsoup4" = "bs4"
+}
 if (Test-Path $reqPath) {
     $pipPackages = Get-Content $reqPath | Where-Object { $_ -and -not $_.StartsWith("#") } | ForEach-Object {
         ($_ -split '[<>=]')[0].Trim()
     }
     foreach ($pkg in $pipPackages) {
-        $importName = $pkg.Replace('-','_')
+        $pkgLower = $pkg.ToLower()
+        if ($pipImportMap.ContainsKey($pkgLower)) {
+            $importName = $pipImportMap[$pkgLower]
+        } else {
+            $importName = $pkg.Replace('-','_')
+        }
         python -c "import importlib; importlib.import_module('$importName')" 2>&1 | Out-Null
         if ($LASTEXITCODE -eq 0) {
             Write-Host "  [OK]      $pkg" -ForegroundColor Green
@@ -97,7 +115,7 @@ Write-Host ""
 Write-Host "-- STEAM APPS --" -ForegroundColor Cyan
 $steamApps = @(
     @{ name="Arma Reforger"; path='C:\Program Files (x86)\Steam\steamapps\common\Arma Reforger\ArmaReforgerSteam.exe' },
-    @{ name="Arma Reforger Tools"; path='C:\Program Files (x86)\Steam\steamapps\common\Arma Reforger Tools\Workbench\ArmaReforgerWorkbenchSteam.exe' }
+    @{ name="Arma Reforger Tools"; path='C:\Program Files (x86)\Steam\steamapps\common\Arma Reforger Tools\Workbench\ArmaReforgerWorkbenchSteamDiag.exe' }
 )
 foreach ($app in $steamApps) {
     if (Test-Path $app.path) {
