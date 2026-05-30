@@ -43,6 +43,58 @@ pyautogui.PAUSE = 0.1  # 100ms between actions for stability
 SCREENSHOT_W = 1280
 SCREENSHOT_H = 800
 
+# ---------------------------------------------------------------------------
+# M.3 PROCESS WHITELIST — CU refuses click/key/type if active window is not listed
+# Per playbook/SAFETY-WHITELIST.md — prevents accidental interaction with
+# personal windows (banking, passwords, email) during autonomous sprint.
+
+WHITELISTED_TITLES = [
+    "ArmaReforgerWorkbench",
+    "Enfusion Workbench",
+    "Steam",
+    "Windows Terminal",
+    "Windows PowerShell",
+    "PowerShell",
+    "Command Prompt",
+    "cmd",
+    "Notepad",
+    "File Explorer",
+    "Explorer",
+    "ELOS",
+    "Claude",
+]
+
+
+class NonWhitelistedWindowError(Exception):
+    """Raised when active window is not in WHITELISTED_TITLES."""
+    pass
+
+
+def _get_active_window_title() -> str:
+    """Return the title of the currently focused foreground window."""
+    if HAS_PYGETWINDOW:
+        import ctypes
+        hwnd = ctypes.windll.user32.GetForegroundWindow()
+        length = ctypes.windll.user32.GetWindowTextLengthW(hwnd)
+        buf = ctypes.create_unicode_buffer(length + 1)
+        ctypes.windll.user32.GetWindowTextW(hwnd, buf, length + 1)
+        return buf.value
+    return "unknown"
+
+
+def _check_whitelist(action_name: str) -> None:
+    """Raise NonWhitelistedWindowError if active window is not whitelisted.
+    Only enforced for click/key/type actions — not for screenshot/wait/list_windows.
+    """
+    title = _get_active_window_title()
+    for allowed in WHITELISTED_TITLES:
+        if allowed.lower() in title.lower():
+            return
+    raise NonWhitelistedWindowError(
+        f"Action '{action_name}' refused: active window '{title}' is not in "
+        f"WHITELISTED_TITLES. See playbook/SAFETY-WHITELIST.md."
+    )
+
 
 def take_screenshot(target_path: Path | None = None) -> dict:
     """Capture primary monitor, resize to 1280x800 (Anthropic vision-tool limit),
@@ -74,6 +126,7 @@ def take_screenshot(target_path: Path | None = None) -> dict:
 
 def left_click(coordinate: list[int]) -> dict:
     """Click left mouse button at coordinate [x, y]."""
+    _check_whitelist("left_click")
     x, y = coordinate
     # Coordinates are in 1280x800 space — scale to native
     real_w, real_h = pyautogui.size()
@@ -103,12 +156,14 @@ def double_click(coordinate: list[int]) -> dict:
 
 def type_text(text: str) -> dict:
     """Type a string with small interval to avoid race-conditions."""
+    _check_whitelist("type")
     pyautogui.typewrite(text, interval=0.02)
     return {"type": "text", "text": f"typed: {text!r}"}
 
 
 def key(combo: str) -> dict:
     """Press a key combination like 'ctrl+shift+r' or 'enter'."""
+    _check_whitelist("key")
     parts = combo.lower().split("+")
     # Map common synonyms
     parts = [{"return": "enter", "esc": "escape"}.get(p, p) for p in parts]

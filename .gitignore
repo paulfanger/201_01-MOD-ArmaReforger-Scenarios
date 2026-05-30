@@ -58,3 +58,6 @@ build/
 
 # But keep the example output for first test mission
 !missions/_templates/
+
+# Sprint kill-switch flag (user-created file, not committed)
+sprint-kill.flag

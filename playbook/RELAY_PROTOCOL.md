@@ -79,6 +79,30 @@ Every directive has one of four markers:
 | **⚙️ DO** | Manual action on the PC by hand (UI click, EULA accept, Steam install dialog, settings.json edit). | Paul (human, at PC) |
 | **🧪 DRY** | Emit the PLAN of an EXEC block + content hash, without running. Other side computes same hash from RESPONSE, then approves real run on next turn. Use for destructive / irreversible operations. (Per research/07 §8) | Both — emitter plans, receiver verifies |
 
+### 🧪 DRY Enforcement Rules (M.4 — added PHASE META)
+
+**Every destructive operation** (Remove-Item -Recurse, git reset --hard, file deletion,
+database drop, etc.) MUST follow this procedure:
+
+1. **Before running:** Commit a DRY plan to `playbook/dry-plans/<ts>-<short>.md`:
+   - What will be deleted/modified
+   - Why (justification)
+   - Rollback procedure if needed
+   
+2. **When running:** Log the op to `logs/destructive-ops.jsonl`:
+   ```json
+   {"ts": "ISO8601", "op": "Remove-Item", "target": "path/to/thing", "dry_plan_path": "playbook/dry-plans/...", "user_approved": true}
+   ```
+
+3. **Auditor pre-push:** Reads `logs/destructive-ops.jsonl`, cross-checks that every entry
+   has a matching `dry_plan_path` file committed BEFORE the op ran. If any entry is missing
+   a dry plan → **BLOCK push**. Sprint stops and escalates.
+
+4. **Self-approved destructive ops** (reversible ones like re-copying missions from repo)
+   are allowed with `user_approved: false` — but still require the plan + log entry.
+
+Test: simulate a `Remove-Item` without a DRY plan, verify auditor blocks in the pre-push check.
+
 ---
 
 ## Return template (standard)
@@ -532,6 +556,31 @@ ON every retry of a step:
      - (Threshold 4, not 2 — Cursor false-positive lesson)
   3. TYPE B — Repeated-Error Loop:
      - If ≥4 retries produce same error_class with DIFFERENT action_classes → ❌ REPEATED_ERROR_LOOP
+
+---
+
+## Kill-Switch
+
+The orchestrator polls for `sprint-kill.flag` in the repo root at **every branch
+transition** (start/end of each sprint stage, sub-task boundary, or before any
+commit-and-push).
+
+If the file exists:
+1. Delete the flag
+2. Write `tasks/STATE.json` with `reason: "user-kill"`, `phase: "PHASE_D_RETURN"`
+   and whatever partial state was completed
+3. Commit the current state: `git commit -m "chore: user-kill halt at <stage>"`
+4. Push
+5. Exit cleanly — NO `Ctrl+C`, NO unsaved state
+
+How user triggers it:
+  ```powershell
+  # From any PowerShell window while sprint is running:
+  powershell -ExecutionPolicy Bypass -File scripts\sprint-kill.ps1
+  ```
+
+Goal: user can stop an overnight autonomous sprint without losing state or leaving
+the repo dirty. The flag approach survives across tool calls and process restarts.
      - Means underlying issue isn't action-shaped; bug-fixer must change problem framing
   4. TYPE C — Monologue Loop (model reasons without acting):
      - If ≥3 consecutive plan-only events with no tool-call → ❌ MONOLOGUE_LOOP

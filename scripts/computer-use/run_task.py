@@ -13,6 +13,13 @@ PRE-FLIGHT:
 Per research/12 — uses beta header 'computer-use-2025-11-24' + tool type
 'computer_20251124'. Default model claude-sonnet-4-6 (more click-precise than
 opus-4-6 per Anthropic).
+
+M.2 FORENSIC LOGGING (added PHASE META):
+  Each session gets its own subdirectory: logs/computer-use/cu-<ts>-session/
+    - screenshot-<turn>.png  (before each action)
+    - transcript.jsonl       ({turn, screenshot_path, action, decision_reasoning})
+    - summary.md             (first 5 + last 5 turns + outcome)
+  Goal: any CU session is replay-able for debugging.
 """
 
 import argparse
@@ -32,7 +39,7 @@ from anthropic import Anthropic
 
 # Add scripts/computer-use to path
 sys.path.insert(0, str(Path(__file__).parent))
-from windows_computer import execute_action, SCREENSHOT_W, SCREENSHOT_H
+from windows_computer import execute_action, take_screenshot, SCREENSHOT_W, SCREENSHOT_H, NonWhitelistedWindowError
 
 BETA_HEADER = "computer-use-2025-11-24"
 TOOL_TYPE = "computer_20251124"
@@ -43,11 +50,19 @@ LOG_DIR = Path(__file__).parent.parent.parent / "logs" / "computer-use"
 
 def run_task(task: str, model: str = DEFAULT_MODEL, max_turns: int = MAX_TURNS) -> dict:
     """Execute a task autonomously using Computer Use loop. Returns final
-    {turns, success, last_message, log_path}.
+    {turns, success, last_message, log_path, forensic_dir}.
+
+    M.2: Each session logs to a per-session forensic directory for replay.
     """
     LOG_DIR.mkdir(parents=True, exist_ok=True)
     ts = datetime.now().strftime("%Y%m%d_%H%M%S")
     log_path = LOG_DIR / f"cu-{ts}.jsonl"
+
+    # M.2: Per-session forensic directory
+    forensic_dir = LOG_DIR / f"cu-{ts}-session"
+    forensic_dir.mkdir(parents=True, exist_ok=True)
+    transcript_path = forensic_dir / "transcript.jsonl"
+    turn_log: list[dict] = []  # accumulate for summary.md
 
     client = Anthropic()  # uses ANTHROPIC_API_KEY env var
     messages = [{"role": "user", "content": task}]
@@ -58,12 +73,22 @@ def run_task(task: str, model: str = DEFAULT_MODEL, max_turns: int = MAX_TURNS) 
     print(f"[CU] Task: {task[:100]}...")
     print(f"[CU] Model: {model}")
     print(f"[CU] Log: {log_path}")
+    print(f"[CU] Forensic: {forensic_dir}")
 
-    with log_path.open("a") as logf:
+    with log_path.open("a") as logf, transcript_path.open("a") as trf:
         logf.write(json.dumps({"event": "start", "task": task, "model": model, "ts": ts}) + "\n")
 
         while turns < max_turns:
             turns += 1
+
+            # M.2: Screenshot BEFORE every turn (what agent sees at decision time)
+            screenshot_path = forensic_dir / f"screenshot-{turns:03d}.png"
+            try:
+                take_screenshot(target_path=screenshot_path)
+            except Exception as e:
+                print(f"[CU] forensic screenshot failed turn {turns}: {e}")
+                screenshot_path = None
+
             try:
                 response = client.beta.messages.create(
                     model=model,
@@ -105,6 +130,20 @@ def run_task(task: str, model: str = DEFAULT_MODEL, max_turns: int = MAX_TURNS) 
                 + "\n"
             )
 
+            # M.2: Transcript entry
+            for tu in tool_uses:
+                action = tu.input.get("action", "screenshot")
+                trf_entry = {
+                    "turn": turns,
+                    "screenshot_path": str(screenshot_path) if screenshot_path else None,
+                    "prompt_preview": text_parts[0][:300] if text_parts else "",
+                    "tool_use": action,
+                    "tool_params": {k: v for k, v in tu.input.items() if k != "action"},
+                    "decision_reasoning": text_parts[0][:500] if text_parts else "",
+                }
+                trf.write(json.dumps(trf_entry) + "\n")
+                turn_log.append(trf_entry)
+
             if text_parts:
                 print(f"[CU] turn {turns} say: {text_parts[0][:200]}")
 
@@ -128,7 +167,19 @@ def run_task(task: str, model: str = DEFAULT_MODEL, max_turns: int = MAX_TURNS) 
                 # Computer Use tool params have action + others
                 inner_params = {k: v for k, v in params.items() if k != "action"}
                 print(f"[CU] turn {turns} action: {action} {inner_params}")
-                result_content = execute_action(action, inner_params)
+                try:
+                    result_content = execute_action(action, inner_params)
+                except NonWhitelistedWindowError as wl_err:
+                    # M.3: Refuse action, log it, surface blocker
+                    refusal_msg = str(wl_err)
+                    print(f"[CU] WHITELIST REFUSED: {refusal_msg}")
+                    logf.write(json.dumps({
+                        "event": "whitelist_refusal",
+                        "turn": turns,
+                        "action": action,
+                        "reason": refusal_msg,
+                    }) + "\n")
+                    result_content = {"type": "text", "text": f"REFUSED: {refusal_msg}"}
                 tool_results.append(
                     {
                         "type": "tool_result",
@@ -156,12 +207,63 @@ def run_task(task: str, model: str = DEFAULT_MODEL, max_turns: int = MAX_TURNS) 
             + "\n"
         )
 
+    # M.2: Write session summary.md
+    _write_forensic_summary(forensic_dir, task, ts, turns, success, last_message, turn_log)
+
     return {
         "turns": turns,
         "success": success,
         "last_message": last_message,
         "log_path": str(log_path),
+        "forensic_dir": str(forensic_dir),
     }
+
+
+def _write_forensic_summary(
+    forensic_dir: Path,
+    task: str,
+    ts: str,
+    turns: int,
+    success: bool,
+    last_message: str | None,
+    turn_log: list[dict],
+) -> None:
+    """M.2: Write human-readable summary.md for session replay."""
+    summary_path = forensic_dir / "summary.md"
+    first5 = turn_log[:5]
+    last5 = turn_log[-5:] if len(turn_log) > 5 else []
+
+    lines = [
+        f"# CU Session Summary — {ts}",
+        f"",
+        f"**Task:** {task[:200]}",
+        f"**Turns:** {turns}",
+        f"**Outcome:** {'SUCCESS' if success else 'FAILED'}",
+        f"**Last message:** {(last_message or '')[:300]}",
+        f"",
+        f"## First 5 turns",
+        f"",
+    ]
+    for t in first5:
+        lines.append(f"### Turn {t['turn']} — `{t['tool_use']}`")
+        lines.append(f"- Screenshot: `{t['screenshot_path']}`")
+        lines.append(f"- Reasoning: {t['decision_reasoning'][:200]}")
+        lines.append(f"")
+
+    if last5:
+        lines.append(f"## Last 5 turns")
+        lines.append(f"")
+        for t in last5:
+            lines.append(f"### Turn {t['turn']} — `{t['tool_use']}`")
+            lines.append(f"- Screenshot: `{t['screenshot_path']}`")
+            lines.append(f"- Reasoning: {t['decision_reasoning'][:200]}")
+            lines.append(f"")
+
+    lines.append(f"## Replay")
+    lines.append(f"Screenshots: `{forensic_dir}/*.png`")
+    lines.append(f"Transcript: `{forensic_dir}/transcript.jsonl`")
+
+    summary_path.write_text("\n".join(lines), encoding="utf-8")
 
 
 def main():
