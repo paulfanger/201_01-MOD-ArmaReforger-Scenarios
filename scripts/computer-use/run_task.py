@@ -45,7 +45,21 @@ BETA_HEADER = "computer-use-2025-11-24"
 TOOL_TYPE = "computer_20251124"
 DEFAULT_MODEL = "claude-sonnet-4-6"
 MAX_TURNS = 80
+MAX_TOKENS = 1024  # Tight loop: 1024 for snappy turns (was 4096)
 LOG_DIR = Path(__file__).parent.parent.parent / "logs" / "computer-use"
+
+# System prompt for tight-loop CU: act → screenshot → assess → act
+CU_SYSTEM_PROMPT = (
+    "You are a Computer Use agent controlling a Windows desktop. "
+    "RULES FOR SPEED:\n"
+    "1. Take a screenshot after EVERY single action — no exceptions.\n"
+    "2. Never batch multiple clicks before taking a screenshot.\n"
+    "3. Act → screenshot → assess → act. Tight loop.\n"
+    "4. Keep text responses SHORT (1-2 sentences max). Save tokens.\n"
+    "5. If an action worked: confirm in 1 sentence, then take next action.\n"
+    "6. If an action failed: state what failed in 1 sentence, try alternative immediately.\n"
+    "Do NOT write long explanations. Speed > verbosity."
+)
 
 
 def run_task(task: str, model: str = DEFAULT_MODEL, max_turns: int = MAX_TURNS) -> dict:
@@ -92,7 +106,8 @@ def run_task(task: str, model: str = DEFAULT_MODEL, max_turns: int = MAX_TURNS) 
             try:
                 response = client.beta.messages.create(
                     model=model,
-                    max_tokens=4096,
+                    max_tokens=MAX_TOKENS,
+                    system=CU_SYSTEM_PROMPT,
                     tools=[
                         {
                             "type": TOOL_TYPE,

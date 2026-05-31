@@ -37,11 +37,15 @@ except ImportError:
 # ---------------------------------------------------------------------------
 # Safety: pyautogui will move mouse to corner on Ctrl+C; we don't want that
 pyautogui.FAILSAFE = False
-pyautogui.PAUSE = 0.1  # 100ms between actions for stability
+pyautogui.PAUSE = 0.05  # 50ms between actions (was 100ms — tighter loop)
 
 # Default screenshot resolution per Anthropic guidance (1024x768 to 1280x800)
 SCREENSHOT_W = 1280
 SCREENSHOT_H = 800
+
+# Cadence settings — tuned for tight act→screenshot→assess loop
+POST_ACTION_SETTLE_S = 2.0    # Wait after click/key before screenshot (was 10s)
+BASELINE_INTERVAL_S  = 8.0    # Heartbeat screenshot during long waits (was 30s)
 
 # ---------------------------------------------------------------------------
 # M.3 PROCESS WHITELIST — CU refuses click/key/type if active window is not listed
